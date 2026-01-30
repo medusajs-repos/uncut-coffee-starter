@@ -57,7 +57,7 @@ export const Navbar = () => {
             </Link>
           ))}
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-4">
             <button className={`${textColorClass} hover:opacity-70 transition-opacity cursor-pointer`}>
               <User className="w-4 h-4" />
             </button>
