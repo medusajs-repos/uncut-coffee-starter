@@ -34,7 +34,7 @@ const HeroSection = () => {
       </div>
       <div className="absolute inset-0 flex items-end justify-center px-4 pb-8">
         <h1 className="text-[13.5vw] font-bold text-white uppercase tracking-tighter text-center whitespace-nowrap leading-none">
-          Good Energy
+          Uncut Coffee
         </h1>
       </div>
     </section>
