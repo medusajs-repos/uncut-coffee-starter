@@ -20,22 +20,24 @@ const HERO_VIDEO = "https://cdn.mignite.app/ws/works_01KG7HEF506FB5P7HQP4V3WMR7/
 
 const HeroSection = () => {
   return (
-    <section className="relative h-screen w-full overflow-hidden">
-      <div className="absolute inset-0">
-        <video 
-          src={HERO_VIDEO}
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-black/30" />
-      </div>
-      <div className="absolute inset-0 flex items-end justify-center px-4">
-        <h1 className="text-[13.5vw] font-bold text-white uppercase tracking-tighter text-center whitespace-nowrap leading-none">
-          Uncut Coffee
-        </h1>
+    <section className="relative h-screen w-full px-1">
+      <div className="relative h-full w-full overflow-hidden rounded-b-[64px]">
+        <div className="absolute inset-0">
+          <video 
+            src={HERO_VIDEO}
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-black/30" />
+        </div>
+        <div className="absolute inset-0 flex items-end justify-center px-4">
+          <h1 className="text-[13.5vw] font-bold text-white uppercase tracking-tighter text-center whitespace-nowrap leading-none">
+            Uncut Coffee
+          </h1>
+        </div>
       </div>
     </section>
   )
