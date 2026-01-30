@@ -20,7 +20,7 @@ const HERO_VIDEO = "https://cdn.mignite.app/ws/works_01KG7HEF506FB5P7HQP4V3WMR7/
 
 const HeroSection = () => {
   return (
-    <section className="relative h-dvh w-full -mt-[72px]">
+    <section className="relative w-full h-screen">
       <div className="absolute inset-0">
         <video 
           src={HERO_VIDEO}
@@ -543,7 +543,7 @@ const Home = () => {
   const baseHref = countryCode ? `/${countryCode}` : ""
 
   return (
-    <div className="-mt-16"> {/* Offset for transparent nav */}
+    <div className="-mt-[72px]"> {/* Offset for transparent nav */}
       <HeroSection />
       <ProductSection baseHref={baseHref} />
       <ImageCarousel />
