@@ -3,7 +3,7 @@ import { useCartDrawer } from "@/lib/context/cart"
 import { getCountryCodeFromPath } from "@/lib/utils/region"
 import { User } from "@medusajs/icons"
 import { Link, useLocation } from "@tanstack/react-router"
-import { useState, useEffect } from "react"
+
 import {
   Drawer,
   DrawerContent,
@@ -26,9 +26,6 @@ export const Navbar = () => {
   const location = useLocation()
   const countryCode = getCountryCodeFromPath(location.pathname)
   const baseHref = countryCode ? `/${countryCode}` : ""
-  const isHomepage = location.pathname === "/" || location.pathname === `/${countryCode}` || location.pathname === `/${countryCode}/`
-
-  const [scrolled, setScrolled] = useState(false)
   const { isOpen, openCart, closeCart } = useCartDrawer()
   const { data: cart } = useCart({
     fields: DEFAULT_CART_DROPDOWN_FIELDS,
@@ -37,26 +34,12 @@ export const Navbar = () => {
   const sortedItems = sortCartItems(cart?.items || [])
   const itemCount = sortedItems?.reduce((total, item) => total + item.quantity, 0) || 0
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50)
-    }
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
-
-  const navBgClass = isHomepage && !scrolled
-    ? "bg-transparent"
-    : "bg-white border-b border-uncut-gray-light"
-
-  const textColorClass = isHomepage && !scrolled
-    ? "text-white"
-    : "text-black"
+  const textColorClass = "text-white"
 
   return (
     <div className="fixed top-0 inset-x-0 z-50">
-      <header className={`relative h-10 mx-auto transition-all duration-300 ${navBgClass}`}>
-        <nav className="w-full h-10 px-4 flex items-center justify-between">
+      <header className="relative h-10 mx-auto bg-transparent">
+        <nav className="w-full h-10 px-6 flex items-center justify-between">
           {/* Left: Logo */}
           <Link
             to={baseHref || "/"}
