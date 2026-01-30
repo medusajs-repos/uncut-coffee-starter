@@ -3,14 +3,6 @@ import { Button } from "@/components/ui/button"
 import { useProducts } from "@/lib/hooks/use-products"
 import { useLoaderData } from "@tanstack/react-router"
 
-/**
- * Category Page Pattern
- *
- * Demonstrates:
- * - useLoaderData for SSR-loaded category and region
- * - useProducts with category_id filter
- * - Filtering products by category
- */
 const Category = () => {
   const { category, region } = useLoaderData({
     from: "/$countryCode/categories/$handle",
@@ -27,30 +19,44 @@ const Category = () => {
   const products = data?.pages.flatMap((page) => page.products) || []
 
   return (
-    <div className="content-container py-6">
-      <h1 className="text-xl mb-6">{category?.name || "Category"}</h1>
+    <div className="content-container py-12 pt-24 md:pt-28">
+      {/* Header */}
+      <div className="text-center mb-12">
+        <h1 className="text-4xl md:text-5xl font-bold uppercase tracking-tight mb-4">
+          {category?.name || "Category"}
+        </h1>
+        {category?.description && (
+          <p className="text-sap-gray text-base max-w-lg mx-auto">
+            {category.description}
+          </p>
+        )}
+      </div>
 
       {isFetching && products.length === 0 ? (
-        <div className="text-zinc-600">Loading...</div>
+        <div className="text-sap-gray text-center py-12">Loading products...</div>
       ) : products.length === 0 ? (
-        <div className="text-zinc-600">No products found</div>
+        <div className="text-sap-gray text-center py-12">No products found in this category</div>
       ) : (
         <>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {/* Product grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {products.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>
 
+          {/* Load more */}
           {hasNextPage && (
-            <Button
-              onClick={() => fetchNextPage()}
-              disabled={isFetchingNextPage}
-              variant="secondary"
-              className="mt-6"
-            >
-              {isFetchingNextPage ? "Loading..." : "Load More"}
-            </Button>
+            <div className="text-center mt-12">
+              <Button
+                onClick={() => fetchNextPage()}
+                disabled={isFetchingNextPage}
+                variant="secondary"
+                size="fit"
+              >
+                {isFetchingNextPage ? "Loading..." : "Load More Products"}
+              </Button>
+            </div>
           )}
         </>
       )}

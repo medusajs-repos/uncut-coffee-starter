@@ -13,7 +13,7 @@ const Footer = () => {
     fields: "name,handle",
     queryParams: {
       parent_category_id: "null",
-      limit: 3,
+      limit: 5,
     },
   });
 
@@ -21,111 +21,145 @@ const Footer = () => {
     fields: "id, currency_code, *countries",
   });
 
+  const footerLinks = [
+    { name: "Shop All", url: `${baseHref}/store` },
+    { name: "About", url: "#" },
+    { name: "FAQ", url: "#" },
+    { name: "Contact", url: "#" },
+  ]
+
   return (
-    <footer
-      className="bg-zinc-50 border-t border-zinc-300 w-full"
-      data-testid="footer"
-    >
-      <div className="content-container flex flex-col w-full">
-        <div className="flex flex-col gap-y-12 lg:flex-row items-start justify-between py-16">
-          <div className="lg:w-1/3 flex flex-col gap-y-4">
+    <footer className="bg-white border-t border-sap-gray-light w-full" data-testid="footer">
+      <div className="content-container py-12">
+        {/* Main footer content */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12">
+          {/* Brand */}
+          <div className="md:col-span-1">
             <Link
               to={baseHref || "/"}
-              className="text-xl font-bold text-zinc-900 hover:text-zinc-600 transition-colors w-fit"
+              className="text-2xl font-bold text-black uppercase tracking-tight hover:opacity-70 transition-opacity"
             >
-              Bloom
+              SAP
             </Link>
-            <p className="text-zinc-600 max-w-md text-base font-medium">
-              Build Medusa based ecommerce stores with AI.
+            <p className="text-sap-gray text-sm mt-4 leading-relaxed">
+              Nature's perfect endurance fuel. Made from 100% pure maple sap.
             </p>
-            <CountrySelect regions={regions ?? []} />
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 lg:gap-12">
-            {categories && categories.length > 0 ? (
-              <FooterColumn
-                title="Categories"
-                links={categories.map((category) => ({
-                  name: category.name,
-                  url: `${baseHref}/categories/${category.handle}`,
-                  isExternal: false,
-                }))}
-              />
-            ) : (
-              <div className="flex flex-col gap-y-4">
-                <h3 className="text-zinc-900 text-sm font-medium uppercase tracking-wide">
-                  Categories
-                </h3>
-                <p className="text-sm text-zinc-600">No categories</p>
-              </div>
-            )}
+
+          {/* Shop */}
+          <div>
+            <h3 className="text-black text-xs font-medium uppercase tracking-wider mb-4">Shop</h3>
+            <ul className="space-y-2">
+              <li>
+                <Link
+                  to={`${baseHref}/store` as any}
+                  className="text-sap-gray text-sm hover:text-black transition-colors"
+                >
+                  All Products
+                </Link>
+              </li>
+              {categories?.map((category) => (
+                <li key={category.handle}>
+                  <Link
+                    to={`${baseHref}/categories/${category.handle}` as any}
+                    className="text-sap-gray text-sm hover:text-black transition-colors"
+                  >
+                    {category.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Company */}
+          <div>
+            <h3 className="text-black text-xs font-medium uppercase tracking-wider mb-4">Company</h3>
+            <ul className="space-y-2">
+              <li>
+                <a href="#" className="text-sap-gray text-sm hover:text-black transition-colors">
+                  Our Story
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-sap-gray text-sm hover:text-black transition-colors">
+                  FAQ
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-sap-gray text-sm hover:text-black transition-colors">
+                  Contact
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-sap-gray text-sm hover:text-black transition-colors">
+                  Wholesale
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Connect */}
+          <div>
+            <h3 className="text-black text-xs font-medium uppercase tracking-wider mb-4">Connect</h3>
+            <ul className="space-y-2">
+              <li>
+                <a 
+                  href="https://instagram.com" 
+                  target="_blank" 
+                  rel="noreferrer"
+                  className="text-sap-gray text-sm hover:text-black transition-colors"
+                >
+                  Instagram
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="https://twitter.com" 
+                  target="_blank" 
+                  rel="noreferrer"
+                  className="text-sap-gray text-sm hover:text-black transition-colors"
+                >
+                  Twitter
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="https://strava.com" 
+                  target="_blank" 
+                  rel="noreferrer"
+                  className="text-sap-gray text-sm hover:text-black transition-colors"
+                >
+                  Strava Club
+                </a>
+              </li>
+            </ul>
+            <div className="mt-6">
+              <CountrySelect regions={regions ?? []} />
+            </div>
           </div>
         </div>
-        <div className="border-t border-zinc-300 py-6">
+
+        {/* Bottom bar */}
+        <div className="border-t border-sap-gray-light mt-12 pt-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <span className="text-xs text-zinc-600">
-              © {new Date().getFullYear()} Bloom. All rights reserved.
+            <span className="text-sap-gray text-xs">
+              {new Date().getFullYear()} SAP Good Energy. All rights reserved.
             </span>
             <div className="flex gap-6">
-              <Link
-                className="text-xs text-zinc-600 hover:text-zinc-500 transition-colors"
-                to={"/"}
-              >
+              <a href="#" className="text-sap-gray text-xs hover:text-black transition-colors">
                 Privacy Policy
-              </Link>
-              <Link
-                className="text-xs text-zinc-600 hover:text-zinc-500 transition-colors"
-                to={"/"}
-              >
+              </a>
+              <a href="#" className="text-sap-gray text-xs hover:text-black transition-colors">
                 Terms of Service
-              </Link>
+              </a>
+              <a href="#" className="text-sap-gray text-xs hover:text-black transition-colors">
+                Shipping
+              </a>
             </div>
           </div>
         </div>
       </div>
     </footer>
-  );
-};
-
-const FooterColumn = ({
-  title,
-  links,
-}: {
-  title: string;
-  links: {
-    name: string;
-    url: string;
-    isExternal: boolean;
-  }[];
-}) => {
-  return (
-    <div className="flex flex-col gap-y-4">
-      <h3 className="text-zinc-900 text-sm font-medium uppercase tracking-wide">
-        {title}
-      </h3>
-      <ul className="space-y-3">
-        {links.map((link) => (
-          <li key={link.url} className="text-sm">
-            {link.isExternal ? (
-              <a
-                href={link.url}
-                target="_blank"
-                rel="noreferrer"
-                className="text-zinc-600 hover:text-zinc-500 transition-colors"
-              >
-                {link.name}
-              </a>
-            ) : (
-              <Link
-                to={link.url}
-                className="text-zinc-600 hover:text-zinc-500 transition-colors"
-              >
-                {link.name}
-              </Link>
-            )}
-          </li>
-        ))}
-      </ul>
-    </div>
   );
 };
 

@@ -125,13 +125,16 @@ const ProductActions = memo(function ProductActions({
 
   return (
     <div className="flex flex-col gap-y-4" ref={actionsRef}>
-      <ProductPrice
-        product={product as HttpTypes.StoreProduct}
-        variant={selectedVariant}
-        priceProps={{
-          textSize: "large",
-        }}
-      />
+      <div className="flex items-baseline gap-3">
+        <ProductPrice
+          product={product as HttpTypes.StoreProduct}
+          variant={selectedVariant}
+          priceProps={{
+            textSize: "xlarge",
+            textWeight: "plus",
+          }}
+        />
+      </div>
 
       {(product.variants?.length ?? 0) > 1 && (
         <div className="flex flex-col gap-y-4">
@@ -152,11 +155,10 @@ const ProductActions = memo(function ProductActions({
         </div>
       )}
 
-      <Button
+      <button
         onClick={handleAddToCart}
         disabled={!inStock || !selectedVariant || !!disabled || !isValidVariant}
-        variant="primary"
-        className="w-full"
+        className="sap-button w-full disabled:opacity-50 disabled:cursor-not-allowed"
         data-testid="add-product-button"
       >
         {!selectedVariant
@@ -164,7 +166,7 @@ const ProductActions = memo(function ProductActions({
           : !inStock || !isValidVariant
             ? "Out of stock"
             : "Add to cart"}
-      </Button>
+      </button>
     </div>
   );
 });

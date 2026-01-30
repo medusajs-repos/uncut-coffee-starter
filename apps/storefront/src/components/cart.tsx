@@ -415,7 +415,11 @@ export const CartEmpty = () => {
 
 export const DEFAULT_CART_DROPDOWN_FIELDS = "id, *items, total, currency_code, item_subtotal"
 
-export const CartDropdown = () => {
+interface CartDropdownProps {
+  textColor?: string
+}
+
+export const CartDropdown = ({ textColor = "text-black" }: CartDropdownProps) => {
   const { isOpen, openCart, closeCart } = useCartDrawer()
   const { data: cart } = useCart({
     fields: DEFAULT_CART_DROPDOWN_FIELDS,
@@ -430,26 +434,26 @@ export const CartDropdown = () => {
   return (
     <Drawer open={isOpen} onOpenChange={(open) => (open ? openCart() : closeCart())}>
       <DrawerTrigger asChild>
-        <button className="text-zinc-600 hover:text-zinc-500 h-full">
+        <button className={`${textColor} hover:opacity-70 transition-opacity h-full text-sm uppercase tracking-wide`}>
           Cart ({itemCount})
         </button>
       </DrawerTrigger>
 
-      <DrawerContent className="flex flex-col">
-        <DrawerHeader>
-          <DrawerTitle>Shopping Cart</DrawerTitle>
+      <DrawerContent className="flex flex-col bg-white">
+        <DrawerHeader className="border-b border-sap-gray-light">
+          <DrawerTitle className="uppercase text-sm tracking-wide font-medium">Your Cart</DrawerTitle>
         </DrawerHeader>
 
         {/* Empty Cart */}
         {(!cart || itemCount === 0) && (
-          <div className="flex flex-col items-center justify-center flex-1 p-6">
-            <span className="text-base font-medium text-zinc-600 mb-4">
+          <div className="flex flex-col items-center justify-center flex-1 p-8">
+            <span className="text-sap-gray text-base mb-6">
               Your cart is empty
             </span>
             <Link to={`${baseHref}/store` as any} onClick={closeCart}>
-              <Button variant="secondary" size="fit">
-                Explore products
-              </Button>
+              <button className="sap-button-outline">
+                Continue Shopping
+              </button>
             </Link>
           </div>
         )}
@@ -457,7 +461,7 @@ export const CartDropdown = () => {
         {/* Cart Items */}
         {cart && itemCount > 0 && (
           <>
-            <div className="flex-1 overflow-y-auto p-6 space-y-4">
+            <div className="flex-1 overflow-y-auto p-6 space-y-6">
               {sortedItems?.map((item) => (
                 <CartLineItem
                   key={item.id}
@@ -469,16 +473,16 @@ export const CartDropdown = () => {
               ))}
             </div>
 
-            <DrawerFooter>
+            <DrawerFooter className="border-t border-sap-gray-light">
               <div className="flex items-center justify-between mb-4">
-                <span className="text-base font-medium text-zinc-600">Subtotal</span>
-                <Price price={cart.item_subtotal} currencyCode={cart.currency_code} />
+                <span className="text-sm uppercase tracking-wide text-sap-gray">Subtotal</span>
+                <Price price={cart.item_subtotal} currencyCode={cart.currency_code} textWeight="plus" />
               </div>
 
-              <Link to={`${baseHref}/cart` as any} onClick={closeCart}>
-                <Button className="w-full" variant="primary">
-                  Go to cart
-                </Button>
+              <Link to={`${baseHref}/cart` as any} onClick={closeCart} className="block">
+                <button className="sap-button w-full">
+                  View Cart & Checkout
+                </button>
               </Link>
             </DrawerFooter>
           </>

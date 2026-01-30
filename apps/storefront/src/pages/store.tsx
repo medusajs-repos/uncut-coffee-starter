@@ -3,15 +3,6 @@ import { Button } from "@/components/ui/button"
 import { useProducts } from "@/lib/hooks/use-products"
 import { useLoaderData } from "@tanstack/react-router"
 
-/**
- * Store Page Pattern
- *
- * Demonstrates:
- * - useLoaderData for SSR-loaded region
- * - useProducts hook with region_id for pricing
- * - Infinite scroll / pagination pattern
- * - Rendering product cards with region context
- */
 const Store = () => {
   const { region } = useLoaderData({ from: "/$countryCode/store" })
 
@@ -23,32 +14,40 @@ const Store = () => {
   const products = data?.pages.flatMap((page) => page.products) || []
 
   return (
-    <div className="content-container py-6">
-      <h1 className="text-xl mb-6">All Products</h1>
+    <div className="content-container py-12 md:py-16 pt-24 md:pt-28">
+      {/* Header */}
+      <div className="text-center mb-12">
+        <h1 className="text-4xl md:text-5xl font-bold uppercase tracking-tight mb-4">Shop All</h1>
+        <p className="text-sap-gray text-base max-w-lg mx-auto">
+          Nature's perfect endurance fuel. Made from 100% pure maple sap.
+        </p>
+      </div>
 
       {isFetching && products.length === 0 ? (
-        <div className="text-zinc-600">Loading...</div>
+        <div className="text-sap-gray text-center py-12">Loading products...</div>
       ) : products.length === 0 ? (
-        <div className="text-zinc-600">No products found</div>
+        <div className="text-sap-gray text-center py-12">No products found</div>
       ) : (
         <>
-          {/* Product grid - minimal styling, AI agent will customize */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {/* Product grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {products.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>
 
-          {/* Load more pattern */}
+          {/* Load more */}
           {hasNextPage && (
-            <Button
-              onClick={() => fetchNextPage()}
-              disabled={isFetchingNextPage}
-              variant="secondary"
-              className="mt-6"
-            >
-              {isFetchingNextPage ? "Loading..." : "Load More"}
-            </Button>
+            <div className="text-center mt-12">
+              <Button
+                onClick={() => fetchNextPage()}
+                disabled={isFetchingNextPage}
+                variant="secondary"
+                size="fit"
+              >
+                {isFetchingNextPage ? "Loading..." : "Load More Products"}
+              </Button>
+            </div>
           )}
         </>
       )}
