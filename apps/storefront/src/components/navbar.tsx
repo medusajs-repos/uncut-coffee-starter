@@ -43,7 +43,7 @@ export const Navbar = () => {
           {/* Col 1: Logo */}
           <Link
             to={baseHref || "/"}
-            className={`text-base font-medium uppercase tracking-wide ${textColorClass} hover:opacity-70 transition-opacity text-center`}
+            className={`text-base font-medium uppercase tracking-wide ${textColorClass} hover:opacity-70 transition-opacity text-left`}
           >
             UNCUT
           </Link>
