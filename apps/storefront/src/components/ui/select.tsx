@@ -40,9 +40,6 @@ const SelectTrigger = React.forwardRef<
     {...props}
   >
     {children}
-    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" className="text-zinc-500 shrink-0">
-      <path d="M4 6L7.5 9.5L11 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
   </SelectPrimitive.Trigger>
 ))
 SelectTrigger.displayName = SelectPrimitive.Trigger.displayName
