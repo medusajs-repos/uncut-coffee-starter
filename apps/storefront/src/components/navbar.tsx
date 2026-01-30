@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useCart } from "@/lib/hooks/use-cart"
 import { useCartDrawer } from "@/lib/context/cart"
 import { getCountryCodeFromPath } from "@/lib/utils/region"
-import { User, XMark } from "@medusajs/icons"
+import { XMark } from "@medusajs/icons"
 import { Link, useLocation } from "@tanstack/react-router"
 
 import {
@@ -103,8 +103,8 @@ export const Navbar = () => {
             ))}
 
             <div className="flex items-center gap-4">
-            <button className={`${textColorClass} hover:opacity-70 transition-opacity cursor-pointer`}>
-              <User className="w-4 h-4" />
+            <button className={`${textColorClass} hover:opacity-70 transition-opacity cursor-pointer text-base font-medium uppercase tracking-wide`}>
+              ACCOUNT
             </button>
 
             <Drawer open={isOpen} onOpenChange={(open) => (open ? openCart() : closeCart())}>
