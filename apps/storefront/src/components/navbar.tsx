@@ -52,8 +52,8 @@ export const Navbar = () => {
 
   return (
     <div className="fixed top-0 inset-x-0 z-50">
-      <header className={`relative h-16 md:h-20 mx-auto transition-all duration-300 ${navBgClass}`}>
-        <nav className="content-container flex items-center justify-between w-full h-full">
+      <header className={`relative h-10 mx-auto transition-all duration-300 ${navBgClass}`}>
+        <nav className="w-full h-10 px-4 flex items-center justify-between">
           {/* Left: Menu trigger */}
           <div className="flex items-center gap-6">
             <Drawer>
