@@ -110,7 +110,7 @@ export const Navbar = () => {
             <Drawer open={isOpen} onOpenChange={(open) => (open ? openCart() : closeCart())}>
               <DrawerTrigger asChild>
                 <button className={`${textColorClass} hover:opacity-70 transition-opacity text-base font-medium cursor-pointer`}>
-                  [{itemCount}]
+                  [ {itemCount} ]
                 </button>
               </DrawerTrigger>
 
