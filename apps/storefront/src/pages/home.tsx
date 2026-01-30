@@ -30,22 +30,12 @@ const HeroSection = () => {
           playsInline
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-black/30" />
       </div>
-      <div className="absolute bottom-0 left-0 right-0 p-8 md:p-16">
-        <div className="max-w-4xl">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white uppercase tracking-tight leading-none">
-            Not a gel — it's sap.
-          </h1>
-          <p className="text-xl md:text-2xl text-white/90 mt-4 font-medium">
-            Nature's perfect endurance fuel.
-          </p>
-        </div>
-      </div>
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-        <span className="text-white text-8xl md:text-[180px] font-bold uppercase tracking-tighter opacity-20">
-          SAP
-        </span>
+      <div className="absolute inset-0 flex items-center justify-center">
+        <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white uppercase tracking-tight text-center">
+          Good Energy
+        </h1>
       </div>
     </section>
   )
