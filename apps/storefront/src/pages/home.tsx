@@ -16,13 +16,18 @@ const BLOB_IMAGE = "https://cdn.mignite.app/ws/works_01KG7HEF506FB5P7HQP4V3WMR7/
 const CAROUSEL_IMAGES = [LIFESTYLE_1, MAPLE_IMAGE, TEAM_IMAGE, FLATLAY_IMAGE, PRODUCT_IMAGE]
 
 // Hero Section
+const HERO_VIDEO = "https://cdn.mignite.app/ws/works_01KG7HEF506FB5P7HQP4V3WMR7/I_want_a_202601301447_rbq6u-01KG7JHVRVZ9NBQPZHYMH5XVC8.mp4"
+
 const HeroSection = () => {
   return (
     <section className="relative h-screen w-full overflow-hidden">
       <div className="absolute inset-0">
-        <img 
-          src={HERO_IMAGE} 
-          alt="Trail runner at sunrise" 
+        <video 
+          src={HERO_VIDEO}
+          autoPlay
+          muted
+          loop
+          playsInline
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
