@@ -41,7 +41,9 @@ const SelectTrigger = React.forwardRef<
   >
     {children}
     <SelectPrimitive.Icon asChild>
-      <ChevronDownMini className="h-4 w-4 text-zinc-500" />
+      <span className="flex items-center justify-center" style={{ width: 15, height: 15 }}>
+        <ChevronDownMini className="h-3 w-3 text-zinc-500" />
+      </span>
     </SelectPrimitive.Icon>
   </SelectPrimitive.Trigger>
 ))
