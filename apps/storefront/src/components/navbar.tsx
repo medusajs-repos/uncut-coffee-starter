@@ -63,7 +63,7 @@ export const Navbar = () => {
               <Link
                 key={link.label}
                 to={`${baseHref}${link.href}` as any}
-                className="text-2xl font-medium uppercase tracking-wide text-white hover:opacity-70 transition-opacity cursor-pointer"
+                className="text-[64px] font-medium uppercase tracking-wide text-white hover:opacity-70 transition-opacity cursor-pointer leading-tight"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {link.label}
