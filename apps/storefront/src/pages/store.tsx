@@ -18,15 +18,15 @@ const Store = () => {
       {/* Header */}
       <div className="text-center mb-12">
         <h1 className="text-4xl md:text-5xl font-bold uppercase tracking-tight mb-4">Shop All</h1>
-        <p className="text-sap-gray text-base max-w-lg mx-auto">
-          Nature's perfect endurance fuel. Made from 100% pure maple sap.
+        <p className="text-uncut-gray text-base max-w-lg mx-auto">
+          Premium coffee beans roasted to perfection.
         </p>
       </div>
 
       {isFetching && products.length === 0 ? (
-        <div className="text-sap-gray text-center py-12">Loading products...</div>
+        <div className="text-uncut-gray text-center py-12">Loading products...</div>
       ) : products.length === 0 ? (
-        <div className="text-sap-gray text-center py-12">No products found</div>
+        <div className="text-uncut-gray text-center py-12">No products found</div>
       ) : (
         <>
           {/* Product grid */}

@@ -158,7 +158,7 @@ const ProductActions = memo(function ProductActions({
       <button
         onClick={handleAddToCart}
         disabled={!inStock || !selectedVariant || !!disabled || !isValidVariant}
-        className="sap-button w-full disabled:opacity-50 disabled:cursor-not-allowed"
+        className="uncut-button w-full disabled:opacity-50 disabled:cursor-not-allowed"
         data-testid="add-product-button"
       >
         {!selectedVariant

@@ -440,18 +440,18 @@ export const CartDropdown = ({ textColor = "text-black" }: CartDropdownProps) =>
       </DrawerTrigger>
 
       <DrawerContent className="flex flex-col bg-white">
-        <DrawerHeader className="border-b border-sap-gray-light">
+        <DrawerHeader className="border-b border-uncut-gray-light">
           <DrawerTitle className="uppercase text-sm tracking-wide font-medium">Your Cart</DrawerTitle>
         </DrawerHeader>
 
         {/* Empty Cart */}
         {(!cart || itemCount === 0) && (
           <div className="flex flex-col items-center justify-center flex-1 p-8">
-            <span className="text-sap-gray text-base mb-6">
+            <span className="text-uncut-gray text-base mb-6">
               Your cart is empty
             </span>
             <Link to={`${baseHref}/store` as any} onClick={closeCart}>
-              <button className="sap-button-outline">
+              <button className="uncut-button-outline">
                 Continue Shopping
               </button>
             </Link>
@@ -473,14 +473,14 @@ export const CartDropdown = ({ textColor = "text-black" }: CartDropdownProps) =>
               ))}
             </div>
 
-            <DrawerFooter className="border-t border-sap-gray-light">
+            <DrawerFooter className="border-t border-uncut-gray-light">
               <div className="flex items-center justify-between mb-4">
-                <span className="text-sm uppercase tracking-wide text-sap-gray">Subtotal</span>
+                <span className="text-sm uppercase tracking-wide text-uncut-gray">Subtotal</span>
                 <Price price={cart.item_subtotal} currencyCode={cart.currency_code} textWeight="plus" />
               </div>
 
               <Link to={`${baseHref}/cart` as any} onClick={closeCart} className="block">
-                <button className="sap-button w-full">
+                <button className="uncut-button w-full">
                   View Cart & Checkout
                 </button>
               </Link>

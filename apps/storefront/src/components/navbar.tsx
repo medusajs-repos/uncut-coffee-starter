@@ -44,7 +44,7 @@ export const Navbar = () => {
 
   const navBgClass = isHomepage && !scrolled
     ? "bg-transparent"
-    : "bg-white border-b border-sap-gray-light"
+    : "bg-white border-b border-uncut-gray-light"
 
   const textColorClass = isHomepage && !scrolled
     ? "text-white"
@@ -74,26 +74,26 @@ export const Navbar = () => {
                 </svg>
               </DrawerTrigger>
               <DrawerContent side="left" className="bg-white">
-                <DrawerHeader className="border-b border-sap-gray-light">
+                <DrawerHeader className="border-b border-uncut-gray-light">
                   <DrawerTitle className="uppercase text-sm tracking-wide font-medium">Menu</DrawerTitle>
                 </DrawerHeader>
                 <div className="flex flex-col py-6">
                   <DrawerClose asChild>
                     <Link
                       to={baseHref || "/"}
-                      className="px-6 py-3 text-black hover:text-sap-orange transition-colors uppercase text-sm font-medium tracking-wide"
+                      className="px-6 py-3 text-black hover:text-uncut-orange transition-colors uppercase text-sm font-medium tracking-wide"
                     >
                       Home
                     </Link>
                   </DrawerClose>
                   <div className="px-6 py-3">
-                    <span className="text-sap-gray text-xs uppercase tracking-wider">Shop</span>
+                    <span className="text-uncut-gray text-xs uppercase tracking-wider">Shop</span>
                   </div>
                   {categoryLinks.map((link) => (
                     <DrawerClose key={link.id} asChild>
                       <Link
                         to={link.to}
-                        className="px-8 py-2 text-black hover:text-sap-orange transition-colors text-sm"
+                        className="px-8 py-2 text-black hover:text-uncut-orange transition-colors text-sm"
                       >
                         {link.name}
                       </Link>
@@ -110,7 +110,7 @@ export const Navbar = () => {
               to={baseHref || "/"}
               className={`text-xl md:text-2xl font-bold uppercase tracking-tight ${textColorClass} hover:opacity-70 transition-opacity`}
             >
-              SAP
+              UNCUT
             </Link>
           </div>
 

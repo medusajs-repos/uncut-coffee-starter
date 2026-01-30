@@ -41,7 +41,7 @@ const Cart = () => {
             <h1 className="text-3xl md:text-4xl font-bold uppercase tracking-tight">Your Cart</h1>
             <Link
               to={`/${countryCode}/store` as any}
-              className="text-sap-gray hover:text-black text-sm uppercase tracking-wide transition-colors"
+              className="text-uncut-gray hover:text-black text-sm uppercase tracking-wide transition-colors"
             >
               Continue Shopping
             </Link>
@@ -50,9 +50,9 @@ const Cart = () => {
           <div className="flex flex-col lg:flex-row gap-12">
             {/* Cart Items */}
             <div className="w-full lg:w-2/3">
-              <div className="border-t border-sap-gray-light">
+              <div className="border-t border-uncut-gray-light">
                 {cartItems.map((item) => (
-                  <div key={item.id} className="border-b border-sap-gray-light py-6">
+                  <div key={item.id} className="border-b border-uncut-gray-light py-6">
                     <CartLineItem
                       item={item}
                       cart={cart!}
@@ -66,7 +66,7 @@ const Cart = () => {
             {/* Summary */}
             {cart && (
               <div className="w-full lg:w-1/3">
-                <div className="bg-sap-cream p-6 rounded-[18px]">
+                <div className="bg-uncut-cream p-6 rounded-[18px]">
                   <h2 className="text-xl font-bold uppercase tracking-tight mb-6">
                     Order Summary
                   </h2>
@@ -78,7 +78,7 @@ const Cart = () => {
                   </div>
 
                   <Link to={`/${countryCode}/checkout` as any} className="block mt-6">
-                    <button className="sap-button w-full">
+                    <button className="uncut-button w-full">
                       Proceed to Checkout
                     </button>
                   </Link>

@@ -63,7 +63,7 @@ const Footer = () => {
         {/* Right side - Copyright */}
         <div className="flex flex-col justify-end">
           <div className="text-black text-sm font-medium uppercase tracking-wide whitespace-nowrap">
-            SAP Good Energy &copy; Copyright {new Date().getFullYear()}
+            UNCUT COFFEE &copy; Copyright {new Date().getFullYear()}
           </div>
         </div>
       </div>

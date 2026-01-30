@@ -26,16 +26,16 @@ const Category = () => {
           {category?.name || "Category"}
         </h1>
         {category?.description && (
-          <p className="text-sap-gray text-base max-w-lg mx-auto">
+          <p className="text-uncut-gray text-base max-w-lg mx-auto">
             {category.description}
           </p>
         )}
       </div>
 
       {isFetching && products.length === 0 ? (
-        <div className="text-sap-gray text-center py-12">Loading products...</div>
+        <div className="text-uncut-gray text-center py-12">Loading products...</div>
       ) : products.length === 0 ? (
-        <div className="text-sap-gray text-center py-12">No products found in this category</div>
+        <div className="text-uncut-gray text-center py-12">No products found in this category</div>
       ) : (
         <>
           {/* Product grid */}
