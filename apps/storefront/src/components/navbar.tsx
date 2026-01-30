@@ -39,8 +39,8 @@ export const Navbar = () => {
   return (
     <div className="fixed top-0 inset-x-0 z-50">
       <header className="relative h-10 mx-auto bg-transparent">
-        <nav className="w-full h-10 px-6 flex items-center justify-between">
-          {/* Left: Logo */}
+        <nav className="w-full h-10 px-6 grid grid-cols-5 gap-2 items-center">
+          {/* Col 1: Logo */}
           <Link
             to={baseHref || "/"}
             className={`text-base font-medium uppercase tracking-wide ${textColorClass} hover:opacity-70 transition-opacity`}
@@ -48,8 +48,8 @@ export const Navbar = () => {
             UNCUT
           </Link>
 
-          {/* Center: Navigation Links */}
-          <div className="hidden md:flex items-center gap-12">
+          {/* Col 2-4: Navigation Links (centered across 3 columns) */}
+          <div className="col-span-3 hidden md:flex items-center justify-center gap-2">
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.label}
@@ -61,8 +61,8 @@ export const Navbar = () => {
             ))}
           </div>
 
-          {/* Right: User Icon + Cart Count */}
-          <div className="flex items-center gap-4">
+          {/* Col 5: User Icon + Cart Count */}
+          <div className="flex items-center justify-end gap-2">
             <button className={`${textColorClass} hover:opacity-70 transition-opacity`}>
               <User className="w-4 h-4" />
             </button>
