@@ -18,7 +18,7 @@ const Footer = () => {
         {/* Left side - Link columns */}
         <div className="flex flex-wrap gap-x-16 gap-y-4">
           {/* Column 1 */}
-          <div className="flex flex-col gap-1">
+          <div className="flex flex-col">
             <a href="#" className="text-black text-sm font-medium uppercase tracking-wide hover:opacity-60 transition-opacity">
               Affiliates
             </a>
@@ -31,7 +31,7 @@ const Footer = () => {
           </div>
 
           {/* Column 2 */}
-          <div className="flex flex-col gap-1">
+          <div className="flex flex-col">
             <a href="#" className="text-black text-sm font-medium uppercase tracking-wide hover:opacity-60 transition-opacity">
               Contact
             </a>
@@ -44,7 +44,7 @@ const Footer = () => {
           </div>
 
           {/* Column 3 */}
-          <div className="flex flex-col gap-1">
+          <div className="flex flex-col">
             <Link
               to={`${baseHref}/account` as any}
               className="text-black text-sm font-medium uppercase tracking-wide hover:opacity-60 transition-opacity"
