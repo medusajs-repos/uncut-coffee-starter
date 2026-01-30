@@ -1,28 +1,12 @@
-import { useEffect, useRef } from "react"
+import Footer from "@/components/footer"
 
 // Hero Section
 const HERO_VIDEO = "https://cdn.mignite.app/ws/works_01KG7HEF506FB5P7HQP4V3WMR7/I_want_a_202601301447_rbq6u-01KG7JHVRVZ9NBQPZHYMH5XVC8.mp4"
 
 const HeroSection = () => {
-  const sectionRef = useRef<HTMLElement>(null)
-
-  useEffect(() => {
-    const updateHeight = () => {
-      if (sectionRef.current) {
-        sectionRef.current.style.height = `${window.innerHeight}px`
-      }
-    }
-    
-    updateHeight()
-    window.addEventListener('resize', updateHeight)
-    return () => window.removeEventListener('resize', updateHeight)
-  }, [])
-
   return (
-    <section 
-      ref={sectionRef}
-      className="fixed top-0 left-0 w-screen overflow-hidden bg-[#3d2a1a]"
-      style={{ zIndex: 0 }}
+    <div 
+      className="relative w-screen h-[100dvh] overflow-hidden bg-[#3d2a1a]"
     >
       <video 
         src={HERO_VIDEO}
@@ -38,13 +22,18 @@ const HeroSection = () => {
           Uncut Coffee
         </h1>
       </div>
-    </section>
+    </div>
   )
 }
 
 // Main Home Component
 const Home = () => {
-  return <HeroSection />
+  return (
+    <>
+      <HeroSection />
+      <Footer />
+    </>
+  )
 }
 
 export default Home
