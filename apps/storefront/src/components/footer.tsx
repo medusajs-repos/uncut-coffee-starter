@@ -26,7 +26,7 @@ const Footer = () => {
               Clubs
             </a>
             <a href="#" className="text-black text-sm font-medium uppercase tracking-wide hover:opacity-60 transition-opacity">
-              Athletes
+              AMBASSADORS
             </a>
           </div>
 
