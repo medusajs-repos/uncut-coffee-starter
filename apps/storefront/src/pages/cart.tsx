@@ -4,7 +4,6 @@ import {
   CartEmpty,
   CartPromo,
 } from "@/components/cart"
-import { Button } from "@/components/ui/button"
 import { Loading } from "@/components/ui/loading"
 import { useCart, useCreateCart } from "@/lib/hooks/use-cart"
 import { sortCartItems } from "@/lib/utils/cart"
@@ -30,59 +29,64 @@ const Cart = () => {
   const cartItems = sortCartItems(cart?.items || []);
 
   return (
-    <div className="content-container py-12">
+    <div className="content-container py-12 pt-24 md:pt-28">
       {cartLoading ? (
         <Loading />
       ) : cartItems.length === 0 ? (
         <CartEmpty />
       ) : (
-        <div className="flex flex-col md:flex-row gap-8">
-          <div className="space-y-6 w-full md:w-2/3">
-            <div className="flex items-center justify-between mb-8">
-              <h1 className="text-zinc-900 text-xl">Cart</h1>
-              {cartItems.length > 0 && (
-                <Link
-                  to={`/${countryCode}/store` as any}
-                  className="text-zinc-600 hover:text-zinc-500 text-sm underline"
-                >
-                  Continue shopping
-                </Link>
-              )}
-            </div>
-            {cartItems.map((item, index) => (
-              <div key={item.id}>
-                <CartLineItem
-                  item={item}
-                  cart={cart!}
-                  fields={DEFAULT_CART_FIELDS}
-                />
-                {index < cartItems.length - 1 && (
-                  <hr className="bg-zinc-200 mt-6" />
-                )}
-              </div>
-            ))}
+        <>
+          {/* Header */}
+          <div className="flex items-center justify-between mb-8">
+            <h1 className="text-3xl md:text-4xl font-bold uppercase tracking-tight">Your Cart</h1>
+            <Link
+              to={`/${countryCode}/store` as any}
+              className="text-uncut-gray hover:text-black text-sm uppercase tracking-wide transition-colors"
+            >
+              Continue Shopping
+            </Link>
           </div>
 
-          {cart && (
-            <div className="flex flex-col gap-y-8 w-full md:w-1/3">
-              <div>
-                <h2 className="text-zinc-900 text-xl">
-                  Cart Summary
-                </h2>
+          <div className="flex flex-col lg:flex-row gap-12">
+            {/* Cart Items */}
+            <div className="w-full lg:w-2/3">
+              <div className="border-t border-uncut-gray-light">
+                {cartItems.map((item) => (
+                  <div key={item.id} className="border-b border-uncut-gray-light py-6">
+                    <CartLineItem
+                      item={item}
+                      cart={cart!}
+                      fields={DEFAULT_CART_FIELDS}
+                    />
+                  </div>
+                ))}
               </div>
-
-              <div className="flex flex-col gap-y-4">
-                <CartSummary cart={cart} />
-
-                <CartPromo cart={cart} />
-              </div>
-
-              <Link to={`/${countryCode}/checkout` as any}>
-                <Button className="w-full">Checkout</Button>
-              </Link>
             </div>
-          )}
-        </div>
+
+            {/* Summary */}
+            {cart && (
+              <div className="w-full lg:w-1/3">
+                <div className="bg-uncut-cream p-6 rounded-[18px]">
+                  <h2 className="text-xl font-bold uppercase tracking-tight mb-6">
+                    Order Summary
+                  </h2>
+
+                  <CartSummary cart={cart} />
+
+                  <div className="mt-6">
+                    <CartPromo cart={cart} />
+                  </div>
+
+                  <Link to={`/${countryCode}/checkout` as any} className="block mt-6">
+                    <button className="uncut-button w-full">
+                      Proceed to Checkout
+                    </button>
+                  </Link>
+                </div>
+              </div>
+            )}
+          </div>
+        </>
       )}
     </div>
   );

@@ -38,7 +38,7 @@ const Loading = ({
             <div
               key={`${rowIndex}-${colIndex}`}
               className={clsx(
-                "animate-pulse bg-zinc-200 flex-1",
+                "animate-pulse bg-neutral-200 flex-1",
                 height,
                 width
               )}

@@ -19,20 +19,21 @@ export const Button = ({
       {...props}
       className={clsx(
         "cursor-pointer disabled:cursor-default",
-        "inline-flex items-center justify-center gap-2 px-4 py-2",
-        "rounded-none shadow-none appearance-none border",
+        "inline-flex items-center justify-center gap-2 px-6 py-3",
+        "shadow-none appearance-none",
         "disabled:opacity-50 disabled:cursor-not-allowed",
-        "text-base font-medium",
+        "text-sm font-medium uppercase tracking-wide",
+        "transition-colors duration-200",
         size === "full" && "w-full",
         size === "fit" && "w-fit",
         {
-          "bg-zinc-800 text-white hover:bg-zinc-700 active:bg-zinc-600 border-transparent":
+          "bg-black text-white hover:bg-neutral-800 active:bg-neutral-700 border-transparent rounded-[7px]":
             variant === "primary",
-          "bg-white text-zinc-900 hover:bg-zinc-100 active:bg-zinc-200 border-zinc-900":
+          "bg-transparent text-black hover:bg-black hover:text-white active:bg-neutral-800 border border-black rounded-[7px]":
             variant === "secondary",
-          "bg-rose-500 text-white hover:bg-rose-600 active:bg-rose-900 border-transparent":
+          "bg-rose-500 text-white hover:bg-rose-600 active:bg-rose-700 border-transparent rounded-[7px]":
             variant === "danger",
-          "bg-transparent text-zinc-900 hover:bg-transparent active:bg-transparent border-transparent":
+          "bg-transparent text-black hover:bg-transparent active:bg-transparent border-transparent":
             variant === "transparent",
         },
         className

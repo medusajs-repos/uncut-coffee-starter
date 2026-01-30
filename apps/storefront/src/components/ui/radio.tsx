@@ -19,8 +19,8 @@ const Radio = forwardRef<HTMLInputElement, RadioProps>(
           <div
             className={`w-5 h-5 rounded-full border flex items-center justify-center transition-colors ${
               checked
-                ? "bg-zinc-900 border-transparent"
-                : "bg-white border-zinc-200"
+                ? "bg-neutral-900 border-transparent"
+                : "bg-white border-neutral-200"
             } ${className || ""}`}
           >
             {checked && (
@@ -31,7 +31,7 @@ const Radio = forwardRef<HTMLInputElement, RadioProps>(
         {label && (
           <label
             htmlFor={props.id || props.name}
-            className="text-zinc-900 text-base font-medium cursor-pointer"
+            className="text-neutral-900 text-base font-medium cursor-pointer"
           >
             {label}
           </label>

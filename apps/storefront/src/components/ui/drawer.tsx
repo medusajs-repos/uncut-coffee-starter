@@ -32,12 +32,12 @@ const drawerVariants = cva(
   {
     variants: {
       side: {
-        top: "inset-x-0 top-0 border-b border-zinc-200 data-[state=closed]:slide-out-to-top data-[state=open]:slide-in-from-top",
+        top: "inset-x-0 top-0 border-b border-neutral-200 data-[state=closed]:slide-out-to-top data-[state=open]:slide-in-from-top",
         bottom:
-          "inset-x-0 bottom-0 border-t border-zinc-200 data-[state=closed]:slide-out-to-bottom data-[state=open]:slide-in-from-bottom",
-        left: "inset-y-0 left-0 h-full w-3/4 border-r border-zinc-200 data-[state=closed]:slide-out-to-left data-[state=open]:slide-in-from-left sm:max-w-sm",
+          "inset-x-0 bottom-0 border-t border-neutral-200 data-[state=closed]:slide-out-to-bottom data-[state=open]:slide-in-from-bottom",
+        left: "inset-y-0 left-0 h-full w-3/4 border-r border-neutral-200 data-[state=closed]:slide-out-to-left data-[state=open]:slide-in-from-left sm:max-w-sm",
         right:
-          "inset-y-0 right-0 h-full w-full border-l border-zinc-200 data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right sm:max-w-[420px]",
+          "inset-y-0 right-0 h-full w-full border-l border-neutral-200 data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right sm:max-w-[420px]",
       },
     },
     defaultVariants: {
@@ -65,7 +65,7 @@ const DrawerContent = React.forwardRef<
       {...props}
     >
       {!hideClose && (
-        <DialogPrimitive.Close className="absolute right-4 top-4 text-zinc-600 hover:text-zinc-500 transition-colors focus:outline-none disabled:pointer-events-none">
+        <DialogPrimitive.Close className="absolute right-4 top-4 text-neutral-600 hover:text-neutral-500 transition-colors focus:outline-none disabled:pointer-events-none">
           <XMarkMini className="h-5 w-5" />
           <span className="sr-only">Close</span>
         </DialogPrimitive.Close>
@@ -82,7 +82,7 @@ const DrawerHeader = ({
 }: React.HTMLAttributes<HTMLDivElement>) => (
   <div
     className={clsx(
-      "flex items-center justify-between h-16 px-6 border-b border-zinc-200",
+      "flex items-center justify-between h-16 px-6 border-b border-neutral-200",
       className
     )}
     {...props}
@@ -95,7 +95,7 @@ const DrawerFooter = ({
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => (
   <div
-    className={clsx("p-6 border-t border-zinc-200", className)}
+    className={clsx("p-6 border-t border-neutral-200", className)}
     {...props}
   />
 )
@@ -107,7 +107,7 @@ const DrawerTitle = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <DialogPrimitive.Title
     ref={ref}
-    className={clsx("text-lg text-zinc-900", className)}
+    className={clsx("text-lg text-neutral-900", className)}
     {...props}
   />
 ))
@@ -119,7 +119,7 @@ const DrawerDescription = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <DialogPrimitive.Description
     ref={ref}
-    className={clsx("text-sm text-zinc-600", className)}
+    className={clsx("text-sm text-neutral-600", className)}
     {...props}
   />
 ))

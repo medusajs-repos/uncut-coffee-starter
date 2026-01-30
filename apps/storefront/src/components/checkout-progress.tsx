@@ -25,16 +25,16 @@ const CheckoutProgress = ({
             className={clsx(
               "p-0 hover:bg-transparent",
               index !== currentStepIndex &&
-                "text-zinc-600 hover:text-zinc-500",
+                "text-neutral-600 hover:text-neutral-500",
               index === currentStepIndex &&
-                "text-zinc-900 hover:text-zinc-600"
+                "text-neutral-900 hover:text-neutral-600"
             )}
             disabled={index > currentStepIndex}
           >
             {step.title}
           </Button>
           {index < steps.length - 1 && (
-            <div className="w-8 h-px bg-zinc-200" />
+            <div className="w-8 h-px bg-neutral-200" />
           )}
         </div>
       ))}

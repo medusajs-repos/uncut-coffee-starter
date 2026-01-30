@@ -42,7 +42,7 @@ export const ToastProvider = ({ children }: { children: ReactNode }) => {
           }}
         >
           <div className="bg-white shadow-lg px-6 py-3">
-            <p className="text-zinc-900 text-base font-medium">{message}</p>
+            <p className="text-neutral-900 text-base font-medium">{message}</p>
           </div>
         </div>
       )}

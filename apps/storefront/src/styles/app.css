@@ -1,12 +1,18 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Roboto+Mono:wght@400;500&display=swap");
 @import "tailwindcss";
 @config "../../tailwind.config.js";
 @import "./theme.css";
 
 @layer base {
   :root {
-    @apply bg-white text-zinc-900 antialiased;
+    @apply bg-white text-black antialiased;
     text-rendering: optimizeLegibility;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    letter-spacing: -0.02em;
+  }
+
+  html, body {
+    overflow-x: hidden;
+    width: 100%;
   }
 }
 
@@ -14,6 +20,36 @@
   /* Content container */
   .content-container {
     @apply max-w-[1440px] w-full mx-auto px-6;
+  }
+
+  /* UNCUT Button styles */
+  .uncut-button {
+    @apply bg-black text-white px-6 py-3 text-sm font-medium uppercase tracking-wide;
+    @apply hover:bg-neutral-800 transition-colors duration-200;
+    border-radius: 7px;
+  }
+
+  .uncut-button-outline {
+    @apply bg-transparent text-black border border-black px-6 py-3 text-sm font-medium uppercase tracking-wide;
+    @apply hover:bg-black hover:text-white transition-colors duration-200;
+    border-radius: 7px;
+  }
+
+  .uncut-button-orange {
+    @apply text-uncut-orange border border-uncut-orange px-6 py-3 text-sm font-medium uppercase tracking-wide;
+    @apply hover:bg-uncut-orange hover:text-white transition-colors duration-200;
+    border-radius: 24px;
+  }
+
+  /* Dotted divider */
+  .dotted-divider {
+    border-top: 1px dotted var(--color-uncut-gray-light);
+  }
+
+  /* Image card rounded */
+  .uncut-card {
+    border-radius: 18px;
+    overflow: hidden;
   }
 }
 
@@ -41,20 +77,26 @@
     @apply left-0;
   }
 
-  /* input:not([type="checkbox"]):-webkit-autofill,
-  input:not([type="checkbox"]):-webkit-autofill:hover,
-  input:not([type="checkbox"]):-webkit-autofill:focus,
-  textarea:-webkit-autofill,
-  textarea:-webkit-autofill:hover,
-  textarea:-webkit-autofill:focus,
-  select:-webkit-autofill,
-  select:-webkit-autofill:hover,
-  select:-webkit-autofill:focus {
-    border: 1px solid #212121;
-    -webkit-text-fill-color: #212121;
-    -webkit-box-shadow: 0 0 0px 1000px #fff inset;
-    transition: background-color 5000s ease-in-out 0s;
-  } */
+  /* Snap scroll utilities */
+  .snap-x {
+    scroll-snap-type: x mandatory;
+  }
+
+  .snap-start {
+    scroll-snap-align: start;
+  }
+
+  .snap-center {
+    scroll-snap-align: center;
+  }
+
+  /* Text gradient */
+  .text-gradient-orange {
+    background: linear-gradient(135deg, var(--color-uncut-orange), var(--color-uncut-coral));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
 }
 
 /* Navigation menu dropdown animations */

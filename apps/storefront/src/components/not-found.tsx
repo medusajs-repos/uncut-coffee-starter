@@ -9,21 +9,21 @@ const NotFound = () => {
       <div className="min-h-[50vh] flex flex-col items-center justify-center text-center">
         <div className="max-w-md space-y-6">
           {/* Large 404 */}
-          <h1 className="text-8xl font-light text-zinc-900">404</h1>
+          <h1 className="text-8xl font-light text-neutral-900">404</h1>
 
           {/* Main message */}
           <div className="space-y-2">
-            <h1 className="text-xl font-bold text-zinc-900">
+            <h1 className="text-xl font-bold text-neutral-900">
               Page not found
             </h1>
 
-            <p className="text-zinc-600">
+            <p className="text-neutral-600">
               The page you're looking for doesn't exist or has been moved.
             </p>
           </div>
 
           {/* Current path */}
-          <div className="px-4 py-2 bg-zinc-50 font-mono text-sm text-zinc-600">
+          <div className="px-4 py-2 bg-neutral-50 font-mono text-sm text-neutral-600">
             {location.pathname}
           </div>
 

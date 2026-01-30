@@ -46,12 +46,12 @@ const Pagination = ({
           <>
             <button
               onClick={() => onPageChange(1)}
-              className="px-3 py-2 text-sm font-medium text-zinc-600 bg-white border border-zinc-300 hover:bg-zinc-50"
+              className="px-3 py-2 text-sm font-medium text-neutral-600 bg-white border border-neutral-300 hover:bg-neutral-50"
             >
               1
             </button>
             {page > 4 && (
-              <span className="px-2 py-2 text-sm text-zinc-600">...</span>
+              <span className="px-2 py-2 text-sm text-neutral-600">...</span>
             )}
           </>
         )}
@@ -69,7 +69,7 @@ const Pagination = ({
         {page < totalPages - 2 && (
           <>
             {page < totalPages - 3 && (
-              <span className="px-2 py-2 text-sm text-zinc-600">...</span>
+              <span className="px-2 py-2 text-sm text-neutral-600">...</span>
             )}
             <Button
               onClick={() => onPageChange(totalPages)}

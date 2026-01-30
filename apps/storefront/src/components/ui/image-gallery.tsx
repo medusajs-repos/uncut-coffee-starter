@@ -23,7 +23,7 @@ const ImageGallery = memo(function ImageGallery({ images }: ImageGalleryProps) {
   return (
     <div className="flex items-start relative">
       <div className="flex-1 sm:mx-16 relative">
-        <div className="relative aspect-[29/34] w-full overflow-hidden bg-zinc-50 p-0">
+        <div className="relative aspect-[29/34] w-full overflow-hidden bg-neutral-50 p-0">
           <div 
             className="flex transition-transform duration-300 ease-in-out h-full"
             style={{ transform: `translateX(-${currentIndex * 100}%)` }}

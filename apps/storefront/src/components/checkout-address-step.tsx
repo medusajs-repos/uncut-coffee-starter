@@ -119,7 +119,7 @@ const AddressStep = ({ cart, onNext }: AddressStepProps) => {
     <div className="flex flex-col gap-8">
       <form onSubmit={handleSubmit} className="flex flex-col gap-8">
         <div className="flex flex-col gap-2">
-          <h3 className="text-zinc-900 !text-base font-semibold">
+          <h3 className="text-neutral-900 !text-base font-semibold">
             Shipping Address
           </h3>
           {/* Shipping Address */}
@@ -147,7 +147,7 @@ const AddressStep = ({ cart, onNext }: AddressStepProps) => {
         {/* Billing Address (if different) */}
         {!sameAsBilling && (
           <div className="flex flex-col gap-2">
-            <h3 className="text-zinc-900 !text-base font-semibold">
+            <h3 className="text-neutral-900 !text-base font-semibold">
               Billing Address
             </h3>
             <AddressForm
@@ -172,7 +172,7 @@ const AddressStep = ({ cart, onNext }: AddressStepProps) => {
             placeholder="your@email.com"
             className="w-full"
           />
-          <p className="text-xs text-zinc-600">
+          <p className="text-xs text-neutral-600">
             You'll receive order updates to this email.
           </p>
         </div>

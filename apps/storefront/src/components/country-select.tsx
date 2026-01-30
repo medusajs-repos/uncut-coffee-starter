@@ -92,14 +92,17 @@ const CountrySelect = ({ regions, className }: CountrySelectProps) => {
       <SelectTrigger variant="minimal" className={className}>
         <SelectValue placeholder="Select country">
           {currentCountry
-            ? `${currentCountry.label} (${currentCountry.currency_code})`
-            : "Select country"}
+            ? currentCountry.label.toUpperCase()
+            : "SELECT COUNTRY"}
         </SelectValue>
+        <svg width="6" height="4" viewBox="0 0 6 4" fill="none" className="ml-0">
+          <path d="M3 4L0 0H6L3 4Z" fill="black" />
+        </svg>
       </SelectTrigger>
       <SelectContent>
         {countries?.map((country) => (
           <SelectItem key={country.country_code} value={country.country_code}>
-            {country.label} ({country.currency_code})
+            {country.label}
           </SelectItem>
         ))}
       </SelectContent>
