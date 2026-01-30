@@ -39,7 +39,7 @@ export const Navbar = () => {
   return (
     <div className="fixed top-0 inset-x-0 z-50">
       <header className="relative h-10 mx-auto bg-transparent">
-        <nav className="w-full h-10 px-6 flex items-center justify-between">
+        <nav className="w-full h-10 px-4 flex items-center justify-between">
           <Link
             to={baseHref || "/"}
             className={`text-base font-medium uppercase tracking-wide ${textColorClass} hover:opacity-70 transition-opacity`}
