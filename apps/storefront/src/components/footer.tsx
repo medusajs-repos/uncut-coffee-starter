@@ -14,7 +14,7 @@ const Footer = () => {
 
   return (
     <footer className="bg-white w-full pt-36 pb-16 px-6" data-testid="footer">
-      <div className="flex flex-col md:flex-row justify-between items-start gap-8 leading-none">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-stretch gap-8 leading-none">
         {/* Left side - Link columns */}
         <div className="flex flex-wrap gap-x-16 gap-y-4">
           {/* Column 1 */}
@@ -61,8 +61,10 @@ const Footer = () => {
         </div>
 
         {/* Right side - Copyright */}
-        <div className="text-black text-sm font-medium uppercase tracking-wide whitespace-nowrap">
-          SAP Good Energy &copy; Copyright {new Date().getFullYear()}
+        <div className="flex flex-col justify-end">
+          <div className="text-black text-sm font-medium uppercase tracking-wide whitespace-nowrap">
+            SAP Good Energy &copy; Copyright {new Date().getFullYear()}
+          </div>
         </div>
       </div>
     </footer>
