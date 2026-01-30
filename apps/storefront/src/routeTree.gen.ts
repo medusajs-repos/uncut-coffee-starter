@@ -9,7 +9,6 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as StoreRouteImport } from './routes/store'
 import { Route as HealthRouteImport } from './routes/health'
 import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as CartRouteImport } from './routes/cart'
@@ -17,18 +16,10 @@ import { Route as CountryCodeRouteImport } from './routes/$countryCode'
 import { Route as SplatRouteImport } from './routes/$'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CountryCodeIndexRouteImport } from './routes/$countryCode/index'
-import { Route as CountryCodeStoreRouteImport } from './routes/$countryCode/store'
 import { Route as CountryCodeCheckoutRouteImport } from './routes/$countryCode/checkout'
 import { Route as CountryCodeCartRouteImport } from './routes/$countryCode/cart'
-import { Route as CountryCodeProductsHandleRouteImport } from './routes/$countryCode/products/$handle'
-import { Route as CountryCodeCategoriesHandleRouteImport } from './routes/$countryCode/categories/$handle'
 import { Route as CountryCodeOrderOrderIdConfirmedRouteImport } from './routes/$countryCode/order/$orderId/confirmed'
 
-const StoreRoute = StoreRouteImport.update({
-  id: '/store',
-  path: '/store',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const HealthRoute = HealthRouteImport.update({
   id: '/health',
   path: '/health',
@@ -64,11 +55,6 @@ const CountryCodeIndexRoute = CountryCodeIndexRouteImport.update({
   path: '/',
   getParentRoute: () => CountryCodeRoute,
 } as any)
-const CountryCodeStoreRoute = CountryCodeStoreRouteImport.update({
-  id: '/store',
-  path: '/store',
-  getParentRoute: () => CountryCodeRoute,
-} as any)
 const CountryCodeCheckoutRoute = CountryCodeCheckoutRouteImport.update({
   id: '/checkout',
   path: '/checkout',
@@ -79,18 +65,6 @@ const CountryCodeCartRoute = CountryCodeCartRouteImport.update({
   path: '/cart',
   getParentRoute: () => CountryCodeRoute,
 } as any)
-const CountryCodeProductsHandleRoute =
-  CountryCodeProductsHandleRouteImport.update({
-    id: '/products/$handle',
-    path: '/products/$handle',
-    getParentRoute: () => CountryCodeRoute,
-  } as any)
-const CountryCodeCategoriesHandleRoute =
-  CountryCodeCategoriesHandleRouteImport.update({
-    id: '/categories/$handle',
-    path: '/categories/$handle',
-    getParentRoute: () => CountryCodeRoute,
-  } as any)
 const CountryCodeOrderOrderIdConfirmedRoute =
   CountryCodeOrderOrderIdConfirmedRouteImport.update({
     id: '/order/$orderId/confirmed',
@@ -105,13 +79,9 @@ export interface FileRoutesByFullPath {
   '/cart': typeof CartRoute
   '/checkout': typeof CheckoutRoute
   '/health': typeof HealthRoute
-  '/store': typeof StoreRoute
   '/$countryCode/cart': typeof CountryCodeCartRoute
   '/$countryCode/checkout': typeof CountryCodeCheckoutRoute
-  '/$countryCode/store': typeof CountryCodeStoreRoute
   '/$countryCode/': typeof CountryCodeIndexRoute
-  '/$countryCode/categories/$handle': typeof CountryCodeCategoriesHandleRoute
-  '/$countryCode/products/$handle': typeof CountryCodeProductsHandleRoute
   '/$countryCode/order/$orderId/confirmed': typeof CountryCodeOrderOrderIdConfirmedRoute
 }
 export interface FileRoutesByTo {
@@ -120,13 +90,9 @@ export interface FileRoutesByTo {
   '/cart': typeof CartRoute
   '/checkout': typeof CheckoutRoute
   '/health': typeof HealthRoute
-  '/store': typeof StoreRoute
   '/$countryCode/cart': typeof CountryCodeCartRoute
   '/$countryCode/checkout': typeof CountryCodeCheckoutRoute
-  '/$countryCode/store': typeof CountryCodeStoreRoute
   '/$countryCode': typeof CountryCodeIndexRoute
-  '/$countryCode/categories/$handle': typeof CountryCodeCategoriesHandleRoute
-  '/$countryCode/products/$handle': typeof CountryCodeProductsHandleRoute
   '/$countryCode/order/$orderId/confirmed': typeof CountryCodeOrderOrderIdConfirmedRoute
 }
 export interface FileRoutesById {
@@ -137,13 +103,9 @@ export interface FileRoutesById {
   '/cart': typeof CartRoute
   '/checkout': typeof CheckoutRoute
   '/health': typeof HealthRoute
-  '/store': typeof StoreRoute
   '/$countryCode/cart': typeof CountryCodeCartRoute
   '/$countryCode/checkout': typeof CountryCodeCheckoutRoute
-  '/$countryCode/store': typeof CountryCodeStoreRoute
   '/$countryCode/': typeof CountryCodeIndexRoute
-  '/$countryCode/categories/$handle': typeof CountryCodeCategoriesHandleRoute
-  '/$countryCode/products/$handle': typeof CountryCodeProductsHandleRoute
   '/$countryCode/order/$orderId/confirmed': typeof CountryCodeOrderOrderIdConfirmedRoute
 }
 export interface FileRouteTypes {
@@ -155,13 +117,9 @@ export interface FileRouteTypes {
     | '/cart'
     | '/checkout'
     | '/health'
-    | '/store'
     | '/$countryCode/cart'
     | '/$countryCode/checkout'
-    | '/$countryCode/store'
     | '/$countryCode/'
-    | '/$countryCode/categories/$handle'
-    | '/$countryCode/products/$handle'
     | '/$countryCode/order/$orderId/confirmed'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -170,13 +128,9 @@ export interface FileRouteTypes {
     | '/cart'
     | '/checkout'
     | '/health'
-    | '/store'
     | '/$countryCode/cart'
     | '/$countryCode/checkout'
-    | '/$countryCode/store'
     | '/$countryCode'
-    | '/$countryCode/categories/$handle'
-    | '/$countryCode/products/$handle'
     | '/$countryCode/order/$orderId/confirmed'
   id:
     | '__root__'
@@ -186,13 +140,9 @@ export interface FileRouteTypes {
     | '/cart'
     | '/checkout'
     | '/health'
-    | '/store'
     | '/$countryCode/cart'
     | '/$countryCode/checkout'
-    | '/$countryCode/store'
     | '/$countryCode/'
-    | '/$countryCode/categories/$handle'
-    | '/$countryCode/products/$handle'
     | '/$countryCode/order/$orderId/confirmed'
   fileRoutesById: FileRoutesById
 }
@@ -203,18 +153,10 @@ export interface RootRouteChildren {
   CartRoute: typeof CartRoute
   CheckoutRoute: typeof CheckoutRoute
   HealthRoute: typeof HealthRoute
-  StoreRoute: typeof StoreRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/store': {
-      id: '/store'
-      path: '/store'
-      fullPath: '/store'
-      preLoaderRoute: typeof StoreRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/health': {
       id: '/health'
       path: '/health'
@@ -264,13 +206,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CountryCodeIndexRouteImport
       parentRoute: typeof CountryCodeRoute
     }
-    '/$countryCode/store': {
-      id: '/$countryCode/store'
-      path: '/store'
-      fullPath: '/$countryCode/store'
-      preLoaderRoute: typeof CountryCodeStoreRouteImport
-      parentRoute: typeof CountryCodeRoute
-    }
     '/$countryCode/checkout': {
       id: '/$countryCode/checkout'
       path: '/checkout'
@@ -283,20 +218,6 @@ declare module '@tanstack/react-router' {
       path: '/cart'
       fullPath: '/$countryCode/cart'
       preLoaderRoute: typeof CountryCodeCartRouteImport
-      parentRoute: typeof CountryCodeRoute
-    }
-    '/$countryCode/products/$handle': {
-      id: '/$countryCode/products/$handle'
-      path: '/products/$handle'
-      fullPath: '/$countryCode/products/$handle'
-      preLoaderRoute: typeof CountryCodeProductsHandleRouteImport
-      parentRoute: typeof CountryCodeRoute
-    }
-    '/$countryCode/categories/$handle': {
-      id: '/$countryCode/categories/$handle'
-      path: '/categories/$handle'
-      fullPath: '/$countryCode/categories/$handle'
-      preLoaderRoute: typeof CountryCodeCategoriesHandleRouteImport
       parentRoute: typeof CountryCodeRoute
     }
     '/$countryCode/order/$orderId/confirmed': {
@@ -312,20 +233,14 @@ declare module '@tanstack/react-router' {
 interface CountryCodeRouteChildren {
   CountryCodeCartRoute: typeof CountryCodeCartRoute
   CountryCodeCheckoutRoute: typeof CountryCodeCheckoutRoute
-  CountryCodeStoreRoute: typeof CountryCodeStoreRoute
   CountryCodeIndexRoute: typeof CountryCodeIndexRoute
-  CountryCodeCategoriesHandleRoute: typeof CountryCodeCategoriesHandleRoute
-  CountryCodeProductsHandleRoute: typeof CountryCodeProductsHandleRoute
   CountryCodeOrderOrderIdConfirmedRoute: typeof CountryCodeOrderOrderIdConfirmedRoute
 }
 
 const CountryCodeRouteChildren: CountryCodeRouteChildren = {
   CountryCodeCartRoute: CountryCodeCartRoute,
   CountryCodeCheckoutRoute: CountryCodeCheckoutRoute,
-  CountryCodeStoreRoute: CountryCodeStoreRoute,
   CountryCodeIndexRoute: CountryCodeIndexRoute,
-  CountryCodeCategoriesHandleRoute: CountryCodeCategoriesHandleRoute,
-  CountryCodeProductsHandleRoute: CountryCodeProductsHandleRoute,
   CountryCodeOrderOrderIdConfirmedRoute: CountryCodeOrderOrderIdConfirmedRoute,
 }
 
@@ -340,7 +255,6 @@ const rootRouteChildren: RootRouteChildren = {
   CartRoute: CartRoute,
   CheckoutRoute: CheckoutRoute,
   HealthRoute: HealthRoute,
-  StoreRoute: StoreRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
