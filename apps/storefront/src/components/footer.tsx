@@ -16,7 +16,7 @@ const Footer = () => {
     <footer className="bg-white w-full pt-36 pb-16 px-6" data-testid="footer">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-stretch gap-8 leading-none">
         {/* Left side - Link columns */}
-        <div className="flex flex-wrap gap-x-16 gap-y-4">
+        <div className="flex flex-wrap gap-y-4" style={{ gap: '160px' }}>
           {/* Column 1 */}
           <div className="flex flex-col">
             <a href="#" className="text-black text-sm font-medium uppercase tracking-wide hover:opacity-60 transition-opacity">
