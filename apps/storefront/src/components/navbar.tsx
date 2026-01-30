@@ -43,7 +43,7 @@ export const Navbar = () => {
           {/* Left: Logo */}
           <Link
             to={baseHref || "/"}
-            className={`text-sm font-bold uppercase tracking-wide ${textColorClass} hover:opacity-70 transition-opacity`}
+            className={`text-base font-bold uppercase tracking-wide ${textColorClass} hover:opacity-70 transition-opacity`}
           >
             UNCUT
           </Link>
@@ -54,7 +54,7 @@ export const Navbar = () => {
               <Link
                 key={link.label}
                 to={`${baseHref}${link.href}` as any}
-                className={`text-xs font-medium uppercase tracking-wide ${textColorClass} hover:opacity-70 transition-opacity`}
+                className={`text-base font-medium uppercase tracking-wide ${textColorClass} hover:opacity-70 transition-opacity`}
               >
                 {link.label}
               </Link>
@@ -69,7 +69,7 @@ export const Navbar = () => {
 
             <Drawer open={isOpen} onOpenChange={(open) => (open ? openCart() : closeCart())}>
               <DrawerTrigger asChild>
-                <button className={`${textColorClass} hover:opacity-70 transition-opacity text-sm font-medium`}>
+                <button className={`${textColorClass} hover:opacity-70 transition-opacity text-base font-medium`}>
                   {itemCount}
                 </button>
               </DrawerTrigger>
