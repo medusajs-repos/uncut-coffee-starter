@@ -21,7 +21,7 @@ const HERO_VIDEO = "https://cdn.mignite.app/ws/works_01KG7HEF506FB5P7HQP4V3WMR7/
 const HeroSection = () => {
   return (
     <section className="relative h-screen w-full px-1">
-      <div className="relative h-full w-full overflow-hidden rounded-b-[64px]">
+      <div className="relative h-full w-full overflow-hidden rounded-b-[32px]">
         <div className="absolute inset-0">
           <video 
             src={HERO_VIDEO}
