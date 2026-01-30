@@ -43,7 +43,7 @@ export const Navbar = () => {
           {/* Left: Logo */}
           <Link
             to={baseHref || "/"}
-            className={`text-base font-bold uppercase tracking-wide ${textColorClass} hover:opacity-70 transition-opacity`}
+            className={`text-base font-medium uppercase tracking-wide ${textColorClass} hover:opacity-70 transition-opacity`}
           >
             UNCUT
           </Link>
