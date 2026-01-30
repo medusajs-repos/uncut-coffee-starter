@@ -13,7 +13,7 @@ const Footer = () => {
   });
 
   return (
-    <footer className="bg-white w-full py-8 px-6 md:px-12" data-testid="footer">
+    <footer className="bg-white w-full pt-36 pb-16 px-6" data-testid="footer">
       <div className="flex flex-col md:flex-row justify-between items-start gap-8">
         {/* Left side - Link columns */}
         <div className="flex flex-wrap gap-x-16 gap-y-4">
