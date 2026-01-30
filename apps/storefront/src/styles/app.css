@@ -9,6 +9,11 @@
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     letter-spacing: -0.02em;
   }
+
+  html, body {
+    overflow-x: hidden;
+    width: 100%;
+  }
 }
 
 @layer components {
