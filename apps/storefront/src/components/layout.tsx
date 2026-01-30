@@ -3,22 +3,25 @@ import Footer from "@/components/footer"
 import { Navbar } from "@/components/navbar"
 import { CartProvider } from "@/lib/context/cart"
 import { ToastProvider } from "@/lib/context/toast-context"
-import { Outlet } from "@tanstack/react-router"
+import { Outlet, useLocation } from "@tanstack/react-router"
 
 const Layout = () => {
+  const location = useLocation()
+  const isHomepage = location.pathname === "/" || /^\/[a-z]{2}\/?$/.test(location.pathname)
+
   return (
     <ToastProvider>
       <CartProvider>
-        <div className="min-h-screen flex flex-col">
+        <div className={isHomepage ? "" : "min-h-screen flex flex-col"}>
           <Navbar />
 
-          <main className="relative flex-1">
+          <main className={isHomepage ? "" : "relative flex-1 pt-10"}>
             <ErrorBoundary>
               <Outlet />
             </ErrorBoundary>
           </main>
 
-          <Footer />
+          {!isHomepage && <Footer />}
         </div>
       </CartProvider>
     </ToastProvider>
