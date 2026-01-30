@@ -1,7 +1,7 @@
 import { useCart } from "@/lib/hooks/use-cart"
 import { useCartDrawer } from "@/lib/context/cart"
 import { getCountryCodeFromPath } from "@/lib/utils/region"
-import { UserCircleSolid } from "@medusajs/icons"
+import { User } from "@medusajs/icons"
 import { Link, useLocation } from "@tanstack/react-router"
 
 import {
@@ -59,7 +59,7 @@ export const Navbar = () => {
 
           <div className="flex items-center gap-4">
             <button className={`${textColorClass} hover:opacity-70 transition-opacity cursor-pointer`}>
-              <UserCircleSolid className="w-4 h-4" />
+              <User className="w-4 h-4" />
             </button>
 
             <Drawer open={isOpen} onOpenChange={(open) => (open ? openCart() : closeCart())}>
