@@ -42,7 +42,7 @@ export const Navbar = () => {
         <nav className="w-full h-10 px-4 flex items-center justify-between">
           <Link
             to={baseHref || "/"}
-            className={`text-base font-medium uppercase tracking-wide ${textColorClass} hover:opacity-70 transition-opacity`}
+            className={`text-base font-medium uppercase tracking-wide ${textColorClass} hover:opacity-70 transition-opacity cursor-pointer`}
           >
             UNCUT
           </Link>
@@ -51,20 +51,20 @@ export const Navbar = () => {
             <Link
               key={link.label}
               to={`${baseHref}${link.href}` as any}
-              className={`text-base font-medium uppercase tracking-wide ${textColorClass} hover:opacity-70 transition-opacity`}
+              className={`text-base font-medium uppercase tracking-wide ${textColorClass} hover:opacity-70 transition-opacity cursor-pointer`}
             >
               {link.label}
             </Link>
           ))}
 
           <div className="flex items-center gap-2">
-            <button className={`${textColorClass} hover:opacity-70 transition-opacity`}>
+            <button className={`${textColorClass} hover:opacity-70 transition-opacity cursor-pointer`}>
               <User className="w-4 h-4" />
             </button>
 
             <Drawer open={isOpen} onOpenChange={(open) => (open ? openCart() : closeCart())}>
               <DrawerTrigger asChild>
-                <button className={`${textColorClass} hover:opacity-70 transition-opacity text-base font-medium`}>
+                <button className={`${textColorClass} hover:opacity-70 transition-opacity text-base font-medium cursor-pointer`}>
                   {itemCount}
                 </button>
               </DrawerTrigger>
@@ -81,7 +81,7 @@ export const Navbar = () => {
                       Your cart is empty
                     </span>
                     <Link to={`${baseHref}/` as any} onClick={closeCart}>
-                      <button className="uncut-button-outline">
+                      <button className="uncut-button-outline cursor-pointer">
                         Continue Shopping
                       </button>
                     </Link>
@@ -110,7 +110,7 @@ export const Navbar = () => {
                       </div>
 
                       <Link to={`${baseHref}/cart` as any} onClick={closeCart} className="block">
-                        <button className="uncut-button w-full">
+                        <button className="uncut-button w-full cursor-pointer">
                           View Cart & Checkout
                         </button>
                       </Link>
