@@ -1,7 +1,8 @@
+import { useState } from "react"
 import { useCart } from "@/lib/hooks/use-cart"
 import { useCartDrawer } from "@/lib/context/cart"
 import { getCountryCodeFromPath } from "@/lib/utils/region"
-import { User } from "@medusajs/icons"
+import { User, XMark } from "@medusajs/icons"
 import { Link, useLocation } from "@tanstack/react-router"
 
 import {
@@ -27,6 +28,7 @@ export const Navbar = () => {
   const countryCode = getCountryCodeFromPath(location.pathname)
   const baseHref = countryCode ? `/${countryCode}` : ""
   const { isOpen, openCart, closeCart } = useCartDrawer()
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const { data: cart } = useCart({
     fields: DEFAULT_CART_DROPDOWN_FIELDS,
   })
@@ -37,27 +39,70 @@ export const Navbar = () => {
   const textColorClass = "text-white"
 
   return (
-    <div className="fixed top-0 inset-x-0 z-50">
-      <header className="relative h-10 mx-auto bg-transparent">
-        <nav className="w-full h-10 px-4 flex items-center justify-between mix-blend-difference">
-          <Link
-            to={baseHref || "/"}
-            className={`text-base font-medium uppercase tracking-wide ${textColorClass} hover:opacity-70 transition-opacity cursor-pointer`}
-          >
-            UNCUT
-          </Link>
-
-          {NAV_LINKS.map((link) => (
+    <>
+      {/* Mobile Menu Fullscreen Drawer */}
+      {mobileMenuOpen && (
+        <div className="fixed inset-0 z-[60] bg-black flex flex-col md:hidden">
+          <div className="h-10 px-4 flex items-center justify-between">
             <Link
-              key={link.label}
-              to={`${baseHref}${link.href}` as any}
+              to={baseHref || "/"}
+              className="text-base font-medium uppercase tracking-wide text-white hover:opacity-70 transition-opacity cursor-pointer"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              UNCUT
+            </Link>
+            <button
+              onClick={() => setMobileMenuOpen(false)}
+              className="text-white hover:opacity-70 transition-opacity cursor-pointer text-base font-medium uppercase tracking-wide"
+            >
+              CLOSE
+            </button>
+          </div>
+          <div className="flex-1 flex flex-col items-center justify-center gap-8">
+            {NAV_LINKS.map((link) => (
+              <Link
+                key={link.label}
+                to={`${baseHref}${link.href}` as any}
+                className="text-2xl font-medium uppercase tracking-wide text-white hover:opacity-70 transition-opacity cursor-pointer"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <div className="fixed top-0 inset-x-0 z-50">
+        <header className="relative h-10 mx-auto bg-transparent">
+          <nav className="w-full h-10 px-4 flex items-center justify-between mix-blend-difference">
+            <Link
+              to={baseHref || "/"}
               className={`text-base font-medium uppercase tracking-wide ${textColorClass} hover:opacity-70 transition-opacity cursor-pointer`}
             >
-              {link.label}
+              UNCUT
             </Link>
-          ))}
 
-          <div className="flex items-center gap-4">
+            {/* Mobile Menu Button - visible on md and below */}
+            <button
+              onClick={() => setMobileMenuOpen(true)}
+              className={`md:hidden text-base font-medium uppercase tracking-wide ${textColorClass} hover:opacity-70 transition-opacity cursor-pointer`}
+            >
+              MENU
+            </button>
+
+            {/* Desktop Navigation Links - hidden on md and below */}
+            {NAV_LINKS.map((link) => (
+              <Link
+                key={link.label}
+                to={`${baseHref}${link.href}` as any}
+                className={`hidden md:block text-base font-medium uppercase tracking-wide ${textColorClass} hover:opacity-70 transition-opacity cursor-pointer`}
+              >
+                {link.label}
+              </Link>
+            ))}
+
+            <div className="flex items-center gap-4">
             <button className={`${textColorClass} hover:opacity-70 transition-opacity cursor-pointer`}>
               <User className="w-4 h-4" />
             </button>
@@ -120,8 +165,9 @@ export const Navbar = () => {
               </DrawerContent>
             </Drawer>
           </div>
-        </nav>
-      </header>
-    </div>
+          </nav>
+        </header>
+      </div>
+    </>
   )
 }
