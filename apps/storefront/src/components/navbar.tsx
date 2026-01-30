@@ -69,6 +69,13 @@ export const Navbar = () => {
                 {link.label}
               </Link>
             ))}
+            <Link
+              to={`${baseHref}/account` as any}
+              className="text-[40px] font-medium uppercase tracking-wide text-white hover:opacity-70 transition-opacity cursor-pointer leading-tight"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              ACCOUNT
+            </Link>
           </div>
         </div>
       )}
@@ -101,11 +108,6 @@ export const Navbar = () => {
                 {link.label}
               </Link>
             ))}
-
-            <div className="flex items-center gap-4">
-            <button className={`${textColorClass} hover:opacity-70 transition-opacity cursor-pointer text-base font-medium uppercase tracking-wide`}>
-              ACCOUNT
-            </button>
 
             <Drawer open={isOpen} onOpenChange={(open) => (open ? openCart() : closeCart())}>
               <DrawerTrigger asChild>
@@ -164,7 +166,6 @@ export const Navbar = () => {
                 )}
               </DrawerContent>
             </Drawer>
-          </div>
           </nav>
         </header>
       </div>
