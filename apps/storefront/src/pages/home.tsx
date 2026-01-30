@@ -33,7 +33,7 @@ const HeroSection = () => {
         <div className="absolute inset-0 bg-black/30" />
       </div>
       <div className="absolute inset-0 flex items-center justify-center">
-        <h1 className="text-[96px] font-bold text-white uppercase tracking-tight text-center">
+        <h1 className="text-[144px] font-bold text-white uppercase tracking-tight text-center">
           Good Energy
         </h1>
       </div>
