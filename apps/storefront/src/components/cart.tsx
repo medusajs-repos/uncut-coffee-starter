@@ -70,7 +70,7 @@ export const CartDeleteItem = ({ item, fields }: CartDeleteItemProps) => {
     <Button
       onClick={() => deleteLineItemMutation.mutate({ line_id: item.id })}
       disabled={deleteLineItemMutation.isPending}
-      className="text-zinc-600 hover:text-zinc-500 transition-colors ml-2"
+      className="text-neutral-600 hover:text-neutral-500 transition-colors ml-2"
       variant="transparent"
       size="fit"
     >
@@ -111,7 +111,7 @@ export const CartItemQuantitySelector = ({
         onClick={() => handleQuantityChange(item.quantity - 1)}
         className={clsx(
           type === "compact" &&
-            "text-zinc-600 hover:text-zinc-500 transition-colors p-1 ml-2"
+            "text-neutral-600 hover:text-neutral-500 transition-colors p-1 ml-2"
         )}
         variant="transparent"
         size="fit"
@@ -121,7 +121,7 @@ export const CartItemQuantitySelector = ({
       <span
         className={clsx(
           type === "compact"
-            ? "text-sm text-zinc-900 text-center px-3"
+            ? "text-sm text-neutral-900 text-center px-3"
             : "text-center text-sm px-6"
         )}
       >
@@ -131,7 +131,7 @@ export const CartItemQuantitySelector = ({
         onClick={() => handleQuantityChange(item.quantity + 1)}
         className={clsx(
           type === "compact" &&
-            "text-zinc-600 hover:text-zinc-500 transition-colors p-1 ml-2"
+            "text-neutral-600 hover:text-neutral-500 transition-colors p-1 ml-2"
         )}
         variant="transparent"
         size="fit"
@@ -158,10 +158,10 @@ const CompactCartLineItem = ({ item, cart, fields }: CartLineItemProps) => {
       <div className="flex-1 min-w-0">
         <div className="flex items-start justify-between">
           <div className="flex-1">
-            <h4 className="text-base font-medium line-clamp-1 text-zinc-900">
+            <h4 className="text-base font-medium line-clamp-1 text-neutral-900">
               {item.product_title}
             </h4>
-            <div className="text-sm text-zinc-600">
+            <div className="text-sm text-neutral-600">
               {item.variant_title && item.variant_title !== "Default Variant" && (
                 <span>{item.variant_title}</span>
               )}
@@ -183,7 +183,7 @@ const DisplayCartLineItem = ({ item, cart, className }: CartLineItemProps) => {
   return (
     <div
       className={clsx(
-        "flex items-center gap-4 py-3 border-b border-zinc-300 last:border-b-0",
+        "flex items-center gap-4 py-3 border-b border-neutral-300 last:border-b-0",
         className
       )}
     >
@@ -193,11 +193,11 @@ const DisplayCartLineItem = ({ item, cart, className }: CartLineItemProps) => {
         className="w-16 h-16"
       />
       <div className="flex-1">
-        <p className="text-base font-semibold text-zinc-900">{item.product_title}</p>
+        <p className="text-base font-semibold text-neutral-900">{item.product_title}</p>
         {item.variant_title && item.variant_title !== "Default Variant" && (
-          <p className="text-sm text-zinc-600">{item.variant_title}</p>
+          <p className="text-sm text-neutral-600">{item.variant_title}</p>
         )}
-        <p className="text-sm text-zinc-600">Quantity: {item.quantity}</p>
+        <p className="text-sm text-neutral-600">Quantity: {item.quantity}</p>
       </div>
       <div className="text-right">
         <Price price={item.total || 0} currencyCode={cart.currency_code} textWeight="plus" />
@@ -228,9 +228,9 @@ export const CartLineItem = ({
       </div>
 
       <div className="flex-1 min-w-0 flex flex-col gap-y-1">
-        <span className="text-zinc-900 text-base font-semibold">{item.product_title}</span>
+        <span className="text-neutral-900 text-base font-semibold">{item.product_title}</span>
         {item.variant_title && item.variant_title !== "Default Variant" && (
-          <span className="text-zinc-600 text-sm">{item.variant_title}</span>
+          <span className="text-neutral-600 text-sm">{item.variant_title}</span>
         )}
       </div>
 
@@ -260,48 +260,48 @@ export const CartSummary = ({ cart }: CartSummaryProps) => {
     <div className="space-y-4">
       <div className="space-y-2">
         <div className="flex justify-between text-sm">
-          <span className="text-zinc-600">Subtotal</span>
+          <span className="text-neutral-600">Subtotal</span>
           <Price
             price={cart.subtotal}
             currencyCode={cart.currency_code}
-            className="text-zinc-600"
+            className="text-neutral-600"
           />
         </div>
 
         <div className="flex justify-between text-sm">
-          <span className="text-zinc-600">Shipping</span>
+          <span className="text-neutral-600">Shipping</span>
           <Price
             price={cart.shipping_total}
             currencyCode={cart.currency_code}
-            className="text-zinc-600"
+            className="text-neutral-600"
           />
         </div>
 
         <div className="flex justify-between text-sm">
-          <span className="text-zinc-600">Discount</span>
+          <span className="text-neutral-600">Discount</span>
           <Price
             price={cart.discount_total}
             currencyCode={cart.currency_code}
             type="discount"
-            className="text-zinc-600"
+            className="text-neutral-600"
           />
         </div>
 
         <div className="flex justify-between text-sm">
-          <span className="text-zinc-600">Tax</span>
+          <span className="text-neutral-600">Tax</span>
           <Price
             price={cart.tax_total}
             currencyCode={cart.currency_code}
-            className="text-zinc-600"
+            className="text-neutral-600"
           />
         </div>
       </div>
 
-      <hr className="bg-zinc-200" />
+      <hr className="bg-neutral-200" />
 
       <div className="flex justify-between text-sm">
-        <span className="text-zinc-900">Total</span>
-        <Price price={cart.total} currencyCode={cart.currency_code} className="text-zinc-900" />
+        <span className="text-neutral-900">Total</span>
+        <Price price={cart.total} currencyCode={cart.currency_code} className="text-neutral-900" />
       </div>
     </div>
   )
@@ -356,7 +356,7 @@ export const CartPromo = ({ cart }: CartPromoProps) => {
               {promotion.code}
               <XMark
                 onClick={() => handleRemove(promotion.code || "")}
-                className="ml-2 text-zinc-600 hover:text-zinc-500 cursor-pointer"
+                className="ml-2 text-neutral-600 hover:text-neutral-500 cursor-pointer"
               />
             </Button>
           ))}
@@ -367,7 +367,7 @@ export const CartPromo = ({ cart }: CartPromoProps) => {
         <Button
           onClick={() => setShowInput(true)}
           variant="transparent"
-          className="text-zinc-600 p-0 underline hover:bg-transparent hover:text-zinc-500"
+          className="text-neutral-600 p-0 underline hover:bg-transparent hover:text-neutral-500"
           size="fit"
         >
           Add promo code
@@ -401,8 +401,8 @@ export const CartEmpty = () => {
 
   return (
     <div className="text-center py-16 flex flex-col items-center justify-center gap-4">
-      <h2 className="text-lg font-bold text-zinc-900">Your cart is empty</h2>
-      <p className="text-zinc-600 text-base font-medium">Start by adding some products</p>
+      <h2 className="text-lg font-bold text-neutral-900">Your cart is empty</h2>
+      <p className="text-neutral-600 text-base font-medium">Start by adding some products</p>
       <Link to={`/${countryCode}/store` as any}>
         <Button variant="primary" size="fit">
           Continue shopping

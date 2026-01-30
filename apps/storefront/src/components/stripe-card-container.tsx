@@ -82,7 +82,7 @@ const StripeCardContainer: React.FC<StripeCardContainerProps> = ({
     <>
       {isSelected && (
         <div className="my-4 transition-all duration-150 ease-in-out">
-          <p className="text-base font-semibold text-zinc-900 mb-4">
+          <p className="text-base font-semibold text-neutral-900 mb-4">
             Enter your card details:
           </p>
           <div className="space-y-4 flex flex-wrap">
@@ -96,7 +96,7 @@ const StripeCardContainer: React.FC<StripeCardContainerProps> = ({
                 maxLength={19}
               />
               {cardBrand && (
-                <p className="text-sm text-zinc-900">{cardBrand}</p>
+                <p className="text-sm text-neutral-900">{cardBrand}</p>
               )}
             </div>
             <div className="grid grid-cols-2 gap-4">
@@ -131,7 +131,7 @@ const StripeCardContainer: React.FC<StripeCardContainerProps> = ({
               />
             </div>
           </div>
-          <div className="mt-3 text-xs text-zinc-600">
+          <div className="mt-3 text-xs text-neutral-600">
             This is a demo form. In production, use Stripe Elements for secure
             card input.
           </div>

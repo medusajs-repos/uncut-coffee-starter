@@ -27,9 +27,9 @@ export const Button = ({
         size === "full" && "w-full",
         size === "fit" && "w-fit",
         {
-          "bg-black text-white hover:bg-zinc-800 active:bg-zinc-700 border-transparent rounded-[7px]":
+          "bg-black text-white hover:bg-neutral-800 active:bg-neutral-700 border-transparent rounded-[7px]":
             variant === "primary",
-          "bg-transparent text-black hover:bg-black hover:text-white active:bg-zinc-800 border border-black rounded-[7px]":
+          "bg-transparent text-black hover:bg-black hover:text-white active:bg-neutral-800 border border-black rounded-[7px]":
             variant === "secondary",
           "bg-rose-500 text-white hover:bg-rose-600 active:bg-rose-700 border-transparent rounded-[7px]":
             variant === "danger",

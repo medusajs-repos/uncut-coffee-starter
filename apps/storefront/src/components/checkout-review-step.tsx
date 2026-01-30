@@ -21,7 +21,7 @@ const ReviewStep = ({ cart, onBack }: ReviewStepProps) => {
       {cart.shipping_address && (
         <>
           <div className="flex flex-col gap-2">
-            <h3 className="text-zinc-900 !text-base font-semibold">
+            <h3 className="text-neutral-900 !text-base font-semibold">
               Shipping Address
             </h3>
             <Address address={cart.shipping_address} />
@@ -29,16 +29,16 @@ const ReviewStep = ({ cart, onBack }: ReviewStepProps) => {
 
           {cart.shipping_methods?.[0] && (
             <div className="flex flex-col gap-2">
-              <h3 className="text-zinc-900 !text-base font-semibold">
+              <h3 className="text-neutral-900 !text-base font-semibold">
                 Shipping Method
               </h3>
-              <div className="text-sm text-zinc-600 flex items-center gap-2">
+              <div className="text-sm text-neutral-600 flex items-center gap-2">
                 <div>{cart.shipping_methods[0].name}</div>
                 <Price
                   price={cart.shipping_methods[0].amount}
                   currencyCode={cart.currency_code}
                   textWeight="plus"
-                  className="text-zinc-600"
+                  className="text-neutral-600"
                 />
               </div>
             </div>
@@ -48,10 +48,10 @@ const ReviewStep = ({ cart, onBack }: ReviewStepProps) => {
 
       {/* Payment Information */}
       <div className="flex flex-col gap-2">
-        <h3 className="text-zinc-900 !text-base font-semibold">
+        <h3 className="text-neutral-900 !text-base font-semibold">
           Billing Address
         </h3>
-        <div className="text-sm text-zinc-600">
+        <div className="text-sm text-neutral-600">
           {cart.billing_address ? (
             <Address address={cart.billing_address} />
           ) : (
@@ -60,10 +60,10 @@ const ReviewStep = ({ cart, onBack }: ReviewStepProps) => {
         </div>
       </div>
       <div className="flex flex-col gap-2">
-        <h3 className="text-zinc-900 !text-base font-semibold">
+        <h3 className="text-neutral-900 !text-base font-semibold">
           Payment Method
         </h3>
-        <div className="text-sm text-zinc-600 flex items-center gap-2">
+        <div className="text-sm text-neutral-600 flex items-center gap-2">
           {activeSession && (
             <PaymentMethodInfo provider_id={activeSession.provider_id} />
           )}
@@ -71,7 +71,7 @@ const ReviewStep = ({ cart, onBack }: ReviewStepProps) => {
         </div>
       </div>
 
-      <p className="text-sm text-zinc-600">
+      <p className="text-sm text-neutral-600">
         When you place your order, your payment will be authorized and we'll
         start processing your order.
       </p>

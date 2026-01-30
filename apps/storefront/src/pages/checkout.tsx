@@ -124,15 +124,15 @@ const Checkout = () => {
       />
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-24">
         <div className="flex flex-col gap-1 lg:col-span-2">
-          <h2 className="text-zinc-900 text-xl">
+          <h2 className="text-neutral-900 text-xl">
             {steps[currentStepIndex].title}
           </h2>
-          <p className="text-base font-medium text-zinc-600">
+          <p className="text-base font-medium text-neutral-600">
             {steps[currentStepIndex].description}
           </p>
         </div>
         <div className="flex flex-col gap-1">
-          <h2 className="text-zinc-900 text-xl">Order Summary</h2>
+          <h2 className="text-neutral-900 text-xl">Order Summary</h2>
         </div>
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-24">
