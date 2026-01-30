@@ -95,6 +95,9 @@ const CountrySelect = ({ regions, className }: CountrySelectProps) => {
             ? currentCountry.label.toUpperCase()
             : "SELECT COUNTRY"}
         </SelectValue>
+        <svg width="6" height="4" viewBox="0 0 6 4" fill="none" className="ml-1">
+          <path d="M3 4L0 0H6L3 4Z" fill="black" />
+        </svg>
       </SelectTrigger>
       <SelectContent>
         {countries?.map((country) => (
