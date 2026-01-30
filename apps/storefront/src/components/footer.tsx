@@ -19,26 +19,26 @@ const Footer = () => {
         <div className="flex flex-wrap gap-x-16 gap-y-4">
           {/* Column 1 */}
           <div className="flex flex-col gap-1">
-            <a href="#" className="text-black text-xs font-medium uppercase tracking-wide hover:opacity-60 transition-opacity">
+            <a href="#" className="text-black text-sm font-medium uppercase tracking-wide hover:opacity-60 transition-opacity">
               Affiliates
             </a>
-            <a href="#" className="text-black text-xs font-medium uppercase tracking-wide hover:opacity-60 transition-opacity">
+            <a href="#" className="text-black text-sm font-medium uppercase tracking-wide hover:opacity-60 transition-opacity">
               Clubs
             </a>
-            <a href="#" className="text-black text-xs font-medium uppercase tracking-wide hover:opacity-60 transition-opacity">
+            <a href="#" className="text-black text-sm font-medium uppercase tracking-wide hover:opacity-60 transition-opacity">
               Athletes
             </a>
           </div>
 
           {/* Column 2 */}
           <div className="flex flex-col gap-1">
-            <a href="#" className="text-black text-xs font-medium uppercase tracking-wide hover:opacity-60 transition-opacity">
+            <a href="#" className="text-black text-sm font-medium uppercase tracking-wide hover:opacity-60 transition-opacity">
               Contact
             </a>
-            <a href="https://instagram.com" target="_blank" rel="noreferrer" className="text-black text-xs font-medium uppercase tracking-wide hover:opacity-60 transition-opacity">
+            <a href="https://instagram.com" target="_blank" rel="noreferrer" className="text-black text-sm font-medium uppercase tracking-wide hover:opacity-60 transition-opacity">
               Instagram
             </a>
-            <a href="#" className="text-black text-xs font-medium uppercase tracking-wide hover:opacity-60 transition-opacity">
+            <a href="#" className="text-black text-sm font-medium uppercase tracking-wide hover:opacity-60 transition-opacity">
               FAQ
             </a>
           </div>
@@ -47,21 +47,21 @@ const Footer = () => {
           <div className="flex flex-col gap-1">
             <Link
               to={`${baseHref}/account` as any}
-              className="text-black text-xs font-medium uppercase tracking-wide hover:opacity-60 transition-opacity"
+              className="text-black text-sm font-medium uppercase tracking-wide hover:opacity-60 transition-opacity"
             >
               Account
             </Link>
-            <div className="text-black text-xs font-medium uppercase tracking-wide">
+            <div className="text-black text-sm font-medium uppercase tracking-wide">
               <CountrySelect regions={regions ?? []} />
             </div>
-            <a href="#" className="text-black text-xs font-medium uppercase tracking-wide hover:opacity-60 transition-opacity">
+            <a href="#" className="text-black text-sm font-medium uppercase tracking-wide hover:opacity-60 transition-opacity">
               Privacy and Cookies
             </a>
           </div>
         </div>
 
         {/* Right side - Copyright */}
-        <div className="text-black text-xs font-medium uppercase tracking-wide whitespace-nowrap">
+        <div className="text-black text-sm font-medium uppercase tracking-wide whitespace-nowrap">
           SAP Good Energy &copy; Copyright {new Date().getFullYear()}
         </div>
       </div>
