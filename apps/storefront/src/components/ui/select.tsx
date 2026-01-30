@@ -42,7 +42,9 @@ const SelectTrigger = React.forwardRef<
     {children}
     <SelectPrimitive.Icon asChild>
       <span className="flex items-center justify-center" style={{ width: 15, height: 15 }}>
-        <ChevronDownMini className="h-3 w-3 text-zinc-500" />
+        <svg width="10" height="10" viewBox="0 0 10 10" fill="none" className="text-zinc-500">
+          <path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
       </span>
     </SelectPrimitive.Icon>
   </SelectPrimitive.Trigger>
