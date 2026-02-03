@@ -53,7 +53,7 @@ const ThreeColumnSection = () => {
         <div className="bg-white rounded-lg p-6 min-h-[300px] flex flex-col">
           <h3 className="text-yellow-900 text-sm font-bold uppercase tracking-wider">beans 350g</h3>
           <div className="border-t border-dotted border-[#3d2a1a]/30 my-3" />
-          <p className="text-[#3d2a1a] text-sm font-bold uppercase tracking-wider leading-relaxed">
+          <p className="text-black text-sm font-bold uppercase tracking-wider leading-relaxed">
             SINGLE ORIGIN BEANS ROASTED TO PERFECTION.<br />
             RICH, BOLD FLAVOR YOU'LL CRAVE EVERY MORNING.<br />
             SAVOR AT HOME OR TAKE ON THE GO.
