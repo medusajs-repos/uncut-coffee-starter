@@ -1,6 +1,28 @@
 import { useState } from "react"
 import Footer from "@/components/footer"
 
+// Accordion Component
+const AccordionItem = ({ title, children }: { title: string; children: React.ReactNode }) => {
+  const [isOpen, setIsOpen] = useState(false)
+  
+  return (
+    <div className="border-t border-dotted border-neutral-300">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full py-5 flex items-center justify-between text-left"
+      >
+        <span className="text-sm font-bold uppercase tracking-wider">{title}</span>
+        <span className="text-neutral-400 text-xl leading-none">{isOpen ? "−" : "+"}</span>
+      </button>
+      {isOpen && (
+        <div className="pb-5">
+          {children}
+        </div>
+      )}
+    </div>
+  )
+}
+
 // Hero Section
 const HERO_VIDEO = "https://cdn.mignite.app/ws/works_01KG7HEF506FB5P7HQP4V3WMR7/I_want_a_202601301447_rbq6u-01KG7JHVRVZ9NBQPZHYMH5XVC8.mp4"
 
@@ -152,6 +174,25 @@ const ThreeColumnSection = () => {
             </div>
             
             <p className="text-sm font-bold uppercase tracking-wider text-neutral-400">DUTIES AND TAXES INCLUDED</p>
+            
+            {/* Accordions */}
+            <div className="mt-8 space-y-0">
+              <AccordionItem title="INGREDIENTS & NUTRITION">
+                <p className="text-sm text-neutral-600 leading-relaxed">
+                  Our supplements are made with premium, clinically-studied ingredients. Each serving contains essential vitamins, minerals, and adaptogens carefully selected to support your health goals.
+                </p>
+              </AccordionItem>
+              <AccordionItem title="SHIPPING">
+                <p className="text-sm text-neutral-600 leading-relaxed">
+                  Free shipping on all orders over $50. Standard delivery takes 3-5 business days. Express shipping available at checkout for faster delivery.
+                </p>
+              </AccordionItem>
+              <AccordionItem title="FAQ">
+                <p className="text-sm text-neutral-600 leading-relaxed">
+                  How should I take this supplement? Take 2 capsules daily with food for best absorption. Can I take this with other supplements? Yes, our formulas are designed to work together safely.
+                </p>
+              </AccordionItem>
+            </div>
           </div>
         </div>
       </div>
