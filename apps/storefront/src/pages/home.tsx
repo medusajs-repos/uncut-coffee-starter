@@ -180,7 +180,7 @@ const ThreeColumnSection = () => {
           
           <div className="mt-8 space-y-3">
             <label 
-              className={`flex items-center justify-between p-4 border rounded-lg cursor-pointer h-[56px] transition-colors ${purchaseType === "single" ? "border-yellow-900 bg-yellow-50/30" : "border-black"}`} 
+              className={`flex items-center justify-between p-4 border rounded-lg cursor-pointer h-[56px] transition-colors ${purchaseType === "single" ? "border-yellow-900 bg-white" : "border-black"}`} 
               style={{ borderRadius: '8px' }}
               onClick={() => setPurchaseType("single")}
             >
@@ -198,7 +198,7 @@ const ThreeColumnSection = () => {
             </label>
             
             <label 
-              className={`flex flex-col p-4 border rounded-[8px] cursor-pointer text-[14px] transition-colors ${purchaseType === "subscription" ? "border-yellow-900 bg-yellow-50/30" : "border-black"}`}
+              className={`flex flex-col p-4 border rounded-[8px] cursor-pointer text-[14px] transition-colors ${purchaseType === "subscription" ? "border-yellow-900 bg-white" : "border-black"}`}
               onClick={() => setPurchaseType("subscription")}
             >
               <div className="flex items-center gap-3">
