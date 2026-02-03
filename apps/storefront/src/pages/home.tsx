@@ -185,7 +185,7 @@ const ThreeColumnSection = () => {
                   
                   {/* Nutrition table */}
                   <div>
-                    <p className="font-semibold text-neutral-900 mb-2">PER SERVING (10G)</p>
+                    <p className="font-semibold text-neutral-900 mb-2">PER 100G</p>
                     <div className="space-y-1">
                       {[
                         { label: "ENERGY (KJ)", value: "12" },
