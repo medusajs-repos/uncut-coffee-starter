@@ -116,7 +116,7 @@ const ThreeColumnSection = () => {
               </button>
             </div>
             
-            <p className="text-[10px] uppercase tracking-wider text-[#3d2a1a]/60">DUTIES AND TAXES INCLUDED</p>
+            <p className="text-sm font-bold uppercase tracking-wider text-neutral-500">DUTIES AND TAXES INCLUDED</p>
           </div>
         </div>
       </div>
