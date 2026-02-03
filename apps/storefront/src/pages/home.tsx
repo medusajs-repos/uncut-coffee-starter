@@ -55,9 +55,9 @@ const ThreeColumnSection = () => {
           <h3 className="text-yellow-800 text-sm font-bold uppercase tracking-wider">beans 350g</h3>
           <div className="border-t border-dotted border-[#3d2a1a]/30 my-3" />
           <p className="text-[#3d2a1a] text-xs uppercase tracking-wider leading-relaxed">
-            SAP IS A REAL FOOD ALTERNATIVE TO GELS.<br />
-            IT'S FUEL YOU'LL FEEL GOOD TAKING EVERY SESSION.<br />
-            ENJOY ON EASY DAYS AND TRUST ON RACE DAY.
+            SINGLE ORIGIN BEANS ROASTED TO PERFECTION.<br />
+            RICH, BOLD FLAVOR YOU'LL CRAVE EVERY MORNING.<br />
+            SAVOR AT HOME OR TAKE ON THE GO.
           </p>
           <div className="border-t border-dotted border-[#3d2a1a]/30 my-3" />
           <p className="text-[#3d2a1a] text-xs uppercase tracking-wider">
