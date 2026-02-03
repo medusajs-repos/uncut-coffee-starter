@@ -67,7 +67,7 @@ const ThreeColumnSection = () => {
           <div className="border-t border-dotted border-[#3d2a1a]/30 my-3" />
           
           <div className="mt-auto space-y-3">
-            <label className="flex items-center justify-between p-4 border border-[#3d2a1a]/20 rounded-lg cursor-pointer">
+            <label className="flex items-center justify-between p-4 border border-[#3d2a1a]/20 rounded-lg cursor-pointer h-16">
               <div className="flex items-center gap-3">
                 <input type="radio" name="purchase" className="w-5 h-5 accent-[#e85a2c]" />
                 <span className="text-[#3d2a1a] text-sm uppercase tracking-wider font-bold">1 X CASE WITH 10 SAP</span>
@@ -75,7 +75,7 @@ const ThreeColumnSection = () => {
               <span className="text-[#3d2a1a] text-sm font-bold">$37.72</span>
             </label>
             
-            <label className="flex flex-col p-4 border-2 border-[#3d2a1a] rounded-lg cursor-pointer">
+            <label className="flex flex-col p-4 border-2 border-[#3d2a1a] rounded-lg cursor-pointer h-16">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <input type="radio" name="purchase" defaultChecked className="w-5 h-5 accent-[#e85a2c]" />
