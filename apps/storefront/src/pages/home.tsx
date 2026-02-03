@@ -97,7 +97,7 @@ const ThreeColumnSection = () => {
           <div className="border-t border-dotted border-[#3d2a1a]/30 my-3" />
           
           <div className="mt-8 space-y-3">
-            <label className="flex items-center justify-between p-4 border border-black rounded-lg cursor-pointer h-16" style={{ borderRadius: '8px' }}>
+            <label className="flex items-center justify-between p-4 border border-black rounded-lg cursor-pointer h-[56px]" style={{ borderRadius: '8px' }}>
               <div className="flex items-center gap-3">
                 <input 
                   type="radio" 
