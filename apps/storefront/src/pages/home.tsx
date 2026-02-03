@@ -79,7 +79,7 @@ const ThreeColumnSection = () => {
               <span className="text-black text-sm font-bold">$37.72</span>
             </label>
             
-            <label className="flex flex-col p-4 border border-[#3d2a1a] rounded-[8px] cursor-pointer text-[14px]">
+            <label className="flex flex-col p-4 border border-black rounded-[8px] cursor-pointer text-[14px]">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <input type="radio" name="purchase" defaultChecked className="w-5 h-5 accent-[#e85a2c]" />
