@@ -153,7 +153,7 @@ const ThreeColumnSection = () => {
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-16">
         <div className="min-h-[300px] flex items-center justify-center text-center">
           <p className="text-neutral-400 text-[32px] uppercase tracking-wider font-bold leading-none">
-            UNCUT COFFEE BEANS. NATURE'S ORIGINAL ENERGY SOURCE.
+            UNCUT COFFEE BEANS.NATURE'S ORIGINAL ENERGY SOURCE.
           </p>
         </div>
         <div className="overflow-hidden flex items-center">
