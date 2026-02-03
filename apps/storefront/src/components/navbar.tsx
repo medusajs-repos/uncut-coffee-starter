@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react"
+import { useState } from "react"
 import { useCart } from "@/lib/hooks/use-cart"
 import { useCartDrawer } from "@/lib/context/cart"
 import { getCountryCodeFromPath } from "@/lib/utils/region"
@@ -36,45 +36,7 @@ export const Navbar = () => {
   const sortedItems = sortCartItems(cart?.items || [])
   const itemCount = sortedItems?.reduce((total, item) => total + item.quantity, 0) || 0
 
-  const navRef = useRef<HTMLDivElement>(null)
-  const [isDarkBackground, setIsDarkBackground] = useState(true)
-
-  useEffect(() => {
-    const checkBackground = () => {
-      if (!navRef.current) return
-      
-      const navRect = navRef.current.getBoundingClientRect()
-      const samplePoint = { x: navRect.left + navRect.width / 2, y: navRect.top + navRect.height / 2 }
-      
-      // Temporarily hide the nav to sample what's behind it
-      const originalVisibility = navRef.current.style.visibility
-      navRef.current.style.visibility = 'hidden'
-      
-      const elementBehind = document.elementFromPoint(samplePoint.x, samplePoint.y)
-      navRef.current.style.visibility = originalVisibility
-      
-      if (elementBehind) {
-        const bgColor = window.getComputedStyle(elementBehind).backgroundColor
-        const rgb = bgColor.match(/\d+/g)
-        if (rgb && rgb.length >= 3) {
-          // Calculate relative luminance
-          const luminance = (0.299 * parseInt(rgb[0]) + 0.587 * parseInt(rgb[1]) + 0.114 * parseInt(rgb[2])) / 255
-          setIsDarkBackground(luminance < 0.5)
-        }
-      }
-    }
-
-    checkBackground()
-    window.addEventListener('scroll', checkBackground)
-    window.addEventListener('resize', checkBackground)
-    
-    return () => {
-      window.removeEventListener('scroll', checkBackground)
-      window.removeEventListener('resize', checkBackground)
-    }
-  }, [])
-
-  const textColorClass = isDarkBackground ? "text-white" : "text-black"
+  const textColorClass = "text-black mix-blend-difference"
 
   return (
     <>
@@ -118,9 +80,9 @@ export const Navbar = () => {
         </div>
       )}
 
-      <div ref={navRef} className="fixed top-0 inset-x-0 z-50">
+      <div className="fixed top-0 inset-x-0 z-50 pointer-events-none">
         <header className="h-10 mx-auto">
-          <nav className="w-full h-10 px-4 flex items-center justify-between transition-colors duration-200">
+          <nav className="w-full h-10 px-4 flex items-center justify-between pointer-events-auto">
             <Link
               to={baseHref || "/"}
               className={`text-base font-bold uppercase tracking-wide ${textColorClass} hover:opacity-70 transition-opacity cursor-pointer`}
