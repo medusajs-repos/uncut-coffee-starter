@@ -40,7 +40,7 @@ const ThreeColumnSection = () => {
             NATURE'S ORIGINAL ENERGY SOURCE.
           </p>
         </div>
-        <div className="rounded-lg overflow-hidden flex items-center">
+        <div className="overflow-hidden flex items-center">
           <video 
             src="https://cdn.mignite.app/ws/works_01KG7HEF506FB5P7HQP4V3WMR7/Make_the_bag_202602031440_h6dsd-01KGHRAQFFRH78TT9E2FPA46FV.mp4"
             autoPlay
