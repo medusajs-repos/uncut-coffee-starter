@@ -85,7 +85,7 @@ export const Navbar = () => {
           <nav className="w-full h-10 px-4 flex items-center justify-between mix-blend-difference">
             <Link
               to={baseHref || "/"}
-              className={`text-base font-medium uppercase tracking-wide ${textColorClass} hover:opacity-70 transition-opacity cursor-pointer`}
+              className={`text-base font-bold uppercase tracking-wide ${textColorClass} hover:opacity-70 transition-opacity cursor-pointer`}
             >
               UNCUT
             </Link>
@@ -93,7 +93,7 @@ export const Navbar = () => {
             {/* Mobile Menu Button - visible on md and below */}
             <button
               onClick={() => setMobileMenuOpen(true)}
-              className={`md:hidden text-base font-medium uppercase tracking-wide ${textColorClass} hover:opacity-70 transition-opacity cursor-pointer`}
+              className={`md:hidden text-base font-bold uppercase tracking-wide ${textColorClass} hover:opacity-70 transition-opacity cursor-pointer`}
             >
               MENU
             </button>
@@ -103,7 +103,7 @@ export const Navbar = () => {
               <a
                 key={link.label}
                 href={`${baseHref}/${link.anchor}`}
-                className={`hidden md:block text-base font-medium uppercase tracking-wide ${textColorClass} hover:opacity-70 transition-opacity cursor-pointer`}
+                className={`hidden md:block text-base font-bold uppercase tracking-wide ${textColorClass} hover:opacity-70 transition-opacity cursor-pointer`}
               >
                 {link.label}
               </a>
@@ -111,7 +111,7 @@ export const Navbar = () => {
 
             {/* Desktop Account - hidden on mobile */}
             <span
-              className={`hidden md:block text-base font-medium uppercase tracking-wide cursor-pointer hover:opacity-70 transition-opacity ${textColorClass}`}
+              className={`hidden md:block text-base font-bold uppercase tracking-wide cursor-pointer hover:opacity-70 transition-opacity ${textColorClass}`}
             >
               ACCOUNT
             </span>
