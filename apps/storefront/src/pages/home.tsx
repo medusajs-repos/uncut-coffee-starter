@@ -36,9 +36,8 @@ const ThreeColumnSection = () => {
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-16">
         <div className="min-h-[300px] flex items-center justify-center text-center">
           <p className="text-neutral-400 text-[32px] uppercase tracking-wider font-bold leading-none">
-            Not Synthetic. Not Processed.<br />
-            Just Beans.<br />
-            Nature's Original Energy Source
+            JUST UNCUT BEANS.<br />
+            NATURE'S ORIGINAL ENERGY SOURCE.
           </p>
         </div>
         <div className="bg-[#f5f0eb] rounded-lg overflow-hidden min-h-[300px] flex items-center justify-center">
