@@ -87,7 +87,7 @@ const ThreeColumnSection = () => {
           <div className="border-t border-dotted border-[#3d2a1a]/30 my-3" />
           <p className="text-black text-sm font-bold uppercase tracking-wider leading-relaxed">
             SINGLE ORIGIN BEANS ROASTED TO PERFECTION.<br />
-            RICH, BOLD FLAVOR YOU'LL CRAVE EVERY MORNING.<br />
+            RICH, BOLD FLAVOR YOU'LL CRAVE EVERY DAY.<br />
             SAVOR AT HOME OR TAKE ON THE GO.
           </p>
           <div className="border-t border-dotted border-[#3d2a1a]/30 my-3" />
