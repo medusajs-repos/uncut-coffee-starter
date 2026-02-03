@@ -6,7 +6,7 @@
   :root {
     @apply bg-white text-black antialiased;
     text-rendering: optimizeLegibility;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: Arial, sans-serif;
     letter-spacing: -0.02em;
   }
 
