@@ -176,7 +176,7 @@ const ThreeColumnSection = () => {
             {/* Accordions */}
             <div className="mt-8 space-y-0">
               <AccordionItem title="INGREDIENTS & NUTRITION">
-                <div className="text-sm text-neutral-600 space-y-4">
+                <div className="text-[14px] text-black font-bold space-y-4">
                   {/* Ingredients intro */}
                   <div className="space-y-1">
                     <p>- 100% ARABICA COFFEE BEANS</p>
@@ -185,7 +185,7 @@ const ThreeColumnSection = () => {
                   
                   {/* Nutrition table */}
                   <div>
-                    <p className="font-semibold text-neutral-900 mb-2">PER 100G</p>
+                    <p className="mb-2">PER 100G</p>
                     <div className="space-y-1">
                       {[
                         { label: "ENERGY (KJ)", value: "12" },
@@ -199,25 +199,25 @@ const ThreeColumnSection = () => {
                       ].map((item) => (
                         <div key={item.label} className="flex justify-between">
                           <span>{item.label}</span>
-                          <span className="font-medium text-neutral-900">{item.value}</span>
+                          <span>{item.value}</span>
                         </div>
                       ))}
                     </div>
                   </div>
                   
                   {/* Ending note */}
-                  <p className="text-xs uppercase">
+                  <p className="uppercase">
                     CONTAINS A VARIETY OF NATURALLY OCCURRING ANTIOXIDANTS AND POLYPHENOLS SUCH AS CHLOROGENIC ACID, QUINIC ACID, AND CAFESTOL.
                   </p>
                 </div>
               </AccordionItem>
               <AccordionItem title="SHIPPING">
-                <p className="text-sm text-neutral-600 leading-relaxed">
+                <p className="text-[14px] text-black font-bold leading-relaxed">
                   Free shipping on all orders over $50. Standard delivery takes 3-5 business days. Express shipping available at checkout for faster delivery.
                 </p>
               </AccordionItem>
               <AccordionItem title="FAQ">
-                <p className="text-sm text-neutral-600 leading-relaxed">
+                <p className="text-[14px] text-black font-bold leading-relaxed">
                   How should I take this supplement? Take 2 capsules daily with food for best absorption. Can I take this with other supplements? Yes, our formulas are designed to work together safely.
                 </p>
               </AccordionItem>
