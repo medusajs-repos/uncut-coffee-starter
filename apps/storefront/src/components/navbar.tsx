@@ -80,9 +80,9 @@ export const Navbar = () => {
         </div>
       )}
 
-      <div className="fixed top-0 inset-x-0 z-50">
+      <div className="fixed top-0 inset-x-0 z-50 pointer-events-none">
         <header className="relative h-10 mx-auto bg-transparent">
-          <nav className="w-full h-10 px-4 flex items-center justify-between mix-blend-difference">
+          <nav className="w-full h-10 px-4 flex items-center justify-between mix-blend-difference pointer-events-auto">
             <Link
               to={baseHref || "/"}
               className={`text-base font-bold uppercase tracking-wide ${textColorClass} hover:opacity-70 transition-opacity cursor-pointer`}
