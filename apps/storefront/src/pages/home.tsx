@@ -1,3 +1,4 @@
+import { useState } from "react"
 import Footer from "@/components/footer"
 
 // Hero Section
@@ -31,6 +32,16 @@ const HeroSection = () => {
 
 // Three Column Section
 const ThreeColumnSection = () => {
+  const [quantity, setQuantity] = useState(1)
+  
+  const decreaseQuantity = () => {
+    if (quantity > 1) setQuantity(quantity - 1)
+  }
+  
+  const increaseQuantity = () => {
+    setQuantity(quantity + 1)
+  }
+  
   return (
     <section className="pt-8 pb-0 px-4">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-16">
@@ -111,9 +122,21 @@ const ThreeColumnSection = () => {
 
             <div className="flex gap-2 mt-4">
               <div className="flex items-center border border-black rounded-lg bg-black h-14">
-                <button className="px-3 py-3 text-white flex items-center justify-center"><span className="w-[15px] h-[15px] flex items-center justify-center text-lg">-</span></button>
-                <span className="px-3 py-3 text-white font-bold text-sm">1</span>
-                <button className="px-3 py-3 text-white flex items-center justify-center"><span className="w-[15px] h-[15px] flex items-center justify-center text-lg">+</span></button>
+                <button 
+                  type="button"
+                  onClick={decreaseQuantity}
+                  className="px-3 py-3 text-white flex items-center justify-center cursor-pointer"
+                >
+                  <span className="w-[15px] h-[15px] flex items-center justify-center text-lg">-</span>
+                </button>
+                <span className="px-3 py-3 text-white font-bold text-sm">{quantity}</span>
+                <button 
+                  type="button"
+                  onClick={increaseQuantity}
+                  className="px-3 py-3 text-white flex items-center justify-center cursor-pointer"
+                >
+                  <span className="w-[15px] h-[15px] flex items-center justify-center text-lg">+</span>
+                </button>
               </div>
               <button className="flex-1 bg-black text-white text-sm uppercase tracking-wider font-bold rounded-lg h-14">
                 ADD TO CART
