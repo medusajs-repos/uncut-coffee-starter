@@ -117,9 +117,9 @@ const ThreeColumnSection = () => {
                 <span className="w-4 h-4 flex items-center justify-center"><svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M20 6L9 17l-5-5"/></svg></span>
                 TO-GO CUP ON 2ND ORDER
               </div>
-              <div className="flex items-center gap-3 text-[14px] font-bold uppercase tracking-wider text-yellow-900 mt-2">
+              <div className="flex items-center gap-3 text-[14px] font-bold uppercase tracking-wider text-black mt-2">
                 <span className="w-4 h-4 flex items-center justify-center"><svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M20 6L9 17l-5-5"/></svg></span>
-                SAVE 15%
+                <span className="text-yellow-900">SAVE 15%</span>
               </div>
             </label>
 
