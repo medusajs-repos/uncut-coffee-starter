@@ -176,9 +176,27 @@ const ThreeColumnSection = () => {
             {/* Accordions */}
             <div className="mt-8 space-y-0">
               <AccordionItem title="INGREDIENTS & NUTRITION">
-                <p className="text-sm text-neutral-600 leading-relaxed">
-                  Our supplements are made with premium, clinically-studied ingredients. Each serving contains essential vitamins, minerals, and adaptogens carefully selected to support your health goals.
-                </p>
+                <div className="text-sm text-neutral-600">
+                  <p className="font-semibold text-neutral-900 mb-3">PER SERVING (37.6G)</p>
+                  <div className="space-y-1">
+                    {[
+                      { label: "ENERGY (KJ)", value: "419" },
+                      { label: "ENERGY (KCAL)", value: "100" },
+                      { label: "FAT (G)", value: "0" },
+                      { label: "OF WHICH SATURATES (G)", value: "0" },
+                      { label: "CARBOHYDRATES (G)", value: "25" },
+                      { label: "OF WHICH SUGARS (G)", value: "25" },
+                      { label: "PROTEIN (G)", value: "0" },
+                      { label: "SALT (G)", value: "0.38" },
+                      { label: "SODIUM (MG)", value: "152" },
+                    ].map((item) => (
+                      <div key={item.label} className="flex justify-between">
+                        <span>{item.label}</span>
+                        <span className="font-medium text-neutral-900">{item.value}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </AccordionItem>
               <AccordionItem title="SHIPPING">
                 <p className="text-sm text-neutral-600 leading-relaxed">
