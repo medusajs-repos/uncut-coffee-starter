@@ -32,7 +32,7 @@ const HeroSection = () => {
 // Three Column Section
 const ThreeColumnSection = () => {
   return (
-    <section className="py-8 px-4">
+    <section className="pt-8 pb-0 px-4">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-16">
         <div className="min-h-[300px] flex items-center justify-center text-center">
           <p className="text-neutral-400 text-[32px] uppercase tracking-wider font-bold leading-none">
