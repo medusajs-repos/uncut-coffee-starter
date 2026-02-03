@@ -11,7 +11,7 @@ const AccordionItem = ({ title, children }: { title: string; children: React.Rea
         onClick={() => setIsOpen(!isOpen)}
         className="w-full py-5 flex items-center justify-between text-left cursor-pointer"
       >
-        <span className="text-sm font-bold uppercase tracking-wider">{title}</span>
+        <span className="text-sm font-bold uppercase tracking-wider text-black">{title}</span>
         <span 
           className="text-black text-xl leading-none transition-transform duration-300"
           style={{ transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)' }}
@@ -223,13 +223,13 @@ const ThreeColumnSection = () => {
                 </div>
               </AccordionItem>
               <AccordionItem title="SHIPPING">
-                <p className="text-[14px] text-black font-bold leading-relaxed">
-                  Free shipping on all orders over $50. Standard delivery takes 3-5 business days. Express shipping available at checkout for faster delivery.
+                <p className="text-[14px] text-black font-bold leading-relaxed uppercase">
+                  OUR PREMIUM COFFEE BEANS ARE CAREFULLY PACKAGED AND SHIPPED WITHIN 24 HOURS OF ROASTING. FREE SHIPPING ON ALL ORDERS OVER $50. STANDARD DELIVERY TAKES 3-5 BUSINESS DAYS. EXPRESS SHIPPING AVAILABLE FOR NEXT-DAY DELIVERY.
                 </p>
               </AccordionItem>
               <AccordionItem title="FAQ">
-                <p className="text-[14px] text-black font-bold leading-relaxed">
-                  How should I take this supplement? Take 2 capsules daily with food for best absorption. Can I take this with other supplements? Yes, our formulas are designed to work together safely.
+                <p className="text-[14px] text-black font-bold leading-relaxed uppercase">
+                  HOW FRESH IS YOUR COFFEE? ALL OUR BEANS ARE ROASTED TO ORDER AND SHIPPED WITHIN 24 HOURS. WHAT GRIND OPTIONS DO YOU OFFER? WE OFFER WHOLE BEAN, ESPRESSO, FILTER, AND FRENCH PRESS GRINDS. HOW SHOULD I STORE MY COFFEE? KEEP IN A COOL, DRY PLACE AWAY FROM DIRECT SUNLIGHT FOR OPTIMAL FRESHNESS.
                 </p>
               </AccordionItem>
             </div>
