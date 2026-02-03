@@ -34,8 +34,12 @@ const ThreeColumnSection = () => {
   return (
     <section className="py-8 px-4">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-16">
-        <div className="bg-[#f5f0eb] rounded-lg p-8 min-h-[300px] flex items-center justify-center">
-          <span className="text-[#3d2a1a]/40 text-sm uppercase tracking-wider">Column 1</span>
+        <div className="bg-[#f5f0eb] rounded-lg p-8 min-h-[300px] flex items-center justify-center text-center">
+          <div className="space-y-2">
+            <p className="text-[#3d2a1a] text-sm uppercase tracking-wider font-medium">Not Synthetic. Not Processed.</p>
+            <p className="text-[#3d2a1a] text-2xl uppercase tracking-wider font-bold">Just Beans.</p>
+            <p className="text-[#3d2a1a] text-sm uppercase tracking-wider font-medium">Nature's Original Energy Source</p>
+          </div>
         </div>
         <div className="bg-[#f5f0eb] rounded-lg p-8 min-h-[300px] flex items-center justify-center">
           <span className="text-[#3d2a1a]/40 text-sm uppercase tracking-wider">Column 2</span>
