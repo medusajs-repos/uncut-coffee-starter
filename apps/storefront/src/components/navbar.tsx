@@ -36,7 +36,7 @@ export const Navbar = () => {
   const sortedItems = sortCartItems(cart?.items || [])
   const itemCount = sortedItems?.reduce((total, item) => total + item.quantity, 0) || 0
 
-  const textColorClass = "text-white"
+  const textColorClass = "text-white mix-blend-difference"
 
   return (
     <>
@@ -80,9 +80,9 @@ export const Navbar = () => {
         </div>
       )}
 
-      <div className="fixed top-0 inset-x-0 z-50 pointer-events-none">
-        <header className="relative h-10 mx-auto bg-transparent">
-          <nav className="w-full h-10 px-4 flex items-center justify-between mix-blend-difference pointer-events-auto">
+      <div className="fixed top-0 inset-x-0 z-50">
+        <header className="relative h-10 mx-auto">
+          <nav className="w-full h-10 px-4 flex items-center justify-between">
             <Link
               to={baseHref || "/"}
               className={`text-base font-bold uppercase tracking-wide ${textColorClass} hover:opacity-70 transition-opacity cursor-pointer`}
