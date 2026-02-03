@@ -14,7 +14,10 @@ const HeroSection = () => {
         muted
         loop
         playsInline
-        className="absolute inset-0 w-full h-full object-cover"
+        controls={false}
+        disablePictureInPicture
+        controlsList="nodownload nofullscreen noremoteplayback"
+        className="absolute inset-0 w-full h-full object-cover pointer-events-none [&::-webkit-media-controls]:hidden [&::-webkit-media-controls-enclosure]:hidden"
       />
       <div className="absolute inset-0 bg-black/30" />
       <div className="absolute inset-0 flex items-end justify-center">
