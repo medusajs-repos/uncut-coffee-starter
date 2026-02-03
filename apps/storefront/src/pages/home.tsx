@@ -60,8 +60,7 @@ const ThreeColumnSection = () => {
           </p>
           <div className="border-t border-dotted border-[#3d2a1a]/30 my-3" />
           <p className="text-black text-sm font-bold uppercase tracking-wider">
-            SINGLE ORIGIN ARABICA + MEDIUM ROAST<br />
-            NOTES OF CHOCOLATE, CITRUS + CARAMEL
+            SINGLE ORIGIN ARABICA + MEDIUM ROAST. NOTES OF CHOCOLATE, CITRUS + CARAMEL.
           </p>
           <div className="border-t border-dotted border-[#3d2a1a]/30 my-3" />
           
