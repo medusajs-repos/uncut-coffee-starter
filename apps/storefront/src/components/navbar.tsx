@@ -36,7 +36,7 @@ export const Navbar = () => {
   const sortedItems = sortCartItems(cart?.items || [])
   const itemCount = sortedItems?.reduce((total, item) => total + item.quantity, 0) || 0
 
-  const textColorClass = "text-black mix-blend-difference"
+  const textColorClass = "text-white"
 
   return (
     <>
@@ -63,7 +63,7 @@ export const Navbar = () => {
               <a
                 key={link.label}
                 href={`${baseHref}/${link.anchor}`}
-                className="text-[40px] font-medium uppercase tracking-wide text-white hover:opacity-70 transition-opacity cursor-pointer leading-tight"
+                className="text-[40px] font-bold uppercase tracking-wide text-white hover:opacity-70 transition-opacity cursor-pointer leading-tight"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {link.label}
@@ -71,7 +71,7 @@ export const Navbar = () => {
             ))}
             <Link
               to={`${baseHref}/account` as any}
-              className="text-[40px] font-medium uppercase tracking-wide text-white hover:opacity-70 transition-opacity cursor-pointer leading-tight"
+              className="text-[40px] font-bold uppercase tracking-wide text-white hover:opacity-70 transition-opacity cursor-pointer leading-tight"
               onClick={() => setMobileMenuOpen(false)}
             >
               ACCOUNT
@@ -80,9 +80,8 @@ export const Navbar = () => {
         </div>
       )}
 
-      <div className="fixed top-0 inset-x-0 z-50 pointer-events-none">
-        <header className="h-10 mx-auto">
-          <nav className="w-full h-10 px-4 flex items-center justify-between pointer-events-auto">
+      <header className="fixed top-0 inset-x-0 z-50 h-10 mix-blend-difference">
+          <nav className="w-full h-10 px-4 flex items-center justify-between">
             <Link
               to={baseHref || "/"}
               className={`text-base font-bold uppercase tracking-wide ${textColorClass} hover:opacity-70 transition-opacity cursor-pointer`}
@@ -175,7 +174,6 @@ export const Navbar = () => {
             </Drawer>
           </nav>
         </header>
-      </div>
     </>
   )
 }
