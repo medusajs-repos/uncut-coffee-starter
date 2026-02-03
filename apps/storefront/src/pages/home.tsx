@@ -61,8 +61,8 @@ const ThreeColumnSection = () => {
           </p>
           <div className="border-t border-dotted border-[#3d2a1a]/30 my-3" />
           <p className="text-[#3d2a1a] text-xs uppercase tracking-wider">
-            ORGANIC CLASS A MAPLE + HIMALAYAN SALT<br />
-            25 CARBS ( 1 : 1 CARB RATIO )
+            SINGLE ORIGIN ARABICA + MEDIUM ROAST<br />
+            NOTES OF CHOCOLATE, CITRUS + CARAMEL
           </p>
           <div className="border-t border-dotted border-[#3d2a1a]/30 my-3" />
           
