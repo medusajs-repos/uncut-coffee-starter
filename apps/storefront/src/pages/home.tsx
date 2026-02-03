@@ -75,31 +75,31 @@ const ThreeColumnSection = () => {
               <span className="text-[#3d2a1a] text-sm font-bold">$37.72</span>
             </label>
             
-            <label className="flex flex-col p-4 border-2 border-[#3d2a1a] rounded-lg cursor-pointer">
+            <label className="flex flex-col p-4 border-2 border-[#3d2a1a] rounded-lg cursor-pointer text-[14px]">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <input type="radio" name="purchase" defaultChecked className="w-5 h-5 accent-[#e85a2c]" />
-                  <span className="text-[#3d2a1a] text-sm uppercase tracking-wider font-bold">1 X SUBSCRIPTION</span>
-                  <span className="bg-[#e85a2c] text-white text-[10px] px-2 py-1 rounded font-bold">SAVE 15%</span>
+                  <span className="text-[#3d2a1a] text-[14px] uppercase tracking-wider font-bold">1 X SUBSCRIPTION</span>
+                  <span className="bg-[#e85a2c] text-white text-[14px] px-2 py-1 rounded font-bold">SAVE 15%</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="text-[#3d2a1a]/50 text-xs line-through">$37.72</span>
-                  <span className="text-[#3d2a1a] text-sm font-bold">$32.06</span>
+                  <span className="text-[#3d2a1a]/50 text-[14px] line-through">$37.72</span>
+                  <span className="text-[#3d2a1a] text-[14px] font-bold">$32.06</span>
                 </div>
               </div>
               <div className="border-t border-dotted border-[#3d2a1a]/30 my-3" />
-              <div className="flex items-center justify-between text-[10px] uppercase tracking-wider text-[#3d2a1a]">
+              <div className="flex items-center justify-between text-[14px] uppercase tracking-wider text-[#3d2a1a]">
                 <div className="flex items-center gap-2">
                   <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20 6L9 17l-5-5"/></svg>
                   10 X SAP DELIVERED
                 </div>
                 <span className="border border-[#3d2a1a]/30 rounded px-2 py-1">EVERY MONTH</span>
               </div>
-              <div className="flex items-center gap-2 text-[10px] uppercase tracking-wider text-[#3d2a1a] mt-2">
+              <div className="flex items-center gap-2 text-[14px] uppercase tracking-wider text-[#3d2a1a] mt-2">
                 <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20 6L9 17l-5-5"/></svg>
                 CANCEL OR PAUSE ANYTIME
               </div>
-              <div className="flex items-center gap-2 text-[10px] uppercase tracking-wider text-[#3d2a1a] mt-2">
+              <div className="flex items-center gap-2 text-[14px] uppercase tracking-wider text-[#3d2a1a] mt-2">
                 <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20 6L9 17l-5-5"/></svg>
                 SAP BOTTLE ON 2ND ORDER
               </div>
