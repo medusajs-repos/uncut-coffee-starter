@@ -86,7 +86,7 @@ const ThreeColumnSection = () => {
                     defaultChecked 
                     className="w-4 h-4 appearance-none border border-black rounded-full relative before:content-[''] before:absolute before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:w-2 before:h-2 before:rounded-full before:bg-yellow-900 before:scale-0 checked:before:scale-100 before:transition-transform"
                   />
-                  <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3">
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3 flex-wrap">
                     <span className="text-black text-[14px] uppercase tracking-wider font-bold">1 X SUBSCRIPTION</span>
                     <span className="bg-[#e85a2c] text-white text-[14px] px-2 py-1 rounded font-bold w-fit">SAVE 15%</span>
                   </div>
