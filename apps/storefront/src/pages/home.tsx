@@ -12,13 +12,24 @@ const AccordionItem = ({ title, children }: { title: string; children: React.Rea
         className="w-full py-5 flex items-center justify-between text-left cursor-pointer"
       >
         <span className="text-sm font-bold uppercase tracking-wider">{title}</span>
-        <span className="text-black text-xl leading-none">{isOpen ? "−" : "+"}</span>
+        <span 
+          className="text-black text-xl leading-none transition-transform duration-300"
+          style={{ transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)' }}
+        >
+          {isOpen ? "−" : "+"}
+        </span>
       </div>
-      {isOpen && (
+      <div 
+        className="overflow-hidden transition-all duration-300 ease-in-out"
+        style={{ 
+          maxHeight: isOpen ? '500px' : '0px',
+          opacity: isOpen ? 1 : 0
+        }}
+      >
         <div className="pb-5">
           {children}
         </div>
-      )}
+      </div>
     </div>
   )
 }
