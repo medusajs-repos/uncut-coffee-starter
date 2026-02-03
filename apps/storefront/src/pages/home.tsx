@@ -104,17 +104,17 @@ const ThreeColumnSection = () => {
               <div className="border-t border-dotted border-[#3d2a1a]/30 my-3" />
               <div className="flex items-center justify-between text-[14px] font-bold uppercase tracking-wider text-black">
                 <div className="flex items-center gap-3">
-                  <span className="w-4 h-4 flex items-center justify-center"><svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20 6L9 17l-5-5"/></svg></span>
+                  <span className="w-4 h-4 flex items-center justify-center"><svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M20 6L9 17l-5-5"/></svg></span>
                   1 x BAG DELIVERED
                 </div>
                 
               </div>
               <div className="flex items-center gap-3 text-[14px] font-bold uppercase tracking-wider text-black mt-2">
-                <span className="w-4 h-4 flex items-center justify-center"><svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20 6L9 17l-5-5"/></svg></span>
+                <span className="w-4 h-4 flex items-center justify-center"><svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M20 6L9 17l-5-5"/></svg></span>
                 CANCEL OR PAUSE ANYTIME
               </div>
               <div className="flex items-center gap-3 text-[14px] font-bold uppercase tracking-wider text-black mt-2">
-                <span className="w-4 h-4 flex items-center justify-center"><svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20 6L9 17l-5-5"/></svg></span>
+                <span className="w-4 h-4 flex items-center justify-center"><svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M20 6L9 17l-5-5"/></svg></span>
                 TO-GO CUP ON 2ND ORDER
               </div>
             </label>
