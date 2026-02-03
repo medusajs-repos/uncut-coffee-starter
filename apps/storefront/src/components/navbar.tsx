@@ -111,7 +111,7 @@ export const Navbar = () => {
 
             {/* Desktop Account - hidden on mobile */}
             <span
-              className={`hidden md:block text-base font-medium uppercase tracking-wide ${textColorClass}`}
+              className={`hidden md:block text-base font-medium uppercase tracking-wide cursor-pointer hover:opacity-70 transition-opacity ${textColorClass}`}
             >
               ACCOUNT
             </span>
