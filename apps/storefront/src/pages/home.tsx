@@ -105,7 +105,7 @@ const ThreeColumnSection = () => {
               </div>
               <div className="flex items-center gap-2 text-[14px] uppercase tracking-wider text-[#3d2a1a] mt-2">
                 <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20 6L9 17l-5-5"/></svg>
-                SAP BOTTLE ON 2ND ORDER
+                TO-GO CUP ON 2ND ORDER
               </div>
             </label>
 
