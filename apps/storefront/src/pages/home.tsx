@@ -1,5 +1,10 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Footer from "@/components/footer"
+import { useAddToCart } from "@/lib/hooks/use-cart"
+import { useCartDrawer } from "@/lib/context/cart"
+import { sdk } from "@/lib/utils/sdk"
+import { HttpTypes } from "@medusajs/types"
+import { DEFAULT_CART_DROPDOWN_FIELDS } from "@/components/cart"
 
 // Accordion Component
 const AccordionItem = ({ title, children }: { title: string; children: React.ReactNode }) => {
@@ -66,6 +71,46 @@ const HeroSection = () => {
 // Three Column Section
 const ThreeColumnSection = () => {
   const [quantity, setQuantity] = useState(1)
+  const [purchaseType, setPurchaseType] = useState<"single" | "subscription">("subscription")
+  const [isLoading, setIsLoading] = useState(false)
+  const [products, setProducts] = useState<{
+    single: HttpTypes.StoreProduct | null;
+    subscription: HttpTypes.StoreProduct | null;
+  }>({ single: null, subscription: null })
+  const [region, setRegion] = useState<HttpTypes.StoreRegion | null>(null)
+  
+  const addToCartMutation = useAddToCart({
+    fields: DEFAULT_CART_DROPDOWN_FIELDS,
+  })
+  const { openCart } = useCartDrawer()
+  
+  // Fetch products and region on mount
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        // Fetch products by handle
+        const [singleRes, subRes, regionsRes] = await Promise.all([
+          sdk.store.product.list({ handle: "coffee-beans-single", fields: "+variants.prices.*" }),
+          sdk.store.product.list({ handle: "coffee-beans-subscription", fields: "+variants.prices.*" }),
+          sdk.store.region.list({})
+        ])
+        
+        setProducts({
+          single: singleRes.products[0] || null,
+          subscription: subRes.products[0] || null
+        })
+        
+        // Find US region or default to first region
+        const usRegion = regionsRes.regions.find(r => 
+          r.countries?.some(c => c.iso_2 === "us")
+        ) || regionsRes.regions[0]
+        setRegion(usRegion)
+      } catch (error) {
+        console.error("Failed to fetch products:", error)
+      }
+    }
+    fetchData()
+  }, [])
   
   const decreaseQuantity = () => {
     if (quantity > 1) setQuantity(quantity - 1)
@@ -74,6 +119,34 @@ const ThreeColumnSection = () => {
   const increaseQuantity = () => {
     setQuantity(quantity + 1)
   }
+  
+  const handleAddToCart = async () => {
+    const selectedProduct = purchaseType === "single" ? products.single : products.subscription
+    if (!selectedProduct || !selectedProduct.variants?.[0] || !region) return
+    
+    const variant = selectedProduct.variants[0]
+    setIsLoading(true)
+    
+    try {
+      await addToCartMutation.mutateAsync({
+        variant_id: variant.id,
+        quantity: quantity,
+        country_code: "us",
+        product: selectedProduct,
+        variant: variant,
+        region: region,
+      })
+      openCart()
+    } catch (error) {
+      console.error("Failed to add to cart:", error)
+    } finally {
+      setIsLoading(false)
+    }
+  }
+  
+  // Get prices from products
+  const singlePrice = products.single?.variants?.[0]?.calculated_price?.calculated_amount || 37.72
+  const subscriptionPrice = products.subscription?.variants?.[0]?.calculated_price?.calculated_amount || 32.06
   
   return (
     <section className="pt-8 pb-0 px-4">
@@ -106,30 +179,40 @@ const ThreeColumnSection = () => {
           <div className="border-t border-dotted border-[#3d2a1a]/30 my-3" />
           
           <div className="mt-8 space-y-3">
-            <label className="flex items-center justify-between p-4 border border-black rounded-lg cursor-pointer h-[56px]" style={{ borderRadius: '8px' }}>
+            <label 
+              className={`flex items-center justify-between p-4 border rounded-lg cursor-pointer h-[56px] transition-colors ${purchaseType === "single" ? "border-yellow-900 bg-yellow-50/30" : "border-black"}`} 
+              style={{ borderRadius: '8px' }}
+              onClick={() => setPurchaseType("single")}
+            >
               <div className="flex items-center gap-3">
                 <input 
                   type="radio" 
                   name="purchase" 
+                  checked={purchaseType === "single"}
+                  onChange={() => setPurchaseType("single")}
                   className="w-4 h-4 appearance-none border border-black rounded-full relative before:content-[''] before:absolute before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:w-[12px] before:h-[12px] before:rounded-full before:bg-yellow-900 before:scale-0 checked:before:scale-100 before:transition-transform"
                 />
                 <span className="text-black text-sm uppercase tracking-wider font-bold">1 x Bag</span>
               </div>
-              <span className="text-black text-sm font-bold">$37.72</span>
+              <span className="text-black text-sm font-bold">${singlePrice.toFixed(2)}</span>
             </label>
             
-            <label className="flex flex-col p-4 border border-black rounded-[8px] cursor-pointer text-[14px]">
+            <label 
+              className={`flex flex-col p-4 border rounded-[8px] cursor-pointer text-[14px] transition-colors ${purchaseType === "subscription" ? "border-yellow-900 bg-yellow-50/30" : "border-black"}`}
+              onClick={() => setPurchaseType("subscription")}
+            >
               <div className="flex items-center gap-3">
                   <input 
                     type="radio" 
                     name="purchase" 
-                    defaultChecked 
+                    checked={purchaseType === "subscription"}
+                    onChange={() => setPurchaseType("subscription")}
                     className="w-[16px] h-[16px] appearance-none border border-black rounded-full relative before:content-[''] before:absolute before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:w-[12px] before:h-[12px] before:rounded-full before:bg-yellow-900 before:scale-0 checked:before:scale-100 before:transition-transform flex-shrink-0"
                   />
                   <span className="text-black text-[14px] uppercase tracking-wider font-bold truncate min-w-0">1 X SUBSCRIPTION</span>
                   <div className="flex items-center gap-2 ml-auto flex-shrink-0">
-                    <span className="text-neutral-400 text-[14px] font-bold line-through">$37.72</span>
-                    <span className="text-[#3d2a1a] text-[14px] font-bold">$32.06</span>
+                    <span className="text-neutral-400 text-[14px] font-bold line-through">${singlePrice.toFixed(2)}</span>
+                    <span className="text-[#3d2a1a] text-[14px] font-bold">${subscriptionPrice.toFixed(2)}</span>
                   </div>
               </div>
               <div className="border-t border-dotted border-[#3d2a1a]/30 my-3" />
@@ -177,8 +260,13 @@ const ThreeColumnSection = () => {
                   </span>
                 </button>
               </div>
-              <button className="flex-1 bg-black text-white text-sm uppercase tracking-wider font-bold h-14 hover:bg-neutral-800 transition-colors cursor-pointer" style={{ borderRadius: 8 }}>
-                ADD TO CART
+              <button 
+                onClick={handleAddToCart}
+                disabled={isLoading || addToCartMutation.isPending}
+                className="flex-1 bg-black text-white text-sm uppercase tracking-wider font-bold h-14 hover:bg-neutral-800 transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed" 
+                style={{ borderRadius: 8 }}
+              >
+                {isLoading || addToCartMutation.isPending ? "ADDING..." : "ADD TO CART"}
               </button>
             </div>
             
