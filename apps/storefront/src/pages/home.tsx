@@ -35,7 +35,7 @@ const ThreeColumnSection = () => {
     <section className="py-8 px-4">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-16">
         <div className="min-h-[300px] flex items-center justify-center text-center">
-          <p className="text-neutral-400 text-[32px] uppercase tracking-wider font-bold leading-none">
+          <p className="text-[#3d2a1a] text-[32px] uppercase tracking-wider font-bold leading-none">
             Not Synthetic. Not Processed.<br />
             Just Beans.<br />
             Nature's Original Energy Source
@@ -51,73 +51,8 @@ const ThreeColumnSection = () => {
             className="w-full h-full object-cover"
           />
         </div>
-        <div className="bg-white rounded-lg p-6 min-h-[300px] flex flex-col">
-          <h3 className="text-[#e85a2c] text-sm font-bold uppercase tracking-wider">SAP 25G</h3>
-          <div className="border-t border-dotted border-[#3d2a1a]/30 my-3" />
-          <p className="text-[#3d2a1a] text-xs uppercase tracking-wider leading-relaxed">
-            SAP IS A REAL FOOD ALTERNATIVE TO GELS.<br />
-            IT'S FUEL YOU'LL FEEL GOOD TAKING EVERY SESSION.<br />
-            ENJOY ON EASY DAYS AND TRUST ON RACE DAY.
-          </p>
-          <div className="border-t border-dotted border-[#3d2a1a]/30 my-3" />
-          <p className="text-[#3d2a1a] text-xs uppercase tracking-wider">
-            ORGANIC CLASS A MAPLE + HIMALAYAN SALT<br />
-            25 CARBS ( 1 : 1 CARB RATIO )
-          </p>
-          <div className="border-t border-dotted border-[#3d2a1a]/30 my-3" />
-          
-          <div className="mt-auto space-y-3">
-            <label className="flex items-center justify-between p-4 border border-[#3d2a1a]/20 rounded-lg cursor-pointer">
-              <div className="flex items-center gap-3">
-                <input type="radio" name="purchase" className="w-5 h-5 accent-[#e85a2c]" />
-                <span className="text-[#3d2a1a] text-xs uppercase tracking-wider font-medium">1 X CASE WITH 10 SAP</span>
-              </div>
-              <span className="text-[#3d2a1a] text-sm font-bold">$37.72</span>
-            </label>
-            
-            <label className="flex flex-col p-4 border-2 border-[#3d2a1a] rounded-lg cursor-pointer">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <input type="radio" name="purchase" defaultChecked className="w-5 h-5 accent-[#e85a2c]" />
-                  <span className="text-[#3d2a1a] text-xs uppercase tracking-wider font-medium">1 X SUBSCRIPTION</span>
-                  <span className="bg-[#e85a2c] text-white text-[10px] px-2 py-1 rounded font-bold">SAVE 15%</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="text-[#3d2a1a]/50 text-xs line-through">$37.72</span>
-                  <span className="text-[#3d2a1a] text-sm font-bold">$32.06</span>
-                </div>
-              </div>
-              <div className="border-t border-dotted border-[#3d2a1a]/30 my-3" />
-              <div className="flex items-center justify-between text-[10px] uppercase tracking-wider text-[#3d2a1a]">
-                <div className="flex items-center gap-2">
-                  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20 6L9 17l-5-5"/></svg>
-                  10 X SAP DELIVERED
-                </div>
-                <span className="border border-[#3d2a1a]/30 rounded px-2 py-1">EVERY MONTH</span>
-              </div>
-              <div className="flex items-center gap-2 text-[10px] uppercase tracking-wider text-[#3d2a1a] mt-2">
-                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20 6L9 17l-5-5"/></svg>
-                CANCEL OR PAUSE ANYTIME
-              </div>
-              <div className="flex items-center gap-2 text-[10px] uppercase tracking-wider text-[#3d2a1a] mt-2">
-                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20 6L9 17l-5-5"/></svg>
-                SAP BOTTLE ON 2ND ORDER
-              </div>
-            </label>
-
-            <div className="flex gap-2 mt-4">
-              <div className="flex items-center border border-[#3d2a1a] rounded-lg">
-                <button className="px-3 py-3 text-[#3d2a1a]">-</button>
-                <span className="px-3 py-3 text-[#3d2a1a] font-medium">1</span>
-                <button className="px-3 py-3 text-[#3d2a1a]">+</button>
-              </div>
-              <button className="flex-1 bg-[#3d2a1a] text-white text-xs uppercase tracking-wider font-bold rounded-lg">
-                ADD TO CART
-              </button>
-            </div>
-            
-            <p className="text-[10px] uppercase tracking-wider text-[#3d2a1a]/60">DUTIES AND TAXES INCLUDED</p>
-          </div>
+        <div className="bg-[#f5f0eb] rounded-lg p-8 min-h-[300px] flex items-center justify-center">
+          <span className="text-[#3d2a1a]/40 text-sm uppercase tracking-wider">Column 3</span>
         </div>
       </div>
     </section>
