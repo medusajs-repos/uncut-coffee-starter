@@ -33,7 +33,7 @@ const HeroSection = () => {
 const ThreeColumnSection = () => {
   return (
     <section className="py-8 px-4">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-16">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16">
 
         <div className="bg-[#f5f0eb] rounded-lg p-8 min-h-[300px] flex items-center justify-center">
           <span className="text-[#3d2a1a]/40 text-sm uppercase tracking-wider">Column 2</span>
