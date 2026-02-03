@@ -82,7 +82,14 @@ const ThreeColumnSection = () => {
             <label className="flex flex-col p-4 border border-black rounded-[8px] cursor-pointer text-[14px]">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <input type="radio" name="purchase" defaultChecked className="w-5 h-5 accent-[#e85a2c]" />
+                  <input 
+                    type="radio" 
+                    name="purchase" 
+                    defaultChecked 
+                    className="w-4 h-4 appearance-none border border-black rounded-full relative 
+                      before:content-[''] before:absolute before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2
+                      before:w-[12px] before:h-[12px] before:rounded-full before:bg-yellow-900 before:scale-0 checked:before:scale-100 before:transition-transform"
+                  />
                   <span className="text-[#3d2a1a] text-[14px] uppercase tracking-wider font-bold">1 X SUBSCRIPTION</span>
                   <span className="bg-[#e85a2c] text-white text-[14px] px-2 py-1 rounded font-bold">SAVE 15%</span>
                 </div>
