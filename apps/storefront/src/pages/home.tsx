@@ -79,7 +79,7 @@ const ThreeColumnSection = () => {
             
             <label className="flex flex-col p-4 border border-black rounded-[8px] cursor-pointer text-[14px]">
               <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3 flex-wrap">
+                <div className="flex items-center gap-3">
                   <input 
                     type="radio" 
                     name="purchase" 
