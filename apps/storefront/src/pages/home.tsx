@@ -176,26 +176,39 @@ const ThreeColumnSection = () => {
             {/* Accordions */}
             <div className="mt-8 space-y-0">
               <AccordionItem title="INGREDIENTS & NUTRITION">
-                <div className="text-sm text-neutral-600">
-                  <p className="font-semibold text-neutral-900 mb-3">PER SERVING (37.6G)</p>
+                <div className="text-sm text-neutral-600 space-y-4">
+                  {/* Ingredients intro */}
                   <div className="space-y-1">
-                    {[
-                      { label: "ENERGY (KJ)", value: "419" },
-                      { label: "ENERGY (KCAL)", value: "100" },
-                      { label: "FAT (G)", value: "0" },
-                      { label: "OF WHICH SATURATES (G)", value: "0" },
-                      { label: "CARBOHYDRATES (G)", value: "25" },
-                      { label: "OF WHICH SUGARS (G)", value: "25" },
-                      { label: "PROTEIN (G)", value: "0" },
-                      { label: "SALT (G)", value: "0.38" },
-                      { label: "SODIUM (MG)", value: "152" },
-                    ].map((item) => (
-                      <div key={item.label} className="flex justify-between">
-                        <span>{item.label}</span>
-                        <span className="font-medium text-neutral-900">{item.value}</span>
-                      </div>
-                    ))}
+                    <p>- 100% ARABICA COFFEE BEANS</p>
+                    <p>- SINGLE ORIGIN ETHIOPIAN</p>
                   </div>
+                  
+                  {/* Nutrition table */}
+                  <div>
+                    <p className="font-semibold text-neutral-900 mb-2">PER SERVING (10G)</p>
+                    <div className="space-y-1">
+                      {[
+                        { label: "ENERGY (KJ)", value: "12" },
+                        { label: "ENERGY (KCAL)", value: "3" },
+                        { label: "FAT (G)", value: "0.1" },
+                        { label: "OF WHICH SATURATES (G)", value: "0" },
+                        { label: "CARBOHYDRATES (G)", value: "0.3" },
+                        { label: "OF WHICH SUGARS (G)", value: "0" },
+                        { label: "PROTEIN (G)", value: "0.3" },
+                        { label: "CAFFEINE (MG)", value: "95" },
+                      ].map((item) => (
+                        <div key={item.label} className="flex justify-between">
+                          <span>{item.label}</span>
+                          <span className="font-medium text-neutral-900">{item.value}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  {/* Ending note */}
+                  <p className="text-xs uppercase">
+                    CONTAINS A VARIETY OF NATURALLY OCCURRING ANTIOXIDANTS AND POLYPHENOLS SUCH AS CHLOROGENIC ACID, QUINIC ACID, AND CAFESTOL.
+                  </p>
                 </div>
               </AccordionItem>
               <AccordionItem title="SHIPPING">
