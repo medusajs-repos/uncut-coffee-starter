@@ -18,9 +18,9 @@ import { sortCartItems } from "@/lib/utils/cart"
 import { Price } from "@/components/ui/price"
 
 const NAV_LINKS = [
-  { label: "SHOP", href: "/" },
-  { label: "WHY UNCUT", href: "/why-uncut" },
-  { label: "OUR STORY", href: "/our-story" },
+  { label: "SHOP", anchor: "#shop" },
+  { label: "WHY UNCUT", anchor: "#why-uncut" },
+  { label: "OUR STORY", anchor: "#our-story" },
 ]
 
 export const Navbar = () => {
@@ -60,14 +60,14 @@ export const Navbar = () => {
           </div>
           <div className="flex-1 flex flex-col items-center justify-center gap-8">
             {NAV_LINKS.map((link) => (
-              <Link
+              <a
                 key={link.label}
-                to={`${baseHref}${link.href}` as any}
+                href={`${baseHref}/${link.anchor}`}
                 className="text-[40px] font-medium uppercase tracking-wide text-white hover:opacity-70 transition-opacity cursor-pointer leading-tight"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {link.label}
-              </Link>
+              </a>
             ))}
             <Link
               to={`${baseHref}/account` as any}
@@ -100,13 +100,13 @@ export const Navbar = () => {
 
             {/* Desktop Navigation Links - hidden on md and below */}
             {NAV_LINKS.map((link) => (
-              <Link
+              <a
                 key={link.label}
-                to={`${baseHref}${link.href}` as any}
+                href={`${baseHref}/${link.anchor}`}
                 className={`hidden md:block text-base font-medium uppercase tracking-wide ${textColorClass} hover:opacity-70 transition-opacity cursor-pointer`}
               >
                 {link.label}
-              </Link>
+              </a>
             ))}
 
             {/* Desktop Account Link - hidden on mobile */}

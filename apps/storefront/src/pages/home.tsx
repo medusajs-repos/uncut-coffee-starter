@@ -31,6 +31,9 @@ const Home = () => {
   return (
     <>
       <HeroSection />
+      <section id="shop" className="scroll-mt-10" />
+      <section id="why-uncut" className="scroll-mt-10" />
+      <section id="our-story" className="scroll-mt-10" />
       <Footer />
     </>
   )
