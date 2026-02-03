@@ -126,7 +126,9 @@ const ThreeColumnSection = () => {
                   onClick={decreaseQuantity}
                   className="px-4 py-3 text-white flex items-center justify-center cursor-pointer"
                 >
-                  <span className="w-6 h-6 flex items-center justify-center text-2xl font-light">-</span>
+                  <span className="w-6 h-6 flex items-center justify-center relative">
+                    <span className="absolute w-4 h-0.5 bg-white"></span>
+                  </span>
                 </button>
                 <span className="px-3 py-3 text-white font-bold text-sm">{quantity}</span>
                 <button 
@@ -134,7 +136,10 @@ const ThreeColumnSection = () => {
                   onClick={increaseQuantity}
                   className="px-4 py-3 text-white flex items-center justify-center cursor-pointer"
                 >
-                  <span className="w-6 h-6 flex items-center justify-center text-2xl font-light">+</span>
+                  <span className="w-6 h-6 flex items-center justify-center relative">
+                    <span className="absolute w-4 h-0.5 bg-white"></span>
+                    <span className="absolute w-0.5 h-4 bg-white"></span>
+                  </span>
                 </button>
               </div>
               <button className="flex-1 bg-black text-white text-sm uppercase tracking-wider font-bold rounded-lg h-14">
