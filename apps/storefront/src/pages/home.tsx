@@ -124,7 +124,7 @@ const ThreeColumnSection = () => {
             </label>
 
             <div className="flex gap-2 mt-4">
-              <div className="flex items-center border border-black bg-black h-14" style={{ borderRadius: 8 }}
+              <div className="flex items-center border border-black bg-black h-14" style={{ borderRadius: 8 }}>
                 <button 
                   type="button"
                   onClick={decreaseQuantity}
@@ -146,7 +146,7 @@ const ThreeColumnSection = () => {
                   </span>
                 </button>
               </div>
-              <button className="flex-1 bg-black text-white text-sm uppercase tracking-wider font-bold h-14" style={{ borderRadius: 8 }}
+              <button className="flex-1 bg-black text-white text-sm uppercase tracking-wider font-bold h-14" style={{ borderRadius: 8 }}>
                 ADD TO CART
               </button>
             </div>
