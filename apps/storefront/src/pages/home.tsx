@@ -41,8 +41,15 @@ const ThreeColumnSection = () => {
             Nature's Original Energy Source
           </p>
         </div>
-        <div className="bg-[#f5f0eb] rounded-lg p-8 min-h-[300px] flex items-center justify-center">
-          <span className="text-[#3d2a1a]/40 text-sm uppercase tracking-wider">Column 2</span>
+        <div className="bg-[#f5f0eb] rounded-lg overflow-hidden min-h-[300px] flex items-center justify-center">
+          <video 
+            src="https://cdn.mignite.app/ws/works_01KG7HEF506FB5P7HQP4V3WMR7/Can_you_make_202602031221_ibs2o-01KGHGTXSM0N6GWA0K5AY2NYJR.mp4"
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="w-full h-full object-cover"
+          />
         </div>
         <div className="bg-[#f5f0eb] rounded-lg p-8 min-h-[300px] flex items-center justify-center">
           <span className="text-[#3d2a1a]/40 text-sm uppercase tracking-wider">Column 3</span>
