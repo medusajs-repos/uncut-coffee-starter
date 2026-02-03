@@ -50,7 +50,7 @@ const ThreeColumnSection = () => {
             className="w-full h-auto"
           />
         </div>
-        <div className="bg-white rounded-lg min-h-[300px] flex flex-col">
+        <div className="bg-white min-h-[300px] flex flex-col">
           <h3 className="text-yellow-900 text-sm font-bold uppercase tracking-wider">beans 350g</h3>
           <div className="border-t border-dotted border-[#3d2a1a]/30 my-3" />
           <p className="text-black text-sm font-bold uppercase tracking-wider leading-relaxed">
