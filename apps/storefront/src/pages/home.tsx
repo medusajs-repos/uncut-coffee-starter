@@ -59,7 +59,7 @@ const ThreeColumnSection = () => {
             SAVOR AT HOME OR TAKE ON THE GO.
           </p>
           <div className="border-t border-dotted border-[#3d2a1a]/30 my-3" />
-          <p className="text-[#3d2a1a] text-sm font-bold uppercase tracking-wider">
+          <p className="text-black text-sm font-bold uppercase tracking-wider">
             SINGLE ORIGIN ARABICA + MEDIUM ROAST<br />
             NOTES OF CHOCOLATE, CITRUS + CARAMEL
           </p>
