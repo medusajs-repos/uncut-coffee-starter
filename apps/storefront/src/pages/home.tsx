@@ -35,7 +35,7 @@ const ThreeColumnSection = () => {
     <section className="py-8 px-4">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-16">
         <div className="min-h-[300px] flex items-center justify-center text-center">
-          <p className="text-[#3d2a1a] text-[32px] uppercase tracking-wider font-medium leading-none">
+          <p className="text-[#3d2a1a] text-[32px] uppercase tracking-wider font-bold leading-none">
             Not Synthetic. Not Processed.<br />
             Just Beans.<br />
             Nature's Original Energy Source
