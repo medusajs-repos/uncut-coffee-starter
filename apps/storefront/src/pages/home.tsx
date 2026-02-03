@@ -87,7 +87,7 @@ const ThreeColumnSection = () => {
                   />
                   <span className="text-black text-[14px] uppercase tracking-wider font-bold truncate min-w-0">1 X SUBSCRIPTION</span>
                   <div className="flex items-center gap-2 ml-auto flex-shrink-0">
-                    <span className="text-[#3d2a1a]/50 text-[14px] line-through">$37.72</span>
+                    <span className="text-neutral-400 text-[14px] font-bold line-through">$37.72</span>
                     <span className="text-[#3d2a1a] text-[14px] font-bold">$32.06</span>
                   </div>
               </div>
