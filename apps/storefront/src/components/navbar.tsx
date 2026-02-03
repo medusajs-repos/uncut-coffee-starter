@@ -109,13 +109,12 @@ export const Navbar = () => {
               </a>
             ))}
 
-            {/* Desktop Account Link - hidden on mobile */}
-            <Link
-              to={`${baseHref}/account` as any}
-              className={`hidden md:block text-base font-medium uppercase tracking-wide ${textColorClass} hover:opacity-70 transition-opacity cursor-pointer`}
+            {/* Desktop Account - hidden on mobile */}
+            <span
+              className={`hidden md:block text-base font-medium uppercase tracking-wide ${textColorClass}`}
             >
               ACCOUNT
-            </Link>
+            </span>
 
             <Drawer open={isOpen} onOpenChange={(open) => (open ? openCart() : closeCart())}>
               <DrawerTrigger asChild>
