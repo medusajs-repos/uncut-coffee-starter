@@ -29,11 +29,31 @@ const HeroSection = () => {
   )
 }
 
+// Three Column Section
+const ThreeColumnSection = () => {
+  return (
+    <section className="py-16 px-4 md:px-8 lg:px-12">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="bg-[#f5f0eb] rounded-lg p-8 min-h-[300px] flex items-center justify-center">
+          <span className="text-[#3d2a1a]/40 text-sm uppercase tracking-wider">Column 1</span>
+        </div>
+        <div className="bg-[#f5f0eb] rounded-lg p-8 min-h-[300px] flex items-center justify-center">
+          <span className="text-[#3d2a1a]/40 text-sm uppercase tracking-wider">Column 2</span>
+        </div>
+        <div className="bg-[#f5f0eb] rounded-lg p-8 min-h-[300px] flex items-center justify-center">
+          <span className="text-[#3d2a1a]/40 text-sm uppercase tracking-wider">Column 3</span>
+        </div>
+      </div>
+    </section>
+  )
+}
+
 // Main Home Component
 const Home = () => {
   return (
     <>
       <HeroSection />
+      <ThreeColumnSection />
       <section id="shop" className="scroll-mt-10" />
       <section id="why-uncut" className="scroll-mt-10" />
       <section id="our-story" className="scroll-mt-10" />
