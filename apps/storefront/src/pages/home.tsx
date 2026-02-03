@@ -107,11 +107,11 @@ const ThreeColumnSection = () => {
 
             <div className="flex gap-2 mt-4">
               <div className="flex items-center border border-black rounded-lg bg-black h-14">
-                <button className="px-3 py-3 text-white">-</button>
-                <span className="px-3 py-3 text-white font-medium">1</span>
-                <button className="px-3 py-3 text-white">+</button>
+                <button className="px-3 py-3 text-white text-sm">-</button>
+                <span className="px-3 py-3 text-white font-medium text-sm">1</span>
+                <button className="px-3 py-3 text-white text-sm">+</button>
               </div>
-              <button className="flex-1 bg-black text-white text-xs uppercase tracking-wider font-bold rounded-lg h-14">
+              <button className="flex-1 bg-black text-white text-sm uppercase tracking-wider font-bold rounded-lg h-14">
                 ADD TO CART
               </button>
             </div>
