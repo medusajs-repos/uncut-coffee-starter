@@ -70,7 +70,7 @@ const ThreeColumnSection = () => {
             <label className="flex items-center justify-between p-4 border border-[#3d2a1a]/20 rounded-lg cursor-pointer">
               <div className="flex items-center gap-3">
                 <input type="radio" name="purchase" className="w-5 h-5 accent-[#e85a2c]" />
-                <span className="text-[#3d2a1a] text-xs uppercase tracking-wider font-medium">1 X CASE WITH 10 SAP</span>
+                <span className="text-[#3d2a1a] text-xs uppercase tracking-wider font-bold">1 X CASE WITH 10 SAP</span>
               </div>
               <span className="text-[#3d2a1a] text-sm font-bold">$37.72</span>
             </label>
@@ -79,7 +79,7 @@ const ThreeColumnSection = () => {
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <input type="radio" name="purchase" defaultChecked className="w-5 h-5 accent-[#e85a2c]" />
-                  <span className="text-[#3d2a1a] text-xs uppercase tracking-wider font-medium">1 X SUBSCRIPTION</span>
+                  <span className="text-[#3d2a1a] text-xs uppercase tracking-wider font-bold">1 X SUBSCRIPTION</span>
                   <span className="bg-[#e85a2c] text-white text-[10px] px-2 py-1 rounded font-bold">SAVE 15%</span>
                 </div>
                 <div className="flex items-center gap-2">
