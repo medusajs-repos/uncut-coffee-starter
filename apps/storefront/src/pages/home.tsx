@@ -42,7 +42,7 @@ const ThreeColumnSection = () => {
         </div>
         <div className="bg-[#f5f0eb] rounded-lg overflow-hidden min-h-[300px] flex items-center justify-center">
           <video 
-            src="https://cdn.mignite.app/ws/works_01KG7HEF506FB5P7HQP4V3WMR7/Let_the_bag_202602031436_ha5eo-01KGHR2SH2ZFRN9B10Q28TFG2P.mp4"
+            src="https://cdn.mignite.app/ws/works_01KG7HEF506FB5P7HQP4V3WMR7/Make_the_bag_202602031440_h6dsd-01KGHRAQFFRH78TT9E2FPA46FV.mp4"
             autoPlay
             muted
             loop
