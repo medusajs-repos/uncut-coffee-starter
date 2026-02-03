@@ -7,13 +7,13 @@ const AccordionItem = ({ title, children }: { title: string; children: React.Rea
   
   return (
     <div className="border-t border-dotted border-neutral-300">
-      <button
+      <div
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full py-5 flex items-center justify-between text-left"
+        className="w-full py-5 flex items-center justify-between text-left cursor-pointer"
       >
         <span className="text-sm font-bold uppercase tracking-wider">{title}</span>
         <span className="text-black text-xl leading-none">{isOpen ? "−" : "+"}</span>
-      </button>
+      </div>
       {isOpen && (
         <div className="pb-5">
           {children}
