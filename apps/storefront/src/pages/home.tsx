@@ -176,9 +176,9 @@ const ThreeColumnSection = () => {
           <p className="text-black text-sm font-bold uppercase tracking-wider">
             SINGLE ORIGIN ARABICA + MEDIUM ROAST. NOTES OF CHOCOLATE, CITRUS + CARAMEL.
           </p>
-          <div className="border-t border-dotted border-[#3d2a1a]/30 my-3" />
+          <div className="border-t border-dotted border-[#3d2a1a]/30 mt-3 mb-8" />
           
-          <div className="mt-8 space-y-3">
+          <div className="space-y-3">
             <label 
               className={`flex items-center justify-between p-4 border rounded-lg cursor-pointer h-[56px] transition-colors ${purchaseType === "single" ? "border-yellow-900 bg-white" : "border-black"}`} 
               style={{ borderRadius: '8px' }}
