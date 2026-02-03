@@ -78,8 +78,7 @@ const ThreeColumnSection = () => {
             </label>
             
             <label className="flex flex-col p-4 border border-black rounded-[8px] cursor-pointer text-[14px]">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
+              <div className="flex items-center gap-3">
                   <input 
                     type="radio" 
                     name="purchase" 
@@ -87,11 +86,10 @@ const ThreeColumnSection = () => {
                     className="w-[16px] h-[16px] appearance-none border border-black rounded-full relative before:content-[''] before:absolute before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:w-[12px] before:h-[12px] before:rounded-full before:bg-yellow-900 before:scale-0 checked:before:scale-100 before:transition-transform flex-shrink-0"
                   />
                   <span className="text-black text-[14px] uppercase tracking-wider font-bold truncate min-w-0">1 X SUBSCRIPTION</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="text-[#3d2a1a]/50 text-[14px] line-through">$37.72</span>
-                  <span className="text-[#3d2a1a] text-[14px] font-bold">$32.06</span>
-                </div>
+                  <div className="flex items-center gap-2 ml-auto flex-shrink-0">
+                    <span className="text-[#3d2a1a]/50 text-[14px] line-through">$37.72</span>
+                    <span className="text-[#3d2a1a] text-[14px] font-bold">$32.06</span>
+                  </div>
               </div>
               <div className="border-t border-dotted border-[#3d2a1a]/30 my-3" />
               <div className="flex items-center justify-between text-[14px] uppercase tracking-wider text-[#3d2a1a]">
