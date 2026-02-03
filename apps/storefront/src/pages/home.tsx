@@ -67,7 +67,7 @@ const ThreeColumnSection = () => {
           <div className="border-t border-dotted border-[#3d2a1a]/30 my-3" />
           
           <div className="mt-auto space-y-3">
-            <label className="flex items-center justify-between p-4 border border-[#3d2a1a]/20 rounded-lg cursor-pointer h-16">
+            <label className="flex items-center justify-between p-4 border border-black rounded-lg cursor-pointer h-16" style={{ borderRadius: '8px' }}>
               <div className="flex items-center gap-3">
                 <input type="radio" name="purchase" className="w-5 h-5 accent-[#e85a2c]" />
                 <span className="text-[#3d2a1a] text-sm uppercase tracking-wider font-bold">1 x Bag</span>
