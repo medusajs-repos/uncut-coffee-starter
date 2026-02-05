@@ -359,13 +359,20 @@ const ImageScrollerSection = () => {
   // Triple the images for seamless infinite scroll
   const tripleImages = [...SCROLLER_IMAGES, ...SCROLLER_IMAGES, ...SCROLLER_IMAGES]
 
-  // Initialize scroll position to middle set
+  // Initialize scroll position to center image 3 (index 2) in the middle set
   useEffect(() => {
     const scrollContainer = scrollRef.current
     if (!scrollContainer) return
     
     const singleSetWidth = scrollContainer.scrollWidth / 3
-    scrollContainer.scrollLeft = singleSetWidth
+    const imageWidth = singleSetWidth / SCROLLER_IMAGES.length
+    const containerWidth = scrollContainer.clientWidth
+    
+    // Start of middle set + offset to image 3 (index 2) + center the image
+    const image3Offset = imageWidth * 2 // 2 images before image 3
+    const centerOffset = (containerWidth - imageWidth) / 2
+    
+    scrollContainer.scrollLeft = singleSetWidth + image3Offset - centerOffset
   }, [])
 
   // Handle infinite loop on scroll
