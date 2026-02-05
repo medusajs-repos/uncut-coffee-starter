@@ -351,6 +351,10 @@ const ImageScrollerSection = () => {
   const dragStartX = useRef(0)
   const scrollStartX = useRef(0)
   const isResetting = useRef(false)
+  const lastMouseX = useRef(0)
+  const lastMoveTime = useRef(0)
+  const velocity = useRef(0)
+  const momentumId = useRef<number | null>(null)
 
   // Triple the images for seamless infinite scroll
   const tripleImages = [...SCROLLER_IMAGES, ...SCROLLER_IMAGES, ...SCROLLER_IMAGES]
@@ -403,7 +407,7 @@ const ImageScrollerSection = () => {
     const speed = 0.5 // pixels per frame
 
     const animate = (currentTime: number) => {
-      if (!isHovered && !isDragging && !isResetting.current) {
+      if (!isHovered && !isDragging && !isResetting.current && momentumId.current === null) {
         const delta = currentTime - lastTime
         if (delta > 16) { // ~60fps
           scrollContainer.scrollLeft += speed
@@ -417,21 +421,68 @@ const ImageScrollerSection = () => {
     return () => cancelAnimationFrame(animationId)
   }, [isHovered, isDragging])
 
+  // Momentum scroll after drag release
+  const startMomentum = () => {
+    const scrollContainer = scrollRef.current
+    if (!scrollContainer || Math.abs(velocity.current) < 0.5) {
+      momentumId.current = null
+      return
+    }
+
+    const friction = 0.95
+    
+    const animateMomentum = () => {
+      if (!scrollContainer || Math.abs(velocity.current) < 0.5) {
+        momentumId.current = null
+        return
+      }
+      
+      scrollContainer.scrollLeft += velocity.current
+      velocity.current *= friction
+      
+      momentumId.current = requestAnimationFrame(animateMomentum)
+    }
+    
+    momentumId.current = requestAnimationFrame(animateMomentum)
+  }
+
   // Handle drag scrolling
   const handleMouseDown = (e: React.MouseEvent) => {
+    // Cancel any ongoing momentum
+    if (momentumId.current !== null) {
+      cancelAnimationFrame(momentumId.current)
+      momentumId.current = null
+    }
+    
     setIsDragging(true)
     dragStartX.current = e.clientX
     scrollStartX.current = scrollRef.current?.scrollLeft || 0
+    lastMouseX.current = e.clientX
+    lastMoveTime.current = Date.now()
+    velocity.current = 0
   }
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!isDragging || !scrollRef.current) return
+    
+    const now = Date.now()
+    const dt = now - lastMoveTime.current
+    
+    if (dt > 0) {
+      const dx = lastMouseX.current - e.clientX
+      velocity.current = dx / dt * 16 // normalize to ~60fps
+    }
+    
+    lastMouseX.current = e.clientX
+    lastMoveTime.current = now
+    
     const delta = dragStartX.current - e.clientX
     scrollRef.current.scrollLeft = scrollStartX.current + delta
   }
 
   const handleMouseUp = () => {
     setIsDragging(false)
+    startMomentum()
   }
 
   const handleMouseLeave = () => {
