@@ -563,7 +563,7 @@ const Home = () => {
       {/* Tagline Section */}
       <section className="py-20 md:py-32 px-6">
         <div className="text-center space-y-4">
-          <h2 className="text-2xl md:text-4xl font-bold tracking-tight uppercase text-neutral-900">
+          <h2 className="text-2xl md:text-4xl font-bold tracking-tight uppercase text-neutral-600">
             Our Promise
           </h2>
           <h2 className="text-2xl md:text-4xl font-bold tracking-tight uppercase text-neutral-400">
