@@ -149,7 +149,7 @@ const ThreeColumnSection = () => {
   const subscriptionPrice = products.subscription?.variants?.[0]?.calculated_price?.calculated_amount || 32.06
   
   return (
-    <section className="pt-8 pb-16 px-4">
+    <section className="px-4">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row md:items-stretch gap-16">
         {/* Left container - Text + Video (66% width) */}
         <div className="hidden md:flex md:w-2/3 gap-16">
