@@ -150,10 +150,10 @@ const ThreeColumnSection = () => {
   
   return (
     <section className="pt-8 pb-16 px-4">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-16">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row md:items-stretch gap-16">
         {/* Column 1 - Sticky text */}
-        <div className="hidden md:flex md:w-1/3">
-          <div className="sticky top-[30vh] h-fit">
+        <div className="hidden md:block md:w-1/3">
+          <div className="sticky top-[30vh]">
             <p className="text-neutral-400 text-[32px] uppercase tracking-wider font-bold leading-none text-center">
               UNCUT COFFEE BEANS. NATURE'S ORIGINAL ENERGY SOURCE.
             </p>
@@ -161,7 +161,7 @@ const ThreeColumnSection = () => {
         </div>
         {/* Column 2 - Sticky video */}
         <div className="md:w-1/3">
-          <div className="sticky top-[20vh] h-fit">
+          <div className="sticky top-[20vh]">
             <video 
               src="https://cdn.mignite.app/ws/works_01KG7HEF506FB5P7HQP4V3WMR7/Make_the_bag_202602031440_h6dsd-01KGHRAQFFRH78TT9E2FPA46FV.mp4"
               autoPlay
