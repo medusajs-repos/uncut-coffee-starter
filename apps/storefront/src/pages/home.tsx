@@ -567,7 +567,7 @@ const Home = () => {
             Raw beans
           </h2>
           <h2 className="text-[32px] leading-none font-bold tracking-tight uppercase text-neutral-400">
-            Everything you need,nothing you don't.
+            Everything you need,<br />nothing you don't.
           </h2>
         </div>
       </section>
