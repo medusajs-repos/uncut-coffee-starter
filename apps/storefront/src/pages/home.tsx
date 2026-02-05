@@ -345,19 +345,16 @@ const SCROLLER_IMAGES = [
 ]
 
 const ImageScrollerSection = () => {
-  // Each image width = (100vw - 36px) / 4
-  // Offset by half an image + half a gap to center the middle image
-  // Half image = (100vw - 36px) / 8, half gap = 6px
-  const offsetStyle = { 
-    paddingLeft: 'calc((100vw - 36px) / 8 + 6px)',
-    paddingRight: 'calc((100vw - 36px) / 8 + 6px)'
-  }
-  
   return (
     <section className="py-16 overflow-hidden">
       <div 
-        className="flex gap-3 overflow-x-auto scrollbar-hide" 
-        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', ...offsetStyle }}
+        className="flex gap-3 overflow-x-auto scrollbar-hide cursor-grab active:cursor-grabbing" 
+        style={{ 
+          scrollbarWidth: 'none', 
+          msOverflowStyle: 'none',
+          paddingLeft: 'calc((100vw - 36px) / 8)',
+          paddingRight: 'calc((100vw - 36px) / 8)'
+        }}
       >
         {SCROLLER_IMAGES.map((src, index) => (
           <div 
@@ -369,7 +366,8 @@ const ImageScrollerSection = () => {
               <img 
                 src={src}
                 alt={`Coffee lifestyle ${index + 1}`}
-                className="absolute inset-0 w-full h-full object-cover rounded-2xl"
+                className="absolute inset-0 w-full h-full object-cover rounded-2xl pointer-events-none"
+                draggable={false}
               />
             </div>
           </div>
