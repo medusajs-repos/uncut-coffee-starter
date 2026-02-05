@@ -149,16 +149,16 @@ const ThreeColumnSection = () => {
   const subscriptionPrice = products.subscription?.variants?.[0]?.calculated_price?.calculated_amount || 32.06
   
   return (
-    <section className="pt-8 pb-0 px-4">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-16 items-start">
+    <section className="pt-8 pb-16 px-4">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-16 md:items-start">
         {/* Column 1 - Sticky text */}
-        <div className="hidden md:flex md:sticky md:top-[calc(50vh-150px)] self-start min-h-[300px] items-center justify-center text-center">
-          <p className="text-neutral-400 text-[32px] uppercase tracking-wider font-bold leading-none">
+        <div className="hidden md:block sticky top-1/2 -translate-y-1/2 h-fit">
+          <p className="text-neutral-400 text-[32px] uppercase tracking-wider font-bold leading-none text-center">
             UNCUT COFFEE BEANS. NATURE'S ORIGINAL ENERGY SOURCE.
           </p>
         </div>
         {/* Column 2 - Sticky video */}
-        <div className="md:sticky md:top-[calc(50vh-200px)] self-start">
+        <div className="sticky top-1/2 -translate-y-1/2 h-fit">
           <video 
             src="https://cdn.mignite.app/ws/works_01KG7HEF506FB5P7HQP4V3WMR7/Make_the_bag_202602031440_h6dsd-01KGHRAQFFRH78TT9E2FPA46FV.mp4"
             autoPlay
