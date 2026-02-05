@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import Footer from "@/components/footer"
 import { useAddToCart } from "@/lib/hooks/use-cart"
 import { useCartDrawer } from "@/lib/context/cart"
@@ -345,33 +345,110 @@ const SCROLLER_IMAGES = [
 ]
 
 const ImageScrollerSection = () => {
+  const scrollRef = useRef<HTMLDivElement>(null)
+  const [isHovered, setIsHovered] = useState(false)
+  const [isDragging, setIsDragging] = useState(false)
+  const dragStartX = useRef(0)
+  const scrollStartX = useRef(0)
+
+  // Triple the images for seamless infinite scroll
+  const tripleImages = [...SCROLLER_IMAGES, ...SCROLLER_IMAGES, ...SCROLLER_IMAGES]
+
+  // Auto-scroll animation
+  useEffect(() => {
+    const scrollContainer = scrollRef.current
+    if (!scrollContainer) return
+
+    // Set initial scroll position to middle set
+    const imageWidth = scrollContainer.scrollWidth / 3
+    scrollContainer.scrollLeft = imageWidth
+
+    let animationId: number
+    let lastTime = 0
+    const speed = 0.5 // pixels per frame
+
+    const animate = (currentTime: number) => {
+      if (!isHovered && !isDragging) {
+        const delta = currentTime - lastTime
+        if (delta > 16) { // ~60fps
+          scrollContainer.scrollLeft += speed
+          
+          // Reset to middle when reaching end
+          if (scrollContainer.scrollLeft >= imageWidth * 2) {
+            scrollContainer.scrollLeft = imageWidth
+          }
+          // Reset to middle when scrolling backwards past start
+          if (scrollContainer.scrollLeft <= 0) {
+            scrollContainer.scrollLeft = imageWidth
+          }
+          
+          lastTime = currentTime
+        }
+      }
+      animationId = requestAnimationFrame(animate)
+    }
+
+    animationId = requestAnimationFrame(animate)
+    return () => cancelAnimationFrame(animationId)
+  }, [isHovered, isDragging])
+
+  // Handle drag scrolling
+  const handleMouseDown = (e: React.MouseEvent) => {
+    setIsDragging(true)
+    dragStartX.current = e.clientX
+    scrollStartX.current = scrollRef.current?.scrollLeft || 0
+  }
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging || !scrollRef.current) return
+    const delta = dragStartX.current - e.clientX
+    scrollRef.current.scrollLeft = scrollStartX.current + delta
+  }
+
+  const handleMouseUp = () => {
+    setIsDragging(false)
+  }
+
+  const handleMouseLeave = () => {
+    setIsDragging(false)
+    setIsHovered(false)
+  }
+
   return (
     <section className="py-16 overflow-hidden">
       <div 
-        className="flex gap-3 overflow-x-auto scrollbar-hide cursor-grab active:cursor-grabbing" 
+        ref={scrollRef}
+        className="flex gap-3 overflow-x-auto scrollbar-hide cursor-grab active:cursor-grabbing select-none" 
         style={{ 
           scrollbarWidth: 'none', 
           msOverflowStyle: 'none',
-          paddingLeft: 'calc((100vw - 36px) / 8)',
-          paddingRight: 'calc((100vw - 36px) / 8)'
         }}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={handleMouseLeave}
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUp}
       >
-        {SCROLLER_IMAGES.map((src, index) => (
+        {/* Spacer for centering offset */}
+        <div className="flex-shrink-0" style={{ width: 'calc((100vw - 36px) / 8)' }} />
+        {tripleImages.map((src, index) => (
           <div 
-            key={index}
+            key={`scroller-${index}`}
             className="flex-shrink-0"
             style={{ width: 'calc((100vw - 36px) / 4)' }}
           >
             <div className="relative w-full" style={{ paddingBottom: '125%' }}>
               <img 
                 src={src}
-                alt={`Coffee lifestyle ${index + 1}`}
+                alt={`Coffee lifestyle ${(index % SCROLLER_IMAGES.length) + 1}`}
                 className="absolute inset-0 w-full h-full object-cover rounded-2xl pointer-events-none"
                 draggable={false}
               />
             </div>
           </div>
         ))}
+        {/* Spacer for centering offset */}
+        <div className="flex-shrink-0" style={{ width: 'calc((100vw - 36px) / 8)' }} />
       </div>
     </section>
   )
