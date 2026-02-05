@@ -572,9 +572,6 @@ const Home = () => {
         </div>
       </section>
       
-      {/* Divider */}
-      <div className="mx-6 border-t border-dotted border-neutral-300" />
-      
       <section id="shop" className="scroll-mt-10" />
       <section id="why-uncut" className="scroll-mt-10" />
       <section id="our-story" className="scroll-mt-10" />
