@@ -507,10 +507,10 @@ const ImageScrollerSection = () => {
   }
 
   return (
-    <section className="py-16 overflow-hidden">
+    <section className="overflow-hidden">
       <div 
         ref={scrollRef}
-        className={`flex gap-3 overflow-x-auto scrollbar-hide cursor-grab active:cursor-grabbing select-none transition-opacity duration-300 ${isReady ? 'opacity-100' : 'opacity-0'}`}
+        className={`flex gap-6 overflow-x-auto scrollbar-hide cursor-grab active:cursor-grabbing select-none transition-opacity duration-300 ${isReady ? 'opacity-100' : 'opacity-0'}`}
         style={{ 
           scrollbarWidth: 'none', 
           msOverflowStyle: 'none',
