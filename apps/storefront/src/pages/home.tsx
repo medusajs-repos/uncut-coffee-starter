@@ -347,17 +347,23 @@ const SCROLLER_IMAGES = [
 const ImageScrollerSection = () => {
   return (
     <section className="py-16 overflow-hidden">
-      <div className="flex gap-4 px-4 overflow-x-auto scrollbar-hide" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+      <div 
+        className="flex gap-3 overflow-x-auto scrollbar-hide" 
+        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+      >
         {SCROLLER_IMAGES.map((src, index) => (
           <div 
             key={index}
-            className="flex-shrink-0 w-[320px] md:w-[400px] lg:w-[480px]"
+            className="flex-shrink-0"
+            style={{ width: 'calc((100vw - 36px) / 4)' }}
           >
-            <img 
-              src={src}
-              alt={`Coffee lifestyle ${index + 1}`}
-              className="w-full h-[420px] md:h-[520px] lg:h-[620px] object-cover rounded-2xl"
-            />
+            <div className="relative w-full" style={{ paddingBottom: '125%' }}>
+              <img 
+                src={src}
+                alt={`Coffee lifestyle ${index + 1}`}
+                className="absolute inset-0 w-full h-full object-cover rounded-2xl"
+              />
+            </div>
           </div>
         ))}
       </div>
