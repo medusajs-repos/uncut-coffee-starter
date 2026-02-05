@@ -360,20 +360,34 @@ const ImageScrollerSection = () => {
   const tripleImages = [...SCROLLER_IMAGES, ...SCROLLER_IMAGES, ...SCROLLER_IMAGES]
 
   // Initialize scroll position to center image 3 (index 2) in the middle set
+  const [imagesLoaded, setImagesLoaded] = useState(false)
+  const loadedCount = useRef(0)
+  
+  const handleImageLoad = () => {
+    loadedCount.current += 1
+    // Wait for at least the first set of images to load
+    if (loadedCount.current >= SCROLLER_IMAGES.length) {
+      setImagesLoaded(true)
+    }
+  }
+  
   useEffect(() => {
     const scrollContainer = scrollRef.current
-    if (!scrollContainer) return
+    if (!scrollContainer || !imagesLoaded) return
     
-    const singleSetWidth = scrollContainer.scrollWidth / 3
-    const imageWidth = singleSetWidth / SCROLLER_IMAGES.length
-    const containerWidth = scrollContainer.clientWidth
-    
-    // Start of middle set + offset to image 3 (index 2) + center the image
-    const image3Offset = imageWidth * 2 // 2 images before image 3
-    const centerOffset = (containerWidth - imageWidth) / 2
-    
-    scrollContainer.scrollLeft = singleSetWidth + image3Offset - centerOffset
-  }, [])
+    // Use requestAnimationFrame to ensure layout is complete
+    requestAnimationFrame(() => {
+      const singleSetWidth = scrollContainer.scrollWidth / 3
+      const imageWidth = singleSetWidth / SCROLLER_IMAGES.length
+      const containerWidth = scrollContainer.clientWidth
+      
+      // Start of middle set + offset to image 3 (index 2) + center the image
+      const image3Offset = imageWidth * 2 // 2 images before image 3
+      const centerOffset = (containerWidth - imageWidth) / 2
+      
+      scrollContainer.scrollLeft = singleSetWidth + image3Offset - centerOffset
+    })
+  }, [imagesLoaded])
 
   // Handle infinite loop on scroll
   useEffect(() => {
@@ -501,7 +515,7 @@ const ImageScrollerSection = () => {
     <section className="py-16 overflow-hidden">
       <div 
         ref={scrollRef}
-        className="flex gap-3 overflow-x-auto scrollbar-hide cursor-grab active:cursor-grabbing select-none" 
+        className={`flex gap-3 overflow-x-auto scrollbar-hide cursor-grab active:cursor-grabbing select-none transition-opacity duration-300 ${imagesLoaded ? 'opacity-100' : 'opacity-0'}`}
         style={{ 
           scrollbarWidth: 'none', 
           msOverflowStyle: 'none',
@@ -526,6 +540,7 @@ const ImageScrollerSection = () => {
                 alt={`Coffee lifestyle ${(index % SCROLLER_IMAGES.length) + 1}`}
                 className="absolute inset-0 w-full h-full object-cover rounded-2xl pointer-events-none"
                 draggable={false}
+                onLoad={handleImageLoad}
               />
             </div>
           </div>
