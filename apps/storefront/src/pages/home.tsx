@@ -563,10 +563,10 @@ const Home = () => {
       {/* Tagline Section */}
       <section className="py-20 md:py-32 px-6">
         <div className="text-center space-y-4">
-          <h2 className="text-[32px] font-bold tracking-tight uppercase text-neutral-500">
+          <h2 className="text-[32px] leading-none font-bold tracking-tight uppercase text-neutral-500">
             Our Promise
           </h2>
-          <h2 className="text-[32px] font-bold tracking-tight uppercase text-neutral-400">
+          <h2 className="text-[32px] leading-none font-bold tracking-tight uppercase text-neutral-400">
             Maple + Salt: Everything you need, nothing you don't.
           </h2>
         </div>
