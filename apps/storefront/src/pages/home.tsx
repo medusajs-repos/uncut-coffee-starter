@@ -155,7 +155,7 @@ const ThreeColumnSection = () => {
         <div className="hidden md:flex md:w-2/3 gap-16">
           {/* Column 1 - Sticky text */}
           <div className="w-1/2">
-            <div className="sticky top-[20vh]">
+            <div className="sticky top-[20vh] h-[60vh] flex items-center">
               <p className="text-neutral-400 text-[32px] uppercase tracking-wider font-bold leading-none text-center">
                 UNCUT COFFEE BEANS. NATURE'S ORIGINAL ENERGY SOURCE.
               </p>
@@ -163,7 +163,7 @@ const ThreeColumnSection = () => {
           </div>
           {/* Column 2 - Sticky video */}
           <div className="w-1/2">
-            <div className="sticky top-[20vh]">
+            <div className="sticky top-[20vh] h-[60vh] flex items-center">
               <video 
                 src="https://cdn.mignite.app/ws/works_01KG7HEF506FB5P7HQP4V3WMR7/Make_the_bag_202602031440_h6dsd-01KGHRAQFFRH78TT9E2FPA46FV.mp4"
                 autoPlay
