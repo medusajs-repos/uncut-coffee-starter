@@ -156,15 +156,17 @@ const ThreeColumnSection = () => {
             UNCUT COFFEE BEANS. NATURE'S ORIGINAL ENERGY SOURCE.
           </p>
         </div>
-        <div className="overflow-hidden flex items-center">
-          <video 
-            src="https://cdn.mignite.app/ws/works_01KG7HEF506FB5P7HQP4V3WMR7/Make_the_bag_202602031440_h6dsd-01KGHRAQFFRH78TT9E2FPA46FV.mp4"
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="w-full h-auto"
-          />
+        <div className="overflow-hidden flex items-start">
+          <div className="sticky top-1/2 -translate-y-1/2">
+            <video 
+              src="https://cdn.mignite.app/ws/works_01KG7HEF506FB5P7HQP4V3WMR7/Make_the_bag_202602031440_h6dsd-01KGHRAQFFRH78TT9E2FPA46FV.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="w-full h-auto"
+            />
+          </div>
         </div>
         <div className="bg-white min-h-[300px] flex flex-col">
           <h3 className="text-yellow-900 text-sm font-bold uppercase tracking-wider">beans 350g</h3>
