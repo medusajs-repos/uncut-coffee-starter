@@ -150,32 +150,23 @@ const ThreeColumnSection = () => {
   
   return (
     <section className="pt-8 pb-0 px-4">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-[1fr_1fr_1.2fr] gap-8">
-        {/* Left text column - sticky */}
-        <div className="hidden md:flex">
-          <div className="sticky top-1/2 -translate-y-1/2 h-fit">
-            <p className="text-neutral-400 text-[28px] uppercase tracking-wider font-bold leading-tight text-center">
-              UNCUT COFFEE BEANS. NATURE'S ORIGINAL ENERGY SOURCE.
-            </p>
-          </div>
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-16">
+        <div className="min-h-[300px] flex items-center justify-center text-center">
+          <p className="text-neutral-400 text-[32px] uppercase tracking-wider font-bold leading-none">
+            UNCUT COFFEE BEANS. NATURE'S ORIGINAL ENERGY SOURCE.
+          </p>
         </div>
-        
-        {/* Center video column - sticky */}
-        <div className="hidden md:flex">
-          <div className="sticky top-1/2 -translate-y-1/2 h-fit">
-            <video 
-              src="https://cdn.mignite.app/ws/works_01KG7HEF506FB5P7HQP4V3WMR7/Make_the_bag_202602031440_h6dsd-01KGHRAQFFRH78TT9E2FPA46FV.mp4"
-              autoPlay
-              muted
-              loop
-              playsInline
-              className="w-full h-auto max-w-[300px] mx-auto"
-            />
-          </div>
+        <div className="overflow-hidden flex items-center">
+          <video 
+            src="https://cdn.mignite.app/ws/works_01KG7HEF506FB5P7HQP4V3WMR7/Make_the_bag_202602031440_h6dsd-01KGHRAQFFRH78TT9E2FPA46FV.mp4"
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="w-full h-auto"
+          />
         </div>
-        
-        {/* Right product details column - scrolls */}
-        <div className="bg-white flex flex-col">
+        <div className="bg-white min-h-[300px] flex flex-col">
           <h3 className="text-yellow-900 text-sm font-bold uppercase tracking-wider">beans 350g</h3>
           <div className="border-t border-dotted border-[#3d2a1a]/30 my-3" />
           <p className="text-black text-sm font-bold uppercase tracking-wider leading-relaxed">
