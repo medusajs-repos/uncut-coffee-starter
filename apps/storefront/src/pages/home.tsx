@@ -156,8 +156,8 @@ const ThreeColumnSection = () => {
             UNCUT COFFEE BEANS. NATURE'S ORIGINAL ENERGY SOURCE.
           </p>
         </div>
-        <div className="overflow-hidden flex items-start">
-          <div className="sticky top-1/2 -translate-y-1/2">
+        <div className="relative">
+          <div className="sticky top-[50vh] -translate-y-1/2">
             <video 
               src="https://cdn.mignite.app/ws/works_01KG7HEF506FB5P7HQP4V3WMR7/Make_the_bag_202602031440_h6dsd-01KGHRAQFFRH78TT9E2FPA46FV.mp4"
               autoPlay
