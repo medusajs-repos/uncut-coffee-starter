@@ -150,13 +150,15 @@ const ThreeColumnSection = () => {
   
   return (
     <section className="pt-8 pb-0 px-4">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-16">
-        <div className="min-h-[300px] flex items-center justify-center text-center">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-16 items-start">
+        {/* Column 1 - Sticky text */}
+        <div className="hidden md:flex md:sticky md:top-[calc(50vh-150px)] self-start min-h-[300px] items-center justify-center text-center">
           <p className="text-neutral-400 text-[32px] uppercase tracking-wider font-bold leading-none">
             UNCUT COFFEE BEANS. NATURE'S ORIGINAL ENERGY SOURCE.
           </p>
         </div>
-        <div className="overflow-hidden flex items-center">
+        {/* Column 2 - Sticky video */}
+        <div className="md:sticky md:top-[calc(50vh-200px)] self-start">
           <video 
             src="https://cdn.mignite.app/ws/works_01KG7HEF506FB5P7HQP4V3WMR7/Make_the_bag_202602031440_h6dsd-01KGHRAQFFRH78TT9E2FPA46FV.mp4"
             autoPlay
@@ -166,7 +168,8 @@ const ThreeColumnSection = () => {
             className="w-full h-auto"
           />
         </div>
-        <div className="bg-white min-h-[300px] flex flex-col">
+        {/* Column 3 - Scrollable content */}
+        <div className="bg-white flex flex-col">
           <h3 className="text-yellow-900 text-sm font-bold uppercase tracking-wider">beans 350g</h3>
           <div className="border-t border-dotted border-[#3d2a1a]/30 my-3" />
           <p className="text-black text-sm font-bold uppercase tracking-wider leading-relaxed">
