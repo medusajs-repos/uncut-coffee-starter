@@ -150,14 +150,14 @@ const ThreeColumnSection = () => {
   
   return (
     <section className="pt-8 pb-0 px-4">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-16">
-        <div className="min-h-[300px] flex items-center justify-center text-center">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-16 items-start">
+        <div className="md:sticky md:top-[50vh] md:-translate-y-1/2 min-h-[300px] flex items-center justify-center text-center">
           <p className="text-neutral-400 text-[32px] uppercase tracking-wider font-bold leading-none">
             UNCUT COFFEE BEANS. NATURE'S ORIGINAL ENERGY SOURCE.
           </p>
         </div>
-        <div className="relative">
-          <div className="sticky top-[50vh] -translate-y-1/2">
+        <div className="md:sticky md:top-[50vh] md:-translate-y-1/2">
+          <div>
             <video 
               src="https://cdn.mignite.app/ws/works_01KG7HEF506FB5P7HQP4V3WMR7/Make_the_bag_202602031440_h6dsd-01KGHRAQFFRH78TT9E2FPA46FV.mp4"
               autoPlay
@@ -168,7 +168,7 @@ const ThreeColumnSection = () => {
             />
           </div>
         </div>
-        <div className="bg-white min-h-[300px] flex flex-col">
+        <div className="bg-white flex flex-col">
           <h3 className="text-yellow-900 text-sm font-bold uppercase tracking-wider">beans 350g</h3>
           <div className="border-t border-dotted border-[#3d2a1a]/30 my-3" />
           <p className="text-black text-sm font-bold uppercase tracking-wider leading-relaxed">
