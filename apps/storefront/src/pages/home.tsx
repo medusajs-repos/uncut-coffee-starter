@@ -564,10 +564,10 @@ const Home = () => {
       <section className="py-20 md:py-32 px-6">
         <div className="text-center">
           <h2 className="text-[32px] leading-none font-bold tracking-tight uppercase text-neutral-500">
-            Our Promise
+            Raw beans
           </h2>
           <h2 className="text-[32px] leading-none font-bold tracking-tight uppercase text-neutral-400">
-            Maple + Salt: Everything you need, nothing you don't.
+            Everything you need,nothing you don't.
           </h2>
         </div>
       </section>
