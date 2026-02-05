@@ -45,7 +45,7 @@ const HERO_VIDEO = "https://cdn.mignite.app/ws/works_01KG7HEF506FB5P7HQP4V3WMR7/
 const HeroSection = () => {
   return (
     <div 
-      className="relative w-screen h-[100dvh] overflow-hidden bg-[#3d2a1a] rounded-b-[16px]"
+      className="relative w-screen h-[100dvh] overflow-hidden bg-[#3d2a1a] rounded-b-[16px] z-10"
     >
       <video 
         src={HERO_VIDEO}
