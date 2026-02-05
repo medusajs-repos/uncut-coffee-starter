@@ -554,6 +554,7 @@ const Home = () => {
   return (
     <>
       <HeroSection />
+      <div className="h-8" />
       <ThreeColumnSection />
       <ImageScrollerSection />
       <section id="shop" className="scroll-mt-10" />
