@@ -350,38 +350,63 @@ const ImageScrollerSection = () => {
   const [isDragging, setIsDragging] = useState(false)
   const dragStartX = useRef(0)
   const scrollStartX = useRef(0)
+  const isResetting = useRef(false)
 
   // Triple the images for seamless infinite scroll
   const tripleImages = [...SCROLLER_IMAGES, ...SCROLLER_IMAGES, ...SCROLLER_IMAGES]
+
+  // Initialize scroll position to middle set
+  useEffect(() => {
+    const scrollContainer = scrollRef.current
+    if (!scrollContainer) return
+    
+    const singleSetWidth = scrollContainer.scrollWidth / 3
+    scrollContainer.scrollLeft = singleSetWidth
+  }, [])
+
+  // Handle infinite loop on scroll
+  useEffect(() => {
+    const scrollContainer = scrollRef.current
+    if (!scrollContainer) return
+
+    const handleScroll = () => {
+      if (isResetting.current) return
+      
+      const singleSetWidth = scrollContainer.scrollWidth / 3
+      const currentScroll = scrollContainer.scrollLeft
+      
+      // If scrolled past the end of middle set, jump to start of middle set
+      if (currentScroll >= singleSetWidth * 2) {
+        isResetting.current = true
+        scrollContainer.scrollLeft = currentScroll - singleSetWidth
+        requestAnimationFrame(() => { isResetting.current = false })
+      }
+      // If scrolled before the start of middle set, jump to end of middle set
+      else if (currentScroll < singleSetWidth * 0.1) {
+        isResetting.current = true
+        scrollContainer.scrollLeft = currentScroll + singleSetWidth
+        requestAnimationFrame(() => { isResetting.current = false })
+      }
+    }
+
+    scrollContainer.addEventListener('scroll', handleScroll)
+    return () => scrollContainer.removeEventListener('scroll', handleScroll)
+  }, [])
 
   // Auto-scroll animation
   useEffect(() => {
     const scrollContainer = scrollRef.current
     if (!scrollContainer) return
 
-    // Set initial scroll position to middle set
-    const imageWidth = scrollContainer.scrollWidth / 3
-    scrollContainer.scrollLeft = imageWidth
-
     let animationId: number
     let lastTime = 0
     const speed = 0.5 // pixels per frame
 
     const animate = (currentTime: number) => {
-      if (!isHovered && !isDragging) {
+      if (!isHovered && !isDragging && !isResetting.current) {
         const delta = currentTime - lastTime
         if (delta > 16) { // ~60fps
           scrollContainer.scrollLeft += speed
-          
-          // Reset to middle when reaching end
-          if (scrollContainer.scrollLeft >= imageWidth * 2) {
-            scrollContainer.scrollLeft = imageWidth
-          }
-          // Reset to middle when scrolling backwards past start
-          if (scrollContainer.scrollLeft <= 0) {
-            scrollContainer.scrollLeft = imageWidth
-          }
-          
           lastTime = currentTime
         }
       }
