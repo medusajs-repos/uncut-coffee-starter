@@ -162,15 +162,15 @@ const ThreeColumnSection = () => {
             </div>
           </div>
           {/* Column 2 - Sticky video */}
-          <div className="w-1/2">
-            <div className="sticky top-[20vh] h-[60vh] flex items-center">
+          <div className="w-1/2 overflow-hidden">
+            <div className="sticky top-[20vh] h-[60vh] flex items-center overflow-hidden">
               <video 
                 src="https://cdn.mignite.app/ws/works_01KG7HEF506FB5P7HQP4V3WMR7/Make_the_bag_202602031440_h6dsd-01KGHRAQFFRH78TT9E2FPA46FV.mp4"
                 autoPlay
                 muted
                 loop
                 playsInline
-                className="w-full h-auto"
+                className="w-full h-full object-contain"
               />
             </div>
           </div>
