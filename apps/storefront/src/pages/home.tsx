@@ -556,6 +556,7 @@ const Home = () => {
       <HeroSection />
       <div className="h-8" />
       <ThreeColumnSection />
+      <div className="h-8" />
       <ImageScrollerSection />
       <section id="shop" className="scroll-mt-10" />
       <section id="why-uncut" className="scroll-mt-10" />
