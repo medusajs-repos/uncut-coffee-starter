@@ -152,7 +152,7 @@ const ThreeColumnSection = () => {
     <section className="pt-8 pb-16 px-4">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row md:items-stretch gap-16">
         {/* Column 1 - Sticky text */}
-        <div className="hidden md:block md:w-1/3">
+        <div className="hidden md:block md:w-1/3 pt-[100vh]">
           <div className="sticky top-[50vh] -translate-y-1/2">
             <p className="text-neutral-400 text-[32px] uppercase tracking-wider font-bold leading-none text-center">
               UNCUT COFFEE BEANS. NATURE'S ORIGINAL ENERGY SOURCE.
