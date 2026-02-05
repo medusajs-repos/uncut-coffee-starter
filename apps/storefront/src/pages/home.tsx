@@ -561,7 +561,7 @@ const Home = () => {
       <ImageScrollerSection />
       
       {/* Tagline Section */}
-      <section className="py-20 md:py-32 px-6">
+      <section className="py-16 px-6">
         <div className="text-center">
           <h2 className="text-[32px] leading-none font-bold tracking-tight uppercase text-neutral-500">
             Raw beans
