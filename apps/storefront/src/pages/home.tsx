@@ -150,23 +150,27 @@ const ThreeColumnSection = () => {
   
   return (
     <section className="pt-8 pb-16 px-4">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-16 md:items-start">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-16">
         {/* Column 1 - Sticky text */}
-        <div className="hidden md:block sticky top-1/2 -translate-y-1/2 h-fit">
-          <p className="text-neutral-400 text-[32px] uppercase tracking-wider font-bold leading-none text-center">
-            UNCUT COFFEE BEANS. NATURE'S ORIGINAL ENERGY SOURCE.
-          </p>
+        <div className="hidden md:flex items-start">
+          <div className="sticky top-[30vh]">
+            <p className="text-neutral-400 text-[32px] uppercase tracking-wider font-bold leading-none text-center">
+              UNCUT COFFEE BEANS. NATURE'S ORIGINAL ENERGY SOURCE.
+            </p>
+          </div>
         </div>
         {/* Column 2 - Sticky video */}
-        <div className="sticky top-1/2 -translate-y-1/2 h-fit">
-          <video 
-            src="https://cdn.mignite.app/ws/works_01KG7HEF506FB5P7HQP4V3WMR7/Make_the_bag_202602031440_h6dsd-01KGHRAQFFRH78TT9E2FPA46FV.mp4"
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="w-full h-auto"
-          />
+        <div className="flex items-start">
+          <div className="sticky top-[20vh]">
+            <video 
+              src="https://cdn.mignite.app/ws/works_01KG7HEF506FB5P7HQP4V3WMR7/Make_the_bag_202602031440_h6dsd-01KGHRAQFFRH78TT9E2FPA46FV.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="w-full h-auto"
+            />
+          </div>
         </div>
         {/* Column 3 - Scrollable content */}
         <div className="bg-white flex flex-col">
