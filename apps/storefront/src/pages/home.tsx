@@ -154,8 +154,8 @@ const ThreeColumnSection = () => {
         {/* Left container - Text + Video (66% width) */}
         <div className="hidden md:flex md:w-2/3 gap-16">
           {/* Column 1 - Sticky text */}
-          <div className="w-1/2 pt-[50vh]">
-            <div className="sticky top-1/2 -translate-y-1/2">
+          <div className="w-1/2">
+            <div className="sticky top-[20vh]">
               <p className="text-neutral-400 text-[32px] uppercase tracking-wider font-bold leading-none text-center">
                 UNCUT COFFEE BEANS. NATURE'S ORIGINAL ENERGY SOURCE.
               </p>
