@@ -345,11 +345,19 @@ const SCROLLER_IMAGES = [
 ]
 
 const ImageScrollerSection = () => {
+  // Each image width = (100vw - 36px) / 4
+  // Offset by half an image + half a gap to center the middle image
+  // Half image = (100vw - 36px) / 8, half gap = 6px
+  const offsetStyle = { 
+    paddingLeft: 'calc((100vw - 36px) / 8 + 6px)',
+    paddingRight: 'calc((100vw - 36px) / 8 + 6px)'
+  }
+  
   return (
     <section className="py-16 overflow-hidden">
       <div 
         className="flex gap-3 overflow-x-auto scrollbar-hide" 
-        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', ...offsetStyle }}
       >
         {SCROLLER_IMAGES.map((src, index) => (
           <div 
