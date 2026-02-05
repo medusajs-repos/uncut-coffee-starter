@@ -507,7 +507,7 @@ const ImageScrollerSection = () => {
   }
 
   return (
-    <section className="overflow-hidden">
+    <section className="overflow-hidden py-8">
       <div 
         ref={scrollRef}
         className={`flex gap-6 overflow-x-auto scrollbar-hide cursor-grab active:cursor-grabbing select-none transition-opacity duration-300 ${isReady ? 'opacity-100' : 'opacity-0'}`}
@@ -522,12 +522,12 @@ const ImageScrollerSection = () => {
         onMouseUp={handleMouseUp}
       >
         {/* Spacer for centering offset */}
-        <div className="flex-shrink-0" style={{ width: 'calc((100vw - 36px) / 8)' }} />
+        <div className="flex-shrink-0" style={{ width: 'calc((100vw - 72px) / 8)' }} />
         {tripleImages.map((src, index) => (
           <div 
             key={`scroller-${index}`}
             className="flex-shrink-0"
-            style={{ width: 'calc((100vw - 36px) / 4)' }}
+            style={{ width: 'calc((100vw - 72px) / 3.5)' }}
           >
             <div className="relative w-full" style={{ paddingBottom: '125%' }}>
               <img 
@@ -540,7 +540,7 @@ const ImageScrollerSection = () => {
           </div>
         ))}
         {/* Spacer for centering offset */}
-        <div className="flex-shrink-0" style={{ width: 'calc((100vw - 36px) / 8)' }} />
+        <div className="flex-shrink-0" style={{ width: 'calc((100vw - 72px) / 8)' }} />
       </div>
     </section>
   )
