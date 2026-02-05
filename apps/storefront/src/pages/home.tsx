@@ -359,24 +359,16 @@ const ImageScrollerSection = () => {
   // Triple the images for seamless infinite scroll
   const tripleImages = [...SCROLLER_IMAGES, ...SCROLLER_IMAGES, ...SCROLLER_IMAGES]
 
+  // Track if initial scroll position has been set
+  const [isReady, setIsReady] = useState(false)
+  
   // Initialize scroll position to center image 3 (index 2) in the middle set
-  const [imagesLoaded, setImagesLoaded] = useState(false)
-  const loadedCount = useRef(0)
-  
-  const handleImageLoad = () => {
-    loadedCount.current += 1
-    // Wait for at least the first set of images to load
-    if (loadedCount.current >= SCROLLER_IMAGES.length) {
-      setImagesLoaded(true)
-    }
-  }
-  
   useEffect(() => {
     const scrollContainer = scrollRef.current
-    if (!scrollContainer || !imagesLoaded) return
+    if (!scrollContainer) return
     
-    // Use requestAnimationFrame to ensure layout is complete
-    requestAnimationFrame(() => {
+    // Small delay to ensure images have dimensions
+    const timer = setTimeout(() => {
       const singleSetWidth = scrollContainer.scrollWidth / 3
       const imageWidth = singleSetWidth / SCROLLER_IMAGES.length
       const containerWidth = scrollContainer.clientWidth
@@ -386,8 +378,11 @@ const ImageScrollerSection = () => {
       const centerOffset = (containerWidth - imageWidth) / 2
       
       scrollContainer.scrollLeft = singleSetWidth + image3Offset - centerOffset
-    })
-  }, [imagesLoaded])
+      setIsReady(true)
+    }, 100)
+    
+    return () => clearTimeout(timer)
+  }, [])
 
   // Handle infinite loop on scroll
   useEffect(() => {
@@ -515,7 +510,7 @@ const ImageScrollerSection = () => {
     <section className="py-16 overflow-hidden">
       <div 
         ref={scrollRef}
-        className={`flex gap-3 overflow-x-auto scrollbar-hide cursor-grab active:cursor-grabbing select-none transition-opacity duration-300 ${imagesLoaded ? 'opacity-100' : 'opacity-0'}`}
+        className={`flex gap-3 overflow-x-auto scrollbar-hide cursor-grab active:cursor-grabbing select-none transition-opacity duration-300 ${isReady ? 'opacity-100' : 'opacity-0'}`}
         style={{ 
           scrollbarWidth: 'none', 
           msOverflowStyle: 'none',
@@ -540,7 +535,6 @@ const ImageScrollerSection = () => {
                 alt={`Coffee lifestyle ${(index % SCROLLER_IMAGES.length) + 1}`}
                 className="absolute inset-0 w-full h-full object-cover rounded-2xl pointer-events-none"
                 draggable={false}
-                onLoad={handleImageLoad}
               />
             </div>
           </div>
