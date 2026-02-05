@@ -559,6 +559,23 @@ const Home = () => {
       <ThreeColumnSection />
       <div className="h-8" />
       <ImageScrollerSection />
+      
+      {/* Tagline Section */}
+      <section className="py-20 md:py-32 px-6">
+        <div className="text-center">
+          <h2 className="text-2xl md:text-4xl font-black tracking-tight uppercase">
+            <span className="text-[#1a1a1a]">Maple + Salt:</span>
+            <br />
+            <span className="text-neutral-400">Everything you need,</span>
+            <br />
+            <span className="text-neutral-400">nothing you don't.</span>
+          </h2>
+        </div>
+      </section>
+      
+      {/* Divider */}
+      <div className="mx-6 border-t border-dotted border-neutral-300" />
+      
       <section id="shop" className="scroll-mt-10" />
       <section id="why-uncut" className="scroll-mt-10" />
       <section id="our-story" className="scroll-mt-10" />
