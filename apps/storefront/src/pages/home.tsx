@@ -335,12 +335,43 @@ const ThreeColumnSection = () => {
   )
 }
 
+// Image Scroller Section
+const SCROLLER_IMAGES = [
+  "https://cdn.mignite.app/ws/works_01KG7HEF506FB5P7HQP4V3WMR7/generated-01KGPQAVEATRSAF62DS7KXH95M-01KGPQAVEA27VFBBM95DE6V6Z3.jpeg",
+  "https://cdn.mignite.app/ws/works_01KG7HEF506FB5P7HQP4V3WMR7/generated-01KGPQAWDEFNBBET9N7MHD49AF-01KGPQAWDEE3T9XAN47VVAYC17.jpeg",
+  "https://cdn.mignite.app/ws/works_01KG7HEF506FB5P7HQP4V3WMR7/generated-01KGPQAY9QQ2NMCG0XCMZPEN9R-01KGPQAY9QWJD6SR7H3H2CDC6W.jpeg",
+  "https://cdn.mignite.app/ws/works_01KG7HEF506FB5P7HQP4V3WMR7/generated-01KGPQAYE1PNDQK0B5WVK6WFRG-01KGPQAYE1ATE9CMGPGGKB3T1M.jpeg",
+  "https://cdn.mignite.app/ws/works_01KG7HEF506FB5P7HQP4V3WMR7/generated-01KGPQAYJY4VZ8S4DSVK0V2T59-01KGPQAYJYZD6BQRCR3F640N4Z.jpeg",
+]
+
+const ImageScrollerSection = () => {
+  return (
+    <section className="py-16 overflow-hidden">
+      <div className="flex gap-4 px-4 overflow-x-auto scrollbar-hide" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+        {SCROLLER_IMAGES.map((src, index) => (
+          <div 
+            key={index}
+            className="flex-shrink-0 w-[320px] md:w-[400px] lg:w-[480px]"
+          >
+            <img 
+              src={src}
+              alt={`Coffee lifestyle ${index + 1}`}
+              className="w-full h-[420px] md:h-[520px] lg:h-[620px] object-cover rounded-2xl"
+            />
+          </div>
+        ))}
+      </div>
+    </section>
+  )
+}
+
 // Main Home Component
 const Home = () => {
   return (
     <>
       <HeroSection />
       <ThreeColumnSection />
+      <ImageScrollerSection />
       <section id="shop" className="scroll-mt-10" />
       <section id="why-uncut" className="scroll-mt-10" />
       <section id="our-story" className="scroll-mt-10" />
