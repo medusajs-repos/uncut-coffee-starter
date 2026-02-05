@@ -10,9 +10,13 @@
     letter-spacing: -0.02em;
   }
 
-  html, body {
-    overflow-x: hidden;
+  body {
     width: 100%;
+  }
+  
+  /* Use clip instead of hidden for overflow-x to preserve sticky positioning */
+  html {
+    overflow-x: clip;
   }
 }
 
