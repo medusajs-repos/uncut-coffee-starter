@@ -601,6 +601,7 @@ const Home = () => {
               Whether you brew with espresso, pour-over, French press, or cold brew, we offer the ideal grind size to extract the best flavors from your beans.
             </p>
           </AccordionItem>
+          <div className="border-t border-dotted border-neutral-400" />
         </div>
       </section>
       
