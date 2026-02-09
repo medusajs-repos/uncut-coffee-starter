@@ -35,7 +35,7 @@ export const Route = createFileRoute("/$countryCode/checkout")({
     return {
       region,
       countryCode,
-      step,
+      step: step as string,
     }
   },
   component: Checkout,

@@ -22,7 +22,7 @@ export const Route = createFileRoute("/$countryCode/order/$orderId/confirmed")({
 
     return {
       countryCode,
-      order,
+      order: order as any,
     }
   },
   component: OrderConfirmationPage,
