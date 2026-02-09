@@ -573,6 +573,37 @@ const Home = () => {
         </div>
       </section>
       
+      {/* FAQ Section */}
+      <section className="py-8 px-6 max-w-4xl mx-auto">
+        <div className="border-b border-neutral-300">
+          <AccordionItem title="Easy to Digest">
+            <p className="text-neutral-600 text-sm leading-relaxed">
+              Our formula is designed to be gentle on your stomach, using easily digestible ingredients that won't cause bloating or discomfort during your workout.
+            </p>
+          </AccordionItem>
+          <AccordionItem title="50:50 Carb Ratio">
+            <p className="text-neutral-600 text-sm leading-relaxed">
+              The perfect balance of fast and slow-releasing carbohydrates provides sustained energy without the spike and crash of simple sugars.
+            </p>
+          </AccordionItem>
+          <AccordionItem title="Electrolytes & Minerals">
+            <p className="text-neutral-600 text-sm leading-relaxed">
+              Packed with essential electrolytes and minerals to keep you hydrated and performing at your best, replacing what you lose through sweat.
+            </p>
+          </AccordionItem>
+          <AccordionItem title="Quick, Without the Crash">
+            <p className="text-neutral-600 text-sm leading-relaxed">
+              Get the energy boost you need fast, with a sustained release that keeps you going without the dreaded energy crash afterwards.
+            </p>
+          </AccordionItem>
+          <AccordionItem title="Made from Nature, Not a Lab">
+            <p className="text-neutral-600 text-sm leading-relaxed">
+              All-natural ingredients sourced from real food. No artificial sweeteners, colors, or preservatives - just pure, clean energy from nature.
+            </p>
+          </AccordionItem>
+        </div>
+      </section>
+      
       <section id="shop" className="scroll-mt-10" />
       <section id="why-uncut" className="scroll-mt-10" />
       <section id="our-story" className="scroll-mt-10" />
