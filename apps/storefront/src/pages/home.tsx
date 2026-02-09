@@ -166,7 +166,7 @@ const HowToEnjoySection = () => {
         How to Enjoy
       </h2>
       
-      <div className="max-w-[1024px] mx-auto px-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="max-w-[1024px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
         {cards.map((card) => (
           <div key={card.label} className="flex flex-col items-center">
             <span className="text-base font-bold uppercase tracking-wider text-neutral-400 mb-4">
