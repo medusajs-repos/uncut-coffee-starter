@@ -20,6 +20,7 @@ import { Price } from "@/components/ui/price"
 const NAV_LINKS = [
   { label: "SHOP", anchor: "#shop" },
   { label: "WHY UNCUT", anchor: "#why-uncut" },
+  { label: "OUR STORY", anchor: "#our-story" },
 ]
 
 export const Navbar = () => {
@@ -68,13 +69,7 @@ export const Navbar = () => {
                 {link.label}
               </a>
             ))}
-            <Link
-              to={`${baseHref}/account` as any}
-              className="text-[40px] font-bold uppercase tracking-wide text-white hover:opacity-70 transition-opacity cursor-pointer leading-tight"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              ACCOUNT
-            </Link>
+
           </div>
         </div>
       )}
@@ -107,12 +102,7 @@ export const Navbar = () => {
               </a>
             ))}
 
-            {/* Desktop Account - hidden on mobile */}
-            <span
-              className={`hidden md:block text-base font-bold uppercase tracking-wide cursor-pointer hover:opacity-70 transition-opacity ${textColorClass}`}
-            >
-              ACCOUNT
-            </span>
+
 
             <Drawer open={isOpen} onOpenChange={(open) => (open ? openCart() : closeCart())}>
               <DrawerTrigger asChild>
