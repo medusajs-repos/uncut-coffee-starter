@@ -219,7 +219,7 @@ const ThreeColumnSection = () => {
                     onChange={() => setPurchaseType("subscription")}
                     className="w-[16px] h-[16px] appearance-none border border-black rounded-full relative before:content-[''] before:absolute before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:w-[12px] before:h-[12px] before:rounded-full before:bg-yellow-900 before:scale-0 checked:before:scale-100 before:transition-transform flex-shrink-0"
                   />
-                  <span className="text-black text-[14px] uppercase tracking-wider font-bold truncate min-w-0">1 X BOX</span>
+                  <span className="text-black text-[14px] uppercase tracking-wider font-bold truncate min-w-0">1 X SUBSCRIPTION</span>
                   <div className="flex items-center gap-2 ml-auto flex-shrink-0">
                     <span className="text-neutral-400 text-[14px] font-bold line-through">${singlePrice.toFixed(2)}</span>
                     <span className="text-[#3d2a1a] text-[14px] font-bold">${subscriptionPrice.toFixed(2)}</span>
@@ -229,14 +229,17 @@ const ThreeColumnSection = () => {
               <div className="flex items-center justify-between text-[14px] font-bold uppercase tracking-wider text-black">
                 <div className="flex items-center gap-3">
                   <span className="w-4 h-4 flex items-center justify-center"><svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M20 6L9 17l-5-5"/></svg></span>
-                  5 x BAGs DELIVERED
+                  1 x BAG DELIVERED
                 </div>
                 
               </div>
-
               <div className="flex items-center gap-3 text-[14px] font-bold uppercase tracking-wider text-black mt-2">
                 <span className="w-4 h-4 flex items-center justify-center"><svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M20 6L9 17l-5-5"/></svg></span>
-                TO-GO CUP INCLUDED
+                CANCEL OR PAUSE ANYTIME
+              </div>
+              <div className="flex items-center gap-3 text-[14px] font-bold uppercase tracking-wider text-black mt-2">
+                <span className="w-4 h-4 flex items-center justify-center"><svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M20 6L9 17l-5-5"/></svg></span>
+                TO-GO CUP ON 2ND ORDER
               </div>
               <div className="flex items-center gap-3 text-[14px] font-bold uppercase tracking-wider text-black mt-2">
                 <span className="w-4 h-4 flex items-center justify-center"><svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M20 6L9 17l-5-5"/></svg></span>
