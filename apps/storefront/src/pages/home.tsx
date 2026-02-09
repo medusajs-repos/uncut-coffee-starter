@@ -711,24 +711,26 @@ const ImageScrollerSection = () => {
 // Word Cloud Section
 const WordCloudSection = () => {
   const phrases = [
-    { text: "SUNRISE RITUALS", top: "4%", left: "42%" },
-    { text: "SINGLE ORIGIN", top: "10%", left: "8%" },
-    { text: "ROASTED FRESH", top: "12%", left: "28%" },
-    { text: "BOLD FLAVOR", top: "14%", left: "52%" },
-    { text: "MORNING ENERGY", top: "11%", left: "72%" },
-    { text: "SLOW MORNINGS,\nRICH COFFEE", top: "22%", left: "5%" },
-    { text: "THAT FIRST SIP", top: "26%", left: "30%" },
-    { text: "HAND PICKED\nBEANS", top: "24%", left: "55%" },
-    { text: "PURE &\nUNCUT", top: "23%", left: "80%" },
-    { text: "THAT ONE\nMUG", top: "58%", left: "3%" },
-    { text: "AROMA THAT\nWAKES YOU", top: "56%", left: "20%" },
-    { text: "FUEL FOR\nYOUR DAY", top: "55%", left: "45%" },
-    { text: "NO SHORTCUTS", top: "58%", left: "72%" },
-    { text: "CRAFTED WITH\nINTENTION", top: "68%", left: "12%" },
-    { text: "THE RIGHT GRIND\nEVERY TIME", top: "66%", left: "38%" },
-    { text: "EMBRACE THE\nBITTER", top: "70%", left: "68%" },
-    { text: "BEAN TO CUP.\nNOTHING ELSE.", top: "80%", left: "5%" },
-    { text: "WARMTH IN\nYOUR HANDS", top: "82%", left: "30%" },
+    // Top area (above title)
+    { text: "SUNRISE RITUALS", top: "8%", left: "5%" },
+    { text: "SINGLE ORIGIN", top: "6%", left: "25%" },
+    { text: "ROASTED FRESH", top: "12%", left: "45%" },
+    { text: "BOLD FLAVOR", top: "8%", left: "70%" },
+    { text: "MORNING ENERGY", top: "18%", left: "8%" },
+    { text: "SLOW MORNINGS,\nRICH COFFEE", top: "16%", left: "78%" },
+    { text: "THAT FIRST SIP", top: "24%", left: "3%" },
+    { text: "HAND PICKED\nBEANS", top: "22%", left: "82%" },
+    // Bottom area (below title)
+    { text: "PURE &\nUNCUT", top: "62%", left: "3%" },
+    { text: "THAT ONE\nMUG", top: "64%", left: "22%" },
+    { text: "AROMA THAT\nWAKES YOU", top: "60%", left: "75%" },
+    { text: "FUEL FOR\nYOUR DAY", top: "72%", left: "8%" },
+    { text: "NO SHORTCUTS", top: "68%", left: "80%" },
+    { text: "CRAFTED WITH\nINTENTION", top: "78%", left: "25%" },
+    { text: "THE RIGHT GRIND\nEVERY TIME", top: "74%", left: "55%" },
+    { text: "EMBRACE THE\nBITTER", top: "82%", left: "70%" },
+    { text: "BEAN TO CUP.\nNOTHING ELSE.", top: "86%", left: "5%" },
+    { text: "WARMTH IN\nYOUR HANDS", top: "88%", left: "45%" },
   ]
 
   return (
@@ -745,7 +747,7 @@ const WordCloudSection = () => {
         {phrases.map((phrase, index) => (
           <span
             key={index}
-            className="absolute text-neutral-400/70 text-xs sm:text-sm md:text-base font-bold uppercase tracking-wider text-center whitespace-pre-line leading-tight"
+            className="absolute text-neutral-400 text-xs sm:text-sm md:text-base font-bold uppercase tracking-wider text-center whitespace-pre-line leading-tight"
             style={{ top: phrase.top, left: phrase.left }}
           >
             {phrase.text}
