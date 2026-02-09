@@ -576,29 +576,29 @@ const Home = () => {
       {/* FAQ Section */}
       <section className="p-8 max-w-[1024px] mx-auto bg-neutral-100 rounded-[16px]">
         <div className="border-b border-neutral-300">
-          <AccordionItem title="Easy to Digest">
+          <AccordionItem title="Single Origin Beans">
             <p className="text-neutral-600 text-sm leading-relaxed">
-              Our formula is designed to be gentle on your stomach, using easily digestible ingredients that won't cause bloating or discomfort during your workout.
+              Our beans are sourced from single estates, ensuring consistent flavor profiles and full traceability from farm to cup.
             </p>
           </AccordionItem>
-          <AccordionItem title="50:50 Carb Ratio">
+          <AccordionItem title="Freshly Roasted">
             <p className="text-neutral-600 text-sm leading-relaxed">
-              The perfect balance of fast and slow-releasing carbohydrates provides sustained energy without the spike and crash of simple sugars.
+              Every batch is roasted to order and shipped within 48 hours, guaranteeing peak freshness and optimal flavor in every cup.
             </p>
           </AccordionItem>
-          <AccordionItem title="Electrolytes & Minerals">
+          <AccordionItem title="Ethically Sourced">
             <p className="text-neutral-600 text-sm leading-relaxed">
-              Packed with essential electrolytes and minerals to keep you hydrated and performing at your best, replacing what you lose through sweat.
+              We partner directly with farmers, paying fair prices and supporting sustainable farming practices that benefit communities and the environment.
             </p>
           </AccordionItem>
-          <AccordionItem title="Quick, Without the Crash">
+          <AccordionItem title="Flavor Notes & Profiles">
             <p className="text-neutral-600 text-sm leading-relaxed">
-              Get the energy boost you need fast, with a sustained release that keeps you going without the dreaded energy crash afterwards.
+              From bright and fruity Ethiopian beans to rich, chocolatey Brazilian varieties, explore a world of flavors with detailed tasting notes for each origin.
             </p>
           </AccordionItem>
-          <AccordionItem title="Made from Nature, Not a Lab">
+          <AccordionItem title="Perfect Grind for Every Method">
             <p className="text-neutral-600 text-sm leading-relaxed">
-              All-natural ingredients sourced from real food. No artificial sweeteners, colors, or preservatives - just pure, clean energy from nature.
+              Whether you brew with espresso, pour-over, French press, or cold brew, we offer the ideal grind size to extract the best flavors from your beans.
             </p>
           </AccordionItem>
         </div>
