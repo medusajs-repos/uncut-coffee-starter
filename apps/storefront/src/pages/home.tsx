@@ -7,11 +7,11 @@ import { HttpTypes } from "@medusajs/types"
 import { DEFAULT_CART_DROPDOWN_FIELDS } from "@/components/cart"
 
 // Accordion Component
-const AccordionItem = ({ title, children }: { title: string; children: React.ReactNode }) => {
+const AccordionItem = ({ title, children, dotted = false }: { title: string; children: React.ReactNode; dotted?: boolean }) => {
   const [isOpen, setIsOpen] = useState(false)
   
   return (
-    <div className="border-t border-black">
+    <div className={`border-t ${dotted ? 'border-dotted border-neutral-300' : 'border-black'}`}>
       <div
         onClick={() => setIsOpen(!isOpen)}
         className="w-full py-5 flex items-center justify-between text-left cursor-pointer"
@@ -285,7 +285,7 @@ const ThreeColumnSection = () => {
             
             {/* Accordions */}
             <div className="mt-8 space-y-0">
-              <AccordionItem title="INGREDIENTS & NUTRITION">
+              <AccordionItem title="INGREDIENTS & NUTRITION" dotted>
                 <div className="text-[14px] text-black font-bold space-y-4">
                   {/* Ingredients intro */}
                   <div className="space-y-1">
@@ -321,12 +321,12 @@ const ThreeColumnSection = () => {
                   </p>
                 </div>
               </AccordionItem>
-              <AccordionItem title="SHIPPING">
+              <AccordionItem title="SHIPPING" dotted>
                 <p className="text-[14px] text-black font-bold leading-relaxed uppercase">
                   OUR PREMIUM COFFEE BEANS ARE CAREFULLY PACKAGED AND SHIPPED WITHIN 24 HOURS OF ROASTING. FREE SHIPPING ON ALL ORDERS OVER $50. STANDARD DELIVERY TAKES 3-5 BUSINESS DAYS. EXPRESS SHIPPING AVAILABLE FOR NEXT-DAY DELIVERY.
                 </p>
               </AccordionItem>
-              <AccordionItem title="FAQ">
+              <AccordionItem title="FAQ" dotted>
                 <p className="text-[14px] text-black font-bold leading-relaxed uppercase">
                   HOW FRESH IS YOUR COFFEE? ALL OUR BEANS ARE ROASTED TO ORDER AND SHIPPED WITHIN 24 HOURS. WHAT GRIND OPTIONS DO YOU OFFER? WE OFFER WHOLE BEAN, ESPRESSO, FILTER, AND FRENCH PRESS GRINDS. HOW SHOULD I STORE MY COFFEE? KEEP IN A COOL, DRY PLACE AWAY FROM DIRECT SUNLIGHT FOR OPTIMAL FRESHNESS.
                 </p>
