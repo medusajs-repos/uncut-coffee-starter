@@ -107,7 +107,7 @@ const FAQSection = () => {
   ]
   
   return (
-    <section id="why-uncut" className="p-8 max-w-[1024px] mx-auto bg-neutral-100 rounded-[16px] scroll-mt-10">
+    <section id="why-uncut" className="p-8 max-w-[1024px] mx-auto bg-neutral-100 rounded-[16px] scroll-mt-10 mb-16">
       <div>
         {faqs.map((faq, index) => (
           <AccordionItem 
