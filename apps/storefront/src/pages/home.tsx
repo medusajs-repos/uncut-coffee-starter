@@ -575,7 +575,7 @@ const Home = () => {
       
       {/* FAQ Section */}
       <section className="p-8 max-w-[1024px] mx-auto bg-neutral-100 rounded-[16px]">
-        <div className="border-b border-dotted border-neutral-300">
+        <div>
           <AccordionItem title="Single Origin Beans" dotted dotColor="border-neutral-400">
             <p className="text-neutral-600 text-sm leading-relaxed">
               Our beans are sourced from single estates, ensuring consistent flavor profiles and full traceability from farm to cup.
