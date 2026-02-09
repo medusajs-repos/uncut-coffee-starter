@@ -590,17 +590,17 @@ const Home = () => {
       <section className="p-8 max-w-[1024px] mx-auto bg-neutral-100 rounded-[16px]">
         <div>
           <AccordionItem title="Single Origin Beans" dotted dotColor="border-neutral-400" thinIcon>
-            <p className="text-neutral-600 text-sm leading-relaxed">
+            <p className="text-black text-base font-bold uppercase leading-relaxed">
               Our beans are sourced from single estates, ensuring consistent flavor profiles and full traceability from farm to cup.
             </p>
           </AccordionItem>
           <AccordionItem title="Freshly Roasted" dotted dotColor="border-neutral-400" thinIcon>
-            <p className="text-neutral-600 text-sm leading-relaxed">
+            <p className="text-black text-base font-bold uppercase leading-relaxed">
               Every batch is roasted to order and shipped within 48 hours, guaranteeing peak freshness and optimal flavor in every cup.
             </p>
           </AccordionItem>
           <AccordionItem title="Ethically Sourced" dotted dotColor="border-neutral-400" thinIcon>
-            <p className="text-neutral-600 text-sm leading-relaxed">
+            <p className="text-black text-base font-bold uppercase leading-relaxed">
               We partner directly with farmers, paying fair prices and supporting sustainable farming practices that benefit communities and the environment.
             </p>
           </AccordionItem>
