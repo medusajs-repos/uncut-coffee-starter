@@ -7,8 +7,10 @@ import { HttpTypes } from "@medusajs/types"
 import { DEFAULT_CART_DROPDOWN_FIELDS } from "@/components/cart"
 
 // Accordion Component
-const AccordionItem = ({ title, children, dotted = false, titleClassName, containerClassName, dotColor, thinIcon = false, smallThinIcon = false }: { title: string; children: React.ReactNode; dotted?: boolean; titleClassName?: string; containerClassName?: string; dotColor?: string; thinIcon?: boolean; smallThinIcon?: boolean }) => {
-  const [isOpen, setIsOpen] = useState(false)
+const AccordionItem = ({ title, children, dotted = false, titleClassName, containerClassName, dotColor, thinIcon = false, smallThinIcon = false, isOpen: controlledOpen, onToggle }: { title: string; children: React.ReactNode; dotted?: boolean; titleClassName?: string; containerClassName?: string; dotColor?: string; thinIcon?: boolean; smallThinIcon?: boolean; isOpen?: boolean; onToggle?: () => void }) => {
+  const [internalOpen, setInternalOpen] = useState(false)
+  const isOpen = controlledOpen !== undefined ? controlledOpen : internalOpen
+  const handleToggle = onToggle || (() => setInternalOpen(!internalOpen))
   
   const ThinPlusIcon = ({ size = 24 }: { size?: number }) => (
     <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} fill="none" stroke="currentColor" strokeWidth="1">
@@ -20,7 +22,7 @@ const AccordionItem = ({ title, children, dotted = false, titleClassName, contai
   return (
     <div className={`border-t ${dotted ? `border-dotted ${dotColor || 'border-neutral-400'}` : 'border-black'}`}>
       <div
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={handleToggle}
         className={containerClassName || "w-full py-2 flex items-center justify-between text-left cursor-pointer"}
       >
         <span className={titleClassName || "text-[32px] font-bold uppercase tracking-wider text-neutral-400 leading-tight"}>{title}</span>
@@ -49,6 +51,42 @@ const AccordionItem = ({ title, children, dotted = false, titleClassName, contai
         </div>
       </div>
     </div>
+  )
+}
+
+// FAQ Section with single-open accordion
+const FAQSection = () => {
+  const [openIndex, setOpenIndex] = useState<number | null>(null)
+  
+  const faqs = [
+    { title: "Single Origin Beans", answer: "Our beans are sourced from single estates, ensuring consistent flavor profiles and full traceability from farm to cup." },
+    { title: "Freshly Roasted", answer: "Every batch is roasted to order and shipped within 48 hours, guaranteeing peak freshness and optimal flavor in every cup." },
+    { title: "Ethically Sourced", answer: "We partner directly with farmers, paying fair prices and supporting sustainable farming practices that benefit communities and the environment." },
+    { title: "Flavor Notes & Profiles", answer: "From bright and fruity Ethiopian beans to rich, chocolatey Brazilian varieties, explore a world of flavors with detailed tasting notes for each origin." },
+    { title: "Perfect Grind for Every Method", answer: "Whether you brew with espresso, pour-over, French press, or cold brew, we offer the ideal grind size to extract the best flavors from your beans." },
+  ]
+  
+  return (
+    <section className="p-8 max-w-[1024px] mx-auto bg-neutral-100 rounded-[16px]">
+      <div>
+        {faqs.map((faq, index) => (
+          <AccordionItem 
+            key={faq.title}
+            title={faq.title} 
+            dotted 
+            dotColor="border-neutral-400" 
+            thinIcon
+            isOpen={openIndex === index}
+            onToggle={() => setOpenIndex(openIndex === index ? null : index)}
+          >
+            <p className="text-black text-base font-bold uppercase leading-relaxed max-w-[320px]">
+              {faq.answer}
+            </p>
+          </AccordionItem>
+        ))}
+        <div className="border-t border-dotted border-neutral-400" />
+      </div>
+    </section>
   )
 }
 
@@ -587,36 +625,7 @@ const Home = () => {
       </section>
       
       {/* FAQ Section */}
-      <section className="p-8 max-w-[1024px] mx-auto bg-neutral-100 rounded-[16px]">
-        <div>
-          <AccordionItem title="Single Origin Beans" dotted dotColor="border-neutral-400" thinIcon>
-            <p className="text-black text-base font-bold uppercase leading-relaxed max-w-[320px]">
-              Our beans are sourced from single estates, ensuring consistent flavor profiles and full traceability from farm to cup.
-            </p>
-          </AccordionItem>
-          <AccordionItem title="Freshly Roasted" dotted dotColor="border-neutral-400" thinIcon>
-            <p className="text-black text-base font-bold uppercase leading-relaxed max-w-[320px]">
-              Every batch is roasted to order and shipped within 48 hours, guaranteeing peak freshness and optimal flavor in every cup.
-            </p>
-          </AccordionItem>
-          <AccordionItem title="Ethically Sourced" dotted dotColor="border-neutral-400" thinIcon>
-            <p className="text-black text-base font-bold uppercase leading-relaxed max-w-[320px]">
-              We partner directly with farmers, paying fair prices and supporting sustainable farming practices that benefit communities and the environment.
-            </p>
-          </AccordionItem>
-          <AccordionItem title="Flavor Notes & Profiles" dotted dotColor="border-neutral-400" thinIcon>
-            <p className="text-neutral-600 text-sm leading-relaxed">
-              From bright and fruity Ethiopian beans to rich, chocolatey Brazilian varieties, explore a world of flavors with detailed tasting notes for each origin.
-            </p>
-          </AccordionItem>
-          <AccordionItem title="Perfect Grind for Every Method" dotted dotColor="border-neutral-400" thinIcon>
-            <p className="text-neutral-600 text-sm leading-relaxed">
-              Whether you brew with espresso, pour-over, French press, or cold brew, we offer the ideal grind size to extract the best flavors from your beans.
-            </p>
-          </AccordionItem>
-          <div className="border-t border-dotted border-neutral-400" />
-        </div>
-      </section>
+      <FAQSection />
       
       <section id="shop" className="scroll-mt-10" />
       <section id="why-uncut" className="scroll-mt-10" />
