@@ -162,7 +162,7 @@ const HowToEnjoySection = () => {
 
   return (
     <section className="py-16 px-6">
-      <h2 className="text-[32px] leading-none font-bold tracking-tight uppercase text-neutral-400 text-center mb-16">
+      <h2 className="text-[32px] leading-none font-bold tracking-tight uppercase text-neutral-400 text-center mb-32">
         How to Enjoy
       </h2>
       
