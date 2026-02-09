@@ -11,7 +11,7 @@ const AccordionItem = ({ title, children, dotted = false, titleClassName, contai
   const [isOpen, setIsOpen] = useState(false)
   
   return (
-    <div className={`border-t ${dotted ? `border-dotted ${dotColor || 'border-neutral-300'}` : 'border-black'}`}>
+    <div className={`border-t ${dotted ? `border-dotted ${dotColor || 'border-neutral-400'}` : 'border-black'}`}>
       <div
         onClick={() => setIsOpen(!isOpen)}
         className={containerClassName || "w-full py-2 flex items-center justify-between text-left cursor-pointer"}
@@ -331,7 +331,7 @@ const ThreeColumnSection = () => {
                   HOW FRESH IS YOUR COFFEE? ALL OUR BEANS ARE ROASTED TO ORDER AND SHIPPED WITHIN 24 HOURS. WHAT GRIND OPTIONS DO YOU OFFER? WE OFFER WHOLE BEAN, ESPRESSO, FILTER, AND FRENCH PRESS GRINDS. HOW SHOULD I STORE MY COFFEE? KEEP IN A COOL, DRY PLACE AWAY FROM DIRECT SUNLIGHT FOR OPTIMAL FRESHNESS.
                 </p>
               </AccordionItem>
-              <div className="border-t border-dotted border-neutral-300" />
+              <div className="border-t border-dotted border-neutral-400" />
             </div>
           </div>
         </div>
