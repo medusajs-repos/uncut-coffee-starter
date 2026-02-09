@@ -850,29 +850,7 @@ const ImageScrollerSection2 = () => {
     return () => scrollContainer.removeEventListener('scroll', handleScroll)
   }, [])
 
-  // Auto-scroll animation (scrolls in opposite direction)
-  useEffect(() => {
-    const scrollContainer = scrollRef.current
-    if (!scrollContainer) return
-
-    let animationId: number
-    let lastTime = 0
-    const speed = -0.5 // negative for opposite direction
-
-    const animate = (currentTime: number) => {
-      if (!isHovered && !isDragging && !isResetting.current && momentumId.current === null) {
-        const delta = currentTime - lastTime
-        if (delta > 16) {
-          scrollContainer.scrollLeft += speed
-          lastTime = currentTime
-        }
-      }
-      animationId = requestAnimationFrame(animate)
-    }
-
-    animationId = requestAnimationFrame(animate)
-    return () => cancelAnimationFrame(animationId)
-  }, [isHovered, isDragging])
+  // Auto-scroll disabled - manual drag only
 
   // Momentum scroll after drag release
   const startMomentum = () => {
