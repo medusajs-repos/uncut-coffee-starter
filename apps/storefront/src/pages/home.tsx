@@ -204,7 +204,7 @@ const ThreeColumnSection = () => {
                 />
                 <span className="text-black text-sm uppercase tracking-wider font-bold">1 x Bag</span>
               </div>
-              <span className="text-black text-sm font-bold">${singlePrice.toFixed(2)}</span>
+              <span className="text-black text-sm font-bold">$15.00</span>
             </label>
             
             <label 
