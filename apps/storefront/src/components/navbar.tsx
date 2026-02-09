@@ -18,9 +18,9 @@ import { sortCartItems } from "@/lib/utils/cart"
 import { Price } from "@/components/ui/price"
 
 const NAV_LINKS = [
+  { label: "THE UNCUT", anchor: "#hero" },
   { label: "SHOP", anchor: "#shop" },
   { label: "WHY UNCUT", anchor: "#why-uncut" },
-  { label: "OUR STORY", anchor: "#our-story" },
 ]
 
 export const Navbar = () => {

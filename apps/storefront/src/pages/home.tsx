@@ -107,7 +107,7 @@ const FAQSection = () => {
   ]
   
   return (
-    <section className="p-8 max-w-[1024px] mx-auto bg-neutral-100 rounded-[16px]">
+    <section id="why-uncut" className="p-8 max-w-[1024px] mx-auto bg-neutral-100 rounded-[16px] scroll-mt-10">
       <div>
         {faqs.map((faq, index) => (
           <AccordionItem 
@@ -137,7 +137,8 @@ const HERO_VIDEO = "https://cdn.mignite.app/ws/works_01KG7HEF506FB5P7HQP4V3WMR7/
 const HeroSection = () => {
   return (
     <div 
-      className="relative w-screen h-[100dvh] overflow-hidden bg-[#3d2a1a] rounded-b-[16px] z-10"
+      id="hero"
+      className="relative w-screen h-[100dvh] overflow-hidden bg-[#3d2a1a] rounded-b-[16px] z-10 scroll-mt-10"
     >
       <video 
         src={HERO_VIDEO}
@@ -241,7 +242,7 @@ const ThreeColumnSection = () => {
   const subscriptionPrice = products.subscription?.variants?.[0]?.calculated_price?.calculated_amount || 32.06
   
   return (
-    <section className="px-4">
+    <section id="shop" className="px-4 scroll-mt-10">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row md:items-stretch gap-16">
         {/* Left container - Text + Video (66% width) */}
         <div className="hidden md:flex md:w-2/3 gap-16">
@@ -668,9 +669,6 @@ const Home = () => {
       {/* FAQ Section */}
       <FAQSection />
       
-      <section id="shop" className="scroll-mt-10" />
-      <section id="why-uncut" className="scroll-mt-10" />
-      <section id="our-story" className="scroll-mt-10" />
       <Footer />
     </>
   )
