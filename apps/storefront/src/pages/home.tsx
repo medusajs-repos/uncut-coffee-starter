@@ -7,11 +7,11 @@ import { HttpTypes } from "@medusajs/types"
 import { DEFAULT_CART_DROPDOWN_FIELDS } from "@/components/cart"
 
 // Accordion Component
-const AccordionItem = ({ title, children, dotted = false, titleClassName, containerClassName }: { title: string; children: React.ReactNode; dotted?: boolean; titleClassName?: string; containerClassName?: string }) => {
+const AccordionItem = ({ title, children, dotted = false, titleClassName, containerClassName, dotColor }: { title: string; children: React.ReactNode; dotted?: boolean; titleClassName?: string; containerClassName?: string; dotColor?: string }) => {
   const [isOpen, setIsOpen] = useState(false)
   
   return (
-    <div className={`border-t ${dotted ? 'border-dotted border-neutral-300' : 'border-black'}`}>
+    <div className={`border-t ${dotted ? `border-dotted ${dotColor || 'border-neutral-300'}` : 'border-black'}`}>
       <div
         onClick={() => setIsOpen(!isOpen)}
         className={containerClassName || "w-full py-2 flex items-center justify-between text-left cursor-pointer"}
@@ -576,27 +576,27 @@ const Home = () => {
       {/* FAQ Section */}
       <section className="p-8 max-w-[1024px] mx-auto bg-neutral-100 rounded-[16px]">
         <div className="border-b border-dotted border-neutral-300">
-          <AccordionItem title="Single Origin Beans" dotted>
+          <AccordionItem title="Single Origin Beans" dotted dotColor="border-neutral-400">
             <p className="text-neutral-600 text-sm leading-relaxed">
               Our beans are sourced from single estates, ensuring consistent flavor profiles and full traceability from farm to cup.
             </p>
           </AccordionItem>
-          <AccordionItem title="Freshly Roasted" dotted>
+          <AccordionItem title="Freshly Roasted" dotted dotColor="border-neutral-400">
             <p className="text-neutral-600 text-sm leading-relaxed">
               Every batch is roasted to order and shipped within 48 hours, guaranteeing peak freshness and optimal flavor in every cup.
             </p>
           </AccordionItem>
-          <AccordionItem title="Ethically Sourced" dotted>
+          <AccordionItem title="Ethically Sourced" dotted dotColor="border-neutral-400">
             <p className="text-neutral-600 text-sm leading-relaxed">
               We partner directly with farmers, paying fair prices and supporting sustainable farming practices that benefit communities and the environment.
             </p>
           </AccordionItem>
-          <AccordionItem title="Flavor Notes & Profiles" dotted>
+          <AccordionItem title="Flavor Notes & Profiles" dotted dotColor="border-neutral-400">
             <p className="text-neutral-600 text-sm leading-relaxed">
               From bright and fruity Ethiopian beans to rich, chocolatey Brazilian varieties, explore a world of flavors with detailed tasting notes for each origin.
             </p>
           </AccordionItem>
-          <AccordionItem title="Perfect Grind for Every Method" dotted>
+          <AccordionItem title="Perfect Grind for Every Method" dotted dotColor="border-neutral-400">
             <p className="text-neutral-600 text-sm leading-relaxed">
               Whether you brew with espresso, pour-over, French press, or cold brew, we offer the ideal grind size to extract the best flavors from your beans.
             </p>
