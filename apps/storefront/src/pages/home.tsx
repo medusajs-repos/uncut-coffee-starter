@@ -7,13 +7,13 @@ import { HttpTypes } from "@medusajs/types"
 import { DEFAULT_CART_DROPDOWN_FIELDS } from "@/components/cart"
 
 // Accordion Component
-const AccordionItem = ({ title, children, dotted = false, titleClassName, containerClassName, dotColor, thinIcon = false }: { title: string; children: React.ReactNode; dotted?: boolean; titleClassName?: string; containerClassName?: string; dotColor?: string; thinIcon?: boolean }) => {
+const AccordionItem = ({ title, children, dotted = false, titleClassName, containerClassName, dotColor, thinIcon = false, smallThinIcon = false }: { title: string; children: React.ReactNode; dotted?: boolean; titleClassName?: string; containerClassName?: string; dotColor?: string; thinIcon?: boolean; smallThinIcon?: boolean }) => {
   const [isOpen, setIsOpen] = useState(false)
   
-  const ThinPlusIcon = () => (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
-      <line x1="12" y1="4" x2="12" y2="20" />
-      <line x1="4" y1="12" x2="20" y2="12" className={`transition-opacity duration-300 ${isOpen ? 'opacity-0' : 'opacity-100'}`} />
+  const ThinPlusIcon = ({ size = 24 }: { size?: number }) => (
+    <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} fill="none" stroke="currentColor" strokeWidth="1">
+      <line x1={size/2} y1={size*0.167} x2={size/2} y2={size*0.833} />
+      <line x1={size*0.167} y1={size/2} x2={size*0.833} y2={size/2} className={`transition-opacity duration-300 ${isOpen ? 'opacity-0' : 'opacity-100'}`} />
     </svg>
   )
   
@@ -24,9 +24,9 @@ const AccordionItem = ({ title, children, dotted = false, titleClassName, contai
         className={containerClassName || "w-full py-2 flex items-center justify-between text-left cursor-pointer"}
       >
         <span className={titleClassName || "text-[32px] font-bold uppercase tracking-wider text-neutral-400 leading-tight"}>{title}</span>
-        {thinIcon ? (
+        {(thinIcon || smallThinIcon) ? (
           <span className="text-neutral-500 transition-transform duration-300" style={{ transform: isOpen ? 'rotate(90deg)' : 'rotate(0deg)' }}>
-            <ThinPlusIcon />
+            <ThinPlusIcon size={smallThinIcon ? 16 : 24} />
           </span>
         ) : (
           <span 
@@ -298,7 +298,7 @@ const ThreeColumnSection = () => {
             
             {/* Accordions */}
             <div className="mt-8 space-y-0">
-              <AccordionItem title="INGREDIENTS & NUTRITION" dotted titleClassName="text-[16px] font-bold uppercase tracking-wider text-black leading-tight" containerClassName="w-full py-4 flex items-center justify-between text-left cursor-pointer">
+              <AccordionItem title="INGREDIENTS & NUTRITION" dotted smallThinIcon titleClassName="text-[16px] font-bold uppercase tracking-wider text-black leading-tight" containerClassName="w-full py-4 flex items-center justify-between text-left cursor-pointer">
                 <div className="text-[14px] text-black font-bold space-y-4">
                   {/* Ingredients intro */}
                   <div className="space-y-1">
@@ -334,12 +334,12 @@ const ThreeColumnSection = () => {
                   </p>
                 </div>
               </AccordionItem>
-              <AccordionItem title="SHIPPING" dotted titleClassName="text-[16px] font-bold uppercase tracking-wider text-black leading-tight" containerClassName="w-full py-4 flex items-center justify-between text-left cursor-pointer">
+              <AccordionItem title="SHIPPING" dotted smallThinIcon titleClassName="text-[16px] font-bold uppercase tracking-wider text-black leading-tight" containerClassName="w-full py-4 flex items-center justify-between text-left cursor-pointer">
                 <p className="text-[14px] text-black font-bold leading-relaxed uppercase">
                   OUR PREMIUM COFFEE BEANS ARE CAREFULLY PACKAGED AND SHIPPED WITHIN 24 HOURS OF ROASTING. FREE SHIPPING ON ALL ORDERS OVER $50. STANDARD DELIVERY TAKES 3-5 BUSINESS DAYS. EXPRESS SHIPPING AVAILABLE FOR NEXT-DAY DELIVERY.
                 </p>
               </AccordionItem>
-              <AccordionItem title="FAQ" dotted titleClassName="text-[16px] font-bold uppercase tracking-wider text-black leading-tight" containerClassName="w-full py-4 flex items-center justify-between text-left cursor-pointer">
+              <AccordionItem title="FAQ" dotted smallThinIcon titleClassName="text-[16px] font-bold uppercase tracking-wider text-black leading-tight" containerClassName="w-full py-4 flex items-center justify-between text-left cursor-pointer">
                 <p className="text-[14px] text-black font-bold leading-relaxed uppercase">
                   HOW FRESH IS YOUR COFFEE? ALL OUR BEANS ARE ROASTED TO ORDER AND SHIPPED WITHIN 24 HOURS. WHAT GRIND OPTIONS DO YOU OFFER? WE OFFER WHOLE BEAN, ESPRESSO, FILTER, AND FRENCH PRESS GRINDS. HOW SHOULD I STORE MY COFFEE? KEEP IN A COOL, DRY PLACE AWAY FROM DIRECT SUNLIGHT FOR OPTIMAL FRESHNESS.
                 </p>
