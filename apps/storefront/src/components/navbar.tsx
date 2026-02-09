@@ -60,14 +60,22 @@ export const Navbar = () => {
           </div>
           <div className="flex-1 flex flex-col items-center justify-center gap-8">
             {NAV_LINKS.map((link) => (
-              <a
+              <button
                 key={link.label}
-                href={`${baseHref}/${link.anchor}`}
-                className="text-[40px] font-bold uppercase tracking-wide text-white hover:opacity-70 transition-opacity cursor-pointer leading-tight"
-                onClick={() => setMobileMenuOpen(false)}
+                onClick={() => {
+                  setMobileMenuOpen(false)
+                  const targetId = link.anchor.replace("#", "")
+                  const element = document.getElementById(targetId)
+                  if (element) {
+                    setTimeout(() => {
+                      element.scrollIntoView({ behavior: "smooth" })
+                    }, 100)
+                  }
+                }}
+                className="text-[40px] font-bold uppercase tracking-wide text-white hover:opacity-70 transition-opacity cursor-pointer leading-tight bg-transparent border-none"
               >
                 {link.label}
-              </a>
+              </button>
             ))}
 
           </div>
@@ -93,13 +101,20 @@ export const Navbar = () => {
 
             {/* Desktop Navigation Links - hidden on md and below */}
             {NAV_LINKS.map((link) => (
-              <a
+              <button
                 key={link.label}
-                href={`${baseHref}/${link.anchor}`}
-                className={`hidden md:block text-base font-bold uppercase tracking-wide ${textColorClass} hover:opacity-70 transition-opacity cursor-pointer`}
+                onClick={(e) => {
+                  e.preventDefault()
+                  const targetId = link.anchor.replace("#", "")
+                  const element = document.getElementById(targetId)
+                  if (element) {
+                    element.scrollIntoView({ behavior: "smooth" })
+                  }
+                }}
+                className={`hidden md:block text-base font-bold uppercase tracking-wide ${textColorClass} hover:opacity-70 transition-opacity cursor-pointer bg-transparent border-none`}
               >
                 {link.label}
-              </a>
+              </button>
             ))}
 
 
