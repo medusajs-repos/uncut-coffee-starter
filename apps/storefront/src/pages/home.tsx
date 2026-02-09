@@ -133,30 +133,30 @@ const FAQSection = () => {
 
 // How to Enjoy Section
 const HOW_TO_ENJOY_IMAGES = {
-  pre: "https://cdn.mignite.app/ws/works_01KG7HEF506FB5P7HQP4V3WMR7/generated-01KH0S4HGHXK17FAT68JCYFWJ1-01KH0S4HGHWNQTQHXCQD4K95T9.jpeg",
-  during: "https://cdn.mignite.app/ws/works_01KG7HEF506FB5P7HQP4V3WMR7/generated-01KH0S4K15PQ81QV46RFSC8RDV-01KH0S4K15ZB52Z4FVMZ2R56FK.jpeg",
-  post: "https://cdn.mignite.app/ws/works_01KG7HEF506FB5P7HQP4V3WMR7/generated-01KH0S4KVRHPAD5ME9CZY5Y1XS-01KH0S4KVRS5WABS6Z37GFAKED.jpeg",
+  morning: "https://cdn.mignite.app/ws/works_01KG7HEF506FB5P7HQP4V3WMR7/generated-01KH0SJXF9B3KVRF3145HX07CZ-01KH0SJXF99XM07CG0470TETK3.jpeg",
+  midday: "https://cdn.mignite.app/ws/works_01KG7HEF506FB5P7HQP4V3WMR7/generated-01KH0SJYSHJ0VG2S57JV29SC0A-01KH0SJYSHZGXS9AA1D3Z8P6MH.jpeg",
+  afternoon: "https://cdn.mignite.app/ws/works_01KG7HEF506FB5P7HQP4V3WMR7/generated-01KH0SK03PKNSBHH4ZHZKG39BZ-01KH0SK03PAV53BYNMNEA5KDC6.jpeg",
 }
 
 const HowToEnjoySection = () => {
   const cards = [
     {
-      label: "PRE",
-      image: HOW_TO_ENJOY_IMAGES.pre,
-      line1: "TAKE 0-20 MIN",
-      line2: "BEFORE TRAINING OR RACE",
+      label: "MORNING",
+      image: HOW_TO_ENJOY_IMAGES.morning,
+      line1: "START YOUR DAY",
+      line2: "WITH A FRESH BREW",
     },
     {
-      label: "DURING",
-      image: HOW_TO_ENJOY_IMAGES.during,
-      line1: "TAKE EVERY 20-30 MIN",
-      line2: "DURING TRAINING DEPENDING ON INTENSITY",
+      label: "MIDDAY",
+      image: HOW_TO_ENJOY_IMAGES.midday,
+      line1: "REFRESH & RECHARGE",
+      line2: "DURING YOUR BREAK",
     },
     {
-      label: "POST",
-      image: HOW_TO_ENJOY_IMAGES.post,
-      line1: "ENJOY AS IS",
-      line2: "OR DRIZZLE ON YOUR FOOD",
+      label: "AFTERNOON",
+      image: HOW_TO_ENJOY_IMAGES.afternoon,
+      line1: "WIND DOWN",
+      line2: "WITH A SMOOTH ESPRESSO",
     },
   ]
 
