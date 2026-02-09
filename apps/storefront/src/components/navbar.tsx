@@ -44,13 +44,22 @@ export const Navbar = () => {
       {mobileMenuOpen && (
         <div className="fixed inset-0 z-[60] bg-black flex flex-col md:hidden">
           <div className="h-10 px-4 flex items-center justify-between">
-            <Link
-              to={baseHref || "/"}
-              className="text-base font-medium uppercase tracking-wide text-white hover:opacity-70 transition-opacity cursor-pointer"
-              onClick={() => setMobileMenuOpen(false)}
+            <button
+              onClick={() => {
+                setMobileMenuOpen(false)
+                const element = document.getElementById("hero")
+                if (element) {
+                  setTimeout(() => {
+                    element.scrollIntoView({ behavior: "smooth" })
+                  }, 100)
+                } else {
+                  window.scrollTo({ top: 0, behavior: "smooth" })
+                }
+              }}
+              className="text-base font-medium uppercase tracking-wide text-white hover:opacity-70 transition-opacity cursor-pointer bg-transparent border-none"
             >
               UNCUT
-            </Link>
+            </button>
             <button
               onClick={() => setMobileMenuOpen(false)}
               className="text-white hover:opacity-70 transition-opacity cursor-pointer text-base font-medium uppercase tracking-wide"
@@ -84,12 +93,19 @@ export const Navbar = () => {
 
       <header className="fixed top-0 inset-x-0 z-50 h-10 mix-blend-difference">
           <nav className="w-full h-10 px-4 flex items-center justify-between">
-            <Link
-              to={baseHref || "/"}
-              className={`text-base font-bold uppercase tracking-wide ${textColorClass} hover:opacity-70 transition-opacity cursor-pointer`}
+            <button
+              onClick={() => {
+                const element = document.getElementById("hero")
+                if (element) {
+                  element.scrollIntoView({ behavior: "smooth" })
+                } else {
+                  window.scrollTo({ top: 0, behavior: "smooth" })
+                }
+              }}
+              className={`text-base font-bold uppercase tracking-wide ${textColorClass} hover:opacity-70 transition-opacity cursor-pointer bg-transparent border-none`}
             >
               UNCUT
-            </Link>
+            </button>
 
             {/* Mobile Menu Button - visible on md and below */}
             <button
