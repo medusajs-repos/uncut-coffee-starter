@@ -750,9 +750,8 @@ const WordCloudSection = () => {
         
         {/* Center large text */}
         <div className="absolute inset-0 flex items-center justify-center">
-          <h2 className="text-[8vw] sm:text-[9vw] md:text-[10vw] font-bold uppercase tracking-tighter text-center leading-none">
-            <span className="text-neutral-300/80">UNCUT</span>
-            <span className="text-yellow-900/30"> COFFEE BEANS</span>
+          <h2 className="text-[8vw] sm:text-[9vw] md:text-[10vw] font-bold uppercase tracking-tighter text-center leading-none text-white">
+            UNCUT COFFEE BEANS
           </h2>
         </div>
       </div>
