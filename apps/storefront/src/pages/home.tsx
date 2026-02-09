@@ -131,6 +131,70 @@ const FAQSection = () => {
   )
 }
 
+// How to Enjoy Section
+const HOW_TO_ENJOY_IMAGES = {
+  pre: "https://cdn.mignite.app/ws/works_01KG7HEF506FB5P7HQP4V3WMR7/generated-01KH0S4HGHXK17FAT68JCYFWJ1-01KH0S4HGHWNQTQHXCQD4K95T9.jpeg",
+  during: "https://cdn.mignite.app/ws/works_01KG7HEF506FB5P7HQP4V3WMR7/generated-01KH0S4K15PQ81QV46RFSC8RDV-01KH0S4K15ZB52Z4FVMZ2R56FK.jpeg",
+  post: "https://cdn.mignite.app/ws/works_01KG7HEF506FB5P7HQP4V3WMR7/generated-01KH0S4KVRHPAD5ME9CZY5Y1XS-01KH0S4KVRS5WABS6Z37GFAKED.jpeg",
+}
+
+const HowToEnjoySection = () => {
+  const cards = [
+    {
+      label: "PRE",
+      image: HOW_TO_ENJOY_IMAGES.pre,
+      line1: "TAKE 0-20 MIN",
+      line2: "BEFORE TRAINING OR RACE",
+    },
+    {
+      label: "DURING",
+      image: HOW_TO_ENJOY_IMAGES.during,
+      line1: "TAKE EVERY 20-30 MIN",
+      line2: "DURING TRAINING DEPENDING ON INTENSITY",
+    },
+    {
+      label: "POST",
+      image: HOW_TO_ENJOY_IMAGES.post,
+      line1: "ENJOY AS IS",
+      line2: "OR DRIZZLE ON YOUR FOOD",
+    },
+  ]
+
+  return (
+    <section className="py-16 px-6">
+      <h2 className="text-[40px] md:text-[56px] leading-none font-bold tracking-tight uppercase text-neutral-300 text-center mb-12">
+        How to Enjoy
+      </h2>
+      
+      <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+        {cards.map((card) => (
+          <div key={card.label} className="flex flex-col items-center">
+            <span className="text-sm font-bold uppercase tracking-wider text-neutral-400 mb-4">
+              {card.label}
+            </span>
+            <div className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden">
+              <img 
+                src={card.image}
+                alt={card.label}
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+              <div className="absolute bottom-6 left-0 right-0 text-center px-4">
+                <p className="text-white text-sm md:text-base font-bold uppercase tracking-wide">
+                  {card.line1}
+                </p>
+                <p className="text-white text-sm md:text-base font-bold uppercase tracking-wide">
+                  {card.line2}
+                </p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  )
+}
+
 // Hero Section
 const HERO_VIDEO = "https://cdn.mignite.app/ws/works_01KG7HEF506FB5P7HQP4V3WMR7/I_want_a_202601301447_rbq6u-01KG7JHVRVZ9NBQPZHYMH5XVC8.mp4"
 
@@ -668,6 +732,9 @@ const Home = () => {
       
       {/* FAQ Section */}
       <FAQSection />
+      
+      {/* How to Enjoy Section */}
+      <HowToEnjoySection />
       
       <Footer />
     </>
