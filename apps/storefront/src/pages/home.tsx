@@ -742,7 +742,7 @@ const WordCloudSection = () => {
         WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)"
       }}
     >
-      <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
+      <div className="relative w-full h-[880px]">
         {/* Scattered phrases */}
         {phrases.map((phrase, index) => (
           <span
