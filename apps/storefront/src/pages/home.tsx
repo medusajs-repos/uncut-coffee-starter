@@ -506,6 +506,14 @@ const SCROLLER_IMAGES = [
   "https://cdn.mignite.app/ws/works_01KG7HEF506FB5P7HQP4V3WMR7/generated-01KGPQAYJY4VZ8S4DSVK0V2T59-01KGPQAYJYZD6BQRCR3F640N4Z.jpeg",
 ]
 
+// Second Scroller Images (Coffee themed)
+const SCROLLER_IMAGES_2 = [
+  "https://cdn.mignite.app/ws/works_01KG7HEF506FB5P7HQP4V3WMR7/generated-01KH10ET9JNBDGKTZ36XRPWWAP-01KH10ET9JKN802WGBX1AFEKC9.jpeg",
+  "https://cdn.mignite.app/ws/works_01KG7HEF506FB5P7HQP4V3WMR7/generated-01KH10EVD5JZH51E2SP0TVS5QH-01KH10EVD6SP3ASPEYBFW35GMQ.jpeg",
+  "https://cdn.mignite.app/ws/works_01KG7HEF506FB5P7HQP4V3WMR7/generated-01KH10EWSHDS2NPQ8XZYYB2P34-01KH10EWSH03EWPQ9576JSKP7H.jpeg",
+  "https://cdn.mignite.app/ws/works_01KG7HEF506FB5P7HQP4V3WMR7/generated-01KH10EXV39FS0NA11QWJW8RWE-01KH10EXV3X15ARMG2YYVRQS9R.jpeg",
+]
+
 const ImageScrollerSection = () => {
   const scrollRef = useRef<HTMLDivElement>(null)
   const [isHovered, setIsHovered] = useState(false)
@@ -776,6 +784,206 @@ const WordCloudSection = () => {
   )
 }
 
+// Second Image Scroller Section (scrolls in opposite direction)
+const ImageScrollerSection2 = () => {
+  const scrollRef = useRef<HTMLDivElement>(null)
+  const [isHovered, setIsHovered] = useState(false)
+  const [isDragging, setIsDragging] = useState(false)
+  const dragStartX = useRef(0)
+  const scrollStartX = useRef(0)
+  const isResetting = useRef(false)
+  const lastMouseX = useRef(0)
+  const lastMoveTime = useRef(0)
+  const velocity = useRef(0)
+  const momentumId = useRef<number | null>(null)
+
+  // Triple the images for seamless infinite scroll
+  const tripleImages = [...SCROLLER_IMAGES_2, ...SCROLLER_IMAGES_2, ...SCROLLER_IMAGES_2]
+
+  // Track if initial scroll position has been set
+  const [isReady, setIsReady] = useState(false)
+  
+  // Initialize scroll position to center
+  useEffect(() => {
+    const scrollContainer = scrollRef.current
+    if (!scrollContainer) return
+    
+    const timer = setTimeout(() => {
+      const singleSetWidth = scrollContainer.scrollWidth / 3
+      const imageWidth = singleSetWidth / SCROLLER_IMAGES_2.length
+      const containerWidth = scrollContainer.clientWidth
+      
+      const image2Offset = imageWidth * 1
+      const centerOffset = (containerWidth - imageWidth) / 2
+      
+      scrollContainer.scrollLeft = singleSetWidth + image2Offset - centerOffset
+      setIsReady(true)
+    }, 100)
+    
+    return () => clearTimeout(timer)
+  }, [])
+
+  // Handle infinite loop on scroll
+  useEffect(() => {
+    const scrollContainer = scrollRef.current
+    if (!scrollContainer) return
+
+    const handleScroll = () => {
+      if (isResetting.current) return
+      
+      const singleSetWidth = scrollContainer.scrollWidth / 3
+      const currentScroll = scrollContainer.scrollLeft
+      
+      if (currentScroll >= singleSetWidth * 2) {
+        isResetting.current = true
+        scrollContainer.scrollLeft = currentScroll - singleSetWidth
+        requestAnimationFrame(() => { isResetting.current = false })
+      }
+      else if (currentScroll < singleSetWidth * 0.1) {
+        isResetting.current = true
+        scrollContainer.scrollLeft = currentScroll + singleSetWidth
+        requestAnimationFrame(() => { isResetting.current = false })
+      }
+    }
+
+    scrollContainer.addEventListener('scroll', handleScroll)
+    return () => scrollContainer.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  // Auto-scroll animation (scrolls in opposite direction)
+  useEffect(() => {
+    const scrollContainer = scrollRef.current
+    if (!scrollContainer) return
+
+    let animationId: number
+    let lastTime = 0
+    const speed = -0.5 // negative for opposite direction
+
+    const animate = (currentTime: number) => {
+      if (!isHovered && !isDragging && !isResetting.current && momentumId.current === null) {
+        const delta = currentTime - lastTime
+        if (delta > 16) {
+          scrollContainer.scrollLeft += speed
+          lastTime = currentTime
+        }
+      }
+      animationId = requestAnimationFrame(animate)
+    }
+
+    animationId = requestAnimationFrame(animate)
+    return () => cancelAnimationFrame(animationId)
+  }, [isHovered, isDragging])
+
+  // Momentum scroll after drag release
+  const startMomentum = () => {
+    const scrollContainer = scrollRef.current
+    if (!scrollContainer || Math.abs(velocity.current) < 0.5) {
+      momentumId.current = null
+      return
+    }
+
+    const friction = 0.95
+    
+    const animateMomentum = () => {
+      if (!scrollContainer || Math.abs(velocity.current) < 0.5) {
+        momentumId.current = null
+        return
+      }
+      
+      scrollContainer.scrollLeft += velocity.current
+      velocity.current *= friction
+      
+      momentumId.current = requestAnimationFrame(animateMomentum)
+    }
+    
+    momentumId.current = requestAnimationFrame(animateMomentum)
+  }
+
+  // Handle drag scrolling
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (momentumId.current) {
+      cancelAnimationFrame(momentumId.current)
+      momentumId.current = null
+    }
+    setIsDragging(true)
+    dragStartX.current = e.clientX
+    scrollStartX.current = scrollRef.current?.scrollLeft || 0
+    lastMouseX.current = e.clientX
+    lastMoveTime.current = Date.now()
+    velocity.current = 0
+  }
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging || !scrollRef.current) return
+    e.preventDefault()
+    const x = e.clientX
+    const walk = dragStartX.current - x
+    scrollRef.current.scrollLeft = scrollStartX.current + walk
+    
+    const now = Date.now()
+    const dt = now - lastMoveTime.current
+    if (dt > 0) {
+      velocity.current = (lastMouseX.current - x) / dt * 16
+    }
+    lastMouseX.current = x
+    lastMoveTime.current = now
+  }
+
+  const handleMouseUp = () => {
+    if (isDragging) {
+      setIsDragging(false)
+      startMomentum()
+    }
+  }
+
+  const handleMouseLeave = () => {
+    if (isDragging) {
+      setIsDragging(false)
+      startMomentum()
+    }
+    setIsHovered(false)
+  }
+
+  return (
+    <section className="overflow-hidden py-8">
+      <div 
+        ref={scrollRef}
+        className={`flex gap-6 overflow-x-auto scrollbar-hide cursor-grab active:cursor-grabbing select-none transition-opacity duration-300 ${isReady ? 'opacity-100' : 'opacity-0'}`}
+        style={{ 
+          scrollbarWidth: 'none', 
+          msOverflowStyle: 'none',
+        }}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={handleMouseLeave}
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUp}
+      >
+        {/* Spacer for centering offset */}
+        <div className="flex-shrink-0" style={{ width: 'calc((100vw - 72px) / 8)' }} />
+        {tripleImages.map((src, index) => (
+          <div 
+            key={`scroller2-${index}`}
+            className="flex-shrink-0"
+            style={{ width: 'calc((100vw - 72px) / 3.5)' }}
+          >
+            <div className="relative w-full" style={{ paddingBottom: '125%' }}>
+              <img 
+                src={src}
+                alt={`Coffee moment ${(index % SCROLLER_IMAGES_2.length) + 1}`}
+                className="absolute inset-0 w-full h-full object-cover rounded-2xl pointer-events-none"
+                draggable={false}
+              />
+            </div>
+          </div>
+        ))}
+        {/* Spacer for centering offset */}
+        <div className="flex-shrink-0" style={{ width: 'calc((100vw - 72px) / 8)' }} />
+      </div>
+    </section>
+  )
+}
+
 // Main Home Component
 const Home = () => {
   return (
@@ -806,6 +1014,9 @@ const Home = () => {
       
       {/* Word Cloud Section */}
       <WordCloudSection />
+      
+      {/* Second Image Scroller */}
+      <ImageScrollerSection2 />
       
       <Footer />
     </>
