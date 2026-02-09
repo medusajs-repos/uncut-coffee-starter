@@ -25,7 +25,7 @@ const AccordionItem = ({ title, children, dotted = false, titleClassName, contai
       >
         <span className={titleClassName || "text-[32px] font-bold uppercase tracking-wider text-neutral-400 leading-tight"}>{title}</span>
         {thinIcon ? (
-          <span className="text-black transition-transform duration-300" style={{ transform: isOpen ? 'rotate(90deg)' : 'rotate(0deg)' }}>
+          <span className="text-neutral-400 transition-transform duration-300" style={{ transform: isOpen ? 'rotate(90deg)' : 'rotate(0deg)' }}>
             <ThinPlusIcon />
           </span>
         ) : (
