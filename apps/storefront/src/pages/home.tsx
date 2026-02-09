@@ -712,25 +712,25 @@ const ImageScrollerSection = () => {
 const WordCloudSection = () => {
   const phrases = [
     // Top area (above title)
-    { text: "SUNRISE RITUALS", top: "8%", left: "5%" },
-    { text: "SINGLE ORIGIN", top: "6%", left: "25%" },
-    { text: "ROASTED FRESH", top: "12%", left: "45%" },
-    { text: "BOLD FLAVOR", top: "8%", left: "70%" },
-    { text: "MORNING ENERGY", top: "18%", left: "8%" },
-    { text: "SLOW MORNINGS,\nRICH COFFEE", top: "16%", left: "78%" },
-    { text: "THAT FIRST SIP", top: "24%", left: "3%" },
-    { text: "HAND PICKED\nBEANS", top: "22%", left: "82%" },
+    { text: "SUNRISE RITUALS", top: "8%", left: "5%", delay: 0 },
+    { text: "SINGLE ORIGIN", top: "6%", left: "25%", delay: 0.5 },
+    { text: "ROASTED FRESH", top: "12%", left: "45%", delay: 1 },
+    { text: "BOLD FLAVOR", top: "8%", left: "70%", delay: 1.5 },
+    { text: "MORNING ENERGY", top: "18%", left: "8%", delay: 2 },
+    { text: "SLOW MORNINGS,\nRICH COFFEE", top: "16%", left: "78%", delay: 0.3 },
+    { text: "THAT FIRST SIP", top: "24%", left: "3%", delay: 0.8 },
+    { text: "HAND PICKED\nBEANS", top: "22%", left: "82%", delay: 1.3 },
     // Bottom area (below title)
-    { text: "PURE &\nUNCUT", top: "62%", left: "3%" },
-    { text: "THAT ONE\nMUG", top: "64%", left: "22%" },
-    { text: "AROMA THAT\nWAKES YOU", top: "60%", left: "75%" },
-    { text: "FUEL FOR\nYOUR DAY", top: "72%", left: "8%" },
-    { text: "NO SHORTCUTS", top: "68%", left: "80%" },
-    { text: "CRAFTED WITH\nINTENTION", top: "78%", left: "25%" },
-    { text: "THE RIGHT GRIND\nEVERY TIME", top: "74%", left: "55%" },
-    { text: "EMBRACE THE\nBITTER", top: "82%", left: "70%" },
-    { text: "BEAN TO CUP.\nNOTHING ELSE.", top: "86%", left: "5%" },
-    { text: "WARMTH IN\nYOUR HANDS", top: "88%", left: "45%" },
+    { text: "PURE &\nUNCUT", top: "62%", left: "3%", delay: 1.8 },
+    { text: "THAT ONE\nMUG", top: "64%", left: "22%", delay: 0.2 },
+    { text: "AROMA THAT\nWAKES YOU", top: "60%", left: "75%", delay: 0.7 },
+    { text: "FUEL FOR\nYOUR DAY", top: "72%", left: "8%", delay: 1.2 },
+    { text: "NO SHORTCUTS", top: "68%", left: "80%", delay: 1.7 },
+    { text: "CRAFTED WITH\nINTENTION", top: "78%", left: "25%", delay: 0.4 },
+    { text: "THE RIGHT GRIND\nEVERY TIME", top: "74%", left: "55%", delay: 0.9 },
+    { text: "EMBRACE THE\nBITTER", top: "82%", left: "70%", delay: 1.4 },
+    { text: "BEAN TO CUP.\nNOTHING ELSE.", top: "86%", left: "5%", delay: 1.9 },
+    { text: "WARMTH IN\nYOUR HANDS", top: "88%", left: "45%", delay: 0.6 },
   ]
 
   return (
@@ -742,13 +742,24 @@ const WordCloudSection = () => {
         WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)"
       }}
     >
+      <style>{`
+        @keyframes floatUpDown {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-8px); }
+        }
+      `}</style>
       <div className="relative w-full h-[880px]">
         {/* Scattered phrases */}
         {phrases.map((phrase, index) => (
           <span
             key={index}
             className="absolute text-yellow-900 text-xs sm:text-sm md:text-base font-bold uppercase tracking-wider text-center whitespace-pre-line leading-tight"
-            style={{ top: phrase.top, left: phrase.left }}
+            style={{ 
+              top: phrase.top, 
+              left: phrase.left,
+              animation: `floatUpDown 3s ease-in-out infinite`,
+              animationDelay: `${phrase.delay}s`
+            }}
           >
             {phrase.text}
           </span>
