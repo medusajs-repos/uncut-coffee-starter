@@ -708,6 +708,55 @@ const ImageScrollerSection = () => {
   )
 }
 
+// Word Cloud Section
+const WordCloudSection = () => {
+  const phrases = [
+    { text: "SUNRISE RITUALS", top: "4%", left: "42%" },
+    { text: "SINGLE ORIGIN", top: "10%", left: "8%" },
+    { text: "ROASTED FRESH", top: "12%", left: "28%" },
+    { text: "BOLD FLAVOR", top: "14%", left: "52%" },
+    { text: "MORNING ENERGY", top: "11%", left: "72%" },
+    { text: "SLOW MORNINGS,\nRICH COFFEE", top: "22%", left: "5%" },
+    { text: "THAT FIRST SIP", top: "26%", left: "30%" },
+    { text: "HAND PICKED\nBEANS", top: "24%", left: "55%" },
+    { text: "PURE &\nUNCUT", top: "23%", left: "80%" },
+    { text: "THAT ONE\nMUG", top: "58%", left: "3%" },
+    { text: "AROMA THAT\nWAKES YOU", top: "56%", left: "20%" },
+    { text: "FUEL FOR\nYOUR DAY", top: "55%", left: "45%" },
+    { text: "NO SHORTCUTS", top: "58%", left: "72%" },
+    { text: "CRAFTED WITH\nINTENTION", top: "68%", left: "12%" },
+    { text: "THE RIGHT GRIND\nEVERY TIME", top: "66%", left: "38%" },
+    { text: "EMBRACE THE\nBITTER", top: "70%", left: "68%" },
+    { text: "BEAN TO CUP.\nNOTHING ELSE.", top: "80%", left: "5%" },
+    { text: "WARMTH IN\nYOUR HANDS", top: "82%", left: "30%" },
+  ]
+
+  return (
+    <section className="relative w-full overflow-hidden bg-gradient-to-b from-yellow-100 via-yellow-900 to-yellow-100 py-8">
+      <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
+        {/* Scattered phrases */}
+        {phrases.map((phrase, index) => (
+          <span
+            key={index}
+            className="absolute text-neutral-400/70 text-xs sm:text-sm md:text-base font-bold uppercase tracking-wider text-center whitespace-pre-line leading-tight"
+            style={{ top: phrase.top, left: phrase.left }}
+          >
+            {phrase.text}
+          </span>
+        ))}
+        
+        {/* Center large text */}
+        <div className="absolute inset-0 flex items-center justify-center">
+          <h2 className="text-[8vw] sm:text-[9vw] md:text-[10vw] font-bold uppercase tracking-tighter text-center leading-none">
+            <span className="text-neutral-300/80">UNCUT</span>
+            <span className="text-yellow-900/30"> COFFEE BEANS</span>
+          </h2>
+        </div>
+      </div>
+    </section>
+  )
+}
+
 // Main Home Component
 const Home = () => {
   return (
@@ -735,6 +784,9 @@ const Home = () => {
       
       {/* How to Enjoy Section */}
       <HowToEnjoySection />
+      
+      {/* Word Cloud Section */}
+      <WordCloudSection />
       
       <Footer />
     </>
