@@ -44,7 +44,7 @@ const AccordionItem = ({ title, children, dotted = false, titleClassName, contai
           opacity: isOpen ? 1 : 0
         }}
       >
-        <div className="pb-5">
+        <div className={`pb-5 ${isOpen ? 'min-h-[480px]' : ''}`}>
           {children}
         </div>
       </div>
