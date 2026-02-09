@@ -7,7 +7,7 @@ import { HttpTypes } from "@medusajs/types"
 import { DEFAULT_CART_DROPDOWN_FIELDS } from "@/components/cart"
 
 // Accordion Component
-const AccordionItem = ({ title, children, dotted = false, titleClassName, containerClassName, dotColor, thinIcon = false, smallThinIcon = false, isOpen: controlledOpen, onToggle }: { title: string; children: React.ReactNode; dotted?: boolean; titleClassName?: string; containerClassName?: string; dotColor?: string; thinIcon?: boolean; smallThinIcon?: boolean; isOpen?: boolean; onToggle?: () => void }) => {
+const AccordionItem = ({ title, children, dotted = false, titleClassName, containerClassName, dotColor, thinIcon = false, smallThinIcon = false, isOpen: controlledOpen, onToggle, fixedHeight }: { title: string; children: React.ReactNode; dotted?: boolean; titleClassName?: string; containerClassName?: string; dotColor?: string; thinIcon?: boolean; smallThinIcon?: boolean; isOpen?: boolean; onToggle?: () => void; fixedHeight?: number }) => {
   const [internalOpen, setInternalOpen] = useState(false)
   const isOpen = controlledOpen !== undefined ? controlledOpen : internalOpen
   const handleToggle = onToggle || (() => setInternalOpen(!internalOpen))
@@ -18,6 +18,43 @@ const AccordionItem = ({ title, children, dotted = false, titleClassName, contai
       <line x1={size*0.167} y1={size/2} x2={size*0.833} y2={size/2} className={`transition-opacity duration-300 ${isOpen ? 'opacity-0' : 'opacity-100'}`} />
     </svg>
   )
+  
+  // For fixed height mode (used in FAQ), use simpler height animation
+  if (fixedHeight) {
+    return (
+      <div className={`border-t ${dotted ? `border-dotted ${dotColor || 'border-neutral-400'}` : 'border-black'}`}>
+        <div
+          onClick={handleToggle}
+          className={containerClassName || "w-full py-2 flex items-center justify-between text-left cursor-pointer"}
+        >
+          <span className={titleClassName || "text-[32px] font-bold uppercase tracking-wider text-neutral-400 leading-tight"}>{title}</span>
+          {(thinIcon || smallThinIcon) ? (
+            <span className="text-neutral-500 transition-transform duration-300" style={{ transform: isOpen ? 'rotate(90deg)' : 'rotate(0deg)' }}>
+              <ThinPlusIcon size={smallThinIcon ? 16 : 24} />
+            </span>
+          ) : (
+            <span 
+              className="text-black text-xl leading-none transition-transform duration-300"
+              style={{ transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)' }}
+            >
+              {isOpen ? "−" : "+"}
+            </span>
+          )}
+        </div>
+        <div 
+          className="overflow-hidden transition-[height,opacity] duration-300 ease-out"
+          style={{ 
+            height: isOpen ? fixedHeight : 0,
+            opacity: isOpen ? 1 : 0
+          }}
+        >
+          <div className="h-full pb-5 flex flex-col justify-end">
+            {children}
+          </div>
+        </div>
+      </div>
+    )
+  }
   
   return (
     <div className={`border-t ${dotted ? `border-dotted ${dotColor || 'border-neutral-400'}` : 'border-black'}`}>
@@ -81,6 +118,7 @@ const FAQSection = () => {
             thinIcon
             isOpen={openIndex === index}
             onToggle={() => setOpenIndex(openIndex === index ? null : index)}
+            fixedHeight={480}
           >
             <p className="text-black text-base font-bold uppercase leading-relaxed max-w-[320px]">
               {faq.answer}
