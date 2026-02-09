@@ -747,7 +747,7 @@ const WordCloudSection = () => {
         {phrases.map((phrase, index) => (
           <span
             key={index}
-            className="absolute text-neutral-400 text-xs sm:text-sm md:text-base font-bold uppercase tracking-wider text-center whitespace-pre-line leading-tight"
+            className="absolute text-yellow-900 text-xs sm:text-sm md:text-base font-bold uppercase tracking-wider text-center whitespace-pre-line leading-tight"
             style={{ top: phrase.top, left: phrase.left }}
           >
             {phrase.text}
