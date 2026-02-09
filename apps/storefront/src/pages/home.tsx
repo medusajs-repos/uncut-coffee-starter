@@ -574,7 +574,7 @@ const Home = () => {
       </section>
       
       {/* FAQ Section */}
-      <section className="p-8 max-w-[1024px] mx-auto bg-neutral-100">
+      <section className="p-8 max-w-[1024px] mx-auto bg-neutral-100 rounded-[16px]">
         <div className="border-b border-neutral-300">
           <AccordionItem title="Easy to Digest">
             <p className="text-neutral-600 text-sm leading-relaxed">
