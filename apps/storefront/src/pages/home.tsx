@@ -16,7 +16,7 @@ const AccordionItem = ({ title, children, dotted = false }: { title: string; chi
         onClick={() => setIsOpen(!isOpen)}
         className="w-full py-5 flex items-center justify-between text-left cursor-pointer"
       >
-        <span className="text-sm font-bold uppercase tracking-wider text-black">{title}</span>
+        <span className="text-[40px] font-bold uppercase tracking-wider text-black leading-tight">{title}</span>
         <span 
           className="text-black text-xl leading-none transition-transform duration-300"
           style={{ transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)' }}
