@@ -14,7 +14,7 @@ const AccordionItem = ({ title, children, dotted = false }: { title: string; chi
     <div className={`border-t ${dotted ? 'border-dotted border-neutral-300' : 'border-black'}`}>
       <div
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full py-5 flex items-center justify-between text-left cursor-pointer"
+        className="w-full py-4 flex items-center justify-between text-left cursor-pointer"
       >
         <span className="text-[32px] font-bold uppercase tracking-wider text-neutral-400 leading-tight">{title}</span>
         <span 
