@@ -169,7 +169,7 @@ const HowToEnjoySection = () => {
       <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
         {cards.map((card) => (
           <div key={card.label} className="flex flex-col items-center">
-            <span className="text-sm font-bold uppercase tracking-wider text-neutral-400 mb-4">
+            <span className="text-base font-bold uppercase tracking-wider text-neutral-400 mb-4">
               {card.label}
             </span>
             <div className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden">
@@ -180,10 +180,10 @@ const HowToEnjoySection = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
               <div className="absolute bottom-6 left-0 right-0 text-center px-4">
-                <p className="text-white text-sm md:text-base font-bold uppercase tracking-wide">
+                <p className="text-white text-base font-bold uppercase tracking-wide">
                   {card.line1}
                 </p>
-                <p className="text-white text-sm md:text-base font-bold uppercase tracking-wide">
+                <p className="text-white text-base font-bold uppercase tracking-wide">
                   {card.line2}
                 </p>
               </div>
