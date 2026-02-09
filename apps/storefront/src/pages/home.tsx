@@ -745,7 +745,7 @@ const WordCloudSection = () => {
     <section 
       className="relative w-full overflow-hidden py-8"
       style={{ 
-        background: "radial-gradient(ellipse 100% 70% at 50% 50%, rgb(113 63 18 / 0.6) 0%, rgb(113 63 18 / 0.45) 25%, rgb(113 63 18 / 0.3) 45%, rgb(113 63 18 / 0.15) 65%, rgb(113 63 18 / 0.05) 85%, transparent 100%)",
+        background: "radial-gradient(ellipse 80% 50% at 50% 50%, rgb(113 63 18 / 0.5) 0%, rgb(113 63 18 / 0.3) 15%, rgb(113 63 18 / 0.15) 30%, rgb(113 63 18 / 0.05) 45%, transparent 60%)",
         maskImage: "linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)",
         WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)"
       }}
