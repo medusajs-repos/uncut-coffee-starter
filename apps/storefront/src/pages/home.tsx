@@ -732,7 +732,10 @@ const WordCloudSection = () => {
   ]
 
   return (
-    <section className="relative w-full overflow-hidden bg-gradient-to-b from-yellow-100 via-yellow-900 to-yellow-100 py-8">
+    <section 
+      className="relative w-full overflow-hidden py-8"
+      style={{ background: "radial-gradient(circle, rgb(113 63 18) 0%, rgb(113 63 18 / 0%) 70%)" }}
+    >
       <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
         {/* Scattered phrases */}
         {phrases.map((phrase, index) => (
