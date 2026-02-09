@@ -7,7 +7,7 @@ import { HttpTypes } from "@medusajs/types"
 import { DEFAULT_CART_DROPDOWN_FIELDS } from "@/components/cart"
 
 // Accordion Component
-const AccordionItem = ({ title, children, dotted = false }: { title: string; children: React.ReactNode; dotted?: boolean }) => {
+const AccordionItem = ({ title, children, dotted = false, titleClassName }: { title: string; children: React.ReactNode; dotted?: boolean; titleClassName?: string }) => {
   const [isOpen, setIsOpen] = useState(false)
   
   return (
@@ -16,7 +16,7 @@ const AccordionItem = ({ title, children, dotted = false }: { title: string; chi
         onClick={() => setIsOpen(!isOpen)}
         className="w-full py-2 flex items-center justify-between text-left cursor-pointer"
       >
-        <span className="text-[32px] font-bold uppercase tracking-wider text-neutral-400 leading-tight">{title}</span>
+        <span className={titleClassName || "text-[32px] font-bold uppercase tracking-wider text-neutral-400 leading-tight"}>{title}</span>
         <span 
           className="text-black text-xl leading-none transition-transform duration-300"
           style={{ transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)' }}
@@ -285,7 +285,7 @@ const ThreeColumnSection = () => {
             
             {/* Accordions */}
             <div className="mt-8 space-y-0">
-              <AccordionItem title="INGREDIENTS & NUTRITION" dotted>
+              <AccordionItem title="INGREDIENTS & NUTRITION" dotted titleClassName="text-[16px] font-bold uppercase tracking-wider text-black leading-tight">
                 <div className="text-[14px] text-black font-bold space-y-4">
                   {/* Ingredients intro */}
                   <div className="space-y-1">
@@ -321,12 +321,12 @@ const ThreeColumnSection = () => {
                   </p>
                 </div>
               </AccordionItem>
-              <AccordionItem title="SHIPPING" dotted>
+              <AccordionItem title="SHIPPING" dotted titleClassName="text-[16px] font-bold uppercase tracking-wider text-black leading-tight">
                 <p className="text-[14px] text-black font-bold leading-relaxed uppercase">
                   OUR PREMIUM COFFEE BEANS ARE CAREFULLY PACKAGED AND SHIPPED WITHIN 24 HOURS OF ROASTING. FREE SHIPPING ON ALL ORDERS OVER $50. STANDARD DELIVERY TAKES 3-5 BUSINESS DAYS. EXPRESS SHIPPING AVAILABLE FOR NEXT-DAY DELIVERY.
                 </p>
               </AccordionItem>
-              <AccordionItem title="FAQ" dotted>
+              <AccordionItem title="FAQ" dotted titleClassName="text-[16px] font-bold uppercase tracking-wider text-black leading-tight">
                 <p className="text-[14px] text-black font-bold leading-relaxed uppercase">
                   HOW FRESH IS YOUR COFFEE? ALL OUR BEANS ARE ROASTED TO ORDER AND SHIPPED WITHIN 24 HOURS. WHAT GRIND OPTIONS DO YOU OFFER? WE OFFER WHOLE BEAN, ESPRESSO, FILTER, AND FRENCH PRESS GRINDS. HOW SHOULD I STORE MY COFFEE? KEEP IN A COOL, DRY PLACE AWAY FROM DIRECT SUNLIGHT FOR OPTIMAL FRESHNESS.
                 </p>
