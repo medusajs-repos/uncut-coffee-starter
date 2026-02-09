@@ -962,6 +962,117 @@ const ImageScrollerSection2 = () => {
   )
 }
 
+// Hand-drawn SVG graphics for engagement section
+const StarburstGraphic = () => (
+  <svg viewBox="0 0 200 200" className="w-full h-full" fill="none" stroke="currentColor" strokeWidth="1.5">
+    <path d="M100 100 L60 20" strokeLinecap="round" />
+    <path d="M100 100 L140 15" strokeLinecap="round" />
+    <path d="M100 100 L180 60" strokeLinecap="round" />
+    <path d="M100 100 L185 110" strokeLinecap="round" />
+    <path d="M100 100 L165 165" strokeLinecap="round" />
+    <path d="M100 100 L100 185" strokeLinecap="round" />
+    <path d="M100 100 L35 160" strokeLinecap="round" />
+    <path d="M100 100 L15 100" strokeLinecap="round" />
+    <path d="M100 100 L25 45" strokeLinecap="round" />
+  </svg>
+)
+
+const OvalsGraphic = () => (
+  <svg viewBox="0 0 200 180" className="w-full h-full" fill="none" stroke="currentColor" strokeWidth="1.5">
+    <ellipse cx="100" cy="45" rx="70" ry="25" />
+    <ellipse cx="100" cy="100" rx="45" ry="18" />
+    <ellipse cx="100" cy="150" rx="55" ry="20" />
+  </svg>
+)
+
+const OrganicBlobGraphic = () => (
+  <svg viewBox="0 0 200 200" className="w-full h-full" fill="none" stroke="currentColor" strokeWidth="1.5">
+    <path d="M120 20 C160 25, 180 60, 175 100 C172 130, 185 150, 170 175 C150 195, 110 190, 80 180 C50 170, 30 150, 25 120 C20 90, 35 60, 60 40 C85 20, 100 18, 120 20" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+)
+
+// Engagement Section (Newsletter, Social, Contact)
+const EngagementSection = () => {
+  const [email, setEmail] = useState("")
+  
+  return (
+    <section className="py-20 px-6 bg-white">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
+          {/* Newsletter Column */}
+          <div className="flex flex-col items-center text-center relative min-h-[320px]">
+            <div className="absolute inset-0 flex items-center justify-center opacity-100 pointer-events-none">
+              <div className="w-48 h-48">
+                <StarburstGraphic />
+              </div>
+            </div>
+            <div className="relative z-10 flex flex-col items-center h-full">
+              <h3 className="text-lg font-bold uppercase tracking-wider text-neutral-500 mb-1" style={{ fontFamily: 'inherit' }}>
+                Good Energy Club
+              </h3>
+              <p className="text-sm uppercase tracking-wide text-neutral-400 max-w-[220px] leading-snug mb-auto">
+                Join newsletter for pancake parties, training tips and trips, merch, and more good energy.
+              </p>
+              <div className="flex gap-2 mt-8 w-full max-w-xs">
+                <input
+                  type="email"
+                  placeholder="YOUR EMAIL"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="flex-1 px-4 py-3 bg-neutral-200 text-black text-sm uppercase tracking-wide placeholder:text-neutral-500 rounded-full outline-none"
+                />
+                <button className="px-6 py-3 bg-black text-white text-sm font-medium uppercase tracking-wide rounded-full hover:bg-neutral-800 transition-colors">
+                  Subscribe
+                </button>
+              </div>
+            </div>
+          </div>
+          
+          {/* Social Column */}
+          <div className="flex flex-col items-center text-center relative min-h-[320px]">
+            <div className="absolute inset-0 flex items-center justify-center opacity-100 pointer-events-none">
+              <div className="w-48 h-44">
+                <OvalsGraphic />
+              </div>
+            </div>
+            <div className="relative z-10 flex flex-col items-center h-full">
+              <h3 className="text-lg font-bold uppercase tracking-wider text-neutral-500 mb-1" style={{ fontFamily: 'inherit' }}>
+                Show Us
+              </h3>
+              <p className="text-sm uppercase tracking-wide text-neutral-400 leading-snug mb-auto">
+                Your Good Energy at<br />@SapGoodEnergy
+              </p>
+              <button className="mt-8 px-8 py-3 bg-black text-white text-sm font-medium uppercase tracking-wide rounded-full hover:bg-neutral-800 transition-colors">
+                Follow Us
+              </button>
+            </div>
+          </div>
+          
+          {/* Contact Column */}
+          <div className="flex flex-col items-center text-center relative min-h-[320px]">
+            <div className="absolute inset-0 flex items-center justify-center opacity-100 pointer-events-none">
+              <div className="w-48 h-48 translate-x-8">
+                <OrganicBlobGraphic />
+              </div>
+            </div>
+            <div className="relative z-10 flex flex-col items-center h-full">
+              <h3 className="text-lg font-bold uppercase tracking-wider text-neutral-500 mb-1" style={{ fontFamily: 'inherit' }}>
+                Working on Something?
+              </h3>
+              <p className="text-sm uppercase tracking-wide text-neutral-400 max-w-[220px] leading-snug mb-auto">
+                Goals, races, clubs, cafes... tell us what you're up to and how we can bring good energy.
+              </p>
+              <button className="mt-8 px-8 py-3 bg-black text-white text-sm font-medium uppercase tracking-wide rounded-full hover:bg-neutral-800 transition-colors">
+                Contact Us
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
 // Main Home Component
 const Home = () => {
   return (
@@ -995,6 +1106,9 @@ const Home = () => {
       
       {/* Second Image Scroller */}
       <ImageScrollerSection2 />
+      
+      {/* Engagement Section */}
+      <EngagementSection />
       
       <Footer />
     </>
