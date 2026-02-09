@@ -40,14 +40,17 @@ const AccordionItem = ({ title, children, dotted = false, titleClassName, contai
         )}
       </div>
       <div 
-        className="overflow-hidden transition-all duration-300 ease-in-out"
+        className="grid transition-[grid-template-rows] duration-300 ease-out"
         style={{ 
-          maxHeight: isOpen ? '500px' : '0px',
-          opacity: isOpen ? 1 : 0
+          gridTemplateRows: isOpen ? '1fr' : '0fr'
         }}
       >
-        <div className={`pb-5 flex flex-col justify-end ${isOpen ? 'min-h-[480px]' : ''}`}>
-          {children}
+        <div className="overflow-hidden">
+          <div 
+            className={`pb-5 flex flex-col justify-end transition-opacity duration-300 ${isOpen ? 'min-h-[480px] opacity-100' : 'opacity-0'}`}
+          >
+            {children}
+          </div>
         </div>
       </div>
     </div>
