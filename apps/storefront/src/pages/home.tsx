@@ -757,7 +757,7 @@ const WordCloudSection = () => {
             style={{ 
               top: phrase.top, 
               left: phrase.left,
-              animation: `floatUpDown 3s ease-in-out infinite`,
+              animation: `floatUpDown 6s ease-in-out infinite`,
               animationDelay: `${phrase.delay}s`
             }}
           >
