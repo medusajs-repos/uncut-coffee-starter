@@ -657,7 +657,7 @@ const Home = () => {
       <section className="py-16 px-6">
         <div className="text-center">
           <h2 className="text-[32px] leading-none font-bold tracking-tight uppercase text-neutral-500">
-            Raw beans
+            Raw beans.
           </h2>
           <h2 className="text-[32px] leading-none font-bold tracking-tight uppercase text-neutral-400">
             Everything you need,<br />nothing you don't.
