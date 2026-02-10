@@ -16,7 +16,7 @@ const selectTriggerVariants = cva(
     variants: {
       variant: {
         default:
-          "h-10 w-full border border-neutral-300 bg-white px-3 py-2 shadow-sm ring-offset-white focus:ring-1 focus:ring-neutral-400",
+          "h-12 w-full border border-neutral-300 bg-neutral-100 px-3 rounded-lg shadow-sm ring-offset-white focus:ring-1 focus:ring-neutral-400",
         minimal: "gap-2",
       },
     },
