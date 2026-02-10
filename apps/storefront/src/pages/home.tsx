@@ -228,12 +228,12 @@ const HeroSection = () => {
 // Three Column Section
 const ThreeColumnSection = () => {
   const [quantity, setQuantity] = useState(1)
-  const [purchaseType, setPurchaseType] = useState<"single" | "subscription">("subscription")
+  const [purchaseType, setPurchaseType] = useState<"single" | "box">("box")
   const [isLoading, setIsLoading] = useState(false)
   const [products, setProducts] = useState<{
     single: HttpTypes.StoreProduct | null;
-    subscription: HttpTypes.StoreProduct | null;
-  }>({ single: null, subscription: null })
+    box: HttpTypes.StoreProduct | null;
+  }>({ single: null, box: null })
   const [region, setRegion] = useState<HttpTypes.StoreRegion | null>(null)
   
   const addToCartMutation = useAddToCart({
@@ -246,15 +246,15 @@ const ThreeColumnSection = () => {
     const fetchData = async () => {
       try {
         // Fetch products by handle
-        const [singleRes, subRes, regionsRes] = await Promise.all([
+        const [singleRes, boxRes, regionsRes] = await Promise.all([
           sdk.store.product.list({ handle: "coffee-beans-single", fields: "+variants.prices.*" }),
-          sdk.store.product.list({ handle: "coffee-beans-subscription", fields: "+variants.prices.*" }),
+          sdk.store.product.list({ handle: "coffee-beans-sample", fields: "+variants.prices.*" }),
           sdk.store.region.list({})
         ])
         
         setProducts({
           single: singleRes.products[0] || null,
-          subscription: subRes.products[0] || null
+          box: boxRes.products[0] || null
         })
         
         // Find US region or default to first region
@@ -278,7 +278,7 @@ const ThreeColumnSection = () => {
   }
   
   const handleAddToCart = async () => {
-    const selectedProduct = purchaseType === "single" ? products.single : products.subscription
+    const selectedProduct = purchaseType === "single" ? products.single : products.box
     if (!selectedProduct || !selectedProduct.variants?.[0] || !region) return
     
     const variant = selectedProduct.variants[0]
@@ -302,8 +302,8 @@ const ThreeColumnSection = () => {
   }
   
   // Get prices from products
-  const singlePrice = products.single?.variants?.[0]?.calculated_price?.calculated_amount || 37.72
-  const subscriptionPrice = products.subscription?.variants?.[0]?.calculated_price?.calculated_amount || 32.06
+  const singlePrice = products.single?.variants?.[0]?.calculated_price?.calculated_amount || 15
+  const boxPrice = products.box?.variants?.[0]?.calculated_price?.calculated_amount || 63.75
   
   return (
     <section id="shop" className="px-4 scroll-mt-10">
@@ -380,21 +380,20 @@ const ThreeColumnSection = () => {
             </label>
             
             <label 
-              className={`flex flex-col p-4 border rounded-[8px] cursor-pointer text-[14px] transition-colors ${purchaseType === "subscription" ? "border-yellow-900 bg-white" : "border-black"}`}
-              onClick={() => setPurchaseType("subscription")}
+              className={`flex flex-col p-4 border rounded-[8px] cursor-pointer text-[14px] transition-colors ${purchaseType === "box" ? "border-yellow-900 bg-white" : "border-black"}`}
+              onClick={() => setPurchaseType("box")}
             >
               <div className="flex items-center gap-3">
                   <input 
                     type="radio" 
                     name="purchase" 
-                    checked={purchaseType === "subscription"}
-                    onChange={() => setPurchaseType("subscription")}
+                    checked={purchaseType === "box"}
+                    onChange={() => setPurchaseType("box")}
                     className="w-[16px] h-[16px] appearance-none border border-black rounded-full relative before:content-[''] before:absolute before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:w-[12px] before:h-[12px] before:rounded-full before:bg-yellow-900 before:scale-0 checked:before:scale-100 before:transition-transform flex-shrink-0"
                   />
                   <span className="text-black text-[14px] uppercase tracking-wider font-bold truncate min-w-0">1 X BOX</span>
                   <div className="flex items-center gap-2 ml-auto flex-shrink-0">
-                    <span className="text-neutral-400 text-[14px] font-bold line-through">${singlePrice.toFixed(2)}</span>
-                    <span className="text-[#3d2a1a] text-[14px] font-bold">${subscriptionPrice.toFixed(2)}</span>
+                    <span className="text-[#3d2a1a] text-[14px] font-bold">${boxPrice.toFixed(2)}</span>
                   </div>
               </div>
               <div className="border-t border-dotted border-[#3d2a1a]/30 my-3" />
