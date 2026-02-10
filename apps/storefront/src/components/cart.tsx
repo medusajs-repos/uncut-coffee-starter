@@ -510,7 +510,8 @@ export const CartDropdown = ({ textColor = "text-black" }: CartDropdownProps) =>
           </div>
           <button
             onClick={closeCart}
-            className="w-12 h-12 rounded-full border-2 border-black flex items-center justify-center hover:bg-neutral-100 transition-colors cursor-pointer"
+            className="w-12 h-12 rounded-full border-2 border-black flex items-center justify-center hover:bg-neutral-100 transition-colors"
+            style={{ cursor: 'pointer' }}
           >
             <XMark className="w-5 h-5" />
           </button>
