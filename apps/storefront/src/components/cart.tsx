@@ -70,7 +70,7 @@ export const CartDeleteItem = ({ item, fields }: CartDeleteItemProps) => {
     <button
       onClick={() => deleteLineItemMutation.mutate({ line_id: item.id })}
       disabled={deleteLineItemMutation.isPending}
-      className="h-12 px-4 bg-neutral-200 rounded-lg text-sm font-bold text-neutral-600 hover:text-black hover:bg-neutral-300 transition-colors cursor-pointer flex-1"
+      className="h-12 px-4 bg-neutral-200 rounded-lg text-sm font-bold text-neutral-600 hover:text-black hover:bg-neutral-300 transition-colors cursor-pointer flex-1 uppercase"
     >
       Remove
     </button>
