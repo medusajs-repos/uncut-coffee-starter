@@ -30,7 +30,7 @@ const PaymentContainer: React.FC<PaymentContainerProps> = ({
     >
       <div className="flex items-center gap-x-4">
         <Radio checked={isSelected} readOnly />
-        <p className="text-base font-medium uppercase text-black">
+        <p className="text-base font-bold uppercase text-black">
           {paymentMethodsData[paymentProviderId]?.title || paymentProviderId}
         </p>
       </div>
