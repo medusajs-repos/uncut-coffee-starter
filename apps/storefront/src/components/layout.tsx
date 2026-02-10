@@ -8,6 +8,20 @@ import { Outlet, useLocation } from "@tanstack/react-router"
 const Layout = () => {
   const location = useLocation()
   const isHomepage = location.pathname === "/" || /^\/[a-z]{2}\/?$/.test(location.pathname)
+  const isCheckout = location.pathname.includes("/checkout")
+
+  // Checkout has its own layout without navbar/footer
+  if (isCheckout) {
+    return (
+      <ToastProvider>
+        <CartProvider>
+          <ErrorBoundary>
+            <Outlet />
+          </ErrorBoundary>
+        </CartProvider>
+      </ToastProvider>
+    );
+  }
 
   return (
     <ToastProvider>

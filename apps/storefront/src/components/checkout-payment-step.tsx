@@ -74,11 +74,12 @@ const PaymentStep = ({ cart, onNext, onBack }: PaymentStepProps) => {
   }, [selectedPaymentMethod, activeSession, onNext, initiatePaymentSession]);
 
   return (
-    <div className="flex flex-col gap-8">
+    <div className="space-y-6">
+      {/* Payment Method Selection */}
       {!paidByGiftcard && (availablePaymentMethods?.length ?? 0) > 0 && (
-        <>
+        <div className="space-y-3">
           {availablePaymentMethods.length === 0 && (
-            <p className="text-base font-medium text-neutral-600">
+            <p className="text-sm text-neutral-500">
               No payment methods available
             </p>
           )}
@@ -101,37 +102,35 @@ const PaymentStep = ({ cart, onNext, onBack }: PaymentStepProps) => {
               </PaymentContainer>
             </div>
           ))}
-        </>
+        </div>
       )}
 
+      {/* Gift Card Payment */}
       {paidByGiftcard && (
-        <div className="flex flex-col w-1/3">
-          <p className="text-base font-semibold text-neutral-900 mb-1">
+        <div className="p-4 bg-neutral-50 rounded-lg border border-neutral-200">
+          <p className="text-sm font-medium text-neutral-900 mb-1">
             Payment method
           </p>
-          <p
-            className="text-base font-semibold text-neutral-600"
-            data-testid="payment-method-summary"
-          >
-            Gift card
+          <p className="text-sm text-neutral-600">
+            Your order will be paid with gift card
           </p>
         </div>
       )}
 
+      {/* Error Message */}
       {error && (
-        <div
-          className="text-rose-900 text-sm"
-          data-testid="payment-method-error-message"
-        >
-          {error}
+        <div className="p-4 bg-red-50 rounded-lg border border-red-200">
+          <p className="text-sm text-red-700">{error}</p>
         </div>
       )}
 
-      <div className="flex items-center gap-4">
+      {/* Navigation Buttons */}
+      <div className="flex items-center gap-3 pt-4">
         <Button
           variant="secondary"
           onClick={onBack}
           disabled={initiatePaymentSessionMutation.isPending}
+          className="flex-1"
         >
           Back
         </Button>
@@ -142,11 +141,11 @@ const PaymentStep = ({ cart, onNext, onBack }: PaymentStepProps) => {
             (!selectedPaymentMethod && !paidByGiftcard) ||
             initiatePaymentSessionMutation.isPending
           }
-          data-testid="submit-payment-button"
+          className="flex-1"
         >
           {!activeSession && isStripeFunc(selectedPaymentMethod)
             ? "Enter card details"
-            : "Next"}
+            : "Review order"}
         </Button>
       </div>
     </div>

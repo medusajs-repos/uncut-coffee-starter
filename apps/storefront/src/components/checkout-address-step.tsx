@@ -116,74 +116,79 @@ const AddressStep = ({ cart, onNext }: AddressStepProps) => {
   }, [cart.region, storedCountryCode]);
 
   return (
-    <div className="flex flex-col gap-8">
-      <form onSubmit={handleSubmit} className="flex flex-col gap-8">
-        <div className="flex flex-col gap-2">
-          <h3 className="text-neutral-900 !text-base font-semibold">
-            Shipping Address
-          </h3>
-          {/* Shipping Address */}
-          <AddressForm
-            addressFormData={shippingAddress}
-            setAddressFormData={setShippingAddress}
-            countries={cart.region?.countries}
-            setIsFormValid={setIsShippingAddressValid}
-          />
-        </div>
-
-        {/* Billing Address Checkbox */}
-        <div className="flex items-center gap-x-2">
-          <Checkbox
-            id="same_as_billing"
-            type="checkbox"
-            checked={sameAsBilling}
-            onChange={(e) => setSameAsBilling(!!e.target.checked)}
-          />
-          <label htmlFor="same_as_billing" className="text-sm">
-            Billing address is the same as shipping address
-          </label>
-        </div>
-
-        {/* Billing Address (if different) */}
-        {!sameAsBilling && (
-          <div className="flex flex-col gap-2">
-            <h3 className="text-neutral-900 !text-base font-semibold">
-              Billing Address
-            </h3>
-            <AddressForm
-              addressFormData={billingAddress}
-              setAddressFormData={setBillingAddress}
-              countries={cart.region?.countries}
-              setIsFormValid={setIsBillingAddressValid}
-            />
-          </div>
-        )}
-
-        {/* Email */}
-        <div className="flex flex-col gap-2">
-          <label htmlFor="email" className="block text-sm font-medium">
-            Email Address
-          </label>
+    <form onSubmit={handleSubmit} className="space-y-8">
+      {/* Contact Information */}
+      <div className="space-y-4">
+        <h3 className="text-base font-semibold text-neutral-900">
+          Contact
+        </h3>
+        <div>
           <Input
             id="email"
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="your@email.com"
+            placeholder="Email address"
             className="w-full"
           />
-          <p className="text-xs text-neutral-600">
-            You'll receive order updates to this email.
+          <p className="text-xs text-neutral-500 mt-1.5">
+            Order updates will be sent to this email
           </p>
         </div>
+      </div>
 
-        <div className="flex">
-          <Button type="submit" disabled={!isFormValid() || isSubmitting}>
-            Next
-          </Button>
+      {/* Shipping Address */}
+      <div className="space-y-4">
+        <h3 className="text-base font-semibold text-neutral-900">
+          Shipping address
+        </h3>
+        <AddressForm
+          addressFormData={shippingAddress}
+          setAddressFormData={setShippingAddress}
+          countries={cart.region?.countries}
+          setIsFormValid={setIsShippingAddressValid}
+        />
+      </div>
+
+      {/* Billing Address Checkbox */}
+      <div className="flex items-center gap-3 p-4 bg-neutral-50 rounded-lg border border-neutral-200">
+        <Checkbox
+          id="same_as_billing"
+          type="checkbox"
+          checked={sameAsBilling}
+          onChange={(e) => setSameAsBilling(!!e.target.checked)}
+        />
+        <label htmlFor="same_as_billing" className="text-sm text-neutral-700 cursor-pointer">
+          Billing address is the same as shipping
+        </label>
+      </div>
+
+      {/* Billing Address (if different) */}
+      {!sameAsBilling && (
+        <div className="space-y-4">
+          <h3 className="text-base font-semibold text-neutral-900">
+            Billing address
+          </h3>
+          <AddressForm
+            addressFormData={billingAddress}
+            setAddressFormData={setBillingAddress}
+            countries={cart.region?.countries}
+            setIsFormValid={setIsBillingAddressValid}
+          />
         </div>
-      </form>
-    </div>
+      )}
+
+      {/* Submit Button */}
+      <div className="pt-4">
+        <Button 
+          type="submit" 
+          disabled={!isFormValid() || isSubmitting}
+          className="w-full py-4"
+        >
+          {isSubmitting ? "Processing..." : "Continue to shipping"}
+        </Button>
+      </div>
+    </form>
   );
 };
 

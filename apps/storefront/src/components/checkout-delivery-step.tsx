@@ -51,8 +51,14 @@ const DeliveryStep = ({ cart, onNext, onBack }: DeliveryStepProps) => {
   };
 
   return (
-    <div className="flex flex-col gap-8">
-      <div className="flex flex-col gap-3">
+    <div className="space-y-6">
+      {/* Shipping Method Selection */}
+      <div className="space-y-3">
+        {shippingOptions?.length === 0 && (
+          <p className="text-sm text-neutral-500">
+            No shipping options available for your address.
+          </p>
+        )}
         {shippingOptions?.map((option) => (
           <ShippingItemSelector
             key={option.id}
@@ -64,15 +70,22 @@ const DeliveryStep = ({ cart, onNext, onBack }: DeliveryStepProps) => {
         ))}
       </div>
 
-      <div className="flex items-center gap-4">
-        <Button variant="secondary" onClick={onBack} disabled={isSubmitting}>
+      {/* Navigation Buttons */}
+      <div className="flex items-center gap-3 pt-4">
+        <Button 
+          variant="secondary" 
+          onClick={onBack} 
+          disabled={isSubmitting}
+          className="flex-1"
+        >
           Back
         </Button>
         <Button
           onClick={handleSubmit}
           disabled={!selectedOptionId || isSubmitting}
+          className="flex-1"
         >
-          Next
+          {isSubmitting ? "Processing..." : "Continue to payment"}
         </Button>
       </div>
     </div>
