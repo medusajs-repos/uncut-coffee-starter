@@ -7,7 +7,7 @@ import {
 } from "@tanstack/react-router"
 import { lazy, Suspense } from "react"
 import { getCountryCodeFromPath } from "@/lib/utils/region"
-import { ArrowLeft } from "@medusajs/icons"
+
 
 const DeliveryStep = lazy(() => import("@/components/checkout-delivery-step"))
 const AddressStep = lazy(() => import("@/components/checkout-address-step"))
@@ -38,11 +38,10 @@ const Checkout = () => {
         <div className="bg-white px-6 lg:px-12 xl:px-24 py-8 lg:py-12 order-2 lg:order-1">
           {/* Back to Cart Link */}
           <Link 
-            to={`/${countryCode}/cart` as any}
-            className="inline-flex items-center gap-2 bg-neutral-200 hover:bg-neutral-300 transition-colors px-4 py-2 rounded mb-8"
+            to={`/${countryCode}` as any}
+            className="inline-flex items-center bg-neutral-200 hover:bg-neutral-300 transition-colors px-4 py-2 rounded mb-8"
           >
-            <ArrowLeft className="w-4 h-4 text-neutral-500" />
-            <span className="text-[14px] font-bold uppercase text-neutral-500">BACK</span>
+            <span className="text-[14px] font-bold uppercase text-neutral-500">BACK TO UNCUT</span>
           </Link>
 
           {/* Logo / Store Name */}
