@@ -70,7 +70,7 @@ export const CartDeleteItem = ({ item, fields }: CartDeleteItemProps) => {
     <button
       onClick={() => deleteLineItemMutation.mutate({ line_id: item.id })}
       disabled={deleteLineItemMutation.isPending}
-      className="text-sm font-bold text-neutral-600 hover:text-black underline transition-colors"
+      className="text-sm font-bold text-neutral-600 hover:text-black underline transition-colors cursor-pointer"
     >
       Remove
     </button>
@@ -494,7 +494,7 @@ export const CartDropdown = ({ textColor = "text-black" }: CartDropdownProps) =>
   return (
     <Drawer open={isOpen} onOpenChange={(open) => (open ? openCart() : closeCart())}>
       <DrawerTrigger asChild>
-        <button className={`${textColor} hover:opacity-70 transition-opacity h-full text-sm uppercase tracking-wide`}>
+        <button className={`${textColor} hover:opacity-70 transition-opacity h-full text-sm uppercase tracking-wide cursor-pointer`}>
           Cart ({itemCount})
         </button>
       </DrawerTrigger>
@@ -510,7 +510,7 @@ export const CartDropdown = ({ textColor = "text-black" }: CartDropdownProps) =>
           </div>
           <button
             onClick={closeCart}
-            className="w-12 h-12 rounded-full border-2 border-black flex items-center justify-center hover:bg-neutral-100 transition-colors"
+            className="w-12 h-12 rounded-full border-2 border-black flex items-center justify-center hover:bg-neutral-100 transition-colors cursor-pointer"
           >
             <XMark className="w-5 h-5" />
           </button>
@@ -523,7 +523,7 @@ export const CartDropdown = ({ textColor = "text-black" }: CartDropdownProps) =>
               Your cart is empty
             </span>
             <Link to={`${baseHref}/store` as any} onClick={closeCart}>
-              <button className="bg-black text-white px-8 py-3 rounded-full font-medium uppercase tracking-wide text-sm hover:bg-neutral-800 transition-colors">
+              <button className="bg-black text-white px-8 py-3 rounded-full font-medium uppercase tracking-wide text-sm hover:bg-neutral-800 transition-colors cursor-pointer">
                 Continue Shopping
               </button>
             </Link>
@@ -550,7 +550,7 @@ export const CartDropdown = ({ textColor = "text-black" }: CartDropdownProps) =>
               <div className="border-b border-neutral-200 pb-4">
                 <button
                   onClick={() => setShowDiscount(!showDiscount)}
-                  className="flex items-center justify-between w-full text-left"
+                  className="flex items-center justify-between w-full text-left cursor-pointer"
                 >
                   <span className="text-sm font-bold uppercase tracking-wide">Discount</span>
                   <Plus className={`w-5 h-5 transition-transform ${showDiscount ? 'rotate-45' : ''}`} />
@@ -588,7 +588,7 @@ export const CartDropdown = ({ textColor = "text-black" }: CartDropdownProps) =>
 
               {/* Checkout Button */}
               <Link to={`${baseHref}/checkout` as any} onClick={closeCart} className="block">
-                <button className="w-full bg-black text-white py-4 rounded-full font-bold uppercase tracking-wide text-sm hover:bg-neutral-800 transition-colors">
+                <button className="w-full bg-black text-white py-4 rounded-full font-bold uppercase tracking-wide text-sm hover:bg-neutral-800 transition-colors cursor-pointer">
                   Check Out
                 </button>
               </Link>
