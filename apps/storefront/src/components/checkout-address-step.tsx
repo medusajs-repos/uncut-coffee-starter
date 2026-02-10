@@ -130,7 +130,7 @@ const AddressStep = ({ cart }: AddressStepProps) => {
 
       {/* Contact Information */}
       <div className="space-y-4">
-        <h3 className="text-base font-bold text-neutral-900">
+        <h3 className="text-base font-bold text-neutral-900 uppercase">
           Contact
         </h3>
         <div>
@@ -150,7 +150,7 @@ const AddressStep = ({ cart }: AddressStepProps) => {
 
       {/* Shipping Address */}
       <div className="space-y-4">
-        <h3 className="text-base font-bold text-neutral-900">
+        <h3 className="text-base font-bold text-neutral-900 uppercase">
           Shipping address
         </h3>
         <AddressForm
@@ -177,7 +177,7 @@ const AddressStep = ({ cart }: AddressStepProps) => {
       {/* Billing Address (if different) */}
       {!sameAsBilling && (
         <div className="space-y-4">
-          <h3 className="text-base font-bold text-neutral-900">
+          <h3 className="text-base font-bold text-neutral-900 uppercase">
             Billing address
           </h3>
           <AddressForm
