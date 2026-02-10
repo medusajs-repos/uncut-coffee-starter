@@ -45,7 +45,7 @@ const Footer = () => {
             <span className="text-black text-sm font-bold uppercase tracking-wide hover:opacity-60 transition-opacity cursor-pointer">
               Account
             </span>
-            <div className="text-black text-sm font-bold uppercase tracking-wide">
+            <div className="text-black text-sm font-bold uppercase tracking-wide cursor-pointer">
               <CountrySelect regions={regions ?? []} />
             </div>
             <span className="text-black text-sm font-bold uppercase tracking-wide hover:opacity-60 transition-opacity cursor-pointer">
