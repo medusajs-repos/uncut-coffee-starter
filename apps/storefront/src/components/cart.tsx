@@ -185,9 +185,9 @@ const CompactCartLineItem = ({ item, cart, fields }: CartLineItemProps) => {
                 {item.variant_title}
               </p>
             )}
-            <p className="text-sm text-neutral-600 mt-1">
+            <div className="text-sm text-neutral-600 mt-1">
               <Price price={unitPrice} currencyCode={cart.currency_code} textSize="small" />
-            </p>
+            </div>
           </div>
           <Price price={item.total || 0} currencyCode={cart.currency_code} textSize="small" className="font-medium" />
         </div>
