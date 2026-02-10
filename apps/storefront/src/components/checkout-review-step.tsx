@@ -19,11 +19,11 @@ const ReviewStep = ({ cart }: ReviewStepProps) => {
 
   if (!isReady) {
     return (
-      <div className="p-3 bg-neutral-50 rounded-lg border border-neutral-200">
-        <p className="text-sm font-bold text-neutral-500">
+      <div className="p-3 bg-neutral-200 rounded-lg text-neutral-600 uppercase">
+        <p className="text-sm font-bold">
           Please complete all steps above to place your order.
         </p>
-        <ul className="mt-2 text-sm font-bold text-neutral-500 list-disc list-inside">
+        <ul className="mt-2 text-sm font-bold list-disc list-inside">
           {!hasAddress && <li>Enter your contact and shipping information</li>}
           {!hasShippingMethod && <li>Select a shipping method</li>}
           {!hasPayment && <li>Set up payment</li>}
