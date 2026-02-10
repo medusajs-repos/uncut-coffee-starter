@@ -189,7 +189,7 @@ export const Navbar = () => {
 
                       <Link to={`${baseHref}/cart` as any} onClick={closeCart} className="block">
                         <button className="uncut-button w-full cursor-pointer h-14 font-bold">
-                          View Cart & Checkout
+                          CHECK OUT
                         </button>
                       </Link>
                     </DrawerFooter>
