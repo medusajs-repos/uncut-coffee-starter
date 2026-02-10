@@ -19,7 +19,7 @@ const ReviewStep = ({ cart }: ReviewStepProps) => {
 
   if (!isReady) {
     return (
-      <div className="p-4 bg-neutral-50 rounded-lg border border-neutral-200">
+      <div className="p-3 bg-neutral-50 rounded-lg border border-neutral-200">
         <p className="text-sm font-bold text-neutral-500">
           Please complete all steps above to place your order.
         </p>
