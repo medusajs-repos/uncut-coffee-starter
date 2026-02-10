@@ -307,8 +307,23 @@ const ThreeColumnSection = () => {
   
   return (
     <section id="shop" className="px-4 scroll-mt-10">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row md:items-stretch gap-16">
-        {/* Left container - Text + Video (66% width) */}
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row md:items-stretch gap-8 md:gap-16">
+        {/* Mobile: Text + Video stacked vertically */}
+        <div className="flex md:hidden flex-col gap-6 mb-4">
+          <p className="text-neutral-400 text-[24px] uppercase tracking-wider font-bold leading-tight text-center">
+            UNCUT COFFEE BEANS. NATURE'S ORIGINAL ENERGY SOURCE.
+          </p>
+          <video 
+            src="https://cdn.mignite.app/ws/works_01KG7HEF506FB5P7HQP4V3WMR7/Make_the_bag_202602031440_h6dsd-01KGHRAQFFRH78TT9E2FPA46FV.mp4"
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="w-full h-auto max-w-[280px] mx-auto"
+          />
+        </div>
+        
+        {/* Desktop: Left container - Text + Video (66% width) */}
         <div className="hidden md:flex md:w-2/3 gap-16">
           {/* Column 1 - Sticky text */}
           <div className="w-1/2">
