@@ -64,17 +64,43 @@ type CartDeleteItemProps = {
   fields?: string
 }
 
+const AnimatedTrashIcon = ({ className }: { className?: string }) => (
+  <svg 
+    viewBox="0 0 24 24" 
+    fill="none" 
+    stroke="currentColor" 
+    strokeWidth="2" 
+    strokeLinecap="round" 
+    strokeLinejoin="round"
+    className={`w-5 h-5 group ${className}`}
+  >
+    {/* Trash lid - animates on hover */}
+    <path 
+      d="M3 6h18" 
+      className="origin-[85%_50%] transition-transform duration-200 group-hover:-rotate-[25deg] group-hover:-translate-y-0.5"
+    />
+    <path 
+      d="M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2" 
+      className="origin-[75%_100%] transition-transform duration-200 group-hover:-rotate-[25deg] group-hover:-translate-y-0.5"
+    />
+    {/* Trash body - stays in place */}
+    <path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6" />
+    <line x1="10" y1="11" x2="10" y2="17" />
+    <line x1="14" y1="11" x2="14" y2="17" />
+  </svg>
+)
+
 export const CartDeleteItem = ({ item, fields }: CartDeleteItemProps) => {
   const deleteLineItemMutation = useDeleteLineItem({ fields })
   return (
     <Button
       onClick={() => deleteLineItemMutation.mutate({ line_id: item.id })}
       disabled={deleteLineItemMutation.isPending}
-      className="text-neutral-600 hover:text-neutral-500 transition-colors ml-2"
+      className="text-neutral-600 hover:text-neutral-500 transition-colors ml-2 group"
       variant="transparent"
       size="fit"
     >
-      <Trash />
+      <AnimatedTrashIcon />
     </Button>
   )
 }
