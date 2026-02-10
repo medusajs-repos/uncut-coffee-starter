@@ -9,10 +9,10 @@ export const Input = ({ className, ...props }: InputProps) => {
         "appearance-none shadow-none outline-none focus:outline-none",
         "border border-neutral-300",
         "rounded-lg",
-        "text-base font-medium text-neutral-900",
+        "text-base font-bold text-neutral-900",
         "px-4 w-full h-12",
         "bg-neutral-100",
-        "placeholder:text-neutral-600",
+        "placeholder:text-neutral-400 placeholder:font-normal",
         className
       )}
       {...props}
