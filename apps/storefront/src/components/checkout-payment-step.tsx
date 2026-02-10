@@ -110,8 +110,7 @@ const PaymentStep = ({ cart }: PaymentStepProps) => {
               <PaymentContainer
                 paymentProviderId={fakeMethod.id}
                 selectedPaymentOptionId={selectedPaymentMethod}
-                disabled={true}
-                onClick={() => {}}
+                onClick={() => handlePaymentMethodChange(fakeMethod.id)}
               />
             </div>
           ))}
