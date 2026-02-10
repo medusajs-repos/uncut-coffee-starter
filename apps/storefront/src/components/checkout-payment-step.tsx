@@ -87,7 +87,7 @@ const PaymentStep = ({ cart }: PaymentStepProps) => {
     <div className="space-y-4">
       {/* Payment Method Selection */}
       {!paidByGiftcard && (
-        <div className="space-y-3">
+        <div className="space-y-2">
           {displayPaymentMethods.map((method) => (
             <div key={method.id}>
               <PaymentContainer
