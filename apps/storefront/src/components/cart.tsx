@@ -170,7 +170,8 @@ const CompactCartLineItem = ({ item, cart, fields }: CartLineItemProps) => {
       <Thumbnail 
         thumbnail={item.thumbnail} 
         alt={item.product_title || item.title} 
-        className="w-12 h-12 object-cover flex-shrink-0"
+        size="sm"
+        className="flex-shrink-0"
       />
       <div className="flex-1 min-w-0">
         <div className="flex items-start justify-between gap-4">
