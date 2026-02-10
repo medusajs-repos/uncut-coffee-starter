@@ -120,7 +120,7 @@ const AddressForm = ({
             autoComplete="given-name"
             value={addressFormData.first_name}
             onChange={(e) => handleChange("first_name", e.target.value)}
-            placeholder="First name"
+            placeholder="John"
           />
           {errors.first_name && touchedFields.first_name && (
             <div className="text-rose-900 text-sm mt-1">
@@ -139,7 +139,7 @@ const AddressForm = ({
             autoComplete="family-name"
             value={addressFormData.last_name}
             onChange={(e) => handleChange("last_name", e.target.value)}
-            placeholder="Last name"
+            placeholder="Smith"
           />
           {errors.last_name && touchedFields.last_name && (
             <div className="text-rose-900 text-sm mt-1">
@@ -161,7 +161,7 @@ const AddressForm = ({
           autoComplete="organization"
           value={addressFormData.company}
           onChange={(e) => handleChange("company", e.target.value)}
-          placeholder="Company name"
+          placeholder="Acme Inc."
         />
       </div>
 
@@ -177,7 +177,7 @@ const AddressForm = ({
           autoComplete="street-address"
           value={addressFormData.address_1}
           onChange={(e) => handleChange("address_1", e.target.value)}
-          placeholder="Address line 1"
+          placeholder="123 Main Street"
         />
         {errors.address_1 && touchedFields.address_1 && (
           <div className="text-rose-900 text-sm mt-1">{errors.address_1}</div>
@@ -194,7 +194,7 @@ const AddressForm = ({
           type="text"
           value={addressFormData.address_2}
           onChange={(e) => handleChange("address_2", e.target.value)}
-          placeholder="Address line 2"
+          placeholder="Apt 4B"
         />
       </div>
 
@@ -211,7 +211,7 @@ const AddressForm = ({
             autoComplete="address-level2"
             value={addressFormData.city}
             onChange={(e) => handleChange("city", e.target.value)}
-            placeholder="City"
+            placeholder="New York"
           />
           {errors.city && touchedFields.city && (
             <div className="text-rose-900 text-sm mt-1">{errors.city}</div>
@@ -228,7 +228,7 @@ const AddressForm = ({
             autoComplete="address-level1"
             value={addressFormData.province}
             onChange={(e) => handleChange("province", e.target.value)}
-            placeholder="State / Province"
+            placeholder="NY"
           />
         </div>
         <div className="flex flex-col gap-2">
@@ -242,7 +242,7 @@ const AddressForm = ({
             autoComplete="postal-code"
             value={addressFormData.postal_code}
             onChange={(e) => handleChange("postal_code", e.target.value)}
-            placeholder="Postal code"
+            placeholder="10001"
           />
           {errors.postal_code && touchedFields.postal_code && (
             <div className="text-rose-900 text-sm mt-1">
@@ -295,7 +295,7 @@ const AddressForm = ({
           autoComplete="tel"
           value={addressFormData.phone}
           onChange={(e) => handleChange("phone", e.target.value)}
-          placeholder="Phone number"
+          placeholder="+1 555 123 4567"
         />
       </div>
 

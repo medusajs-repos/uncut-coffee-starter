@@ -139,7 +139,7 @@ const AddressStep = ({ cart }: AddressStepProps) => {
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="Email address"
+            placeholder="joe@email.com"
             className="w-full"
           />
 
