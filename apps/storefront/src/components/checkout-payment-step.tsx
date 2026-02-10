@@ -71,6 +71,11 @@ const PaymentStep = ({ cart }: PaymentStepProps) => {
     );
   }
 
+  // Add a fake payment option for demo purposes
+  const fakePaymentMethods = [
+    { id: "pp_paypal", name: "PayPal" },
+  ];
+
   return (
     <div className="space-y-4">
       {/* Payment Method Selection */}
@@ -97,6 +102,17 @@ const PaymentStep = ({ cart }: PaymentStepProps) => {
                   />
                 )}
               </PaymentContainer>
+            </div>
+          ))}
+          {/* Fake payment options for demo */}
+          {fakePaymentMethods.map((fakeMethod) => (
+            <div key={fakeMethod.id}>
+              <PaymentContainer
+                paymentProviderId={fakeMethod.id}
+                selectedPaymentOptionId={selectedPaymentMethod}
+                disabled={true}
+                onClick={() => {}}
+              />
             </div>
           ))}
         </div>
