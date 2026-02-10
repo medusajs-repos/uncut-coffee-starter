@@ -61,7 +61,7 @@ const Checkout = () => {
                 <section id="shipping">
                   <div className="mb-6">
                     <h2 className="text-xl font-bold text-neutral-900 uppercase">Shipping Method</h2>
-                    <p className="text-sm font-bold text-neutral-600 mt-1">Select your preferred shipping option</p>
+                    
                   </div>
                   <DeliveryStep cart={cart} />
                 </section>
