@@ -27,7 +27,7 @@ const PaymentContainer: React.FC<PaymentContainerProps> = ({
       } ${disabled ? "opacity-50 cursor-not-allowed" : ""}`}
       onClick={disabled ? undefined : onClick}
     >
-      <div className="flex items-center gap-x-4">
+      <div className="flex items-center gap-x-3">
         <input 
           type="radio" 
           checked={isSelected}
