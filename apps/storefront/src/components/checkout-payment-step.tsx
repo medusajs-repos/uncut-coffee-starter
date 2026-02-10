@@ -1,6 +1,5 @@
 import PaymentContainer from "@/components/payment-container"
 import StripeCardContainer from "@/components/stripe-card-container"
-import { Button } from "@/components/ui/button"
 import {
   useCartPaymentMethods,
   useInitiateCartPaymentSession,
@@ -8,14 +7,13 @@ import {
 import { isStripe as isStripeFunc, getActivePaymentSession, isPaidWithGiftCard } from "@/lib/utils/checkout"
 import { HttpTypes } from "@medusajs/types"
 import { useCallback, useEffect, useState } from "react"
+import { CheckCircleSolid } from "@medusajs/icons"
 
 interface PaymentStepProps {
   cart: HttpTypes.StoreCart;
-  onNext: () => void;
-  onBack: () => void;
 }
 
-const PaymentStep = ({ cart, onNext, onBack }: PaymentStepProps) => {
+const PaymentStep = ({ cart }: PaymentStepProps) => {
   const { data: availablePaymentMethods = [] } = useCartPaymentMethods({
     region_id: cart.region?.id,
   });
@@ -35,8 +33,6 @@ const PaymentStep = ({ cart, onNext, onBack }: PaymentStepProps) => {
       handlePaymentMethodChange(availablePaymentMethods[0].id);
     }
   }, [availablePaymentMethods, selectedPaymentMethod]);
-
-  const isStripe = isStripeFunc(selectedPaymentMethod);
 
   const paidByGiftcard = isPaidWithGiftCard(cart);
 
@@ -59,22 +55,32 @@ const PaymentStep = ({ cart, onNext, onBack }: PaymentStepProps) => {
   const handlePaymentMethodChange = async (method: string) => {
     setError(null);
     setSelectedPaymentMethod(method);
-
     initiatePaymentSession(method);
   };
 
-  const handleSubmit = useCallback(async () => {
-    if (!selectedPaymentMethod) return;
+  // Check if shipping method is selected before showing payment options
+  const hasShippingMethod = !!cart.shipping_methods?.length;
 
-    if (!activeSession) {
-      await initiatePaymentSession(selectedPaymentMethod);
-    }
-
-    onNext();
-  }, [selectedPaymentMethod, activeSession, onNext, initiatePaymentSession]);
+  if (!hasShippingMethod) {
+    return (
+      <div className="p-4 bg-neutral-50 rounded-lg border border-neutral-200">
+        <p className="text-sm text-neutral-500">
+          Please select a shipping method first to see payment options.
+        </p>
+      </div>
+    );
+  }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4">
+      {/* Status indicator */}
+      {activeSession && (
+        <div className="flex items-center gap-2 text-sm text-green-600">
+          <CheckCircleSolid className="w-4 h-4" />
+          <span>Payment method ready</span>
+        </div>
+      )}
+
       {/* Payment Method Selection */}
       {!paidByGiftcard && (availablePaymentMethods?.length ?? 0) > 0 && (
         <div className="space-y-3">
@@ -96,7 +102,6 @@ const PaymentStep = ({ cart, onNext, onBack }: PaymentStepProps) => {
                     selectedPaymentOptionId={selectedPaymentMethod}
                     setError={setError}
                     onSelect={() => handlePaymentMethodChange(paymentMethod.id)}
-                    onCardComplete={handleSubmit}
                   />
                 )}
               </PaymentContainer>
@@ -124,30 +129,10 @@ const PaymentStep = ({ cart, onNext, onBack }: PaymentStepProps) => {
         </div>
       )}
 
-      {/* Navigation Buttons */}
-      <div className="flex items-center gap-3 pt-4">
-        <Button
-          variant="secondary"
-          onClick={onBack}
-          disabled={initiatePaymentSessionMutation.isPending}
-          className="flex-1"
-        >
-          Back
-        </Button>
-        <Button
-          onClick={handleSubmit}
-          disabled={
-            (isStripe && !activeSession) ||
-            (!selectedPaymentMethod && !paidByGiftcard) ||
-            initiatePaymentSessionMutation.isPending
-          }
-          className="flex-1"
-        >
-          {!activeSession && isStripeFunc(selectedPaymentMethod)
-            ? "Enter card details"
-            : "Review order"}
-        </Button>
-      </div>
+      {/* Loading indicator */}
+      {initiatePaymentSessionMutation.isPending && (
+        <p className="text-sm text-neutral-500">Setting up payment...</p>
+      )}
     </div>
   );
 };

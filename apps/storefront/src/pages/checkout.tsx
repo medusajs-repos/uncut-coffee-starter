@@ -1,15 +1,11 @@
-import CheckoutProgress from "@/components/checkout-progress"
 import { CartEmpty } from "@/components/cart"
 import { Loading } from "@/components/ui/loading"
 import { useCart } from "@/lib/hooks/use-cart"
-import { type CheckoutStep, CheckoutStepKey } from "@/lib/types/global"
 import {
-  useLoaderData,
   useLocation,
-  useNavigate,
   Link,
 } from "@tanstack/react-router"
-import { lazy, Suspense, useEffect, useMemo } from "react"
+import { lazy, Suspense } from "react"
 import { getCountryCodeFromPath } from "@/lib/utils/region"
 import { ArrowLeft } from "@medusajs/icons"
 
@@ -20,103 +16,9 @@ const ReviewStep = lazy(() => import("@/components/checkout-review-step"))
 const CheckoutSummary = lazy(() => import("@/components/checkout-summary"))
 
 const Checkout = () => {
-  const { step } = useLoaderData({
-    from: "/$countryCode/checkout",
-  });
   const { data: cart, isLoading: cartLoading } = useCart();
   const location = useLocation();
-  const navigate = useNavigate();
   const countryCode = getCountryCodeFromPath(location.pathname);
-
-  const steps: CheckoutStep[] = useMemo(() => {
-    return [
-      {
-        key: CheckoutStepKey.ADDRESSES,
-        title: "Information",
-        description: "Enter your contact and shipping details.",
-        completed: !!(cart?.shipping_address && cart?.billing_address),
-      },
-      {
-        key: CheckoutStepKey.DELIVERY,
-        title: "Shipping",
-        description: "Select your shipping method.",
-        completed: !!cart?.shipping_methods?.length,
-      },
-      {
-        key: CheckoutStepKey.PAYMENT,
-        title: "Payment",
-        description:
-          "Enter your payment details.",
-        completed: !!cart?.payment_collection?.payment_sessions?.length,
-      },
-      {
-        key: CheckoutStepKey.REVIEW,
-        title: "Review",
-        description: "Review and place your order.",
-        completed: false,
-      },
-    ];
-  }, [cart]);
-
-  const currentStepIndex = useMemo(
-    () => steps.findIndex((s) => s.key === step),
-    [step, steps]
-  );
-
-  const goToStep = (step: CheckoutStepKey) => {
-    navigate({
-      to: `${location.pathname}?step=${step}`,
-      replace: true,
-    });
-  };
-
-  useEffect(() => {
-    // Determine which step to show based on cart state
-    if (!cart) {
-      return;
-    }
-
-    if (
-      step !== CheckoutStepKey.ADDRESSES &&
-      currentStepIndex >= 0 &&
-      !steps[0].completed
-    ) {
-      goToStep(CheckoutStepKey.ADDRESSES);
-      return;
-    }
-
-    if (
-      step !== CheckoutStepKey.DELIVERY &&
-      currentStepIndex >= 1 &&
-      !steps[1].completed
-    ) {
-      goToStep(CheckoutStepKey.DELIVERY);
-      return;
-    }
-
-    if (
-      step !== CheckoutStepKey.PAYMENT &&
-      currentStepIndex >= 2 &&
-      !steps[2].completed
-    ) {
-      goToStep(CheckoutStepKey.PAYMENT);
-      return;
-    }
-  }, [cart, steps, location]);
-
-  const handleNext = () => {
-    const nextIndex = currentStepIndex + 1;
-    if (nextIndex < steps.length) {
-      goToStep(steps[nextIndex].key);
-    }
-  };
-
-  const handleBack = () => {
-    const prevIndex = currentStepIndex - 1;
-    if (prevIndex >= 0) {
-      goToStep(steps[prevIndex].key);
-    }
-  };
 
   // Show empty cart state
   if (!cartLoading && (!cart || !cart.items?.length)) {
@@ -144,57 +46,59 @@ const Checkout = () => {
           </Link>
 
           {/* Logo / Store Name */}
-          <div className="mb-8">
+          <div className="mb-12">
             <Link to={`/${countryCode}` as any} className="text-2xl font-bold tracking-tight">
               UNCUT
             </Link>
           </div>
 
-          {/* Breadcrumb Progress */}
-          <div className="mb-8">
-            <CheckoutProgress
-              steps={steps}
-              currentStepIndex={currentStepIndex}
-              handleStepChange={goToStep}
-            />
-          </div>
-
-          {/* Step Content */}
-          <div className="mb-8">
-            <h1 className="text-2xl font-semibold text-neutral-900 mb-2">
-              {steps[currentStepIndex]?.title}
-            </h1>
-            <p className="text-neutral-600">
-              {steps[currentStepIndex]?.description}
-            </p>
-          </div>
-
-          {/* Form Content */}
+          {/* All Steps in One Scroll */}
           <Suspense fallback={<Loading />}>
             {cartLoading && <Loading />}
             {cart && (
-              <>
-                {step === CheckoutStepKey.ADDRESSES && (
-                  <AddressStep cart={cart} onNext={handleNext} />
-                )}
-                {step === CheckoutStepKey.DELIVERY && (
-                  <DeliveryStep
-                    cart={cart}
-                    onNext={handleNext}
-                    onBack={handleBack}
-                  />
-                )}
-                {step === CheckoutStepKey.PAYMENT && (
-                  <PaymentStep
-                    cart={cart}
-                    onNext={handleNext}
-                    onBack={handleBack}
-                  />
-                )}
-                {step === CheckoutStepKey.REVIEW && (
-                  <ReviewStep cart={cart} onBack={handleBack} />
-                )}
-              </>
+              <div className="space-y-12">
+                {/* 1. Contact & Shipping Address */}
+                <section id="information">
+                  <div className="mb-6">
+                    <h2 className="text-xl font-semibold text-neutral-900">Contact & Shipping</h2>
+                    <p className="text-sm text-neutral-600 mt-1">Enter your contact and shipping details</p>
+                  </div>
+                  <AddressStep cart={cart} />
+                </section>
+
+                <hr className="border-neutral-200" />
+
+                {/* 2. Shipping Method */}
+                <section id="shipping">
+                  <div className="mb-6">
+                    <h2 className="text-xl font-semibold text-neutral-900">Shipping Method</h2>
+                    <p className="text-sm text-neutral-600 mt-1">Select your preferred shipping option</p>
+                  </div>
+                  <DeliveryStep cart={cart} />
+                </section>
+
+                <hr className="border-neutral-200" />
+
+                {/* 3. Payment */}
+                <section id="payment">
+                  <div className="mb-6">
+                    <h2 className="text-xl font-semibold text-neutral-900">Payment</h2>
+                    <p className="text-sm text-neutral-600 mt-1">Enter your payment details</p>
+                  </div>
+                  <PaymentStep cart={cart} />
+                </section>
+
+                <hr className="border-neutral-200" />
+
+                {/* 4. Review & Place Order */}
+                <section id="review">
+                  <div className="mb-6">
+                    <h2 className="text-xl font-semibold text-neutral-900">Review & Place Order</h2>
+                    <p className="text-sm text-neutral-600 mt-1">Review your order and complete your purchase</p>
+                  </div>
+                  <ReviewStep cart={cart} />
+                </section>
+              </div>
             )}
           </Suspense>
 

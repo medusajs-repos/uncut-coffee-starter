@@ -1,24 +1,23 @@
 import AddressForm from "@/components/address-form"
-import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Input } from "@/components/ui/input"
 import { useSetCartAddresses } from "@/lib/hooks/use-checkout"
 import { getStoredCountryCode } from "@/lib/utils/region"
 import { HttpTypes } from "@medusajs/types"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useCallback } from "react"
+import { CheckCircleSolid } from "@medusajs/icons"
 
 interface AddressStepProps {
   cart: HttpTypes.StoreCart;
-  onNext: () => void;
 }
 
-const AddressStep = ({ cart, onNext }: AddressStepProps) => {
+const AddressStep = ({ cart }: AddressStepProps) => {
   const setAddressesMutation = useSetCartAddresses();
   const [sameAsBilling, setSameAsBilling] = useState(true);
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [isShippingAddressValid, setIsShippingAddressValid] = useState(false);
   const [isBillingAddressValid, setIsBillingAddressValid] = useState(false);
   const [email, setEmail] = useState(cart.email || "");
+  const [isSaved, setIsSaved] = useState(false);
   const storedCountryCode = getStoredCountryCode();
   const [shippingAddress, setShippingAddress] = useState<Record<string, any>>({
     first_name: cart.shipping_address?.first_name || "",
@@ -46,48 +45,52 @@ const AddressStep = ({ cart, onNext }: AddressStepProps) => {
     phone: cart.billing_address?.phone || "",
   });
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  // Check if address is already saved
+  const hasAddress = !!(cart?.shipping_address && cart?.billing_address && cart?.email);
 
-    if (isSubmitting) return;
-
-    setIsSubmitting(true);
-
-    try {
-      const submitData = new FormData();
-
-      // Add email
-      submitData.append("email", email);
-
-      // Add shipping address
-      Object.entries(shippingAddress).forEach(([key, value]) => {
-        submitData.append(`shipping_address.${key}`, value);
-      });
-
-      // Add billing address (same as shipping if checkbox is checked)
-      const billingData = sameAsBilling ? shippingAddress : billingAddress;
-      Object.entries(billingData).forEach(([key, value]) => {
-        submitData.append(`billing_address.${key}`, value);
-      });
-
-      await setAddressesMutation.mutateAsync(submitData);
-      onNext();
-    } catch (error) {
-      console.error("Failed to set addresses:", error);
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
-  const isFormValid = () => {
+  const isFormValid = useCallback(() => {
     const emailValid = email.trim() && email.includes("@");
-
     return (
       emailValid &&
       isShippingAddressValid &&
       (isBillingAddressValid || sameAsBilling)
     );
-  };
+  }, [email, isShippingAddressValid, isBillingAddressValid, sameAsBilling]);
+
+  // Auto-save when form is valid
+  useEffect(() => {
+    if (!isFormValid() || setAddressesMutation.isPending || isSaved) return;
+
+    const saveAddress = async () => {
+      const submitData = new FormData();
+      submitData.append("email", email);
+
+      Object.entries(shippingAddress).forEach(([key, value]) => {
+        submitData.append(`shipping_address.${key}`, value);
+      });
+
+      const billingData = sameAsBilling ? shippingAddress : billingAddress;
+      Object.entries(billingData).forEach(([key, value]) => {
+        submitData.append(`billing_address.${key}`, value);
+      });
+
+      try {
+        await setAddressesMutation.mutateAsync(submitData);
+        setIsSaved(true);
+      } catch (error) {
+        console.error("Failed to set addresses:", error);
+      }
+    };
+
+    // Debounce the save
+    const timeoutId = setTimeout(saveAddress, 500);
+    return () => clearTimeout(timeoutId);
+  }, [email, shippingAddress, billingAddress, sameAsBilling, isFormValid, isSaved]);
+
+  // Reset saved state when form changes
+  useEffect(() => {
+    setIsSaved(false);
+  }, [email, shippingAddress, billingAddress, sameAsBilling]);
 
   useEffect(() => {
     if (!cart.region) {
@@ -116,7 +119,15 @@ const AddressStep = ({ cart, onNext }: AddressStepProps) => {
   }, [cart.region, storedCountryCode]);
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-8">
+    <div className="space-y-8">
+      {/* Status indicator */}
+      {(hasAddress || isSaved) && (
+        <div className="flex items-center gap-2 text-sm text-green-600">
+          <CheckCircleSolid className="w-4 h-4" />
+          <span>Contact and shipping information saved</span>
+        </div>
+      )}
+
       {/* Contact Information */}
       <div className="space-y-4">
         <h3 className="text-base font-semibold text-neutral-900">
@@ -178,17 +189,11 @@ const AddressStep = ({ cart, onNext }: AddressStepProps) => {
         </div>
       )}
 
-      {/* Submit Button */}
-      <div className="pt-4">
-        <Button 
-          type="submit" 
-          disabled={!isFormValid() || isSubmitting}
-          className="w-full py-4"
-        >
-          {isSubmitting ? "Processing..." : "Continue to shipping"}
-        </Button>
-      </div>
-    </form>
+      {/* Saving indicator */}
+      {setAddressesMutation.isPending && (
+        <p className="text-sm text-neutral-500">Saving...</p>
+      )}
+    </div>
   );
 };
 
