@@ -28,16 +28,11 @@ const PaymentContainer: React.FC<PaymentContainerProps> = ({
       } ${disabled ? "opacity-50 cursor-not-allowed" : ""}`}
       onClick={disabled ? undefined : onClick}
     >
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-x-4">
-          <Radio checked={isSelected} readOnly />
-          <p className="text-base font-medium">
-            {paymentMethodsData[paymentProviderId]?.title || paymentProviderId}
-          </p>
-        </div>
-        <span className="justify-self-end text-neutral-900">
-          {paymentMethodsData[paymentProviderId]?.icon}
-        </span>
+      <div className="flex items-center gap-x-4">
+        <Radio checked={isSelected} readOnly />
+        <p className="text-base font-medium">
+          {paymentMethodsData[paymentProviderId]?.title || paymentProviderId}
+        </p>
       </div>
       {children}
     </div>
