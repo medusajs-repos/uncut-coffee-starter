@@ -167,7 +167,7 @@ const AddressStep = ({ cart }: AddressStepProps) => {
           checked={sameAsBilling}
           onChange={(e) => setSameAsBilling(!!e.target.checked)}
         />
-        <label htmlFor="same_as_billing" className="text-sm font-bold text-neutral-700 cursor-pointer">
+        <label htmlFor="same_as_billing" className="text-sm font-bold uppercase text-neutral-700 cursor-pointer">
           Billing address is the same as shipping
         </label>
       </div>

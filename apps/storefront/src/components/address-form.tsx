@@ -110,7 +110,7 @@ const AddressForm = ({
       {/* Name fields */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="flex flex-col gap-2">
-          <label htmlFor="first_name" className="block text-sm font-medium">
+          <label htmlFor="first_name" className="block text-sm font-bold uppercase">
             First Name
           </label>
           <Input
@@ -129,7 +129,7 @@ const AddressForm = ({
           )}
         </div>
         <div className="flex flex-col gap-2">
-          <label htmlFor="last_name" className="block text-sm font-medium">
+          <label htmlFor="last_name" className="block text-sm font-bold uppercase">
             Last Name
           </label>
           <Input
@@ -151,7 +151,7 @@ const AddressForm = ({
 
       {/* Company */}
       <div className="flex flex-col gap-2">
-        <label htmlFor="company" className="block text-sm font-medium">
+        <label htmlFor="company" className="block text-sm font-bold uppercase">
           Company
         </label>
         <Input
@@ -167,7 +167,7 @@ const AddressForm = ({
 
       {/* Address fields */}
       <div className="flex flex-col gap-2">
-        <label htmlFor="address_1" className="block text-sm font-medium">
+        <label htmlFor="address_1" className="block text-sm font-bold uppercase">
           Address Line 1
         </label>
         <Input
@@ -185,7 +185,7 @@ const AddressForm = ({
       </div>
 
       <div className="flex flex-col gap-2">
-        <label htmlFor="address_2" className="block text-sm font-medium">
+        <label htmlFor="address_2" className="block text-sm font-bold uppercase">
           Address Line 2
         </label>
         <Input
@@ -201,7 +201,7 @@ const AddressForm = ({
       {/* City, Province, Postal Code */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div className="flex flex-col gap-2">
-          <label htmlFor="city" className="block text-sm font-medium">
+          <label htmlFor="city" className="block text-sm font-bold uppercase">
             City
           </label>
           <Input
@@ -218,7 +218,7 @@ const AddressForm = ({
           )}
         </div>
         <div className="flex flex-col gap-2">
-          <label htmlFor="province" className="block text-sm font-medium">
+          <label htmlFor="province" className="block text-sm font-bold uppercase">
             State / Province
           </label>
           <Input
@@ -232,7 +232,7 @@ const AddressForm = ({
           />
         </div>
         <div className="flex flex-col gap-2">
-          <label htmlFor="postal_code" className="block text-sm font-medium">
+          <label htmlFor="postal_code" className="block text-sm font-bold uppercase">
             Postal Code
           </label>
           <Input
@@ -256,7 +256,7 @@ const AddressForm = ({
       <div className="flex flex-col gap-2">
         <label
           htmlFor="country_code"
-          className="block text-sm font-medium text-neutral-900 mb-2"
+          className="block text-sm font-bold uppercase text-neutral-900 mb-2"
         >
           Country
         </label>
@@ -285,7 +285,7 @@ const AddressForm = ({
 
       {/* Phone */}
       <div className="flex flex-col gap-2">
-        <label htmlFor="phone" className="block text-sm font-medium">
+        <label htmlFor="phone" className="block text-sm font-bold uppercase">
           Phone
         </label>
         <Input
