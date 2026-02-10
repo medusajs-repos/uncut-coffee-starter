@@ -41,7 +41,7 @@ const Checkout = () => {
             to={`/${countryCode}` as any}
             className="group inline-flex items-center justify-center bg-neutral-200 transition-colors px-4 h-[48px] rounded-[8px] mb-8"
           >
-            <span className="text-[14px] font-bold uppercase text-neutral-500 group-hover:text-black transition-colors tracking-wide">BACK TO UNCUT</span>
+            <span className="text-[14px] font-bold uppercase text-neutral-600 group-hover:text-black transition-colors tracking-wide">BACK TO UNCUT</span>
           </Link>
 
           {/* All Steps in One Scroll */}
