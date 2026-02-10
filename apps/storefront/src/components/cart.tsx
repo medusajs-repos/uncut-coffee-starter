@@ -196,10 +196,10 @@ const CompactCartLineItem = ({ item, cart, fields }: CartLineItemProps) => {
             <button
               type="button"
               onClick={() => handleQuantityChange(item.quantity - 1)}
-              className="px-4 py-3 text-black flex items-center justify-center cursor-pointer transition-opacity hover:opacity-60"
+              className="px-4 py-3 text-black flex items-center justify-center cursor-pointer transition-colors group"
             >
               <span className="w-[13.5px] h-[13.5px] flex items-center justify-center relative">
-                <span className="absolute w-full h-[1.5px] bg-neutral-500"></span>
+                <span className="absolute w-full h-[1.5px] bg-neutral-500 group-hover:bg-black transition-colors"></span>
               </span>
             </button>
             <span className="px-3 py-3 text-black font-bold text-sm">
@@ -208,11 +208,11 @@ const CompactCartLineItem = ({ item, cart, fields }: CartLineItemProps) => {
             <button
               type="button"
               onClick={() => handleQuantityChange(item.quantity + 1)}
-              className="px-4 py-3 text-black flex items-center justify-center cursor-pointer transition-opacity hover:opacity-60"
+              className="px-4 py-3 text-black flex items-center justify-center cursor-pointer transition-colors group"
             >
               <span className="w-[13.5px] h-[13.5px] flex items-center justify-center relative">
-                <span className="absolute w-full h-[1.5px] bg-neutral-500"></span>
-                <span className="absolute w-[1.5px] h-full bg-neutral-500"></span>
+                <span className="absolute w-full h-[1.5px] bg-neutral-500 group-hover:bg-black transition-colors"></span>
+                <span className="absolute w-[1.5px] h-full bg-neutral-500 group-hover:bg-black transition-colors"></span>
               </span>
             </button>
           </div>
