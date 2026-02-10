@@ -143,7 +143,7 @@ export const Navbar = () => {
               </DrawerTrigger>
 
               <DrawerContent className="flex flex-col bg-white">
-                <DrawerHeader className="border-b border-uncut-gray-light">
+                <DrawerHeader className="">
                   <DrawerTitle className="text-black font-bold text-[32px] uppercase">Cart</DrawerTitle>
                 </DrawerHeader>
 
