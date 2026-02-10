@@ -193,25 +193,28 @@ const CompactCartLineItem = ({ item, cart, fields }: CartLineItemProps) => {
 
         <div className="flex items-center gap-3 mt-3">
           <div className="flex items-center h-12 bg-neutral-200 rounded-lg">
-            <Button
+            <button
+              type="button"
               onClick={() => handleQuantityChange(item.quantity - 1)}
-              className="px-3 py-2 text-black transition-colors text-xl leading-none"
-              variant="transparent"
-              size="fit"
+              className="px-4 py-3 text-black flex items-center justify-center cursor-pointer"
             >
-              −
-            </Button>
-            <span className="text-sm text-black min-w-[2rem] text-center font-bold">
+              <span className="w-[13.5px] h-[13.5px] flex items-center justify-center relative">
+                <span className="absolute w-full h-[1.5px] bg-black"></span>
+              </span>
+            </button>
+            <span className="px-3 py-3 text-black font-bold text-sm">
               {item.quantity}
             </span>
-            <Button
+            <button
+              type="button"
               onClick={() => handleQuantityChange(item.quantity + 1)}
-              className="px-3 py-2 text-black transition-colors text-xl leading-none"
-              variant="transparent"
-              size="fit"
+              className="px-4 py-3 text-black flex items-center justify-center cursor-pointer"
             >
-              +
-            </Button>
+              <span className="w-[13.5px] h-[13.5px] flex items-center justify-center relative">
+                <span className="absolute w-full h-[1.5px] bg-black"></span>
+                <span className="absolute w-[1.5px] h-full bg-black"></span>
+              </span>
+            </button>
           </div>
           <CartDeleteItem item={item} fields={fields} />
         </div>
