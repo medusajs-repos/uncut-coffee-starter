@@ -1056,7 +1056,7 @@ const EngagementSection = () => {
                 Working on Something?
               </h3>
               <p className="text-sm uppercase tracking-wide text-neutral-400 max-w-[220px] leading-snug mb-auto">
-                Cafes, roasters, wholesale... tell us what you're brewing and how we can fuel your vision.
+                Working on something?Cafes, roasters, wholesale... tell us what you're brewing and how we can fuel your vision.
               </p>
               <button className="relative z-20 mt-8 px-8 h-[56px] bg-black text-white text-sm font-bold uppercase tracking-wide rounded-[8px] hover:bg-neutral-800 transition-colors cursor-pointer">
                 Contact Us
