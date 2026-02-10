@@ -23,16 +23,8 @@ const PaymentStep = ({ cart }: PaymentStepProps) => {
 
   const [error, setError] = useState<string | null>(null);
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(
-    activeSession?.provider_id ?? ""
+    "pp_credit_card"
   );
-
-  // Update selected payment method when payment methods are loaded
-  useEffect(() => {
-    if (!selectedPaymentMethod && availablePaymentMethods?.length > 0) {
-      setSelectedPaymentMethod(availablePaymentMethods[0].id);
-      handlePaymentMethodChange(availablePaymentMethods[0].id);
-    }
-  }, [availablePaymentMethods, selectedPaymentMethod]);
 
   const paidByGiftcard = isPaidWithGiftCard(cart);
 
@@ -71,46 +63,24 @@ const PaymentStep = ({ cart }: PaymentStepProps) => {
     );
   }
 
-  // Add a fake payment option for demo purposes
+  // Fake payment options for demo purposes
   const fakePaymentMethods = [
+    { id: "pp_credit_card", name: "Credit Card" },
     { id: "pp_paypal", name: "PayPal" },
   ];
 
   return (
     <div className="space-y-4">
       {/* Payment Method Selection */}
-      {!paidByGiftcard && (availablePaymentMethods?.length ?? 0) > 0 && (
+      {!paidByGiftcard && (
         <div className="space-y-3">
-          {availablePaymentMethods.length === 0 && (
-            <p className="text-sm font-bold text-neutral-500">
-              No payment methods available
-            </p>
-          )}
-          {availablePaymentMethods.map((paymentMethod) => (
-            <div key={paymentMethod.id}>
-              <PaymentContainer
-                paymentProviderId={paymentMethod.id}
-                selectedPaymentOptionId={selectedPaymentMethod}
-                onClick={() => handlePaymentMethodChange(paymentMethod.id)}
-              >
-                {isStripeFunc(paymentMethod.id) && (
-                  <StripeCardContainer
-                    paymentProviderId={paymentMethod.id}
-                    selectedPaymentOptionId={selectedPaymentMethod}
-                    setError={setError}
-                    onSelect={() => handlePaymentMethodChange(paymentMethod.id)}
-                  />
-                )}
-              </PaymentContainer>
-            </div>
-          ))}
           {/* Fake payment options for demo */}
           {fakePaymentMethods.map((fakeMethod) => (
             <div key={fakeMethod.id}>
               <PaymentContainer
                 paymentProviderId={fakeMethod.id}
                 selectedPaymentOptionId={selectedPaymentMethod}
-                onClick={() => handlePaymentMethodChange(fakeMethod.id)}
+                onClick={() => setSelectedPaymentMethod(fakeMethod.id)}
               />
             </div>
           ))}

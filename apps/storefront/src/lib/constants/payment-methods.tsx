@@ -14,6 +14,10 @@ export const paymentMethodsData: Record<
     title: "Manual Payment",
     icon: <Cash />,
   },
+  pp_credit_card: {
+    title: "Credit Card",
+    icon: <CreditCard />,
+  },
   pp_paypal: {
     title: "PayPal",
     icon: <CreditCard />,
