@@ -1019,9 +1019,9 @@ const EngagementSection = () => {
                   placeholder="YOUR EMAIL"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="flex-1 px-4 py-3 bg-neutral-200 text-black text-sm uppercase tracking-wide placeholder:text-neutral-500 rounded-full outline-none"
+                  className="flex-1 px-4 h-[56px] bg-neutral-200 text-black text-sm uppercase tracking-wide placeholder:text-neutral-500 rounded-[8px] outline-none"
                 />
-                <button className="px-6 py-3 bg-black text-white text-sm font-medium uppercase tracking-wide rounded-full hover:bg-neutral-800 transition-colors">
+                <button className="px-6 h-[56px] bg-black text-white text-sm font-medium uppercase tracking-wide rounded-[8px] hover:bg-neutral-800 transition-colors">
                   Subscribe
                 </button>
               </div>
@@ -1042,7 +1042,7 @@ const EngagementSection = () => {
               <p className="text-sm uppercase tracking-wide text-neutral-400 leading-snug mb-auto">
                 Your Morning Ritual at<br />@UncutCoffee
               </p>
-              <button className="mt-8 px-8 py-3 bg-black text-white text-sm font-medium uppercase tracking-wide rounded-full hover:bg-neutral-800 transition-colors">
+              <button className="mt-8 px-8 h-[56px] bg-black text-white text-sm font-medium uppercase tracking-wide rounded-[8px] hover:bg-neutral-800 transition-colors">
                 Follow Us
               </button>
             </div>
@@ -1062,7 +1062,7 @@ const EngagementSection = () => {
               <p className="text-sm uppercase tracking-wide text-neutral-400 max-w-[220px] leading-snug mb-auto">
                 Cafes, roasters, wholesale... tell us what you're brewing and how we can fuel your vision.
               </p>
-              <button className="mt-8 px-8 py-3 bg-black text-white text-sm font-medium uppercase tracking-wide rounded-full hover:bg-neutral-800 transition-colors">
+              <button className="mt-8 px-8 h-[56px] bg-black text-white text-sm font-medium uppercase tracking-wide rounded-[8px] hover:bg-neutral-800 transition-colors">
                 Contact Us
               </button>
             </div>
