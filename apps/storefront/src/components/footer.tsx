@@ -1,12 +1,9 @@
 import CountrySelect from "@/components/country-select"
 import { useRegions } from "@/lib/hooks/use-regions"
-import { getCountryCodeFromPath } from "@/lib/utils/region"
-import { Link, useLocation } from "@tanstack/react-router"
+import { useLocation } from "@tanstack/react-router"
 
 const Footer = () => {
   const location = useLocation();
-  const countryCode = getCountryCodeFromPath(location.pathname);
-  const baseHref = countryCode ? `/${countryCode}` : "";
 
   const { data: regions } = useRegions({
     fields: "id, currency_code, *countries",
@@ -19,44 +16,41 @@ const Footer = () => {
         <div className="flex flex-row gap-8 md:gap-40 flex-wrap">
           {/* Column 1 */}
           <div className="flex flex-col">
-            <a href="#" className="text-black text-sm font-bold uppercase tracking-wide hover:opacity-60 transition-opacity">
+            <span className="text-black text-sm font-bold uppercase tracking-wide hover:opacity-60 transition-opacity cursor-pointer">
               Affiliates
-            </a>
-            <a href="#" className="text-black text-sm font-bold uppercase tracking-wide hover:opacity-60 transition-opacity">
+            </span>
+            <span className="text-black text-sm font-bold uppercase tracking-wide hover:opacity-60 transition-opacity cursor-pointer">
               Clubs
-            </a>
-            <a href="#" className="text-black text-sm font-bold uppercase tracking-wide hover:opacity-60 transition-opacity">
+            </span>
+            <span className="text-black text-sm font-bold uppercase tracking-wide hover:opacity-60 transition-opacity cursor-pointer">
               AMBASSADORS
-            </a>
+            </span>
           </div>
 
           {/* Column 2 */}
           <div className="flex flex-col">
-            <a href="#" className="text-black text-sm font-bold uppercase tracking-wide hover:opacity-60 transition-opacity">
+            <span className="text-black text-sm font-bold uppercase tracking-wide hover:opacity-60 transition-opacity cursor-pointer">
               Contact
-            </a>
-            <a href="https://instagram.com" target="_blank" rel="noreferrer" className="text-black text-sm font-bold uppercase tracking-wide hover:opacity-60 transition-opacity">
+            </span>
+            <span className="text-black text-sm font-bold uppercase tracking-wide hover:opacity-60 transition-opacity cursor-pointer">
               Instagram
-            </a>
-            <a href="#" className="text-black text-sm font-bold uppercase tracking-wide hover:opacity-60 transition-opacity">
+            </span>
+            <span className="text-black text-sm font-bold uppercase tracking-wide hover:opacity-60 transition-opacity cursor-pointer">
               FAQ
-            </a>
+            </span>
           </div>
 
           {/* Column 3 */}
           <div className="flex flex-col">
-            <Link
-              to={`${baseHref}/account` as any}
-              className="text-black text-sm font-bold uppercase tracking-wide hover:opacity-60 transition-opacity"
-            >
+            <span className="text-black text-sm font-bold uppercase tracking-wide hover:opacity-60 transition-opacity cursor-pointer">
               Account
-            </Link>
+            </span>
             <div className="text-black text-sm font-bold uppercase tracking-wide">
               <CountrySelect regions={regions ?? []} />
             </div>
-            <a href="#" className="text-black text-sm font-bold uppercase tracking-wide hover:opacity-60 transition-opacity">
+            <span className="text-black text-sm font-bold uppercase tracking-wide hover:opacity-60 transition-opacity cursor-pointer">
               Privacy and Cookies
-            </a>
+            </span>
           </div>
         </div>
 
