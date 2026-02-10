@@ -999,13 +999,17 @@ const EngagementSection = () => {
     <section className="py-16 px-8 bg-white">
       <div className="flex flex-col md:flex-row justify-center items-start gap-8 max-w-7xl mx-auto">
           {/* Newsletter Column */}
-          <div className="flex flex-col items-center text-center w-full md:w-1/3 max-w-[360px] h-[400px]">
-            <div className="flex-1 flex items-center w-full">
+          <div className="flex flex-col items-center text-center w-full md:w-1/3 max-w-[360px] h-[400px] relative">
+            {/* Spiky burst graphic */}
+            <svg className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[65%] w-[280px] h-[280px] pointer-events-none" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M100 10 L108 70 L150 25 L115 75 L180 60 L125 90 L195 100 L125 110 L180 140 L115 125 L150 175 L108 130 L100 190 L92 130 L50 175 L85 125 L20 140 L75 110 L5 100 L75 90 L20 60 L85 75 L50 25 L92 70 Z" stroke="currentColor" strokeWidth="1" className="text-neutral-400" fill="none"/>
+            </svg>
+            <div className="flex-1 flex items-center w-full relative z-10">
               <p className="text-[20px] font-bold uppercase tracking-wide text-neutral-500 leading-snug w-full">
                 Join our newsletter for brewing tips, new roasts, exclusive offers, and pure coffee culture.
               </p>
             </div>
-            <div className="flex gap-2 justify-center">
+            <div className="flex gap-2 justify-center relative z-10">
               <input
                 type="email"
                 placeholder="YOUR EMAIL"
@@ -1020,25 +1024,34 @@ const EngagementSection = () => {
           </div>
           
           {/* Social Column */}
-          <div className="flex flex-col items-center text-center w-full md:w-1/3 max-w-[360px] h-[400px]">
-            <div className="flex-1 flex items-center w-full">
+          <div className="flex flex-col items-center text-center w-full md:w-1/3 max-w-[360px] h-[400px] relative">
+            {/* Ellipses graphic */}
+            <svg className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[65%] w-[260px] h-[200px] pointer-events-none" viewBox="0 0 200 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <ellipse cx="100" cy="40" rx="80" ry="25" stroke="currentColor" strokeWidth="1" className="text-neutral-400" fill="none"/>
+              <ellipse cx="100" cy="110" rx="60" ry="20" stroke="currentColor" strokeWidth="1" className="text-neutral-400" fill="none"/>
+            </svg>
+            <div className="flex-1 flex items-center w-full relative z-10">
               <p className="text-[20px] font-bold uppercase tracking-wide text-neutral-500 leading-snug w-full">
                 Your Morning Ritual at<br />@UncutCoffee
               </p>
             </div>
-            <button className="w-[176px] h-[56px] bg-black text-white text-sm font-bold uppercase tracking-wide rounded-[8px] hover:bg-neutral-800 transition-colors cursor-pointer">
+            <button className="w-[176px] h-[56px] bg-black text-white text-sm font-bold uppercase tracking-wide rounded-[8px] hover:bg-neutral-800 transition-colors cursor-pointer relative z-10">
               Follow Us
             </button>
           </div>
           
           {/* Contact Column */}
-          <div className="flex flex-col items-center text-center w-full md:w-1/3 max-w-[360px] h-[400px]">
-            <div className="flex-1 flex items-center w-full">
+          <div className="flex flex-col items-center text-center w-full md:w-1/3 max-w-[360px] h-[400px] relative">
+            {/* Organic blob graphic */}
+            <svg className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[65%] w-[240px] h-[260px] pointer-events-none" viewBox="0 0 200 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M160 20 C180 30 190 60 185 90 C180 120 195 140 180 170 C165 200 130 210 100 200 C70 190 50 210 35 190 C20 170 10 140 20 110 C30 80 15 50 40 30 C65 10 100 5 130 10 C145 12 155 15 160 20 Z" stroke="currentColor" strokeWidth="1" className="text-neutral-400" fill="none"/>
+            </svg>
+            <div className="flex-1 flex items-center w-full relative z-10">
               <p className="text-[20px] font-bold uppercase tracking-wide text-neutral-500 leading-snug w-full">
                 Working on something? Cafes, roasters, wholesale... tell us what you're brewing.
               </p>
             </div>
-            <button className="w-[176px] h-[56px] bg-black text-white text-sm font-bold uppercase tracking-wide rounded-[8px] hover:bg-neutral-800 transition-colors cursor-pointer">
+            <button className="w-[176px] h-[56px] bg-black text-white text-sm font-bold uppercase tracking-wide rounded-[8px] hover:bg-neutral-800 transition-colors cursor-pointer relative z-10">
               Contact Us
             </button>
           </div>
