@@ -73,14 +73,6 @@ const PaymentStep = ({ cart }: PaymentStepProps) => {
 
   return (
     <div className="space-y-4">
-      {/* Status indicator */}
-      {activeSession && (
-        <div className="flex items-center gap-2 text-sm font-bold text-green-600">
-          <CheckCircleSolid className="w-4 h-4" />
-          <span>Payment method ready</span>
-        </div>
-      )}
-
       {/* Payment Method Selection */}
       {!paidByGiftcard && (availablePaymentMethods?.length ?? 0) > 0 && (
         <div className="space-y-3">
