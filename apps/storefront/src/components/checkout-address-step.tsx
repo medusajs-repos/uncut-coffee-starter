@@ -142,9 +142,7 @@ const AddressStep = ({ cart }: AddressStepProps) => {
             placeholder="Email address"
             className="w-full"
           />
-          <p className="text-xs font-bold text-neutral-500 mt-1.5">
-            Order updates will be sent to this email
-          </p>
+
         </div>
       </div>
 
