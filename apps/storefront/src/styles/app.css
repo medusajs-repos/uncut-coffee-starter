@@ -28,21 +28,26 @@
 
   /* UNCUT Button styles */
   .uncut-button {
-    @apply bg-black text-white px-6 py-3 text-sm font-medium uppercase tracking-wide;
+    @apply bg-black text-white px-6 py-3 text-sm font-medium uppercase tracking-wide cursor-pointer;
     @apply hover:bg-neutral-800 transition-colors duration-200;
     border-radius: 7px;
   }
 
   .uncut-button-outline {
-    @apply bg-transparent text-black border border-black px-6 py-3 text-sm font-medium uppercase tracking-wide;
+    @apply bg-transparent text-black border border-black px-6 py-3 text-sm font-medium uppercase tracking-wide cursor-pointer;
     @apply hover:bg-black hover:text-white transition-colors duration-200;
     border-radius: 7px;
   }
 
   .uncut-button-orange {
-    @apply text-uncut-orange border border-uncut-orange px-6 py-3 text-sm font-medium uppercase tracking-wide;
+    @apply text-uncut-orange border border-uncut-orange px-6 py-3 text-sm font-medium uppercase tracking-wide cursor-pointer;
     @apply hover:bg-uncut-orange hover:text-white transition-colors duration-200;
     border-radius: 24px;
+  }
+  
+  /* Ensure all buttons have pointer cursor */
+  button {
+    cursor: pointer;
   }
 
   /* Dotted divider */
