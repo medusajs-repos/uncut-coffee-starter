@@ -70,7 +70,6 @@ const Checkout = () => {
                 <section id="payment">
                   <div className="mb-6">
                     <h2 className="text-xl font-bold text-neutral-900 uppercase">Payment</h2>
-                    <p className="text-sm font-bold text-neutral-600 mt-1">Enter your payment details</p>
                   </div>
                   <PaymentStep cart={cart} />
                 </section>
