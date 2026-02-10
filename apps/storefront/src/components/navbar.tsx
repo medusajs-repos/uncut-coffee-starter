@@ -144,7 +144,12 @@ export const Navbar = () => {
 
               <DrawerContent className="flex flex-col bg-white">
                 <DrawerHeader className="">
-                  <DrawerTitle className="text-black font-bold text-[32px] uppercase">Cart</DrawerTitle>
+                  <DrawerTitle className="text-black font-bold text-[32px] uppercase flex items-center gap-3">
+                    Cart
+                    <span className="w-8 h-8 rounded-full bg-gray-200 text-gray-500 text-sm font-medium flex items-center justify-center">
+                      {itemCount}
+                    </span>
+                  </DrawerTitle>
                 </DrawerHeader>
 
                 {/* Empty Cart */}
