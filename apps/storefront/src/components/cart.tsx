@@ -195,18 +195,18 @@ const CompactCartLineItem = ({ item, cart, fields }: CartLineItemProps) => {
           <div className="flex items-center h-12 bg-neutral-200 rounded-lg">
             <Button
               onClick={() => handleQuantityChange(item.quantity - 1)}
-              className="px-3 py-2 text-neutral-600 hover:text-black transition-colors"
+              className="px-3 py-2 text-black transition-colors"
               variant="transparent"
               size="fit"
             >
               <Minus className="w-4 h-4" />
             </Button>
-            <span className="text-sm text-neutral-500 min-w-[2rem] text-center font-bold">
+            <span className="text-sm text-black min-w-[2rem] text-center font-bold">
               {item.quantity}
             </span>
             <Button
               onClick={() => handleQuantityChange(item.quantity + 1)}
-              className="px-3 py-2 text-neutral-600 hover:text-black transition-colors"
+              className="px-3 py-2 text-black transition-colors"
               variant="transparent"
               size="fit"
             >
