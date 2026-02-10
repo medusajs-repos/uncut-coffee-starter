@@ -111,7 +111,7 @@ const CheckoutSummary = ({ cart }: CheckoutSummaryProps) => {
 
       {/* Total */}
       <div className="pt-4 border-t border-neutral-200">
-        <div className="flex justify-between items-baseline">
+        <div className="flex justify-between items-center">
           <span className="text-base font-bold text-neutral-900">Total</span>
           <div className="flex items-center gap-2 text-neutral-900">
             <Price
