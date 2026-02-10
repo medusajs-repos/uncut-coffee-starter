@@ -44,13 +44,6 @@ const Checkout = () => {
             <span className="text-[14px] font-bold uppercase text-neutral-500 group-hover:text-black transition-colors">BACK TO UNCUT</span>
           </Link>
 
-          {/* Logo / Store Name */}
-          <div className="mb-12">
-            <Link to={`/${countryCode}` as any} className="text-2xl font-bold tracking-tight">
-              UNCUT
-            </Link>
-          </div>
-
           {/* All Steps in One Scroll */}
           <Suspense fallback={<Loading />}>
             {cartLoading && <Loading />}
