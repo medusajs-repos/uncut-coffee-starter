@@ -56,13 +56,13 @@ export const Navbar = () => {
                   window.scrollTo({ top: 0, behavior: "smooth" })
                 }
               }}
-              className="text-base font-medium uppercase tracking-wide text-white hover:opacity-70 transition-opacity cursor-pointer bg-transparent border-none"
+              className="text-base font-bold uppercase tracking-wide text-white hover:opacity-70 transition-opacity cursor-pointer bg-transparent border-none"
             >
               UNCUT
             </button>
             <button
               onClick={() => setMobileMenuOpen(false)}
-              className="text-white hover:opacity-70 transition-opacity cursor-pointer text-base font-medium uppercase tracking-wide"
+              className="text-white hover:opacity-70 transition-opacity cursor-pointer text-base font-bold uppercase tracking-wide"
             >
               CLOSE
             </button>
