@@ -196,7 +196,7 @@ const CompactCartLineItem = ({ item, cart, fields }: CartLineItemProps) => {
             <button
               type="button"
               onClick={() => handleQuantityChange(item.quantity - 1)}
-              className="px-4 py-3 text-black flex items-center justify-center cursor-pointer"
+              className="px-4 py-3 text-black flex items-center justify-center cursor-pointer transition-opacity hover:opacity-60"
             >
               <span className="w-[13.5px] h-[13.5px] flex items-center justify-center relative">
                 <span className="absolute w-full h-[1.5px] bg-neutral-500"></span>
@@ -208,7 +208,7 @@ const CompactCartLineItem = ({ item, cart, fields }: CartLineItemProps) => {
             <button
               type="button"
               onClick={() => handleQuantityChange(item.quantity + 1)}
-              className="px-4 py-3 text-black flex items-center justify-center cursor-pointer"
+              className="px-4 py-3 text-black flex items-center justify-center cursor-pointer transition-opacity hover:opacity-60"
             >
               <span className="w-[13.5px] h-[13.5px] flex items-center justify-center relative">
                 <span className="absolute w-full h-[1.5px] bg-neutral-500"></span>
