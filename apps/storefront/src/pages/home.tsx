@@ -1007,9 +1007,7 @@ const EngagementSection = () => {
               </div>
             </div>
             <div className="relative z-10 flex flex-col items-center h-full">
-              <h3 className="text-[20px] font-bold uppercase tracking-wider text-neutral-500 mb-1" style={{ fontFamily: 'inherit' }}>
-                Uncut Coffee Club
-              </h3>
+
               <p className="text-[20px] font-bold uppercase tracking-wide text-neutral-500 max-w-[220px] leading-snug mb-auto">
                 Join our newsletter for brewing tips, new roasts, exclusive offers, and pure coffee culture.
               </p>
