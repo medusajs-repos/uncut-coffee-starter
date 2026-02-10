@@ -6,6 +6,7 @@ import {
   Link,
 } from "@tanstack/react-router"
 import { lazy, Suspense } from "react"
+import { ArrowLeft } from "@medusajs/icons"
 import { getCountryCodeFromPath } from "@/lib/utils/region"
 
 
@@ -39,8 +40,9 @@ const Checkout = () => {
           {/* Back to Cart Link */}
           <Link 
             to={`/${countryCode}` as any}
-            className="group inline-flex items-center justify-center bg-neutral-200 transition-colors px-4 h-[48px] rounded-[8px] mb-8"
+            className="group inline-flex items-center justify-center gap-2 bg-neutral-200 transition-colors px-4 h-[48px] rounded-[8px] mb-8"
           >
+            <ArrowLeft className="w-4 h-4 text-neutral-600 group-hover:text-black transition-colors" />
             <span className="text-[14px] font-bold uppercase text-neutral-600 group-hover:text-black transition-colors tracking-wide">BACK TO UNCUT</span>
           </Link>
 
