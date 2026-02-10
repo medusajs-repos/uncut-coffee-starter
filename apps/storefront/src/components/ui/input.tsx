@@ -7,7 +7,7 @@ export const Input = ({ className, ...props }: InputProps) => {
     <input
       className={clsx(
         "appearance-none shadow-none outline-none focus:outline-none",
-        "border border-neutral-300",
+        "border border-neutral-200",
         "rounded-lg",
         "text-base font-bold text-neutral-900",
         "px-3 w-full h-12",
