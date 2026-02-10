@@ -756,7 +756,7 @@ const WordCloudSection = () => {
           50% { transform: translateY(-8px); }
         }
       `}</style>
-      <div className="relative w-full h-[880px]">
+      <div id="our-story" className="relative w-full h-[880px] scroll-mt-20">
         {/* Scattered phrases */}
         {phrases.map((phrase, index) => (
           <span
