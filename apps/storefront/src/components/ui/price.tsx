@@ -46,7 +46,7 @@ export const Price = ({
     };
   }, [price, originalPrice, currencyCode]);
   return (
-    <div className={clsx("flex flex-col text-neutral-900", className)}>
+    <div className={clsx("flex flex-col", className)}>
       {originalPrice && (
         <p>
           <span className="line-through text-neutral-600">
