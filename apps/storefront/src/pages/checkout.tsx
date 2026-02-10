@@ -57,8 +57,6 @@ const Checkout = () => {
                   <AddressStep cart={cart} />
                 </section>
 
-                <hr className="border-neutral-200" />
-
                 {/* 2. Shipping Method */}
                 <section id="shipping">
                   <div className="mb-6">
@@ -68,8 +66,6 @@ const Checkout = () => {
                   <DeliveryStep cart={cart} />
                 </section>
 
-                <hr className="border-neutral-200" />
-
                 {/* 3. Payment */}
                 <section id="payment">
                   <div className="mb-6">
@@ -78,8 +74,6 @@ const Checkout = () => {
                   </div>
                   <PaymentStep cart={cart} />
                 </section>
-
-                <hr className="border-neutral-200" />
 
                 {/* 4. Review & Place Order */}
                 <section id="review">
