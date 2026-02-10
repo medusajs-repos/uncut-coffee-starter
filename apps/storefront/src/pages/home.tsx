@@ -999,7 +999,7 @@ const EngagementSection = () => {
     <section className="py-16 px-8 bg-white">
       <div className="flex flex-col md:flex-row justify-center items-start gap-8 max-w-7xl mx-auto">
           {/* Newsletter Column */}
-          <div className="flex flex-col items-center text-center w-full md:w-1/3 max-w-[360px]">
+          <div className="flex flex-col items-center text-center w-full md:w-1/3 max-w-[360px] h-[480px] justify-center">
             <p className="text-[20px] font-bold uppercase tracking-wide text-neutral-500 max-w-[220px] leading-snug mb-8">
               Join our newsletter for brewing tips, new roasts, exclusive offers, and pure coffee culture.
             </p>
@@ -1018,7 +1018,7 @@ const EngagementSection = () => {
           </div>
           
           {/* Social Column */}
-          <div className="flex flex-col items-center text-center w-full md:w-1/3 max-w-[360px]">
+          <div className="flex flex-col items-center text-center w-full md:w-1/3 max-w-[360px] h-[480px] justify-center">
             <p className="text-[20px] font-bold uppercase tracking-wide text-neutral-500 leading-snug mb-8">
               Your Morning Ritual at<br />@UncutCoffee
             </p>
@@ -1028,7 +1028,7 @@ const EngagementSection = () => {
           </div>
           
           {/* Contact Column */}
-          <div className="flex flex-col items-center text-center w-full md:w-1/3 max-w-[360px]">
+          <div className="flex flex-col items-center text-center w-full md:w-1/3 max-w-[360px] h-[480px] justify-center">
             <p className="text-[20px] font-bold uppercase tracking-wide text-neutral-500 max-w-[220px] leading-snug mb-8">
               Working on something? Cafes, roasters, wholesale... tell us what you're brewing.
             </p>
