@@ -265,7 +265,7 @@ const AddressForm = ({
           value={addressFormData.country_code}
           onValueChange={(value) => handleChange("country_code", value)}
         >
-          <SelectTrigger className="!border-neutral-200 !rounded-[8px] !text-base !font-medium !px-3 !h-12 !shadow-none !ring-0 focus:!ring-0 !bg-neutral-50">
+          <SelectTrigger className="!border-neutral-200 !rounded-[8px] !text-base !font-bold !px-3 !h-12 !shadow-none !ring-0 focus:!ring-0 !bg-neutral-50">
             <SelectValue placeholder="Select country" />
           </SelectTrigger>
           <SelectContent>
