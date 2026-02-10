@@ -188,7 +188,7 @@ export const Navbar = () => {
                       </div>
 
                       <Link to={`${baseHref}/cart` as any} onClick={closeCart} className="block">
-                        <button className="uncut-button w-full cursor-pointer h-14 font-bold">
+                        <button className="uncut-button w-full cursor-pointer h-14 font-bold text-sm">
                           CHECK OUT
                         </button>
                       </Link>
