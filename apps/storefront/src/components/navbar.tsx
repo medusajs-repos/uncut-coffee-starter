@@ -187,7 +187,7 @@ export const Navbar = () => {
                         <Price price={cart.item_subtotal} currencyCode={cart.currency_code} textWeight="plus" className="[&>span]:text-[24px]" />
                       </div>
 
-                      <Link to={`${baseHref}/cart` as any} onClick={closeCart} className="block">
+                      <Link to={`${baseHref}/checkout` as any} onClick={closeCart} className="block">
                         <button className="uncut-button w-full cursor-pointer h-14 font-bold text-sm">
                           CHECK OUT
                         </button>
