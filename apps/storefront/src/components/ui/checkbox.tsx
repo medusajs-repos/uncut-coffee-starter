@@ -18,7 +18,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           className={clsx(
             "appearance-none shadow-none outline-none focus:outline-none",
             "border border-neutral-200",
-            "rounded-none",
+            "rounded-[4px]",
             "text-base font-medium text-neutral-900",
             "w-full h-full",
             "bg-white",
