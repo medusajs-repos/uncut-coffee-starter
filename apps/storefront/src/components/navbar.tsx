@@ -146,7 +146,7 @@ export const Navbar = () => {
                 <DrawerHeader className="">
                   <DrawerTitle className="text-black font-bold text-[32px] uppercase flex items-center gap-3">
                     Cart
-                    <span className="w-8 h-8 rounded-full bg-neutral-200 text-black text-[14px] font-bold flex items-center justify-center">
+                    <span className="w-7 h-7 rounded-full bg-neutral-200 text-black text-[14px] font-bold flex items-center justify-center">
                       {itemCount}
                     </span>
                   </DrawerTitle>
