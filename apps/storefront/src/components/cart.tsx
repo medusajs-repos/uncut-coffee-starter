@@ -199,7 +199,7 @@ const CompactCartLineItem = ({ item, cart, fields }: CartLineItemProps) => {
               className="px-4 py-3 text-black flex items-center justify-center cursor-pointer"
             >
               <span className="w-[13.5px] h-[13.5px] flex items-center justify-center relative">
-                <span className="absolute w-full h-[1.5px] bg-black"></span>
+                <span className="absolute w-full h-[1.5px] bg-neutral-500"></span>
               </span>
             </button>
             <span className="px-3 py-3 text-black font-bold text-sm">
@@ -211,8 +211,8 @@ const CompactCartLineItem = ({ item, cart, fields }: CartLineItemProps) => {
               className="px-4 py-3 text-black flex items-center justify-center cursor-pointer"
             >
               <span className="w-[13.5px] h-[13.5px] flex items-center justify-center relative">
-                <span className="absolute w-full h-[1.5px] bg-black"></span>
-                <span className="absolute w-[1.5px] h-full bg-black"></span>
+                <span className="absolute w-full h-[1.5px] bg-neutral-500"></span>
+                <span className="absolute w-[1.5px] h-full bg-neutral-500"></span>
               </span>
             </button>
           </div>
