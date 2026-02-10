@@ -21,10 +21,10 @@ const PaymentContainer: React.FC<PaymentContainerProps> = ({
 
   return (
     <div
-      className={`flex flex-col justify-center h-12 text-sm cursor-pointer rounded-lg bg-neutral-50 px-3 mb-2 transition-colors ${
+      className={`flex flex-col justify-center h-12 text-sm cursor-pointer rounded-lg bg-neutral-50 px-3 mb-2 transition-colors border-2 ${
         isSelected
-          ? "ring-1 ring-neutral-900"
-          : "hover:bg-neutral-100"
+          ? "border-neutral-900"
+          : "border-transparent hover:bg-neutral-100"
       } ${disabled ? "opacity-50 cursor-not-allowed" : ""}`}
       onClick={disabled ? undefined : onClick}
     >
