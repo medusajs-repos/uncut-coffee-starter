@@ -1008,10 +1008,10 @@ const EngagementSection = () => {
             </div>
             <div className="relative z-10 flex flex-col items-center h-full">
               <h3 className="text-lg font-bold uppercase tracking-wider text-neutral-500 mb-1" style={{ fontFamily: 'inherit' }}>
-                Good Energy Club
+                Uncut Coffee Club
               </h3>
               <p className="text-sm uppercase tracking-wide text-neutral-400 max-w-[220px] leading-snug mb-auto">
-                Join newsletter for pancake parties, training tips and trips, merch, and more good energy.
+                Join our newsletter for brewing tips, new roasts, exclusive offers, and pure coffee culture.
               </p>
               <div className="flex gap-2 mt-8 w-full max-w-xs">
                 <input
@@ -1040,7 +1040,7 @@ const EngagementSection = () => {
                 Show Us
               </h3>
               <p className="text-sm uppercase tracking-wide text-neutral-400 leading-snug mb-auto">
-                Your Good Energy at<br />@SapGoodEnergy
+                Your Morning Ritual at<br />@UncutCoffee
               </p>
               <button className="mt-8 px-8 py-3 bg-black text-white text-sm font-medium uppercase tracking-wide rounded-full hover:bg-neutral-800 transition-colors">
                 Follow Us
@@ -1060,7 +1060,7 @@ const EngagementSection = () => {
                 Working on Something?
               </h3>
               <p className="text-sm uppercase tracking-wide text-neutral-400 max-w-[220px] leading-snug mb-auto">
-                Goals, races, clubs, cafes... tell us what you're up to and how we can bring good energy.
+                Cafes, roasters, wholesale... tell us what you're brewing and how we can fuel your vision.
               </p>
               <button className="mt-8 px-8 py-3 bg-black text-white text-sm font-medium uppercase tracking-wide rounded-full hover:bg-neutral-800 transition-colors">
                 Contact Us
