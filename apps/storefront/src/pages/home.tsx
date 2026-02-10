@@ -997,8 +997,7 @@ const EngagementSection = () => {
   
   return (
     <section className="py-16 px-8 bg-white">
-      <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col md:flex-row justify-center gap-8 md:gap-8">
+      <div className="flex flex-col md:flex-row justify-center items-center md:items-stretch gap-8 max-w-7xl mx-auto">
           {/* Newsletter Column */}
           <div className="flex flex-col items-center text-center relative min-h-[320px] w-full md:w-1/3 max-w-[360px]">
             <div className="absolute inset-0 flex items-center justify-center opacity-100 pointer-events-none z-0">
@@ -1061,7 +1060,6 @@ const EngagementSection = () => {
             </div>
           </div>
         </div>
-      </div>
     </section>
   )
 }
