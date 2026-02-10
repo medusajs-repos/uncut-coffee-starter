@@ -70,7 +70,7 @@ export const CartDeleteItem = ({ item, fields }: CartDeleteItemProps) => {
     <button
       onClick={() => deleteLineItemMutation.mutate({ line_id: item.id })}
       disabled={deleteLineItemMutation.isPending}
-      className="h-12 px-4 bg-neutral-200 rounded-lg text-sm font-bold text-neutral-600 hover:text-black hover:bg-neutral-300 transition-colors cursor-pointer"
+      className="h-12 px-4 bg-neutral-200 rounded-lg text-sm font-bold text-neutral-600 hover:text-black hover:bg-neutral-300 transition-colors cursor-pointer flex-1"
     >
       Remove
     </button>
@@ -191,8 +191,8 @@ const CompactCartLineItem = ({ item, cart, fields }: CartLineItemProps) => {
           <Price price={item.total || 0} currencyCode={cart.currency_code} textSize="small" className="font-bold text-black" />
         </div>
 
-        <div className="flex items-center gap-3 mt-3">
-          <div className="flex items-center h-12 bg-neutral-200 rounded-lg">
+        <div className="flex items-center gap-2 mt-3">
+          <div className="flex items-center justify-center h-12 bg-neutral-200 rounded-lg flex-1">
             <button
               type="button"
               onClick={() => handleQuantityChange(item.quantity - 1)}
