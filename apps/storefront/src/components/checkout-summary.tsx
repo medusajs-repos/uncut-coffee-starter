@@ -55,9 +55,9 @@ const CheckoutSummary = ({ cart }: CheckoutSummaryProps) => {
       </Suspense>
 
       {/* Cost Summary */}
-      <div className="pt-4 border-t border-neutral-200 space-y-3">
+      <div className="pt-4 border-t border-neutral-200 space-y-3 text-neutral-500">
         <div className="flex justify-between text-sm font-bold">
-          <span className="text-neutral-600">Subtotal</span>
+          <span>Subtotal</span>
           <Price
             price={cart.subtotal}
             currencyCode={cart.currency_code}
@@ -68,7 +68,7 @@ const CheckoutSummary = ({ cart }: CheckoutSummaryProps) => {
 
         {cart.shipping_total !== undefined && cart.shipping_total > 0 ? (
           <div className="flex justify-between text-sm font-bold">
-            <span className="text-neutral-600">Shipping</span>
+            <span>Shipping</span>
             <Price
               price={cart.shipping_total}
               currencyCode={cart.currency_code}
@@ -78,14 +78,14 @@ const CheckoutSummary = ({ cart }: CheckoutSummaryProps) => {
           </div>
         ) : (
           <div className="flex justify-between text-sm font-bold">
-            <span className="text-neutral-600">Shipping</span>
-            <span className="text-neutral-500">Calculated at next step</span>
+            <span>Shipping</span>
+            <span>Calculated at next step</span>
           </div>
         )}
 
         {cart.discount_total !== undefined && cart.discount_total > 0 && (
           <div className="flex justify-between text-sm font-bold">
-            <span className="text-neutral-600">Discount</span>
+            <span>Discount</span>
             <Price
               price={cart.discount_total}
               currencyCode={cart.currency_code}
@@ -98,7 +98,7 @@ const CheckoutSummary = ({ cart }: CheckoutSummaryProps) => {
 
         {cart.tax_total !== undefined && cart.tax_total > 0 && (
           <div className="flex justify-between text-sm font-bold">
-            <span className="text-neutral-600">Taxes</span>
+            <span>Taxes</span>
             <Price
               price={cart.tax_total}
               currencyCode={cart.currency_code}
