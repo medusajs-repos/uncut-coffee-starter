@@ -46,7 +46,7 @@ const CheckoutSummary = ({ cart }: CheckoutSummaryProps) => {
                   price={item.total || 0}
                   currencyCode={cart.currency_code}
                   textSize="small"
-                  className="font-medium"
+                  className="font-bold"
                 />
               </div>
             </div>
@@ -62,6 +62,7 @@ const CheckoutSummary = ({ cart }: CheckoutSummaryProps) => {
             price={cart.subtotal}
             currencyCode={cart.currency_code}
             textSize="small"
+            className="font-bold"
           />
         </div>
 
@@ -72,6 +73,7 @@ const CheckoutSummary = ({ cart }: CheckoutSummaryProps) => {
               price={cart.shipping_total}
               currencyCode={cart.currency_code}
               textSize="small"
+              className="font-bold"
             />
           </div>
         ) : (
@@ -101,6 +103,7 @@ const CheckoutSummary = ({ cart }: CheckoutSummaryProps) => {
               price={cart.tax_total}
               currencyCode={cart.currency_code}
               textSize="small"
+              className="font-bold"
             />
           </div>
         )}
