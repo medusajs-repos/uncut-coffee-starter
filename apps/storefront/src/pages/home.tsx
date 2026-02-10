@@ -1052,7 +1052,7 @@ const EngagementSection = () => {
               </div>
             </div>
             <div className="relative z-10 flex flex-col items-center h-full">
-              <p className="text-xl font-bold text-neutral-500 max-w-[220px] leading-snug mb-auto">
+              <p className="text-xl font-bold text-neutral-500 max-w-[220px] leading-snug mb-auto uppercase">
                 Working on something?Cafes, roasters, wholesale... tell us what you're brewing and how we can fuel your vision.
               </p>
               <button className="relative z-20 mt-8 px-8 h-[56px] bg-black text-white text-sm font-bold uppercase tracking-wide rounded-[8px] hover:bg-neutral-800 transition-colors cursor-pointer">
