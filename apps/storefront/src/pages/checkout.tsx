@@ -53,7 +53,6 @@ const Checkout = () => {
                 <section id="information">
                   <div className="mb-6">
                     <h2 className="text-xl font-bold text-neutral-900 uppercase">Contact & Shipping</h2>
-                    <p className="text-sm font-bold text-neutral-600 mt-1">Enter your contact and shipping details</p>
                   </div>
                   <AddressStep cart={cart} />
                 </section>
