@@ -160,7 +160,7 @@ const AddressStep = ({ cart }: AddressStepProps) => {
       </div>
 
       {/* Billing Address Checkbox */}
-      <div className="flex items-center gap-3 p-4 bg-neutral-50 rounded-lg border border-neutral-200">
+      <div className="flex items-center gap-3 px-4 h-12 bg-neutral-50 rounded-[8px] border border-neutral-200">
         <Checkbox
           id="same_as_billing"
           type="checkbox"
