@@ -192,7 +192,7 @@ const CompactCartLineItem = ({ item, cart, fields }: CartLineItemProps) => {
         </div>
 
         <div className="flex items-center gap-2 mt-3">
-          <div className="flex items-center justify-center h-12 bg-neutral-200 rounded-lg flex-1">
+          <div className="flex items-center justify-between h-12 bg-neutral-200 rounded-lg flex-1">
             <button
               type="button"
               onClick={() => handleQuantityChange(item.quantity - 1)}
