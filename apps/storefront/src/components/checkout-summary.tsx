@@ -10,7 +10,7 @@ interface CheckoutSummaryProps {
 
 const CheckoutSummary = ({ cart }: CheckoutSummaryProps) => {
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 uppercase">
       {/* Line Items */}
       <Suspense fallback={<Loading />}>
         <div className="space-y-4">
