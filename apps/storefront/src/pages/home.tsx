@@ -999,11 +999,13 @@ const EngagementSection = () => {
     <section className="py-16 px-8 bg-white">
       <div className="flex flex-col md:flex-row justify-center items-start gap-8 max-w-7xl mx-auto">
           {/* Newsletter Column */}
-          <div className="flex flex-col items-center text-center w-full md:w-1/3 max-w-[360px] h-[400px] pt-12">
-            <p className="text-[20px] font-bold uppercase tracking-wide text-neutral-500 max-w-[220px] leading-snug">
-              Join our newsletter for brewing tips, new roasts, exclusive offers, and pure coffee culture.
-            </p>
-            <div className="flex gap-2 justify-center mt-auto">
+          <div className="flex flex-col items-center text-center w-full md:w-1/3 max-w-[360px] h-[400px]">
+            <div className="flex-1 flex items-center w-full">
+              <p className="text-[20px] font-bold uppercase tracking-wide text-neutral-500 leading-snug w-full">
+                Join our newsletter for brewing tips, new roasts, exclusive offers, and pure coffee culture.
+              </p>
+            </div>
+            <div className="flex gap-2 justify-center">
               <input
                 type="email"
                 placeholder="YOUR EMAIL"
@@ -1030,11 +1032,13 @@ const EngagementSection = () => {
           </div>
           
           {/* Contact Column */}
-          <div className="flex flex-col items-center text-center w-full md:w-1/3 max-w-[360px] h-[400px] pt-12">
-            <p className="text-[20px] font-bold uppercase tracking-wide text-neutral-500 max-w-[220px] leading-snug">
-              Working on something? Cafes, roasters, wholesale... tell us what you're brewing.
-            </p>
-            <button className="mt-auto px-8 h-[56px] bg-black text-white text-sm font-bold uppercase tracking-wide rounded-[8px] hover:bg-neutral-800 transition-colors cursor-pointer">
+          <div className="flex flex-col items-center text-center w-full md:w-1/3 max-w-[360px] h-[400px]">
+            <div className="flex-1 flex items-center w-full">
+              <p className="text-[20px] font-bold uppercase tracking-wide text-neutral-500 leading-snug w-full">
+                Working on something? Cafes, roasters, wholesale... tell us what you're brewing.
+              </p>
+            </div>
+            <button className="px-8 h-[56px] bg-black text-white text-sm font-bold uppercase tracking-wide rounded-[8px] hover:bg-neutral-800 transition-colors cursor-pointer">
               Contact Us
             </button>
           </div>
