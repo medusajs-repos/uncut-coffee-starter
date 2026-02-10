@@ -1052,9 +1052,6 @@ const EngagementSection = () => {
               </div>
             </div>
             <div className="relative z-10 flex flex-col items-center h-full">
-              <h3 className="text-lg font-bold uppercase tracking-wider text-neutral-500 mb-1" style={{ fontFamily: 'inherit' }}>
-                Working on Something?
-              </h3>
               <p className="text-sm uppercase tracking-wide text-neutral-400 max-w-[220px] leading-snug mb-auto">
                 Working on something?Cafes, roasters, wholesale... tell us what you're brewing and how we can fuel your vision.
               </p>
