@@ -1013,7 +1013,7 @@ const EngagementSection = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 className="w-[160px] px-4 h-[56px] bg-neutral-200 text-black text-sm font-bold uppercase tracking-wide placeholder:text-neutral-500 placeholder:font-bold rounded-[8px] outline-none"
               />
-              <button className="px-6 h-[56px] bg-black text-white text-sm font-bold uppercase tracking-wide rounded-[8px] hover:bg-neutral-800 transition-colors cursor-pointer">
+              <button className="w-[176px] h-[56px] bg-black text-white text-sm font-bold uppercase tracking-wide rounded-[8px] hover:bg-neutral-800 transition-colors cursor-pointer">
                 Subscribe
               </button>
             </div>
