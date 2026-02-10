@@ -78,7 +78,7 @@ const Checkout = () => {
                 <section id="review">
                   <div className="mb-6">
                     <h2 className="text-xl font-bold text-neutral-900 uppercase">Review & Place Order</h2>
-                    <p className="text-sm font-bold text-neutral-600 mt-1">Review your order and complete your purchase</p>
+
                   </div>
                   <ReviewStep cart={cart} />
                 </section>
