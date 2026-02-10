@@ -90,7 +90,7 @@ const Checkout = () => {
 
           {/* Footer */}
           <div className="mt-12 pt-8 border-t border-neutral-200">
-            <div className="flex flex-wrap gap-4 text-xs font-bold text-neutral-500">
+            <div className="flex flex-wrap gap-4 text-xs font-bold text-neutral-500 uppercase">
               <span>Refund policy</span>
               <span>Privacy policy</span>
               <span>Terms of service</span>
