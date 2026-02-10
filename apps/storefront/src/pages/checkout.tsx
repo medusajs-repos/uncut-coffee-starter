@@ -39,10 +39,10 @@ const Checkout = () => {
           {/* Back to Cart Link */}
           <Link 
             to={`/${countryCode}/cart` as any}
-            className="inline-flex items-center gap-2 text-sm text-neutral-600 hover:text-neutral-900 transition-colors mb-8"
+            className="inline-flex items-center gap-2 text-neutral-500 hover:text-neutral-700 transition-colors mb-8"
           >
             <ArrowLeft className="w-4 h-4" />
-            <span>Back to cart</span>
+            <span className="text-[14px] font-bold uppercase">BACK</span>
           </Link>
 
           {/* Logo / Store Name */}
