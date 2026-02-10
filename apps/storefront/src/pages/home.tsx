@@ -1026,7 +1026,7 @@ const EngagementSection = () => {
                 Your Morning Ritual at<br />@UncutCoffee
               </p>
             </div>
-            <button className="px-8 h-[56px] bg-black text-white text-sm font-bold uppercase tracking-wide rounded-[8px] hover:bg-neutral-800 transition-colors cursor-pointer">
+            <button className="w-[176px] h-[56px] bg-black text-white text-sm font-bold uppercase tracking-wide rounded-[8px] hover:bg-neutral-800 transition-colors cursor-pointer">
               Follow Us
             </button>
           </div>
@@ -1038,7 +1038,7 @@ const EngagementSection = () => {
                 Working on something? Cafes, roasters, wholesale... tell us what you're brewing.
               </p>
             </div>
-            <button className="px-8 h-[56px] bg-black text-white text-sm font-bold uppercase tracking-wide rounded-[8px] hover:bg-neutral-800 transition-colors cursor-pointer">
+            <button className="w-[176px] h-[56px] bg-black text-white text-sm font-bold uppercase tracking-wide rounded-[8px] hover:bg-neutral-800 transition-colors cursor-pointer">
               Contact Us
             </button>
           </div>
