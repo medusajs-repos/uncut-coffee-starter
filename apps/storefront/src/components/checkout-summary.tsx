@@ -117,7 +117,7 @@ const CheckoutSummary = ({ cart }: CheckoutSummaryProps) => {
             <Price
               price={cart.total}
               currencyCode={cart.currency_code}
-              className="text-[24px] font-bold"
+              priceClassName="text-[24px] font-bold"
             />
             <span className="text-[24px] font-bold uppercase">
               {cart.currency_code}
