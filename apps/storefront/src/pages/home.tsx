@@ -1003,13 +1003,13 @@ const EngagementSection = () => {
             <p className="text-[20px] font-bold uppercase tracking-wide text-neutral-500 max-w-[220px] leading-snug mb-8">
               Join our newsletter for brewing tips, new roasts, exclusive offers, and pure coffee culture.
             </p>
-            <div className="flex gap-2 w-full max-w-xs">
+            <div className="flex gap-2 justify-center">
               <input
                 type="email"
                 placeholder="YOUR EMAIL"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="flex-1 px-4 h-[56px] bg-neutral-200 text-black text-sm font-bold uppercase tracking-wide placeholder:text-neutral-500 placeholder:font-bold rounded-[8px] outline-none"
+                className="w-[160px] px-4 h-[56px] bg-neutral-200 text-black text-sm font-bold uppercase tracking-wide placeholder:text-neutral-500 placeholder:font-bold rounded-[8px] outline-none"
               />
               <button className="px-6 h-[56px] bg-black text-white text-sm font-bold uppercase tracking-wide rounded-[8px] hover:bg-neutral-800 transition-colors cursor-pointer">
                 Subscribe
