@@ -48,8 +48,8 @@ const DeliveryStep = ({ cart }: DeliveryStepProps) => {
 
   if (!hasAddress) {
     return (
-      <div className="px-3 bg-neutral-50 rounded-lg border border-neutral-200 h-12 flex items-center">
-        <p className="text-sm font-bold text-neutral-500">
+      <div className="px-3 bg-neutral-50 rounded-lg border border-neutral-200 h-12 flex items-center text-black text-sm uppercase">
+        <p className="font-bold">
           Please enter your shipping address first to see available shipping options.
         </p>
       </div>
