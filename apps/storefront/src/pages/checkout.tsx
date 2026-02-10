@@ -39,7 +39,7 @@ const Checkout = () => {
           {/* Back to Cart Link */}
           <Link 
             to={`/${countryCode}` as any}
-            className="inline-flex items-center bg-neutral-200 hover:bg-neutral-300 transition-colors px-4 py-2 rounded mb-8"
+            className="inline-flex items-center justify-center bg-neutral-200 hover:bg-neutral-300 transition-colors px-4 h-[48px] rounded-[8px] mb-8"
           >
             <span className="text-[14px] font-bold uppercase text-neutral-500">BACK TO UNCUT</span>
           </Link>
