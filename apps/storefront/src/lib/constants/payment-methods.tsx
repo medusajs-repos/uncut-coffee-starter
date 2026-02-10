@@ -14,11 +14,11 @@ export const paymentMethodsData: Record<
     title: "Manual Payment",
     icon: <Cash />,
   },
-  pp_credit_card: {
+  credit_card: {
     title: "Credit Card",
     icon: <CreditCard />,
   },
-  pp_paypal: {
+  paypal: {
     title: "PayPal",
     icon: <CreditCard />,
   },

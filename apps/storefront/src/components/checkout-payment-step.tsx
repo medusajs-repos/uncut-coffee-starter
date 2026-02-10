@@ -1,13 +1,11 @@
 import PaymentContainer from "@/components/payment-container"
-import StripeCardContainer from "@/components/stripe-card-container"
 import {
   useCartPaymentMethods,
   useInitiateCartPaymentSession,
 } from "@/lib/hooks/use-checkout"
-import { isStripe as isStripeFunc, getActivePaymentSession, isPaidWithGiftCard } from "@/lib/utils/checkout"
+import { getActivePaymentSession, isPaidWithGiftCard } from "@/lib/utils/checkout"
 import { HttpTypes } from "@medusajs/types"
 import { useCallback, useEffect, useState } from "react"
-import { CheckCircleSolid } from "@medusajs/icons"
 
 interface PaymentStepProps {
   cart: HttpTypes.StoreCart;
@@ -23,32 +21,48 @@ const PaymentStep = ({ cart }: PaymentStepProps) => {
 
   const [error, setError] = useState<string | null>(null);
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(
-    "pp_credit_card"
+    "credit_card"
   );
 
   const paidByGiftcard = isPaidWithGiftCard(cart);
 
-  const initiatePaymentSession = useCallback(
-    async (method: string) => {
-      initiatePaymentSessionMutation.mutateAsync(
-        { provider_id: method },
-        {
-          onError: (error) => {
-            setError(
-              error instanceof Error ? error.message : "An error occurred"
-            );
-          },
-        }
-      );
-    },
-    [initiatePaymentSessionMutation]
+  // Get the real manual payment provider to use behind the scenes
+  const manualPaymentProvider = availablePaymentMethods.find(
+    (p) => p.id === "pp_system_default"
   );
 
-  const handlePaymentMethodChange = async (method: string) => {
-    setError(null);
-    setSelectedPaymentMethod(method);
-    initiatePaymentSession(method);
-  };
+  const initiatePaymentSession = useCallback(
+    async () => {
+      if (!manualPaymentProvider) return;
+      
+      try {
+        await initiatePaymentSessionMutation.mutateAsync(
+          { provider_id: manualPaymentProvider.id },
+          {
+            onError: (error) => {
+              setError(
+                error instanceof Error ? error.message : "An error occurred"
+              );
+            },
+          }
+        );
+      } catch (e) {
+        // Error handled in onError callback
+      }
+    },
+    [initiatePaymentSessionMutation, manualPaymentProvider]
+  );
+
+  // Initialize payment session with the real provider when shipping is complete
+  useEffect(() => {
+    if (
+      manualPaymentProvider &&
+      cart.shipping_methods?.length &&
+      !activeSession
+    ) {
+      initiatePaymentSession();
+    }
+  }, [manualPaymentProvider, cart.shipping_methods?.length, activeSession, initiatePaymentSession]);
 
   // Check if shipping method is selected before showing payment options
   const hasShippingMethod = !!cart.shipping_methods?.length;
@@ -63,10 +77,10 @@ const PaymentStep = ({ cart }: PaymentStepProps) => {
     );
   }
 
-  // Fake payment options for demo purposes
-  const fakePaymentMethods = [
-    { id: "pp_credit_card", name: "Credit Card" },
-    { id: "pp_paypal", name: "PayPal" },
+  // Fake payment options for display purposes only
+  const displayPaymentMethods = [
+    { id: "credit_card", name: "Credit Card" },
+    { id: "paypal", name: "PayPal" },
   ];
 
   return (
@@ -74,13 +88,12 @@ const PaymentStep = ({ cart }: PaymentStepProps) => {
       {/* Payment Method Selection */}
       {!paidByGiftcard && (
         <div className="space-y-3">
-          {/* Fake payment options for demo */}
-          {fakePaymentMethods.map((fakeMethod) => (
-            <div key={fakeMethod.id}>
+          {displayPaymentMethods.map((method) => (
+            <div key={method.id}>
               <PaymentContainer
-                paymentProviderId={fakeMethod.id}
+                paymentProviderId={method.id}
                 selectedPaymentOptionId={selectedPaymentMethod}
-                onClick={() => setSelectedPaymentMethod(fakeMethod.id)}
+                onClick={() => setSelectedPaymentMethod(method.id)}
               />
             </div>
           ))}
