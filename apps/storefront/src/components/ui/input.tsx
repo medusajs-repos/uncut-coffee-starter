@@ -12,7 +12,7 @@ export const Input = ({ className, ...props }: InputProps) => {
         "text-base font-bold text-neutral-900",
         "px-4 w-full h-12",
         "bg-neutral-100",
-        "placeholder:text-neutral-400 placeholder:font-normal",
+        "placeholder:text-neutral-500 placeholder:font-normal",
         className
       )}
       {...props}
