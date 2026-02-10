@@ -113,13 +113,13 @@ const CheckoutSummary = ({ cart }: CheckoutSummaryProps) => {
       <div className="pt-4 border-t border-neutral-200">
         <div className="flex justify-between items-baseline">
           <span className="text-base font-bold text-neutral-900">Total</span>
-          <div className="flex items-baseline gap-2">
+          <div className="flex items-baseline gap-2 text-[32px] font-bold text-neutral-900">
             <Price
               price={cart.total}
               currencyCode={cart.currency_code}
-              className="text-xl font-bold"
+              className="text-[32px] font-bold"
             />
-            <span className="text-sm font-bold text-neutral-500 uppercase">
+            <span className="uppercase">
               {cart.currency_code}
             </span>
           </div>
