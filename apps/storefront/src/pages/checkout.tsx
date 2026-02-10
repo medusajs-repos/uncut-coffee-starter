@@ -52,7 +52,7 @@ const Checkout = () => {
                 {/* 1. Contact & Shipping Address */}
                 <section id="information">
                   <div className="mb-6">
-                    <h2 className="text-xl font-semibold text-neutral-900">Contact & Shipping</h2>
+                    <h2 className="text-xl font-semibold text-neutral-900 uppercase">Contact & Shipping</h2>
                     <p className="text-sm text-neutral-600 mt-1">Enter your contact and shipping details</p>
                   </div>
                   <AddressStep cart={cart} />
@@ -63,7 +63,7 @@ const Checkout = () => {
                 {/* 2. Shipping Method */}
                 <section id="shipping">
                   <div className="mb-6">
-                    <h2 className="text-xl font-semibold text-neutral-900">Shipping Method</h2>
+                    <h2 className="text-xl font-semibold text-neutral-900 uppercase">Shipping Method</h2>
                     <p className="text-sm text-neutral-600 mt-1">Select your preferred shipping option</p>
                   </div>
                   <DeliveryStep cart={cart} />
@@ -74,7 +74,7 @@ const Checkout = () => {
                 {/* 3. Payment */}
                 <section id="payment">
                   <div className="mb-6">
-                    <h2 className="text-xl font-semibold text-neutral-900">Payment</h2>
+                    <h2 className="text-xl font-semibold text-neutral-900 uppercase">Payment</h2>
                     <p className="text-sm text-neutral-600 mt-1">Enter your payment details</p>
                   </div>
                   <PaymentStep cart={cart} />
@@ -85,7 +85,7 @@ const Checkout = () => {
                 {/* 4. Review & Place Order */}
                 <section id="review">
                   <div className="mb-6">
-                    <h2 className="text-xl font-semibold text-neutral-900">Review & Place Order</h2>
+                    <h2 className="text-xl font-semibold text-neutral-900 uppercase">Review & Place Order</h2>
                     <p className="text-sm text-neutral-600 mt-1">Review your order and complete your purchase</p>
                   </div>
                   <ReviewStep cart={cart} />
@@ -107,7 +107,7 @@ const Checkout = () => {
         {/* Right Column - Order Summary */}
         <div className="bg-neutral-100 px-6 lg:px-12 xl:px-16 py-8 lg:py-12 border-l border-neutral-200 order-1 lg:order-2">
           <div className="lg:sticky lg:top-8">
-            <h2 className="text-lg font-semibold text-neutral-900 mb-6">
+            <h2 className="text-lg font-semibold text-neutral-900 mb-6 uppercase">
               Order Summary
             </h2>
             <Suspense fallback={<Loading />}>
