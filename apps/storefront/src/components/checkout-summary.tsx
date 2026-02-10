@@ -1,4 +1,3 @@
-import { CartPromo } from "@/components/cart"
 import { Loading } from "@/components/ui/loading"
 import { Price } from "@/components/ui/price"
 import { Thumbnail } from "@/components/ui/thumbnail"
@@ -54,13 +53,6 @@ const CheckoutSummary = ({ cart }: CheckoutSummaryProps) => {
           ))}
         </div>
       </Suspense>
-
-      {/* Promo Code */}
-      <div className="pt-4 border-t border-neutral-200">
-        <Suspense fallback={<Loading />}>
-          <CartPromo cart={cart} />
-        </Suspense>
-      </div>
 
       {/* Cost Summary */}
       <div className="pt-4 border-t border-neutral-200 space-y-3">
