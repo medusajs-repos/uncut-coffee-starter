@@ -997,67 +997,44 @@ const EngagementSection = () => {
   
   return (
     <section className="py-16 px-8 bg-white">
-      <div className="flex flex-col md:flex-row justify-center items-center md:items-stretch gap-8 max-w-7xl mx-auto">
+      <div className="flex flex-col md:flex-row justify-center items-start gap-8 max-w-7xl mx-auto">
           {/* Newsletter Column */}
-          <div className="flex flex-col items-center text-center relative min-h-[320px] w-full md:w-1/3 max-w-[360px]">
-            <div className="absolute inset-0 flex items-center justify-center opacity-100 pointer-events-none z-0">
-              <div className="w-48 h-48">
-                <StarburstGraphic />
-              </div>
-            </div>
-            <div className="relative z-10 flex flex-col items-center h-full">
-
-              <p className="text-[20px] font-bold uppercase tracking-wide text-neutral-500 max-w-[220px] leading-snug mb-auto">
-                Join our newsletter for brewing tips, new roasts, exclusive offers, and pure coffee culture.
-              </p>
-              <div className="flex gap-2 mt-8 w-full max-w-xs">
-                <input
-                  type="email"
-                  placeholder="YOUR EMAIL"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="flex-1 px-4 h-[56px] bg-neutral-200 text-black text-sm font-bold uppercase tracking-wide placeholder:text-neutral-500 placeholder:font-bold rounded-[8px] outline-none"
-                />
-                <button className="relative z-20 px-6 h-[56px] bg-black text-white text-sm font-bold uppercase tracking-wide rounded-[8px] hover:bg-neutral-800 transition-colors cursor-pointer">
-                  Subscribe
-                </button>
-              </div>
+          <div className="flex flex-col items-center text-center w-full md:w-1/3 max-w-[360px]">
+            <p className="text-[20px] font-bold uppercase tracking-wide text-neutral-500 max-w-[220px] leading-snug mb-8">
+              Join our newsletter for brewing tips, new roasts, exclusive offers, and pure coffee culture.
+            </p>
+            <div className="flex gap-2 w-full max-w-xs">
+              <input
+                type="email"
+                placeholder="YOUR EMAIL"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="flex-1 px-4 h-[56px] bg-neutral-200 text-black text-sm font-bold uppercase tracking-wide placeholder:text-neutral-500 placeholder:font-bold rounded-[8px] outline-none"
+              />
+              <button className="px-6 h-[56px] bg-black text-white text-sm font-bold uppercase tracking-wide rounded-[8px] hover:bg-neutral-800 transition-colors cursor-pointer">
+                Subscribe
+              </button>
             </div>
           </div>
           
           {/* Social Column */}
-          <div className="flex flex-col items-center text-center relative min-h-[320px] w-full md:w-1/3 max-w-[360px]">
-            <div className="absolute inset-0 flex items-center justify-center opacity-100 pointer-events-none z-0">
-              <div className="w-48 h-44">
-                <OvalsGraphic />
-              </div>
-            </div>
-            <div className="relative z-10 flex flex-col items-center h-full">
-
-              <p className="text-[20px] font-bold uppercase tracking-wide text-neutral-500 leading-snug mb-auto">
-                Your Morning Ritual at<br />@UncutCoffee
-              </p>
-              <button className="relative z-20 mt-8 px-8 h-[56px] bg-black text-white text-sm font-bold uppercase tracking-wide rounded-[8px] hover:bg-neutral-800 transition-colors cursor-pointer">
-                Follow Us
-              </button>
-            </div>
+          <div className="flex flex-col items-center text-center w-full md:w-1/3 max-w-[360px]">
+            <p className="text-[20px] font-bold uppercase tracking-wide text-neutral-500 leading-snug mb-8">
+              Your Morning Ritual at<br />@UncutCoffee
+            </p>
+            <button className="px-8 h-[56px] bg-black text-white text-sm font-bold uppercase tracking-wide rounded-[8px] hover:bg-neutral-800 transition-colors cursor-pointer">
+              Follow Us
+            </button>
           </div>
           
           {/* Contact Column */}
-          <div className="flex flex-col items-center text-center relative min-h-[320px] w-full md:w-1/3 max-w-[360px]">
-            <div className="absolute inset-0 flex items-center justify-center opacity-100 pointer-events-none z-0">
-              <div className="w-48 h-48 translate-x-8">
-                <OrganicBlobGraphic />
-              </div>
-            </div>
-            <div className="relative z-10 flex flex-col items-center h-full">
-              <p className="text-xl font-bold text-neutral-500 max-w-[220px] leading-snug mb-auto uppercase">
-                Working on something?Cafes, roasters, wholesale... tell us what you're brewing and how we can fuel your vision.
-              </p>
-              <button className="relative z-20 mt-8 px-8 h-[56px] bg-black text-white text-sm font-bold uppercase tracking-wide rounded-[8px] hover:bg-neutral-800 transition-colors cursor-pointer">
-                Contact Us
-              </button>
-            </div>
+          <div className="flex flex-col items-center text-center w-full md:w-1/3 max-w-[360px]">
+            <p className="text-[20px] font-bold uppercase tracking-wide text-neutral-500 max-w-[220px] leading-snug mb-8">
+              Working on something? Cafes, roasters, wholesale... tell us what you're brewing.
+            </p>
+            <button className="px-8 h-[56px] bg-black text-white text-sm font-bold uppercase tracking-wide rounded-[8px] hover:bg-neutral-800 transition-colors cursor-pointer">
+              Contact Us
+            </button>
           </div>
         </div>
     </section>
