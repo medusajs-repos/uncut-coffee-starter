@@ -64,7 +64,7 @@ const PaymentStep = ({ cart }: PaymentStepProps) => {
   if (!hasShippingMethod) {
     return (
       <div className="p-4 bg-neutral-50 rounded-lg border border-neutral-200">
-        <p className="text-sm text-neutral-500">
+        <p className="text-sm font-bold text-neutral-500">
           Please select a shipping method first to see payment options.
         </p>
       </div>
@@ -75,7 +75,7 @@ const PaymentStep = ({ cart }: PaymentStepProps) => {
     <div className="space-y-4">
       {/* Status indicator */}
       {activeSession && (
-        <div className="flex items-center gap-2 text-sm text-green-600">
+        <div className="flex items-center gap-2 text-sm font-bold text-green-600">
           <CheckCircleSolid className="w-4 h-4" />
           <span>Payment method ready</span>
         </div>
@@ -85,7 +85,7 @@ const PaymentStep = ({ cart }: PaymentStepProps) => {
       {!paidByGiftcard && (availablePaymentMethods?.length ?? 0) > 0 && (
         <div className="space-y-3">
           {availablePaymentMethods.length === 0 && (
-            <p className="text-sm text-neutral-500">
+            <p className="text-sm font-bold text-neutral-500">
               No payment methods available
             </p>
           )}
@@ -113,10 +113,10 @@ const PaymentStep = ({ cart }: PaymentStepProps) => {
       {/* Gift Card Payment */}
       {paidByGiftcard && (
         <div className="p-4 bg-neutral-50 rounded-lg border border-neutral-200">
-          <p className="text-sm font-medium text-neutral-900 mb-1">
+          <p className="text-sm font-bold text-neutral-900 mb-1">
             Payment method
           </p>
-          <p className="text-sm text-neutral-600">
+          <p className="text-sm font-bold text-neutral-600">
             Your order will be paid with gift card
           </p>
         </div>
@@ -125,13 +125,13 @@ const PaymentStep = ({ cart }: PaymentStepProps) => {
       {/* Error Message */}
       {error && (
         <div className="p-4 bg-red-50 rounded-lg border border-red-200">
-          <p className="text-sm text-red-700">{error}</p>
+          <p className="text-sm font-bold text-red-700">{error}</p>
         </div>
       )}
 
       {/* Loading indicator */}
       {initiatePaymentSessionMutation.isPending && (
-        <p className="text-sm text-neutral-500">Setting up payment...</p>
+        <p className="text-sm font-bold text-neutral-500">Setting up payment...</p>
       )}
     </div>
   );

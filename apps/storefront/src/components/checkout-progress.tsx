@@ -23,9 +23,9 @@ const CheckoutProgress = ({
             onClick={() => handleStepChange(step.key)}
             disabled={index > currentStepIndex}
             className={clsx(
-              "text-sm transition-colors disabled:cursor-not-allowed",
+              "text-sm font-bold transition-colors disabled:cursor-not-allowed",
               index < currentStepIndex && "text-neutral-900 hover:underline cursor-pointer",
-              index === currentStepIndex && "text-neutral-900 font-medium",
+              index === currentStepIndex && "text-neutral-900",
               index > currentStepIndex && "text-neutral-400"
             )}
           >

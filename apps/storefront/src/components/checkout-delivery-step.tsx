@@ -49,7 +49,7 @@ const DeliveryStep = ({ cart }: DeliveryStepProps) => {
   if (!hasAddress) {
     return (
       <div className="p-4 bg-neutral-50 rounded-lg border border-neutral-200">
-        <p className="text-sm text-neutral-500">
+        <p className="text-sm font-bold text-neutral-500">
           Please enter your shipping address first to see available shipping options.
         </p>
       </div>
@@ -60,7 +60,7 @@ const DeliveryStep = ({ cart }: DeliveryStepProps) => {
     <div className="space-y-4">
       {/* Status indicator */}
       {hasShippingMethod && (
-        <div className="flex items-center gap-2 text-sm text-green-600">
+        <div className="flex items-center gap-2 text-sm font-bold text-green-600">
           <CheckCircleSolid className="w-4 h-4" />
           <span>Shipping method selected</span>
         </div>
@@ -69,7 +69,7 @@ const DeliveryStep = ({ cart }: DeliveryStepProps) => {
       {/* Shipping Method Selection */}
       <div className="space-y-3">
         {shippingOptions?.length === 0 && (
-          <p className="text-sm text-neutral-500">
+          <p className="text-sm font-bold text-neutral-500">
             No shipping options available for your address.
           </p>
         )}
@@ -86,7 +86,7 @@ const DeliveryStep = ({ cart }: DeliveryStepProps) => {
 
       {/* Loading indicator */}
       {setShippingMethodMutation.isPending && (
-        <p className="text-sm text-neutral-500">Updating shipping method...</p>
+        <p className="text-sm font-bold text-neutral-500">Updating shipping method...</p>
       )}
     </div>
   );

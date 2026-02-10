@@ -26,18 +26,18 @@ const CheckoutSummary = ({ cart }: CheckoutSummaryProps) => {
                   className="rounded-lg border border-neutral-200"
                 />
                 {/* Quantity Badge */}
-                <span className="absolute -top-2 -right-2 w-5 h-5 bg-neutral-500 text-white text-xs font-medium rounded-full flex items-center justify-center">
+                <span className="absolute -top-2 -right-2 w-5 h-5 bg-neutral-500 text-white text-xs font-bold rounded-full flex items-center justify-center">
                   {item.quantity}
                 </span>
               </div>
 
               {/* Product Info */}
               <div className="flex-1 min-w-0">
-                <p className="text-sm font-medium text-neutral-900 truncate">
+                <p className="text-sm font-bold text-neutral-900 truncate">
                   {item.product_title}
                 </p>
                 {item.variant_title && item.variant_title !== "Default Variant" && (
-                  <p className="text-sm text-neutral-500">{item.variant_title}</p>
+                  <p className="text-sm font-bold text-neutral-500">{item.variant_title}</p>
                 )}
               </div>
 
@@ -64,7 +64,7 @@ const CheckoutSummary = ({ cart }: CheckoutSummaryProps) => {
 
       {/* Cost Summary */}
       <div className="pt-4 border-t border-neutral-200 space-y-3">
-        <div className="flex justify-between text-sm">
+        <div className="flex justify-between text-sm font-bold">
           <span className="text-neutral-600">Subtotal</span>
           <Price
             price={cart.subtotal}
@@ -74,7 +74,7 @@ const CheckoutSummary = ({ cart }: CheckoutSummaryProps) => {
         </div>
 
         {cart.shipping_total !== undefined && cart.shipping_total > 0 ? (
-          <div className="flex justify-between text-sm">
+          <div className="flex justify-between text-sm font-bold">
             <span className="text-neutral-600">Shipping</span>
             <Price
               price={cart.shipping_total}
@@ -83,14 +83,14 @@ const CheckoutSummary = ({ cart }: CheckoutSummaryProps) => {
             />
           </div>
         ) : (
-          <div className="flex justify-between text-sm">
+          <div className="flex justify-between text-sm font-bold">
             <span className="text-neutral-600">Shipping</span>
             <span className="text-neutral-500">Calculated at next step</span>
           </div>
         )}
 
         {cart.discount_total !== undefined && cart.discount_total > 0 && (
-          <div className="flex justify-between text-sm">
+          <div className="flex justify-between text-sm font-bold">
             <span className="text-neutral-600">Discount</span>
             <Price
               price={cart.discount_total}
@@ -103,7 +103,7 @@ const CheckoutSummary = ({ cart }: CheckoutSummaryProps) => {
         )}
 
         {cart.tax_total !== undefined && cart.tax_total > 0 && (
-          <div className="flex justify-between text-sm">
+          <div className="flex justify-between text-sm font-bold">
             <span className="text-neutral-600">Taxes</span>
             <Price
               price={cart.tax_total}
@@ -117,15 +117,15 @@ const CheckoutSummary = ({ cart }: CheckoutSummaryProps) => {
       {/* Total */}
       <div className="pt-4 border-t border-neutral-200">
         <div className="flex justify-between items-baseline">
-          <span className="text-base font-medium text-neutral-900">Total</span>
+          <span className="text-base font-bold text-neutral-900">Total</span>
           <div className="text-right">
-            <span className="text-xs text-neutral-500 mr-2 uppercase">
+            <span className="text-xs font-bold text-neutral-500 mr-2 uppercase">
               {cart.currency_code}
             </span>
             <Price
               price={cart.total}
               currencyCode={cart.currency_code}
-              className="text-xl font-semibold"
+              className="text-xl font-bold"
             />
           </div>
         </div>

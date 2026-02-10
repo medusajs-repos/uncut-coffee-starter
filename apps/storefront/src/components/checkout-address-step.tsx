@@ -122,7 +122,7 @@ const AddressStep = ({ cart }: AddressStepProps) => {
     <div className="space-y-8">
       {/* Status indicator */}
       {(hasAddress || isSaved) && (
-        <div className="flex items-center gap-2 text-sm text-green-600">
+        <div className="flex items-center gap-2 text-sm font-bold text-green-600">
           <CheckCircleSolid className="w-4 h-4" />
           <span>Contact and shipping information saved</span>
         </div>
@@ -130,7 +130,7 @@ const AddressStep = ({ cart }: AddressStepProps) => {
 
       {/* Contact Information */}
       <div className="space-y-4">
-        <h3 className="text-base font-semibold text-neutral-900">
+        <h3 className="text-base font-bold text-neutral-900">
           Contact
         </h3>
         <div>
@@ -142,7 +142,7 @@ const AddressStep = ({ cart }: AddressStepProps) => {
             placeholder="Email address"
             className="w-full"
           />
-          <p className="text-xs text-neutral-500 mt-1.5">
+          <p className="text-xs font-bold text-neutral-500 mt-1.5">
             Order updates will be sent to this email
           </p>
         </div>
@@ -150,7 +150,7 @@ const AddressStep = ({ cart }: AddressStepProps) => {
 
       {/* Shipping Address */}
       <div className="space-y-4">
-        <h3 className="text-base font-semibold text-neutral-900">
+        <h3 className="text-base font-bold text-neutral-900">
           Shipping address
         </h3>
         <AddressForm
@@ -169,7 +169,7 @@ const AddressStep = ({ cart }: AddressStepProps) => {
           checked={sameAsBilling}
           onChange={(e) => setSameAsBilling(!!e.target.checked)}
         />
-        <label htmlFor="same_as_billing" className="text-sm text-neutral-700 cursor-pointer">
+        <label htmlFor="same_as_billing" className="text-sm font-bold text-neutral-700 cursor-pointer">
           Billing address is the same as shipping
         </label>
       </div>
@@ -177,7 +177,7 @@ const AddressStep = ({ cart }: AddressStepProps) => {
       {/* Billing Address (if different) */}
       {!sameAsBilling && (
         <div className="space-y-4">
-          <h3 className="text-base font-semibold text-neutral-900">
+          <h3 className="text-base font-bold text-neutral-900">
             Billing address
           </h3>
           <AddressForm
@@ -191,7 +191,7 @@ const AddressStep = ({ cart }: AddressStepProps) => {
 
       {/* Saving indicator */}
       {setAddressesMutation.isPending && (
-        <p className="text-sm text-neutral-500">Saving...</p>
+        <p className="text-sm font-bold text-neutral-500">Saving...</p>
       )}
     </div>
   );

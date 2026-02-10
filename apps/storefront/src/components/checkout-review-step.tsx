@@ -20,10 +20,10 @@ const ReviewStep = ({ cart }: ReviewStepProps) => {
   if (!isReady) {
     return (
       <div className="p-4 bg-neutral-50 rounded-lg border border-neutral-200">
-        <p className="text-sm text-neutral-500">
+        <p className="text-sm font-bold text-neutral-500">
           Please complete all steps above to place your order.
         </p>
-        <ul className="mt-2 text-sm text-neutral-500 list-disc list-inside">
+        <ul className="mt-2 text-sm font-bold text-neutral-500 list-disc list-inside">
           {!hasAddress && <li>Enter your contact and shipping information</li>}
           {!hasShippingMethod && <li>Select a shipping method</li>}
           {!hasPayment && <li>Set up payment</li>}
@@ -35,7 +35,7 @@ const ReviewStep = ({ cart }: ReviewStepProps) => {
   return (
     <div className="space-y-6">
       {/* Terms Notice */}
-      <p className="text-sm text-neutral-500">
+      <p className="text-sm font-bold text-neutral-500">
         By placing your order, you agree to our Terms of Service and Privacy Policy. 
         Your payment will be processed securely.
       </p>

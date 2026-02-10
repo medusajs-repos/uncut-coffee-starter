@@ -41,7 +41,7 @@ const Checkout = () => {
             to={`/${countryCode}` as any}
             className="group inline-flex items-center justify-center bg-neutral-200 transition-colors px-4 h-[48px] rounded-[8px] mb-8"
           >
-            <span className="text-[14px] font-bold uppercase text-neutral-500 group-hover:text-black transition-colors">BACK TO UNCUT</span>
+            <span className="text-[14px] font-bold uppercase text-neutral-500 group-hover:text-black transition-colors tracking-wide">BACK TO UNCUT</span>
           </Link>
 
           {/* All Steps in One Scroll */}
@@ -52,8 +52,8 @@ const Checkout = () => {
                 {/* 1. Contact & Shipping Address */}
                 <section id="information">
                   <div className="mb-6">
-                    <h2 className="text-xl font-semibold text-neutral-900 uppercase">Contact & Shipping</h2>
-                    <p className="text-sm text-neutral-600 mt-1">Enter your contact and shipping details</p>
+                    <h2 className="text-xl font-bold text-neutral-900 uppercase">Contact & Shipping</h2>
+                    <p className="text-sm font-bold text-neutral-600 mt-1">Enter your contact and shipping details</p>
                   </div>
                   <AddressStep cart={cart} />
                 </section>
@@ -63,8 +63,8 @@ const Checkout = () => {
                 {/* 2. Shipping Method */}
                 <section id="shipping">
                   <div className="mb-6">
-                    <h2 className="text-xl font-semibold text-neutral-900 uppercase">Shipping Method</h2>
-                    <p className="text-sm text-neutral-600 mt-1">Select your preferred shipping option</p>
+                    <h2 className="text-xl font-bold text-neutral-900 uppercase">Shipping Method</h2>
+                    <p className="text-sm font-bold text-neutral-600 mt-1">Select your preferred shipping option</p>
                   </div>
                   <DeliveryStep cart={cart} />
                 </section>
@@ -74,8 +74,8 @@ const Checkout = () => {
                 {/* 3. Payment */}
                 <section id="payment">
                   <div className="mb-6">
-                    <h2 className="text-xl font-semibold text-neutral-900 uppercase">Payment</h2>
-                    <p className="text-sm text-neutral-600 mt-1">Enter your payment details</p>
+                    <h2 className="text-xl font-bold text-neutral-900 uppercase">Payment</h2>
+                    <p className="text-sm font-bold text-neutral-600 mt-1">Enter your payment details</p>
                   </div>
                   <PaymentStep cart={cart} />
                 </section>
@@ -85,8 +85,8 @@ const Checkout = () => {
                 {/* 4. Review & Place Order */}
                 <section id="review">
                   <div className="mb-6">
-                    <h2 className="text-xl font-semibold text-neutral-900 uppercase">Review & Place Order</h2>
-                    <p className="text-sm text-neutral-600 mt-1">Review your order and complete your purchase</p>
+                    <h2 className="text-xl font-bold text-neutral-900 uppercase">Review & Place Order</h2>
+                    <p className="text-sm font-bold text-neutral-600 mt-1">Review your order and complete your purchase</p>
                   </div>
                   <ReviewStep cart={cart} />
                 </section>
@@ -96,7 +96,7 @@ const Checkout = () => {
 
           {/* Footer */}
           <div className="mt-12 pt-8 border-t border-neutral-200">
-            <div className="flex flex-wrap gap-4 text-xs text-neutral-500">
+            <div className="flex flex-wrap gap-4 text-xs font-bold text-neutral-500">
               <span>Refund policy</span>
               <span>Privacy policy</span>
               <span>Terms of service</span>
@@ -107,7 +107,7 @@ const Checkout = () => {
         {/* Right Column - Order Summary */}
         <div className="bg-neutral-100 px-6 lg:px-12 xl:px-16 py-8 lg:py-12 border-l border-neutral-200 order-1 lg:order-2">
           <div className="lg:sticky lg:top-8">
-            <h2 className="text-lg font-semibold text-neutral-900 mb-6 uppercase">
+            <h2 className="text-lg font-bold text-neutral-900 mb-6 uppercase">
               Order Summary
             </h2>
             <Suspense fallback={<Loading />}>
