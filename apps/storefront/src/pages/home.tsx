@@ -442,7 +442,7 @@ const ThreeColumnSection = () => {
             
             {/* Accordions */}
             <div className="mt-8 space-y-0">
-              <AccordionItem title="INGREDIENTS & NUTRITION" dotted smallThinIcon hugContent titleClassName="text-[16px] font-bold uppercase tracking-wider text-black leading-tight" containerClassName="w-full py-4 flex items-center justify-between text-left cursor-pointer">
+              <AccordionItem title="INGREDIENTS & NUTRITION" dotted smallThinIcon hugContent titleClassName="text-[14px] font-bold uppercase tracking-wider text-black leading-tight" containerClassName="w-full py-4 flex items-center justify-between text-left cursor-pointer">
                 <div className="text-[14px] text-black font-bold space-y-4">
                   {/* Ingredients intro */}
                   <div className="space-y-1">
@@ -478,12 +478,12 @@ const ThreeColumnSection = () => {
                   </p>
                 </div>
               </AccordionItem>
-              <AccordionItem title="SHIPPING" dotted smallThinIcon hugContent titleClassName="text-[16px] font-bold uppercase tracking-wider text-black leading-tight" containerClassName="w-full py-4 flex items-center justify-between text-left cursor-pointer">
+              <AccordionItem title="SHIPPING" dotted smallThinIcon hugContent titleClassName="text-[14px] font-bold uppercase tracking-wider text-black leading-tight" containerClassName="w-full py-4 flex items-center justify-between text-left cursor-pointer">
                 <p className="text-[14px] text-black font-bold leading-relaxed uppercase">
                   OUR PREMIUM COFFEE BEANS ARE CAREFULLY PACKAGED AND SHIPPED WITHIN 24 HOURS OF ROASTING. FREE SHIPPING ON ALL ORDERS OVER $50. STANDARD DELIVERY TAKES 3-5 BUSINESS DAYS. EXPRESS SHIPPING AVAILABLE FOR NEXT-DAY DELIVERY.
                 </p>
               </AccordionItem>
-              <AccordionItem title="FAQ" dotted smallThinIcon hugContent titleClassName="text-[16px] font-bold uppercase tracking-wider text-black leading-tight" containerClassName="w-full py-4 flex items-center justify-between text-left cursor-pointer">
+              <AccordionItem title="FAQ" dotted smallThinIcon hugContent titleClassName="text-[14px] font-bold uppercase tracking-wider text-black leading-tight" containerClassName="w-full py-4 flex items-center justify-between text-left cursor-pointer">
                 <p className="text-[14px] text-black font-bold leading-relaxed uppercase">
                   HOW FRESH IS YOUR COFFEE? ALL OUR BEANS ARE ROASTED TO ORDER AND SHIPPED WITHIN 24 HOURS. WHAT GRIND OPTIONS DO YOU OFFER? WE OFFER WHOLE BEAN, ESPRESSO, FILTER, AND FRENCH PRESS GRINDS. HOW SHOULD I STORE MY COFFEE? KEEP IN A COOL, DRY PLACE AWAY FROM DIRECT SUNLIGHT FOR OPTIMAL FRESHNESS.
                 </p>
