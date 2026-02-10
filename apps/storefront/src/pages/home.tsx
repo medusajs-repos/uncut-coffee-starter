@@ -996,7 +996,7 @@ const EngagementSection = () => {
   const [email, setEmail] = useState("")
   
   return (
-    <section className="py-20 px-6 bg-white cursor-pointer">
+    <section className="py-20 px-6 bg-white">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
           {/* Newsletter Column */}
@@ -1019,7 +1019,7 @@ const EngagementSection = () => {
                   onChange={(e) => setEmail(e.target.value)}
                   className="flex-1 px-4 h-[56px] bg-neutral-200 text-black text-sm font-bold uppercase tracking-wide placeholder:text-neutral-500 placeholder:font-bold rounded-[8px] outline-none"
                 />
-                <button className="px-6 h-[56px] bg-black text-white text-sm font-bold uppercase tracking-wide rounded-[8px] hover:bg-neutral-800 transition-colors">
+                <button className="px-6 h-[56px] bg-black text-white text-sm font-bold uppercase tracking-wide rounded-[8px] hover:bg-neutral-800 transition-colors cursor-pointer">
                   Subscribe
                 </button>
               </div>
@@ -1038,7 +1038,7 @@ const EngagementSection = () => {
               <p className="text-[20px] font-bold uppercase tracking-wide text-neutral-500 leading-snug mb-auto">
                 Your Morning Ritual at<br />@UncutCoffee
               </p>
-              <button className="mt-8 px-8 h-[56px] bg-black text-white text-sm font-bold uppercase tracking-wide rounded-[8px] hover:bg-neutral-800 transition-colors">
+              <button className="mt-8 px-8 h-[56px] bg-black text-white text-sm font-bold uppercase tracking-wide rounded-[8px] hover:bg-neutral-800 transition-colors cursor-pointer">
                 Follow Us
               </button>
             </div>
@@ -1058,7 +1058,7 @@ const EngagementSection = () => {
               <p className="text-sm uppercase tracking-wide text-neutral-400 max-w-[220px] leading-snug mb-auto">
                 Cafes, roasters, wholesale... tell us what you're brewing and how we can fuel your vision.
               </p>
-              <button className="mt-8 px-8 h-[56px] bg-black text-white text-sm font-bold uppercase tracking-wide rounded-[8px] hover:bg-neutral-800 transition-colors">
+              <button className="mt-8 px-8 h-[56px] bg-black text-white text-sm font-bold uppercase tracking-wide rounded-[8px] hover:bg-neutral-800 transition-colors cursor-pointer">
                 Contact Us
               </button>
             </div>
