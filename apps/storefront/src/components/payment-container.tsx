@@ -1,4 +1,3 @@
-import Radio from "@/components/ui/radio"
 import { paymentMethodsData } from "@/lib/constants/payment-methods"
 import React from "react"
 
@@ -29,7 +28,12 @@ const PaymentContainer: React.FC<PaymentContainerProps> = ({
       onClick={disabled ? undefined : onClick}
     >
       <div className="flex items-center gap-x-4">
-        <Radio checked={isSelected} readOnly />
+        <input 
+          type="radio" 
+          checked={isSelected}
+          readOnly
+          className="w-4 h-4 appearance-none border border-black rounded-full relative before:content-[''] before:absolute before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:w-[12px] before:h-[12px] before:rounded-full before:bg-yellow-900 before:scale-0 checked:before:scale-100 before:transition-transform"
+        />
         <p className="text-base font-bold uppercase text-black">
           {paymentMethodsData[paymentProviderId]?.title || paymentProviderId}
         </p>
