@@ -1018,11 +1018,13 @@ const EngagementSection = () => {
           </div>
           
           {/* Social Column */}
-          <div className="flex flex-col items-center text-center w-full md:w-1/3 max-w-[360px] h-[400px] pt-12">
-            <p className="text-[20px] font-bold uppercase tracking-wide text-neutral-500 leading-snug">
-              Your Morning Ritual at<br />@UncutCoffee
-            </p>
-            <button className="mt-auto px-8 h-[56px] bg-black text-white text-sm font-bold uppercase tracking-wide rounded-[8px] hover:bg-neutral-800 transition-colors cursor-pointer">
+          <div className="flex flex-col items-center text-center w-full md:w-1/3 max-w-[360px] h-[400px]">
+            <div className="flex-1 flex items-center w-full">
+              <p className="text-[20px] font-bold uppercase tracking-wide text-neutral-500 leading-snug w-full">
+                Your Morning Ritual at<br />@UncutCoffee
+              </p>
+            </div>
+            <button className="px-8 h-[56px] bg-black text-white text-sm font-bold uppercase tracking-wide rounded-[8px] hover:bg-neutral-800 transition-colors cursor-pointer">
               Follow Us
             </button>
           </div>
