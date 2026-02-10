@@ -181,7 +181,7 @@ export const Navbar = () => {
                       ))}
                     </div>
 
-                    <DrawerFooter className="border-t border-uncut-gray-light">
+                    <DrawerFooter className="">
                       <div className="flex items-center justify-between mb-4">
                         <span className="text-sm uppercase tracking-wide text-neutral-500 font-bold">ESTIMATED TOTAL</span>
                         <Price price={cart.item_subtotal} currencyCode={cart.currency_code} textWeight="plus" className="[&>span]:text-[24px]" />
