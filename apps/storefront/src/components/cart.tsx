@@ -185,11 +185,11 @@ const CompactCartLineItem = ({ item, cart, fields }: CartLineItemProps) => {
                 {item.variant_title}
               </p>
             )}
-            <div className="text-sm text-neutral-600 mt-1">
+            <div className="text-sm text-neutral-600 mt-1 font-bold">
               <Price price={unitPrice} currencyCode={cart.currency_code} textSize="small" />
             </div>
           </div>
-          <Price price={item.total || 0} currencyCode={cart.currency_code} textSize="small" className="font-medium" />
+          <Price price={item.total || 0} currencyCode={cart.currency_code} textSize="small" className="font-bold" />
         </div>
 
         <div className="flex items-center gap-3 mt-3">
@@ -202,7 +202,7 @@ const CompactCartLineItem = ({ item, cart, fields }: CartLineItemProps) => {
             >
               <Minus className="w-4 h-4" />
             </Button>
-            <span className="text-sm text-black min-w-[2rem] text-center font-medium">
+            <span className="text-sm text-black min-w-[2rem] text-center font-bold">
               {item.quantity}
             </span>
             <Button

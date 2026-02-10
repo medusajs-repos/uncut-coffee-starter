@@ -155,7 +155,7 @@ export const Navbar = () => {
                 {/* Empty Cart */}
                 {(!cart || itemCount === 0) && (
                   <div className="flex flex-col items-center justify-center flex-1 p-8">
-                    <span className="text-uncut-gray text-base mb-6">
+                    <span className="text-uncut-gray text-base mb-6 font-bold">
                       Your cart is empty
                     </span>
                     <Link to={`${baseHref}/` as any} onClick={closeCart}>
@@ -183,7 +183,7 @@ export const Navbar = () => {
 
                     <DrawerFooter className="border-t border-uncut-gray-light">
                       <div className="flex items-center justify-between mb-4">
-                        <span className="text-sm uppercase tracking-wide text-uncut-gray">Subtotal</span>
+                        <span className="text-sm uppercase tracking-wide text-uncut-gray font-bold">Subtotal</span>
                         <Price price={cart.item_subtotal} currencyCode={cart.currency_code} textWeight="plus" />
                       </div>
 
