@@ -1032,7 +1032,7 @@ const EngagementSection = () => {
             </svg>
             <div className="flex-1 flex items-center w-full relative z-10">
               <p className="text-[20px] font-bold uppercase tracking-wide text-neutral-500 leading-snug w-full">
-                Show Us Your<br />Morning Ritual at<br />@UncutCoffee
+                Your Morning Ritual at<br />@UncutCoffee
               </p>
             </div>
             <button className="w-[176px] h-[56px] bg-black text-white text-sm font-bold uppercase tracking-wide rounded-[8px] hover:bg-neutral-800 transition-colors cursor-pointer relative z-10">
