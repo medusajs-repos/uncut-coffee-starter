@@ -324,7 +324,7 @@ const ThreeColumnSection = () => {
         </div>
         
         {/* Desktop: Left container - Text + Video (66% width) */}
-        <div className="hidden md:flex md:w-2/3 gap-16">
+        <div className="hidden md:flex flex-1 gap-16">
           {/* Column 1 - Sticky text */}
           <div className="w-1/2">
             <div className="sticky top-[20vh] h-[60vh] flex items-center">
