@@ -348,7 +348,7 @@ const ThreeColumnSection = () => {
           </div>
         </div>
         {/* Column 3 - Scrollable content (33% width) */}
-        <div className="md:w-1/3 bg-white flex flex-col max-w-[360px]">
+        <div className="md:w-1/3 bg-white flex flex-col max-w-[360px] ml-auto">
           <h3 className="text-yellow-900 text-sm font-bold uppercase tracking-wider">beans 350g</h3>
           <div className="border-t border-dotted border-[#3d2a1a]/30 my-3" />
           <p className="text-black text-sm font-bold uppercase tracking-wider leading-relaxed">
