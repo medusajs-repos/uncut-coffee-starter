@@ -110,7 +110,7 @@ const AddressForm = ({
       {/* Name fields */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="flex flex-col gap-2">
-          <label htmlFor="first_name" className="block text-sm font-medium">
+          <label htmlFor="first_name" className="block text-sm font-bold uppercase">
             First Name
           </label>
           <Input
@@ -120,7 +120,7 @@ const AddressForm = ({
             autoComplete="given-name"
             value={addressFormData.first_name}
             onChange={(e) => handleChange("first_name", e.target.value)}
-            placeholder="First name"
+            placeholder="John"
           />
           {errors.first_name && touchedFields.first_name && (
             <div className="text-rose-900 text-sm mt-1">
@@ -129,7 +129,7 @@ const AddressForm = ({
           )}
         </div>
         <div className="flex flex-col gap-2">
-          <label htmlFor="last_name" className="block text-sm font-medium">
+          <label htmlFor="last_name" className="block text-sm font-bold uppercase">
             Last Name
           </label>
           <Input
@@ -139,7 +139,7 @@ const AddressForm = ({
             autoComplete="family-name"
             value={addressFormData.last_name}
             onChange={(e) => handleChange("last_name", e.target.value)}
-            placeholder="Last name"
+            placeholder="Smith"
           />
           {errors.last_name && touchedFields.last_name && (
             <div className="text-rose-900 text-sm mt-1">
@@ -151,7 +151,7 @@ const AddressForm = ({
 
       {/* Company */}
       <div className="flex flex-col gap-2">
-        <label htmlFor="company" className="block text-sm font-medium">
+        <label htmlFor="company" className="block text-sm font-bold uppercase">
           Company
         </label>
         <Input
@@ -161,13 +161,13 @@ const AddressForm = ({
           autoComplete="organization"
           value={addressFormData.company}
           onChange={(e) => handleChange("company", e.target.value)}
-          placeholder="Company name"
+          placeholder="Acme Inc."
         />
       </div>
 
       {/* Address fields */}
       <div className="flex flex-col gap-2">
-        <label htmlFor="address_1" className="block text-sm font-medium">
+        <label htmlFor="address_1" className="block text-sm font-bold uppercase">
           Address Line 1
         </label>
         <Input
@@ -177,7 +177,7 @@ const AddressForm = ({
           autoComplete="street-address"
           value={addressFormData.address_1}
           onChange={(e) => handleChange("address_1", e.target.value)}
-          placeholder="Address line 1"
+          placeholder="123 Main Street"
         />
         {errors.address_1 && touchedFields.address_1 && (
           <div className="text-rose-900 text-sm mt-1">{errors.address_1}</div>
@@ -185,7 +185,7 @@ const AddressForm = ({
       </div>
 
       <div className="flex flex-col gap-2">
-        <label htmlFor="address_2" className="block text-sm font-medium">
+        <label htmlFor="address_2" className="block text-sm font-bold uppercase">
           Address Line 2
         </label>
         <Input
@@ -194,14 +194,14 @@ const AddressForm = ({
           type="text"
           value={addressFormData.address_2}
           onChange={(e) => handleChange("address_2", e.target.value)}
-          placeholder="Address line 2"
+          placeholder="Apt 4B"
         />
       </div>
 
       {/* City, Province, Postal Code */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div className="flex flex-col gap-2">
-          <label htmlFor="city" className="block text-sm font-medium">
+          <label htmlFor="city" className="block text-sm font-bold uppercase">
             City
           </label>
           <Input
@@ -211,14 +211,14 @@ const AddressForm = ({
             autoComplete="address-level2"
             value={addressFormData.city}
             onChange={(e) => handleChange("city", e.target.value)}
-            placeholder="City"
+            placeholder="New York"
           />
           {errors.city && touchedFields.city && (
             <div className="text-rose-900 text-sm mt-1">{errors.city}</div>
           )}
         </div>
         <div className="flex flex-col gap-2">
-          <label htmlFor="province" className="block text-sm font-medium">
+          <label htmlFor="province" className="block text-sm font-bold uppercase">
             State / Province
           </label>
           <Input
@@ -228,11 +228,11 @@ const AddressForm = ({
             autoComplete="address-level1"
             value={addressFormData.province}
             onChange={(e) => handleChange("province", e.target.value)}
-            placeholder="State / Province"
+            placeholder="NY"
           />
         </div>
         <div className="flex flex-col gap-2">
-          <label htmlFor="postal_code" className="block text-sm font-medium">
+          <label htmlFor="postal_code" className="block text-sm font-bold uppercase">
             Postal Code
           </label>
           <Input
@@ -242,7 +242,7 @@ const AddressForm = ({
             autoComplete="postal-code"
             value={addressFormData.postal_code}
             onChange={(e) => handleChange("postal_code", e.target.value)}
-            placeholder="Postal code"
+            placeholder="10001"
           />
           {errors.postal_code && touchedFields.postal_code && (
             <div className="text-rose-900 text-sm mt-1">
@@ -256,7 +256,7 @@ const AddressForm = ({
       <div className="flex flex-col gap-2">
         <label
           htmlFor="country_code"
-          className="block text-sm font-medium text-neutral-900 mb-2"
+          className="block text-sm font-bold uppercase text-neutral-900 mb-2"
         >
           Country
         </label>
@@ -265,7 +265,7 @@ const AddressForm = ({
           value={addressFormData.country_code}
           onValueChange={(value) => handleChange("country_code", value)}
         >
-          <SelectTrigger className="!border-neutral-200 !rounded-none !text-base !font-medium !px-4 !py-2 !h-auto !shadow-none !ring-0 focus:!ring-0">
+          <SelectTrigger className="!border-neutral-200 !rounded-[8px] !text-base !font-bold !px-3 !h-12 !shadow-none !ring-0 focus:!ring-0 !bg-neutral-50">
             <SelectValue placeholder="Select country" />
           </SelectTrigger>
           <SelectContent>
@@ -285,7 +285,7 @@ const AddressForm = ({
 
       {/* Phone */}
       <div className="flex flex-col gap-2">
-        <label htmlFor="phone" className="block text-sm font-medium">
+        <label htmlFor="phone" className="block text-sm font-bold uppercase">
           Phone
         </label>
         <Input
@@ -295,7 +295,7 @@ const AddressForm = ({
           autoComplete="tel"
           value={addressFormData.phone}
           onChange={(e) => handleChange("phone", e.target.value)}
-          placeholder="Phone number"
+          placeholder="+1 555 123 4567"
         />
       </div>
 

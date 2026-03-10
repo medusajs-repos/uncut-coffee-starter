@@ -13,6 +13,7 @@ export type PriceProps = {
   currencyCode: string;
   textSize?: "small" | "base" | "large" | "xlarge";
   textWeight?: "regular" | "plus";
+  priceClassName?: string;
 };
 
 export const Price = ({
@@ -23,6 +24,7 @@ export const Price = ({
   currencyCode,
   textSize = "base",
   textWeight = "regular",
+  priceClassName,
 }: PriceProps) => {
   const { formattedPrice, formattedSalePrice } = useMemo(() => {
     if (!currencyCode) {
@@ -46,7 +48,7 @@ export const Price = ({
     };
   }, [price, originalPrice, currencyCode]);
   return (
-    <div className={clsx("flex flex-col text-neutral-900", className)}>
+    <div className={clsx("flex flex-col", className)}>
       {originalPrice && (
         <p>
           <span className="line-through text-neutral-600">
@@ -55,21 +57,23 @@ export const Price = ({
         </p>
       )}
       <span
-        className={clsx({
-          "text-sm": textSize === "small" && textWeight === "regular",
-          "text-sm font-medium": textSize === "small" && textWeight === "plus",
-          "text-base font-medium":
-            textSize === "base" && textWeight === "regular",
-          "text-base font-semibold":
-            textSize === "base" && textWeight === "plus",
-          "text-lg": textSize === "large" && textWeight === "regular",
-          "text-lg font-bold":
-            textSize === "large" && textWeight === "plus",
-          "text-xl": textSize === "xlarge" && textWeight === "regular",
-          "text-xl font-bold":
-            textSize === "xlarge" && textWeight === "plus",
-          "text-blue-500": originalPrice,
-        })}
+        className={clsx(
+          priceClassName || {
+            "text-sm": textSize === "small" && textWeight === "regular",
+            "text-sm font-medium": textSize === "small" && textWeight === "plus",
+            "text-base font-medium":
+              textSize === "base" && textWeight === "regular",
+            "text-base font-semibold":
+              textSize === "base" && textWeight === "plus",
+            "text-lg": textSize === "large" && textWeight === "regular",
+            "text-lg font-bold":
+              textSize === "large" && textWeight === "plus",
+            "text-xl": textSize === "xlarge" && textWeight === "regular",
+            "text-xl font-bold":
+              textSize === "xlarge" && textWeight === "plus",
+            "text-blue-500": originalPrice,
+          }
+        )}
       >
         {type === "range" && "From "}
         <span>

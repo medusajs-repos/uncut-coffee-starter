@@ -4,21 +4,29 @@ type ThumbnailProps = {
   thumbnail?: string | null;
   alt: string;
   className?: string;
+  size?: "sm" | "md" | "lg";
 };
 
-export const Thumbnail = ({ thumbnail, alt, className }: ThumbnailProps) => {
+const sizeClasses = {
+  sm: "w-12 h-12",
+  md: "w-20 h-20",
+  lg: "w-24 h-24",
+};
+
+export const Thumbnail = ({ thumbnail, alt, className, size = "md" }: ThumbnailProps) => {
   return (
     <>
       {thumbnail ? (
         <img
           src={thumbnail}
           alt={alt}
-          className={clsx("w-20 h-20 object-cover bg-neutral-50", className)}
+          className={clsx(sizeClasses[size], "object-cover bg-neutral-50", className)}
         />
       ) : (
         <div
           className={clsx(
-            "w-20 h-20 bg-neutral-50 flex items-center justify-center",
+            sizeClasses[size],
+            "bg-neutral-50 flex items-center justify-center",
             className
           )}
         >

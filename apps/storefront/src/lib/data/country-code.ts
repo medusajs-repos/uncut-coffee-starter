@@ -10,7 +10,7 @@ export const getStoredCountryCode = createServerFn().handler(async () => {
 
   if (headers?.cookie) {
     const cookies = headers.cookie.split("; ");
-    const countryCodeCookie = cookies.find((row) =>
+    const countryCodeCookie = cookies.find((row: string) =>
       row.startsWith(`${COUNTRY_CODE_KEY}=`)
     );
 

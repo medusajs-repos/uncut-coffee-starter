@@ -1,48 +1,41 @@
 import ShippingItemSelector from "@/components/shipping-item-selector"
-import { Button } from "@/components/ui/button"
 import {
   useSetCartShippingMethod,
   useShippingOptions,
 } from "@/lib/hooks/use-checkout"
 import { HttpTypes } from "@medusajs/types"
 import { useEffect, useState } from "react"
+import { CheckCircleSolid } from "@medusajs/icons"
 
 interface DeliveryStepProps {
   cart: HttpTypes.StoreCart;
-  onNext: () => void;
-  onBack: () => void;
 }
 
-const DeliveryStep = ({ cart, onNext, onBack }: DeliveryStepProps) => {
+const DeliveryStep = ({ cart }: DeliveryStepProps) => {
   const { data: shippingOptions } = useShippingOptions({ cart_id: cart.id });
   const setShippingMethodMutation = useSetCartShippingMethod();
   const [selectedOptionId, setSelectedOptionId] = useState<string>(
     cart.shipping_methods?.[0]?.shipping_option_id || ""
   );
-  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Check if shipping method is already selected
+  const hasShippingMethod = !!cart.shipping_methods?.length;
 
   useEffect(() => {
     // Auto-select first option if none selected and options are available
     if (!selectedOptionId && shippingOptions && shippingOptions.length > 0) {
-      setSelectedOptionId(shippingOptions[0].id);
+      handleSelectShippingOption(shippingOptions[0].id);
     }
   }, [shippingOptions, selectedOptionId]);
 
-  const handleSubmit = async () => {
-    if (!selectedOptionId || isSubmitting) return;
-
-    setIsSubmitting(true);
+  const handleSelectShippingOption = async (optionId: string) => {
+    if (setShippingMethodMutation.isPending) return;
+    
+    setSelectedOptionId(optionId);
+    
     await setShippingMethodMutation.mutateAsync(
+      { shipping_option_id: optionId },
       {
-        shipping_option_id: selectedOptionId,
-      },
-      {
-        onSuccess: () => {
-          onNext();
-        },
-        onSettled: () => {
-          setIsSubmitting(false);
-        },
         onError: (error) => {
           console.error("Failed to set shipping method:", error);
         },
@@ -50,31 +43,51 @@ const DeliveryStep = ({ cart, onNext, onBack }: DeliveryStepProps) => {
     );
   };
 
+  // Check if address is complete before showing shipping options
+  const hasAddress = !!(cart?.shipping_address?.address_1);
+
+  if (!hasAddress) {
+    return (
+      <div className="p-3 w-fit bg-neutral-200 rounded-lg flex items-center text-neutral-600 text-sm uppercase">
+        <p className="font-bold">
+          Please enter your shipping address first to see available shipping options.
+        </p>
+      </div>
+    );
+  }
+
   return (
-    <div className="flex flex-col gap-8">
-      <div className="flex flex-col gap-3">
+    <div className="space-y-4">
+      {/* Status indicator */}
+      {hasShippingMethod && (
+        <div className="flex items-center gap-2 text-sm font-bold text-green-600">
+          <CheckCircleSolid className="w-4 h-4" />
+          <span>Shipping method selected</span>
+        </div>
+      )}
+
+      {/* Shipping Method Selection */}
+      <div className="space-y-3">
+        {shippingOptions?.length === 0 && (
+          <p className="text-sm font-bold text-neutral-500">
+            No shipping options available for your address.
+          </p>
+        )}
         {shippingOptions?.map((option) => (
           <ShippingItemSelector
             key={option.id}
             shippingOption={option}
             isSelected={selectedOptionId === option.id}
-            handleSelect={setSelectedOptionId}
+            handleSelect={handleSelectShippingOption}
             cart={cart}
           />
         ))}
       </div>
 
-      <div className="flex items-center gap-4">
-        <Button variant="secondary" onClick={onBack} disabled={isSubmitting}>
-          Back
-        </Button>
-        <Button
-          onClick={handleSubmit}
-          disabled={!selectedOptionId || isSubmitting}
-        >
-          Next
-        </Button>
-      </div>
+      {/* Loading indicator */}
+      {setShippingMethodMutation.isPending && (
+        <p className="text-sm font-bold text-neutral-500">Updating shipping method...</p>
+      )}
     </div>
   );
 };

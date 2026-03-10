@@ -1,21 +1,17 @@
 import PaymentContainer from "@/components/payment-container"
-import StripeCardContainer from "@/components/stripe-card-container"
-import { Button } from "@/components/ui/button"
 import {
   useCartPaymentMethods,
   useInitiateCartPaymentSession,
 } from "@/lib/hooks/use-checkout"
-import { isStripe as isStripeFunc, getActivePaymentSession, isPaidWithGiftCard } from "@/lib/utils/checkout"
+import { getActivePaymentSession, isPaidWithGiftCard } from "@/lib/utils/checkout"
 import { HttpTypes } from "@medusajs/types"
 import { useCallback, useEffect, useState } from "react"
 
 interface PaymentStepProps {
   cart: HttpTypes.StoreCart;
-  onNext: () => void;
-  onBack: () => void;
 }
 
-const PaymentStep = ({ cart, onNext, onBack }: PaymentStepProps) => {
+const PaymentStep = ({ cart }: PaymentStepProps) => {
   const { data: availablePaymentMethods = [] } = useCartPaymentMethods({
     region_id: cart.region?.id,
   });
@@ -25,130 +21,108 @@ const PaymentStep = ({ cart, onNext, onBack }: PaymentStepProps) => {
 
   const [error, setError] = useState<string | null>(null);
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(
-    activeSession?.provider_id ?? ""
+    "credit_card"
   );
-
-  // Update selected payment method when payment methods are loaded
-  useEffect(() => {
-    if (!selectedPaymentMethod && availablePaymentMethods?.length > 0) {
-      setSelectedPaymentMethod(availablePaymentMethods[0].id);
-      handlePaymentMethodChange(availablePaymentMethods[0].id);
-    }
-  }, [availablePaymentMethods, selectedPaymentMethod]);
-
-  const isStripe = isStripeFunc(selectedPaymentMethod);
 
   const paidByGiftcard = isPaidWithGiftCard(cart);
 
-  const initiatePaymentSession = useCallback(
-    async (method: string) => {
-      initiatePaymentSessionMutation.mutateAsync(
-        { provider_id: method },
-        {
-          onError: (error) => {
-            setError(
-              error instanceof Error ? error.message : "An error occurred"
-            );
-          },
-        }
-      );
-    },
-    [initiatePaymentSessionMutation]
+  // Get the real manual payment provider to use behind the scenes
+  const manualPaymentProvider = availablePaymentMethods.find(
+    (p) => p.id === "pp_system_default"
   );
 
-  const handlePaymentMethodChange = async (method: string) => {
-    setError(null);
-    setSelectedPaymentMethod(method);
+  const initiatePaymentSession = useCallback(
+    async () => {
+      if (!manualPaymentProvider) return;
+      
+      try {
+        await initiatePaymentSessionMutation.mutateAsync(
+          { provider_id: manualPaymentProvider.id },
+          {
+            onError: (error) => {
+              setError(
+                error instanceof Error ? error.message : "An error occurred"
+              );
+            },
+          }
+        );
+      } catch (e) {
+        // Error handled in onError callback
+      }
+    },
+    [initiatePaymentSessionMutation, manualPaymentProvider]
+  );
 
-    initiatePaymentSession(method);
-  };
-
-  const handleSubmit = useCallback(async () => {
-    if (!selectedPaymentMethod) return;
-
-    if (!activeSession) {
-      await initiatePaymentSession(selectedPaymentMethod);
+  // Initialize payment session with the real provider when shipping is complete
+  useEffect(() => {
+    if (
+      manualPaymentProvider &&
+      cart.shipping_methods?.length &&
+      !activeSession
+    ) {
+      initiatePaymentSession();
     }
+  }, [manualPaymentProvider, cart.shipping_methods?.length, activeSession, initiatePaymentSession]);
 
-    onNext();
-  }, [selectedPaymentMethod, activeSession, onNext, initiatePaymentSession]);
+  // Check if shipping method is selected before showing payment options
+  const hasShippingMethod = !!cart.shipping_methods?.length;
+
+  if (!hasShippingMethod) {
+    return (
+      <div className="p-4 bg-neutral-50 rounded-lg border border-neutral-200">
+        <p className="text-sm font-bold text-neutral-500">
+          Please select a shipping method first to see payment options.
+        </p>
+      </div>
+    );
+  }
+
+  // Fake payment options for display purposes only
+  const displayPaymentMethods = [
+    { id: "credit_card", name: "Credit Card" },
+    { id: "paypal", name: "PayPal" },
+  ];
 
   return (
-    <div className="flex flex-col gap-8">
-      {!paidByGiftcard && (availablePaymentMethods?.length ?? 0) > 0 && (
-        <>
-          {availablePaymentMethods.length === 0 && (
-            <p className="text-base font-medium text-neutral-600">
-              No payment methods available
-            </p>
-          )}
-          {availablePaymentMethods.map((paymentMethod) => (
-            <div key={paymentMethod.id}>
+    <div className="space-y-4">
+      {/* Payment Method Selection */}
+      {!paidByGiftcard && (
+        <div className="space-y-2">
+          {displayPaymentMethods.map((method) => (
+            <div key={method.id}>
               <PaymentContainer
-                paymentProviderId={paymentMethod.id}
+                paymentProviderId={method.id}
                 selectedPaymentOptionId={selectedPaymentMethod}
-                onClick={() => handlePaymentMethodChange(paymentMethod.id)}
-              >
-                {isStripeFunc(paymentMethod.id) && (
-                  <StripeCardContainer
-                    paymentProviderId={paymentMethod.id}
-                    selectedPaymentOptionId={selectedPaymentMethod}
-                    setError={setError}
-                    onSelect={() => handlePaymentMethodChange(paymentMethod.id)}
-                    onCardComplete={handleSubmit}
-                  />
-                )}
-              </PaymentContainer>
+                onClick={() => setSelectedPaymentMethod(method.id)}
+              />
             </div>
           ))}
-        </>
+        </div>
       )}
 
+      {/* Gift Card Payment */}
       {paidByGiftcard && (
-        <div className="flex flex-col w-1/3">
-          <p className="text-base font-semibold text-neutral-900 mb-1">
+        <div className="p-4 bg-neutral-50 rounded-lg border border-neutral-200">
+          <p className="text-sm font-bold text-neutral-900 mb-1">
             Payment method
           </p>
-          <p
-            className="text-base font-semibold text-neutral-600"
-            data-testid="payment-method-summary"
-          >
-            Gift card
+          <p className="text-sm font-bold text-neutral-600">
+            Your order will be paid with gift card
           </p>
         </div>
       )}
 
+      {/* Error Message */}
       {error && (
-        <div
-          className="text-rose-900 text-sm"
-          data-testid="payment-method-error-message"
-        >
-          {error}
+        <div className="p-4 bg-red-50 rounded-lg border border-red-200">
+          <p className="text-sm font-bold text-red-700">{error}</p>
         </div>
       )}
 
-      <div className="flex items-center gap-4">
-        <Button
-          variant="secondary"
-          onClick={onBack}
-          disabled={initiatePaymentSessionMutation.isPending}
-        >
-          Back
-        </Button>
-        <Button
-          onClick={handleSubmit}
-          disabled={
-            (isStripe && !activeSession) ||
-            (!selectedPaymentMethod && !paidByGiftcard) ||
-            initiatePaymentSessionMutation.isPending
-          }
-          data-testid="submit-payment-button"
-        >
-          {!activeSession && isStripeFunc(selectedPaymentMethod)
-            ? "Enter card details"
-            : "Next"}
-        </Button>
-      </div>
+      {/* Loading indicator */}
+      {initiatePaymentSessionMutation.isPending && (
+        <p className="text-sm font-bold text-neutral-500">Setting up payment...</p>
+      )}
     </div>
   );
 };

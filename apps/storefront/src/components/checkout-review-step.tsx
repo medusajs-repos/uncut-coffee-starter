@@ -1,89 +1,47 @@
-import Address from "@/components/address"
 import PaymentButton from "@/components/payment-button"
-import PaymentMethodInfo from "@/components/payment-method-info"
-import { Button } from "@/components/ui/button"
-import { Price } from "@/components/ui/price"
 import { getActivePaymentSession, isPaidWithGiftCard } from "@/lib/utils/checkout"
 import { HttpTypes } from "@medusajs/types"
 
 interface ReviewStepProps {
   cart: HttpTypes.StoreCart;
-  onBack: () => void;
 }
 
-const ReviewStep = ({ cart, onBack }: ReviewStepProps) => {
+const ReviewStep = ({ cart }: ReviewStepProps) => {
   const paidByGiftcard = isPaidWithGiftCard(cart);
   const activeSession = getActivePaymentSession(cart);
 
+  // Check if all previous steps are complete
+  const hasAddress = !!(cart?.shipping_address?.address_1 && cart?.email);
+  const hasShippingMethod = !!cart.shipping_methods?.length;
+  const hasPayment = !!activeSession || paidByGiftcard;
+
+  const isReady = hasAddress && hasShippingMethod && hasPayment;
+
+  if (!isReady) {
+    return (
+      <div className="p-3 bg-neutral-200 rounded-lg text-neutral-600 uppercase">
+        <p className="text-sm font-bold">
+          Please complete all steps above to place your order.
+        </p>
+        <ul className="mt-2 text-sm font-bold list-disc list-inside">
+          {!hasAddress && <li>Enter your contact and shipping information</li>}
+          {!hasShippingMethod && <li>Select a shipping method</li>}
+          {!hasPayment && <li>Set up payment</li>}
+        </ul>
+      </div>
+    );
+  }
+
   return (
-    <div className="flex flex-col gap-8">
-      {/* Delivery Information */}
-      {cart.shipping_address && (
-        <>
-          <div className="flex flex-col gap-2">
-            <h3 className="text-neutral-900 !text-base font-semibold">
-              Shipping Address
-            </h3>
-            <Address address={cart.shipping_address} />
-          </div>
-
-          {cart.shipping_methods?.[0] && (
-            <div className="flex flex-col gap-2">
-              <h3 className="text-neutral-900 !text-base font-semibold">
-                Shipping Method
-              </h3>
-              <div className="text-sm text-neutral-600 flex items-center gap-2">
-                <div>{cart.shipping_methods[0].name}</div>
-                <Price
-                  price={cart.shipping_methods[0].amount}
-                  currencyCode={cart.currency_code}
-                  textWeight="plus"
-                  className="text-neutral-600"
-                />
-              </div>
-            </div>
-          )}
-        </>
-      )}
-
-      {/* Payment Information */}
-      <div className="flex flex-col gap-2">
-        <h3 className="text-neutral-900 !text-base font-semibold">
-          Billing Address
-        </h3>
-        <div className="text-sm text-neutral-600">
-          {cart.billing_address ? (
-            <Address address={cart.billing_address} />
-          ) : (
-            <span>Same as shipping address</span>
-          )}
-        </div>
-      </div>
-      <div className="flex flex-col gap-2">
-        <h3 className="text-neutral-900 !text-base font-semibold">
-          Payment Method
-        </h3>
-        <div className="text-sm text-neutral-600 flex items-center gap-2">
-          {activeSession && (
-            <PaymentMethodInfo provider_id={activeSession.provider_id} />
-          )}
-          {paidByGiftcard && <span>Gift Card</span>}
-        </div>
-      </div>
-
-      <p className="text-sm text-neutral-600">
-        When you place your order, your payment will be authorized and we'll
-        start processing your order.
+    <div className="space-y-6">
+      {/* Terms Notice */}
+      <p className="text-sm font-bold text-neutral-500">
+        By placing your order, you agree to our Terms of Service and Privacy Policy. 
+        Your payment will be processed securely.
       </p>
 
-      {/* Action Buttons */}
-      <div className="flex items-center gap-4">
-        <Button variant="secondary" onClick={onBack}>
-          Back
-        </Button>
-
-        <PaymentButton cart={cart} />
-      </div>
+      {/* Place Order Button */}
+      <PaymentButton cart={cart} className="w-full py-4 text-base" />
     </div>
   );
 };

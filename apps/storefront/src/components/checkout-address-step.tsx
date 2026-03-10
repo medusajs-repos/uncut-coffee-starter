@@ -1,24 +1,23 @@
 import AddressForm from "@/components/address-form"
-import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Input } from "@/components/ui/input"
 import { useSetCartAddresses } from "@/lib/hooks/use-checkout"
 import { getStoredCountryCode } from "@/lib/utils/region"
 import { HttpTypes } from "@medusajs/types"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useCallback } from "react"
+import { CheckCircleSolid } from "@medusajs/icons"
 
 interface AddressStepProps {
   cart: HttpTypes.StoreCart;
-  onNext: () => void;
 }
 
-const AddressStep = ({ cart, onNext }: AddressStepProps) => {
+const AddressStep = ({ cart }: AddressStepProps) => {
   const setAddressesMutation = useSetCartAddresses();
   const [sameAsBilling, setSameAsBilling] = useState(true);
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [isShippingAddressValid, setIsShippingAddressValid] = useState(false);
   const [isBillingAddressValid, setIsBillingAddressValid] = useState(false);
   const [email, setEmail] = useState(cart.email || "");
+  const [isSaved, setIsSaved] = useState(false);
   const storedCountryCode = getStoredCountryCode();
   const [shippingAddress, setShippingAddress] = useState<Record<string, any>>({
     first_name: cart.shipping_address?.first_name || "",
@@ -46,48 +45,52 @@ const AddressStep = ({ cart, onNext }: AddressStepProps) => {
     phone: cart.billing_address?.phone || "",
   });
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  // Check if address is already saved
+  const hasAddress = !!(cart?.shipping_address && cart?.billing_address && cart?.email);
 
-    if (isSubmitting) return;
-
-    setIsSubmitting(true);
-
-    try {
-      const submitData = new FormData();
-
-      // Add email
-      submitData.append("email", email);
-
-      // Add shipping address
-      Object.entries(shippingAddress).forEach(([key, value]) => {
-        submitData.append(`shipping_address.${key}`, value);
-      });
-
-      // Add billing address (same as shipping if checkbox is checked)
-      const billingData = sameAsBilling ? shippingAddress : billingAddress;
-      Object.entries(billingData).forEach(([key, value]) => {
-        submitData.append(`billing_address.${key}`, value);
-      });
-
-      await setAddressesMutation.mutateAsync(submitData);
-      onNext();
-    } catch (error) {
-      console.error("Failed to set addresses:", error);
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
-  const isFormValid = () => {
+  const isFormValid = useCallback(() => {
     const emailValid = email.trim() && email.includes("@");
-
     return (
       emailValid &&
       isShippingAddressValid &&
       (isBillingAddressValid || sameAsBilling)
     );
-  };
+  }, [email, isShippingAddressValid, isBillingAddressValid, sameAsBilling]);
+
+  // Auto-save when form is valid
+  useEffect(() => {
+    if (!isFormValid() || setAddressesMutation.isPending || isSaved) return;
+
+    const saveAddress = async () => {
+      const submitData = new FormData();
+      submitData.append("email", email);
+
+      Object.entries(shippingAddress).forEach(([key, value]) => {
+        submitData.append(`shipping_address.${key}`, value);
+      });
+
+      const billingData = sameAsBilling ? shippingAddress : billingAddress;
+      Object.entries(billingData).forEach(([key, value]) => {
+        submitData.append(`billing_address.${key}`, value);
+      });
+
+      try {
+        await setAddressesMutation.mutateAsync(submitData);
+        setIsSaved(true);
+      } catch (error) {
+        console.error("Failed to set addresses:", error);
+      }
+    };
+
+    // Debounce the save
+    const timeoutId = setTimeout(saveAddress, 500);
+    return () => clearTimeout(timeoutId);
+  }, [email, shippingAddress, billingAddress, sameAsBilling, isFormValid, isSaved]);
+
+  // Reset saved state when form changes
+  useEffect(() => {
+    setIsSaved(false);
+  }, [email, shippingAddress, billingAddress, sameAsBilling]);
 
   useEffect(() => {
     if (!cart.region) {
@@ -116,73 +119,78 @@ const AddressStep = ({ cart, onNext }: AddressStepProps) => {
   }, [cart.region, storedCountryCode]);
 
   return (
-    <div className="flex flex-col gap-8">
-      <form onSubmit={handleSubmit} className="flex flex-col gap-8">
-        <div className="flex flex-col gap-2">
-          <h3 className="text-neutral-900 !text-base font-semibold">
-            Shipping Address
-          </h3>
-          {/* Shipping Address */}
-          <AddressForm
-            addressFormData={shippingAddress}
-            setAddressFormData={setShippingAddress}
-            countries={cart.region?.countries}
-            setIsFormValid={setIsShippingAddressValid}
-          />
+    <div className="space-y-8">
+      {/* Status indicator */}
+      {(hasAddress || isSaved) && (
+        <div className="flex items-center gap-2 text-sm font-bold text-green-600">
+          <CheckCircleSolid className="w-4 h-4" />
+          <span>Contact and shipping information saved</span>
         </div>
+      )}
 
-        {/* Billing Address Checkbox */}
-        <div className="flex items-center gap-x-2">
-          <Checkbox
-            id="same_as_billing"
-            type="checkbox"
-            checked={sameAsBilling}
-            onChange={(e) => setSameAsBilling(!!e.target.checked)}
-          />
-          <label htmlFor="same_as_billing" className="text-sm">
-            Billing address is the same as shipping address
-          </label>
-        </div>
-
-        {/* Billing Address (if different) */}
-        {!sameAsBilling && (
-          <div className="flex flex-col gap-2">
-            <h3 className="text-neutral-900 !text-base font-semibold">
-              Billing Address
-            </h3>
-            <AddressForm
-              addressFormData={billingAddress}
-              setAddressFormData={setBillingAddress}
-              countries={cart.region?.countries}
-              setIsFormValid={setIsBillingAddressValid}
-            />
-          </div>
-        )}
-
-        {/* Email */}
-        <div className="flex flex-col gap-2">
-          <label htmlFor="email" className="block text-sm font-medium">
-            Email Address
-          </label>
+      {/* Contact Information */}
+      <div className="space-y-4">
+        <h3 className="text-base font-bold text-neutral-900 uppercase">
+          Contact
+        </h3>
+        <div>
           <Input
             id="email"
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="your@email.com"
+            placeholder="joe@email.com"
             className="w-full"
           />
-          <p className="text-xs text-neutral-600">
-            You'll receive order updates to this email.
-          </p>
-        </div>
 
-        <div className="flex">
-          <Button type="submit" disabled={!isFormValid() || isSubmitting}>
-            Next
-          </Button>
         </div>
-      </form>
+      </div>
+
+      {/* Shipping Address */}
+      <div className="space-y-4">
+        <h3 className="text-base font-bold text-neutral-900 uppercase">
+          Shipping address
+        </h3>
+        <AddressForm
+          addressFormData={shippingAddress}
+          setAddressFormData={setShippingAddress}
+          countries={cart.region?.countries}
+          setIsFormValid={setIsShippingAddressValid}
+        />
+      </div>
+
+      {/* Billing Address Checkbox */}
+      <div className="flex items-center gap-3 px-4 h-12 bg-neutral-50 rounded-[8px] border border-neutral-200">
+        <Checkbox
+          id="same_as_billing"
+          type="checkbox"
+          checked={sameAsBilling}
+          onChange={(e) => setSameAsBilling(!!e.target.checked)}
+        />
+        <label htmlFor="same_as_billing" className="text-sm font-bold uppercase text-neutral-700 cursor-pointer">
+          Billing address is the same as shipping
+        </label>
+      </div>
+
+      {/* Billing Address (if different) */}
+      {!sameAsBilling && (
+        <div className="space-y-4">
+          <h3 className="text-base font-bold text-neutral-900 uppercase">
+            Billing address
+          </h3>
+          <AddressForm
+            addressFormData={billingAddress}
+            setAddressFormData={setBillingAddress}
+            countries={cart.region?.countries}
+            setIsFormValid={setIsBillingAddressValid}
+          />
+        </div>
+      )}
+
+      {/* Saving indicator */}
+      {setAddressesMutation.isPending && (
+        <p className="text-sm font-bold text-neutral-500">Saving...</p>
+      )}
     </div>
   );
 };

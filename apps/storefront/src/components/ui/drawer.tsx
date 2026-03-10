@@ -65,8 +65,11 @@ const DrawerContent = React.forwardRef<
       {...props}
     >
       {!hideClose && (
-        <DialogPrimitive.Close className="absolute right-4 top-4 text-neutral-600 hover:text-neutral-500 transition-colors focus:outline-none disabled:pointer-events-none">
-          <XMarkMini className="h-5 w-5" />
+        <DialogPrimitive.Close className="absolute right-6 top-5 text-neutral-500 hover:text-neutral-700 transition-colors focus:outline-none disabled:pointer-events-none cursor-pointer">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line x1="4" y1="4" x2="16" y2="16" stroke="currentColor" strokeWidth="1.5" />
+            <line x1="16" y1="4" x2="4" y2="16" stroke="currentColor" strokeWidth="1.5" />
+          </svg>
           <span className="sr-only">Close</span>
         </DialogPrimitive.Close>
       )}

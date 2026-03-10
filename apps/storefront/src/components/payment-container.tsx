@@ -1,4 +1,3 @@
-import Radio from "@/components/ui/radio"
 import { paymentMethodsData } from "@/lib/constants/payment-methods"
 import React from "react"
 
@@ -21,23 +20,23 @@ const PaymentContainer: React.FC<PaymentContainerProps> = ({
 
   return (
     <div
-      className={`flex flex-col gap-y-2 text-sm cursor-pointer py-4 border px-8 mb-2 hover:border-neutral-300 transition-colors ${
+      className={`flex flex-col justify-center h-12 text-sm cursor-pointer rounded-lg bg-neutral-50 px-3 mb-2 transition-colors border ${
         isSelected
-          ? "border-neutral-900 bg-neutral-50"
-          : "border-neutral-200"
+          ? "border-neutral-900"
+          : "border-neutral-200 hover:border-black"
       } ${disabled ? "opacity-50 cursor-not-allowed" : ""}`}
       onClick={disabled ? undefined : onClick}
     >
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-x-4">
-          <Radio checked={isSelected} readOnly />
-          <p className="text-base font-medium">
-            {paymentMethodsData[paymentProviderId]?.title || paymentProviderId}
-          </p>
-        </div>
-        <span className="justify-self-end text-neutral-900">
-          {paymentMethodsData[paymentProviderId]?.icon}
-        </span>
+      <div className="flex items-center gap-x-3">
+        <input 
+          type="radio" 
+          checked={isSelected}
+          readOnly
+          className="w-4 h-4 appearance-none border border-black rounded-full relative before:content-[''] before:absolute before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:w-[12px] before:h-[12px] before:rounded-full before:bg-yellow-900 before:scale-0 checked:before:scale-100 before:transition-transform"
+        />
+        <p className="text-base font-bold uppercase text-black">
+          {paymentMethodsData[paymentProviderId]?.title || paymentProviderId}
+        </p>
       </div>
       {children}
     </div>

@@ -87,7 +87,7 @@ const StripeCardContainer: React.FC<StripeCardContainerProps> = ({
           </p>
           <div className="space-y-4 flex flex-wrap">
             <div>
-              <label htmlFor="card-number">Card number</label>
+              <label htmlFor="card-number" className="block text-sm font-bold uppercase mb-2">Card number</label>
               <Input
                 id="card-number"
                 value={cardNumber}
@@ -101,7 +101,7 @@ const StripeCardContainer: React.FC<StripeCardContainerProps> = ({
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label htmlFor="expiry-date">Expiry date</label>
+                <label htmlFor="expiry-date" className="block text-sm font-bold uppercase mb-2">Expiry date</label>
                 <Input
                   id="expiry-date"
                   value={expiryDate}
@@ -111,7 +111,7 @@ const StripeCardContainer: React.FC<StripeCardContainerProps> = ({
                 />
               </div>
               <div>
-                <label htmlFor="cvv">CVV</label>
+                <label htmlFor="cvv" className="block text-sm font-bold uppercase mb-2">CVV</label>
                 <Input
                   id="cvv"
                   value={cvv}
@@ -122,7 +122,7 @@ const StripeCardContainer: React.FC<StripeCardContainerProps> = ({
               </div>
             </div>
             <div>
-              <label htmlFor="cardholder-name">Cardholder name</label>
+              <label htmlFor="cardholder-name" className="block text-sm font-bold uppercase mb-2">Cardholder name</label>
               <Input
                 id="cardholder-name"
                 value={cardholderName}

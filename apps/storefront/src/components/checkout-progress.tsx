@@ -1,6 +1,6 @@
-import { Button } from "@/components/ui/button"
 import { CheckoutStep, CheckoutStepKey } from "@/lib/types/global"
 import { clsx } from "clsx"
+import { ChevronRight } from "@medusajs/icons"
 
 type CheckoutProgressProps = {
   steps: CheckoutStep[];
@@ -16,29 +16,27 @@ const CheckoutProgress = ({
   className,
 }: CheckoutProgressProps) => {
   return (
-    <div className={clsx("flex flex-wrap gap-4 items-center", className)}>
+    <nav className={clsx("flex flex-wrap items-center gap-1", className)}>
       {steps.map((step, index) => (
-        <div key={step.key} className="flex items-center gap-4">
-          <Button
+        <div key={step.key} className="flex items-center">
+          <button
             onClick={() => handleStepChange(step.key)}
-            variant={"transparent"}
-            className={clsx(
-              "p-0 hover:bg-transparent",
-              index !== currentStepIndex &&
-                "text-neutral-600 hover:text-neutral-500",
-              index === currentStepIndex &&
-                "text-neutral-900 hover:text-neutral-600"
-            )}
             disabled={index > currentStepIndex}
+            className={clsx(
+              "text-sm font-bold transition-colors disabled:cursor-not-allowed",
+              index < currentStepIndex && "text-neutral-900 hover:underline cursor-pointer",
+              index === currentStepIndex && "text-neutral-900",
+              index > currentStepIndex && "text-neutral-400"
+            )}
           >
             {step.title}
-          </Button>
+          </button>
           {index < steps.length - 1 && (
-            <div className="w-8 h-px bg-neutral-200" />
+            <ChevronRight className="w-4 h-4 mx-2 text-neutral-400" />
           )}
         </div>
       ))}
-    </div>
+    </nav>
   );
 };
 

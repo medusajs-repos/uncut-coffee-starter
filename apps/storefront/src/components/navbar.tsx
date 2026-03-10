@@ -1,7 +1,8 @@
+import { useState } from "react"
 import { useCart } from "@/lib/hooks/use-cart"
 import { useCartDrawer } from "@/lib/context/cart"
 import { getCountryCodeFromPath } from "@/lib/utils/region"
-import { User } from "@medusajs/icons"
+import { XMark } from "@medusajs/icons"
 import { Link, useLocation } from "@tanstack/react-router"
 
 import {
@@ -17,9 +18,9 @@ import { sortCartItems } from "@/lib/utils/cart"
 import { Price } from "@/components/ui/price"
 
 const NAV_LINKS = [
-  { label: "SHOP", href: "/" },
-  { label: "WHY UNCUT", href: "/why-uncut" },
-  { label: "OUR STORY", href: "/our-story" },
+  { label: "SHOP", anchor: "#shop" },
+  { label: "WHY", anchor: "#why-uncut" },
+  { label: "OUR STORY", anchor: "#our-story" },
 ]
 
 export const Navbar = () => {
@@ -27,6 +28,7 @@ export const Navbar = () => {
   const countryCode = getCountryCodeFromPath(location.pathname)
   const baseHref = countryCode ? `/${countryCode}` : ""
   const { isOpen, openCart, closeCart } = useCartDrawer()
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const { data: cart } = useCart({
     fields: DEFAULT_CART_DROPDOWN_FIELDS,
   })
@@ -37,47 +39,123 @@ export const Navbar = () => {
   const textColorClass = "text-white"
 
   return (
-    <div className="fixed top-0 inset-x-0 z-50">
-      <header className="relative h-10 mx-auto bg-transparent">
-        <nav className="w-full h-10 px-4 flex items-center justify-between mix-blend-difference">
-          <Link
-            to={baseHref || "/"}
-            className={`text-base font-medium uppercase tracking-wide ${textColorClass} hover:opacity-70 transition-opacity cursor-pointer`}
-          >
-            UNCUT
-          </Link>
-
-          {NAV_LINKS.map((link) => (
-            <Link
-              key={link.label}
-              to={`${baseHref}${link.href}` as any}
-              className={`text-base font-medium uppercase tracking-wide ${textColorClass} hover:opacity-70 transition-opacity cursor-pointer`}
+    <>
+      {/* Mobile Menu Fullscreen Drawer */}
+      {mobileMenuOpen && (
+        <div className="fixed inset-0 z-[60] bg-black flex flex-col md:hidden">
+          <div className="h-10 px-4 flex items-center justify-between">
+            <button
+              onClick={() => {
+                setMobileMenuOpen(false)
+                const element = document.getElementById("hero")
+                if (element) {
+                  setTimeout(() => {
+                    element.scrollIntoView({ behavior: "smooth" })
+                  }, 100)
+                } else {
+                  window.scrollTo({ top: 0, behavior: "smooth" })
+                }
+              }}
+              className="text-base font-bold uppercase tracking-wide text-white hover:opacity-70 transition-opacity cursor-pointer bg-transparent border-none"
             >
-              {link.label}
-            </Link>
-          ))}
-
-          <div className="flex items-center gap-4">
-            <button className={`${textColorClass} hover:opacity-70 transition-opacity cursor-pointer`}>
-              <User className="w-4 h-4" />
+              UNCUT
             </button>
+            <button
+              onClick={() => setMobileMenuOpen(false)}
+              className="text-white hover:opacity-70 transition-opacity cursor-pointer text-base font-bold uppercase tracking-wide"
+            >
+              CLOSE
+            </button>
+          </div>
+          <div className="flex-1 flex flex-col items-center justify-center gap-8">
+            {NAV_LINKS.map((link) => (
+              <button
+                key={link.label}
+                onClick={() => {
+                  setMobileMenuOpen(false)
+                  const targetId = link.anchor.replace("#", "")
+                  const element = document.getElementById(targetId)
+                  if (element) {
+                    setTimeout(() => {
+                      element.scrollIntoView({ behavior: "smooth" })
+                    }, 100)
+                  }
+                }}
+                className="text-[40px] font-bold uppercase tracking-wide text-white hover:opacity-70 transition-opacity cursor-pointer leading-tight bg-transparent border-none"
+              >
+                {link.label}
+              </button>
+            ))}
+
+          </div>
+        </div>
+      )}
+
+      <header className="fixed top-0 inset-x-0 z-50 h-10 mix-blend-difference">
+          <nav className="w-full h-10 px-4 flex items-center justify-between">
+            <button
+              onClick={() => {
+                const element = document.getElementById("hero")
+                if (element) {
+                  element.scrollIntoView({ behavior: "smooth" })
+                } else {
+                  window.scrollTo({ top: 0, behavior: "smooth" })
+                }
+              }}
+              className={`text-base font-bold uppercase tracking-wide ${textColorClass} hover:opacity-70 transition-opacity cursor-pointer bg-transparent border-none`}
+            >
+              UNCUT
+            </button>
+
+            {/* Mobile Menu Button - visible on md and below */}
+            <button
+              onClick={() => setMobileMenuOpen(true)}
+              className={`md:hidden text-base font-bold uppercase tracking-wide ${textColorClass} hover:opacity-70 transition-opacity cursor-pointer`}
+            >
+              MENU
+            </button>
+
+            {/* Desktop Navigation Links - hidden on md and below */}
+            {NAV_LINKS.map((link) => (
+              <button
+                key={link.label}
+                onClick={(e) => {
+                  e.preventDefault()
+                  const targetId = link.anchor.replace("#", "")
+                  const element = document.getElementById(targetId)
+                  if (element) {
+                    element.scrollIntoView({ behavior: "smooth" })
+                  }
+                }}
+                className={`hidden md:block text-base font-bold uppercase tracking-wide ${textColorClass} hover:opacity-70 transition-opacity cursor-pointer bg-transparent border-none`}
+              >
+                {link.label}
+              </button>
+            ))}
+
+
 
             <Drawer open={isOpen} onOpenChange={(open) => (open ? openCart() : closeCart())}>
               <DrawerTrigger asChild>
-                <button className={`${textColorClass} hover:opacity-70 transition-opacity text-base font-medium cursor-pointer`}>
-                  {itemCount}
+                <button className={`${textColorClass} hover:opacity-70 transition-opacity text-base font-bold cursor-pointer`}>
+                  [ {itemCount} ]
                 </button>
               </DrawerTrigger>
 
               <DrawerContent className="flex flex-col bg-white">
-                <DrawerHeader className="border-b border-uncut-gray-light">
-                  <DrawerTitle className="uppercase text-sm tracking-wide font-medium">Your Cart</DrawerTitle>
+                <DrawerHeader className="border-b-0">
+                  <DrawerTitle className="text-black font-bold text-[32px] uppercase flex items-center gap-3">
+                    Cart
+                    <span className="w-7 h-7 rounded-full bg-neutral-200 text-black text-[14px] font-bold flex items-center justify-center">
+                      {itemCount}
+                    </span>
+                  </DrawerTitle>
                 </DrawerHeader>
 
                 {/* Empty Cart */}
                 {(!cart || itemCount === 0) && (
                   <div className="flex flex-col items-center justify-center flex-1 p-8">
-                    <span className="text-uncut-gray text-base mb-6">
+                    <span className="text-uncut-gray text-base mb-6 font-bold">
                       Your cart is empty
                     </span>
                     <Link to={`${baseHref}/` as any} onClick={closeCart}>
@@ -103,15 +181,15 @@ export const Navbar = () => {
                       ))}
                     </div>
 
-                    <DrawerFooter className="border-t border-uncut-gray-light">
+                    <DrawerFooter className="border-t-0">
                       <div className="flex items-center justify-between mb-4">
-                        <span className="text-sm uppercase tracking-wide text-uncut-gray">Subtotal</span>
-                        <Price price={cart.item_subtotal} currencyCode={cart.currency_code} textWeight="plus" />
+                        <span className="text-sm uppercase tracking-wide text-neutral-500 font-bold">ESTIMATED TOTAL</span>
+                        <Price price={cart.item_subtotal} currencyCode={cart.currency_code} textWeight="plus" className="[&>span]:text-[24px]" />
                       </div>
 
-                      <Link to={`${baseHref}/cart` as any} onClick={closeCart} className="block">
-                        <button className="uncut-button w-full cursor-pointer">
-                          View Cart & Checkout
+                      <Link to={`${baseHref}/checkout` as any} onClick={closeCart} className="block">
+                        <button className="uncut-button w-full cursor-pointer h-14 font-bold text-sm">
+                          CHECK OUT
                         </button>
                       </Link>
                     </DrawerFooter>
@@ -119,9 +197,8 @@ export const Navbar = () => {
                 )}
               </DrawerContent>
             </Drawer>
-          </div>
-        </nav>
-      </header>
-    </div>
+          </nav>
+        </header>
+    </>
   )
 }
