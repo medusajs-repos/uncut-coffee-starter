@@ -15,6 +15,7 @@ import {
   linkSalesChannelsToApiKeyWorkflow,
   linkSalesChannelsToStockLocationWorkflow,
   updateStoresWorkflow,
+  createDefaultsWorkflow,
 } from "@medusajs/medusa/core-flows";
 
 export default async function initialSeed({ container }: ExecArgs) {
@@ -35,6 +36,9 @@ export default async function initialSeed({ container }: ExecArgs) {
     logger.info("Initial seed already applied, skipping.");
     return;
   }
+
+  logger.info("Seeding defaults...");
+  await createDefaultsWorkflow(container).run();
 
   const europeanCountries = ["gb", "de", "dk", "se", "fr", "es", "it"];
 
