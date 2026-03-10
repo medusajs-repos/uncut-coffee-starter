@@ -39,5 +39,27 @@ module.exports = defineConfig({
       cookieSecret: process.env.COOKIE_SECRET || "supersecret",
     },
   },
-  modules: [],
+  modules: [
+    {
+      resolve: "@medusajs/medusa/file-s3",
+      options: {
+        file_url: process.env.R2_FILE_URL
+          ? process.env.R2_FILE_URL
+          : `https://s3.${process.env.AWS_REGION}.amazonaws.com/${process.env.S3_BUCKET}`,
+        access_key_id: process.env.R2_FILE_URL
+          ? process.env.S3_ACCESS_KEY_ID
+          : undefined,
+        secret_access_key: process.env.R2_FILE_URL
+          ? process.env.S3_SECRET_ACCESS_KEY
+          : undefined,
+        region: process.env.R2_FILE_URL
+          ? "auto"
+          : process.env.AWS_REGION,
+        bucket: process.env.S3_BUCKET,
+        endpoint: process.env.R2_FILE_URL
+          ? process.env.S3_ENDPOINT
+          : undefined,
+      },
+    },
+  ],
 });
