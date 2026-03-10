@@ -1,6 +1,4 @@
-import { ExecArgs } from "@medusajs/framework/types";
-import initialSeed from "../migration-scripts/25022026-initial-seed";
-
-export default async function seedDemoData(args: ExecArgs) {
-  return initialSeed(args);
+// TODO: Seeding done through a migration script, remove once bloom no longer runs the seed command.
+export default async function seedDemoData() {
+  return
 }
