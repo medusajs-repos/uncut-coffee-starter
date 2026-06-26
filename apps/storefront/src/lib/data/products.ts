@@ -53,10 +53,14 @@ export const listProducts = async ({
   page_param = 1,
   query_params,
   region_id,
+  optionValueIds,
 }: {
   page_param?: number;
-  query_params?: HttpTypes.StoreProductListParams;
+  query_params?: HttpTypes.StoreProductListParams & {
+    option_value_id?: string | string[];
+  };
   region_id?: string;
+  optionValueIds?: string[];
 }): Promise<{
   products: HttpTypes.StoreProduct[];
   count: number;
@@ -66,12 +70,40 @@ export const listProducts = async ({
   const _page_param = Math.max(page_param, 1)
   const offset = _page_param === 1 ? 0 : (_page_param - 1) * limit
 
+  // Merge + dedupe option_value_id values from both `optionValueIds` and
+  // `query_params.option_value_id`.
+  const fromParams = query_params?.option_value_id
+  const optionIdSet = new Set<string>()
+  if (Array.isArray(fromParams)) {
+    fromParams.forEach((id) => id && optionIdSet.add(id))
+  } else if (typeof fromParams === "string" && fromParams.length > 0) {
+    optionIdSet.add(fromParams)
+  }
+  if (optionValueIds?.length) {
+    optionValueIds.forEach((id) => id && optionIdSet.add(id))
+  }
+  const mergedOptionValueIds = Array.from(optionIdSet)
+
+  // Ensure variant options are included in the response so the
+  // storefront can resolve which variants match selected option values.
+  const baseFields =
+    query_params?.fields ?? "*variants.calculated_price,*variants.options"
+  const fields = baseFields.includes("*variants.options")
+    ? baseFields
+    : `${baseFields},*variants.options`
+
+  const { option_value_id: _unused, ...restQueryParams } = query_params ?? {}
+
   const response = await sdk.store.product.list({
     limit,
     offset,
     region_id,
-    ...query_params,
-  })
+    ...restQueryParams,
+    fields,
+    ...(mergedOptionValueIds.length
+      ? { option_value_id: mergedOptionValueIds }
+      : {}),
+  } as HttpTypes.StoreProductListParams)
 
   const next_page = offset + limit < response.count ? _page_param + 1 : null
 
