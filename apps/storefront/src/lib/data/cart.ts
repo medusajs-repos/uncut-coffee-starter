@@ -24,7 +24,7 @@ const DEFAULT_CART_FIELDS = "+items.total, shipping_methods.name"
  * // Get specific cart by ID
  * const specificCart = await retrieveCart({ 
  *   cart_id: 'cart_123',
- *   fields: '*items, *items.variant, *items.variant.product'
+ *   fields: '*items, *items.variant, *items.product'
  * });
  * 
  * // Get cart with minimal fields
@@ -137,7 +137,7 @@ export const updateCart = async ({
  *   variant_id: 'variant_123',
  *   quantity: 2,
  *   country_code: 'us',
- *   fields: '*items, *items.variant, *items.variant.product'
+ *   fields: '*items, *items.variant, *items.product'
  * });
  * 
  * // Add item with minimal response
